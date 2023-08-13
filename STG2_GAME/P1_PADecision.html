@@ -1,0 +1,92 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
+<script src="{{ static 'JavaScript_Crd2.js' }}"></script>
+
+<!-- Title -->
+<div style="margin-bottom: 20px; margin-top: 10px">
+    <div align="left" style="position: absolute"><h2 class="Title">Stage 2: Decision 1</h2></div>
+    <div align="right"><span class="advice">True Signal: <b>{{ signal }}</b></span></div>
+</div>
+<h3>You are Player A</h3>
+
+<!-- Payoff Tables -->
+<div class="tables-container">
+    <div>
+        <p class="payofftableheader">Your Payoff Table</p>
+        <table class="playerpayofftable" style="display: flex; margin: unset">
+            <tr>
+                <td style="width: 75px;"></td>
+                <td class="header" colspan="6">Total Investors</td>
+            </tr>
+            <tr>
+                <td  style="font-style: italic; width: 75px;">Quality</td>
+                <td class="row1">0</td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
+                <td class="row1">5</td>
+            </tr>
+            <tr>
+                <td class="column1">Low</td>
+                {{ for p in pa_table.1 }}
+                <td>{{ p }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td class="column1">High</td>
+                {{ for p in pa_table.3 }}
+                <td>{{ p }}</td>
+                {{ endfor }}
+            </tr>
+        </table>
+    </div>
+    <div style="margin: 20px"></div>
+    <div>
+        <p class="payofftableheader">Player Bs Payoff Table</p>
+        <table class="playerpayofftable" style="display: flex; margin: unset">
+            <tr>
+                <td style="width: 75px;"></td>
+                <td class="header" colspan="5">Total Investors (Including You)</td>
+            </tr>
+            <tr>
+                <td style="font-style: italic; width: 75px;">Quality</td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
+                <td class="row1">5</td>
+            </tr>
+            <tr>
+                <td class="column1">Low</td>
+                {{ for p in pb_table.1 }}
+                <td>{{ p }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td class="column1">High</td>
+                {{ for p in pb_table.3 }}
+                <td>{{ p }}</td>
+                {{ endfor }}
+            </tr>
+        </table>
+    </div>
+</div>
+
+<table class="decisiontable">
+    <tr>
+        <td class="playera"><input name="pa_advice" value="Invest" type="radio"> Invest</td>
+        <td rowspan="2" class="error">{{ formfield_errors 'pa_advice' }}</td>
+    </tr>
+    <tr>
+        <td class="playera"><input name="pa_advice" value="Don't Invest" type="radio"> Don't Invest</td>
+    </tr>
+</table>
+
+<!-- Next Button with confirmation pop-up-->
+<button onclick="ConfirmDecision(event)">Continue</button>
+
+
+{{ endblock }}

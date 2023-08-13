@@ -1,0 +1,76 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
+<script src="{{ static 'JavaScript_Crd2.js' }}"></script>
+
+{{ block title }}
+Stage 1: Decision 3
+{{ endblock }}
+
+<!-- General Information Body -->
+<p>Decision 3 has several similar features to Decisions 1 and 2. There are two possible qualities of the investment opportunity, Low or High, with each quality being equally likely. Player A sees the true <i>Quality</i> and then sends all Player Bs a recommendation (“Invest” or “Do Not Invest”). All Player Bs receive the same recommendation and then simultaneously choose whether or not to invest. </p>
+<p>As in Decision 2, Player A will receive 100 if the majority (three or more) of Player Bs choose to invest, regardless of Quality. This is shown in the payoff table below.</p>
+
+<!-- Player A's Payoff Table -->
+<p class="payofftableheader">Player A's Payoff Table</p>
+<table class="playerpayofftable" style="display: flex; margin-left: 150px">
+    <tr>
+        <td style="width: 75px;"></td>
+        <td class="header" colspan="6">Total Investors</td>
+    </tr>
+    <tr>
+        <td  style="font-style: italic; width: 75px;">Quality</td>
+        <td class="row1">0</td>
+        <td class="row1">1</td>
+        <td class="row1">2</td>
+        <td class="row1">3</td>
+        <td class="row1">4</td>
+        <td class="row1">5</td>
+    </tr>
+    <tr>
+        <td class="column1">Low</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>100</td>
+        <td>100</td>
+        <td>100</td>
+    </tr>
+    <tr>
+        <td class="column1">High</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>100</td>
+        <td>100</td>
+        <td>100</td>
+    </tr>
+</table>
+
+<!-- General Information Body Cont. -->
+<p style="margin-top: 100px; margin-bottom: unset">Please click "Continue"</p>
+<p style="font-size: 16px; margin-top: unset; margin-bottom: 10px" >*** Page will not continue until everyone has clicked continue ***</p>
+
+<!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
+<button type="button" id="validation" class="Instructions" onclick="validating()">Continue</button>
+
+<script>
+// Checking if button has been clicked
+window.onload = function () {
+    const IsClicked = sessionStorage.getItem('IsClicked');
+
+    if (IsClicked === 'true') {
+        document.getElementById('validation').disabled = true;
+    }
+}
+
+// Websocket to check if all players are ready
+function liveRecv(data) {
+    if (data === 'all_ready') {
+        sessionStorage.setItem('IsClicked', 'false')
+        document.forms[0].submit();
+    }
+}
+</script>
+{{ endblock }}

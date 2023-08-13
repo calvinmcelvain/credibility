@@ -1,0 +1,38 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
+<script src="{{ static 'JavaScript_Crd2.js' }}"></script>
+
+{{ block title }}
+Stage 2
+{{ endblock }}
+
+<!-- General Information Body -->
+<p>We have now concluded Stage 1 of the experiment. Stage 2 will consist of a series of three decisions. One decision will be drawn after the experiment to count towards your payment.  Because you will not know which decision will count until the end of the experiment, you should treat each decision as if it is the one that counts.</p>
+<p>Your group in Stage 2 is the same six participants as in Stage 1 and your role (Player A or Player B) is the same as well. </p>
+<p style="margin-top: 100px; margin-bottom: unset">Please click "Continue"</p>
+<p style="font-size: 16px; margin-top: unset; margin-bottom: 10px" >*** Page will not continue until everyone has clicked continue ***</p>
+
+<!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
+<button type="button" id="validation" class="Instructions" onclick="validating()">Continue</button>
+
+<script>
+// Checking if button has been clicked
+window.onload = function () {
+    const IsClicked = sessionStorage.getItem('IsClicked');
+
+    if (IsClicked === 'true') {
+        document.getElementById('validation').disabled = true;
+    }
+}
+
+// Websocket to check if all players are ready
+function liveRecv(data) {
+    if (data === 'all_ready') {
+        sessionStorage.setItem('IsClicked', 'false')
+        document.forms[0].submit();
+    }
+}
+</script>
+{{ endblock }}

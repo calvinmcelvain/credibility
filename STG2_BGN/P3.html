@@ -1,0 +1,42 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
+<script src="{{ static 'JavaScript_Crd2.js' }}"></script>
+
+{{ block title }}
+Stage 2 (cont.)
+{{ endblock }}
+
+<!-- General Information Body -->
+<p>There are also a number of differences between Stage 2 and Stage 1</p>
+<div style="margin-left: 30px">
+    <p>1)	In Stage 2, there now will only be two possible quality levels, “Low” and “High”. Each possible quality level is equally likely, like the flip of a coin. </p>
+    <p>2)	In Stage 2, rather than receiving an estimate, Player A will directly observe the true quality level. In other words, Player A will know the actual quality level (rather than an estimate) when they choose a message. </p>
+    <p>3)	The three decisions in Stage 2 will each contain unique instructions and payoff tables. That is, in Stage 2, the rules and payoff tables will change for each decision, so be certain to consider them carefully before making your decisions in Stage 2.</p>
+</div>
+<p style="margin-top: 100px; margin-bottom: unset">Please click "Continue"</p>
+<p style="font-size: 16px; margin-top: unset; margin-bottom: 10px" >*** Page will not continue until everyone has clicked continue ***</p>
+
+<!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
+<button type="button" id="validation" class="Instructions" onclick="validating()">Continue</button>
+
+<script>
+// Checking if button has been clicked
+window.onload = function () {
+    const IsClicked = sessionStorage.getItem('IsClicked');
+
+    if (IsClicked === 'true') {
+        document.getElementById('validation').disabled = true;
+    }
+}
+
+// Websocket to check if all players are ready
+function liveRecv(data) {
+    if (data === 'all_ready') {
+        sessionStorage.setItem('IsClicked', 'false')
+        document.forms[0].submit();
+    }
+}
+</script>
+{{ endblock }}

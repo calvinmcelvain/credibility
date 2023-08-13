@@ -1,0 +1,166 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
+<script src="{{ static 'JavaScript_Crd2.js' }}"></script>
+
+{{ block title }}
+Instructions Quiz
+{{ endblock }}
+
+<!--Instruction Quiz Body-->
+<p>To make sure that everyone understands the instructions for Stage I, please take a moment to answer the following questions. Once everyone has responded correctly, we will proceed to the first round of Stage 1.</p>
+
+<!--Payoff Tables-->
+<div class="tables-container">
+    <div>
+        <p class="payofftableheader">Player Bs Payoff Table</p>
+        <table class="playerpayofftable" style="display: flex; margin: unset">
+            <tr>
+                <td style="width: 75px;"></td>
+                <td class="header" colspan="5">Total Investors (including you)</td>
+            </tr>
+            <tr>
+                <td style="font-style: italic; width: 75px;">Quality</td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
+                <td class="row1">5</td>
+            </tr>
+            <tr>
+                <td class="column1">Low</td>
+                <td>0</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td class="column1">Medium</td>
+                <td>1</td>
+                <td>3</td>
+                <td>5</td>
+                <td>7</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td class="column1">High</td>
+                <td>2</td>
+                <td>4</td>
+                <td>8</td>
+                <td>14</td>
+                <td>22</td>
+            </tr>
+        </table>
+    </div>
+    <div style="margin: 20px"></div>
+    <div>
+        <p class="payofftableheader">Player A's Payoff Table</p>
+        <table class="playerpayofftable" style="display: flex; margin: unset">
+            <tr>
+                <td style="width: 75px;"></td>
+                <td class="header" colspan="6">Total Investors</td>
+            </tr>
+            <tr>
+                <td  style="font-style: italic; width: 75px;">Quality</td>
+                <td class="row1">0</td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
+                <td class="row1">5</td>
+            </tr>
+            <tr>
+                <td class="column1">Low</td>
+                <td>12</td>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td class="column1">Medium</td>
+                <td>6</td>
+                <td>6</td>
+                <td>6</td>
+                <td>6</td>
+                <td>6</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td class="column1">High</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>30</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!--Instruction Quiz Form Fields-->
+<div class="quiz">
+    <p>1. Suppose that the <i>Quality</i> of the investment opportunity in a round is Low. Suppose that the total number of Player Bs who invested (<i>Total Investors</i>) is 2. </p>
+    <div style="margin-left: 40px">
+        <p>a. What is the payoff for a Player B who invested?</p>
+        <p><input name="Q1a" type="number">
+        <span id="errorQ1a"></span>
+        <p>b. What is the payoff for a Player B who kept the endowment?</p>
+        <p><input name="Q1b" type="number">
+        <span id="errorQ1b"></span>
+        <p>c. What is the payoff for Player A?</p>
+        <p><input name="Q1c" type="number">
+        <span id="errorQ1c"></span>
+    </div>
+    <div style="margin: 20px"></div>
+    <p>2. Suppose that the <i>Quality</i> of the investment opportunity in a round is High. Suppose that the total number of Player Bs who invested (<i>Total Investors</i>) is 4. </p>
+    <div style="margin-left: 40px">
+        <p>a. What is the payoff for a Player B who invested?</p>
+        <p><input name="Q2a" type="number">
+        <span id="errorQ2a"></span>
+        <p>b. What is the payoff for a Player B who kept the endowment?</p>
+        <p><input name="Q2b" type="number">
+        <span id="errorQ2b"></span>
+        <p>c. What is the payoff for Player A?</p>
+        <p><input name="Q2c" type="number">
+        <span id="errorQ2c"></span>
+    </div>
+    <div style="margin: 20px"></div>
+    <p>3. Suppose that the <i>Quality</i> in a round is Medium.</p>
+    <div style="margin-left: 40px">
+        <p>a. The estimate of investment quality that Player A receives Medium is 5/6 chance.</p>
+        <div style="margin-left: 40px">
+            <p class="tf"><input name="Q3a" type="radio" value="True"> True</p>
+            <p class="tf"><input name="Q3a" type="radio" value="False"> False</p>
+            <span id="errorQ3a"></span>
+        </div>
+        <p>b. The estimate of investment quality that Player A receives will never be High. </p>
+        <div style="margin-left: 40px">
+            <p class="tf"><input name="Q3b" type="radio" value="True"> True</p>
+            <p class="tf"><input name="Q3b" type="radio" value="False"> False</p>
+            <span id="errorQ3b"></span>
+        </div>
+        <p>c. The Player Bs can see what estimate the Player A has received when they make their choices.</p>
+        <div style="margin-left: 40px">
+            <p class="tf"><input name="Q3c" type="radio" value="True"> True</p>
+            <p class="tf"><input name="Q3c" type="radio" value="False"> False</p>
+            <span id="errorQ3c"></span>
+        </div>
+    </div>
+    <div style="margin: 20px"></div>
+    <p>4. Player A will first make their choices for all possible values of <i>Quality</i>, and then the computer will play out the round for them based on their choices and the randomly drawn investment quality and quality estimate. </p>
+    <div style="margin-left: 40px">
+        <p class="tf"><input name="Q4" type="radio" value="True"> True</p>
+        <p class="tf"><input name="Q4" type="radio" value="False"> False</p>
+        <span id="errorQ4"></span>
+    </div>
+</div>
+
+<!--Next Button-->
+<button type="button" onclick="checkAnswers()">Continue</button>
+
+{{ endblock }}

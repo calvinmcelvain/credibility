@@ -1,0 +1,41 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
+<script src="{{ static 'JavaScript_Crd2.js' }}"></script>
+
+{{ block title }}
+General Information
+{{ endblock }}
+
+<!-- General Information Body -->
+<p>This is an experiment in decision-making. In addition to a $10 participation fee, you will be paid any additional money you accumulate during the experiment at the conclusion of today's session.</p>
+<p>All payoffs during the experiment are denominated in an artificial currency, experimental currency units (ECU). At the end of the experiment, ECU will be converted to cash at the rate of <span class="highlight">$1 per 25</span> ECU. Upon completion of the experiment, your earnings will be converted to dollars and you will be paid privately, by check. The exact amount you receive will be determined during the experiment and will depend on your decisions and the decisions of others.</p>
+<p>The identities of participants will remain confidential, meaning that at no point in time will we identify the role or actions of any individual to other participants. In other words, the actions that you take during this experiment will remain confidential.</p>
+<p><b><i> If you have any questions during the experiment, please raise your hand and wait for an experimenter to come to you. Please do not talk, exclaim, or try to communicate with other participants during the experiment.</i></b> Participants intentionally violating these rules or otherwise behaving in a disruptive fashion will be asked to leave the experiment and will not be paid.</p>
+<p style="margin-top: 100px; margin-bottom: unset">Please click "Continue"</p>
+<p style="font-size: 16px; margin-top: unset; margin-bottom: 10px" >*** Page will not continue until everyone has clicked continue ***</p>
+
+<!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
+<button type="button" id="validation" class="Instructions" onclick="validating()">Continue</button>
+
+<script>
+// Checking if button has been clicked
+window.onload = function () {
+    const IsClicked = sessionStorage.getItem('IsClicked');
+
+    if (IsClicked === 'true') {
+        document.getElementById('validation').disabled = true;
+    }
+}
+
+// Websocket to check if all players are ready
+function liveRecv(data) {
+    if (data === 'all_ready') {
+        sessionStorage.setItem('IsClicked', 'false')
+        document.forms[0].submit();
+    }
+}
+</script>
+
+{{ endblock }}

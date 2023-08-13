@@ -1,0 +1,123 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
+<script src="{{ static 'JavaScript_Crd2.js' }}"></script>
+
+<!-- Title -->
+<h2 class="Title">End of Experiment</h2>
+
+<!-- Stage 2 Feedback -->
+<div style="margin: 75px"></div>
+<h4 class="History">Stage 2 Feedback:</h4>
+<h5>*** The decision randomly chosen towards payment is marked in <span class="highlight">yellow</span> ***</h5>
+{{ if player.role == C.pa_ROLE }}
+
+<div class="tablescroll">
+    <table class="history_header">
+        <tr>
+            <th>Decision</th>
+            <th>True Signal</th>
+            <th>Advice Given</th>
+            <th>Total Investors</th>
+            <th>Your Payoff</th>
+            <th>Player B Payoff</th>
+        </tr>
+    </table>
+    <table>
+        {{ for player in player_history.history }}
+        <tr {{ if decision_counts == player.round_number }} bgcolor="yellow"{{ endif }}>
+            <td width="117.52">{{ player.round_number }}</td>
+            <td width="151.59">{{ player.group.actual_signal }}</td>
+            <td width="174.33">{{ player.pa_advice }}</td>
+            <td width="197.31">{{ player.group.total_players_invest }}</td>
+            <td width="155.72">{{ player.payoff }}</td>
+            <td>{{ player.group.pb_payoff }}</td>
+        </tr>
+        {{ endfor }}
+    </table>
+</div>
+
+{{ else }}
+
+<div class="tablescroll">
+    <table class="history_header">
+        <tr>
+            <th>Round</th>
+            <th>Player A's Advice</th>
+            <th>Your Outside</th>
+            <th>Other Investors</th>
+            <th>Total Investors</th>
+            <th>True Quality</th>
+            <th>Your Payoff</th>
+            <th>Player A Payoff</th>
+        </tr>
+    </table>
+    <table>
+        {{ for player in player_history.history }}
+        <tr {{ if decision_counts == player.round_number }} bgcolor="yellow"{{ endif }}>
+            <td width="62.5">{{ player.round_number }}</td>
+            <td width="161.53">{{ if player.pb_outside_option <= player.group.random_draw }}{{ player.pb_outside_option }} = Invest{{ else }}{{ player.pb_outside_option }} = Don't Invest{{ endif }}</td>
+            <td width="122.09">{{ player.other_investors }}</td>
+            <td width="146.05">{{ player.other_investors }}</td>
+            <td width="138.78">{{ player.group.total_players_invest }}</td>
+            <td width="115.28">{{ player.group.actual_signal }}</td>
+            <td width="109.53">{{ player.payoff }}</td>
+            <td width="143.23">{{ player.group.pa_payoff }}</td>
+        </tr>
+        {{ endfor }}
+    </table>
+</div>
+
+{{ endif }}
+
+<!--Player History Table (ECUs) -->
+<div style="margin: 125px"></div>
+<h4 class="History">ECUs earned in Experiment:</h4>
+<h5>*** Remember, <span style="text-decoration: underline">Decision {{ decision_counts }}</span> of Stage 2 was randomly drawn to count towards payment ***</h5>
+<table class="Final">
+    <tr>
+        <th>Stage 1 Total ECUs:</th>
+        <td>{{ Stage_1 }}</td>
+    </tr>
+    <tr>
+        <th>Stage 2 Total ECUs:</th>
+        <td>{{ Stage_2 }}</td>
+    </tr>
+    <tr>
+        <th>Total ECUs:</th>
+        <td>{{ final_payoff }}</td>
+    </tr>
+</table>
+
+<!--Player History Table ($) -->
+<div style="margin: 50px"></div>
+<h4 class="History">Dollars($) earned in Experiment:</h4>
+<h5>*** Remember, $0.25 = 1 ECU ***</h5>
+<table class="Final">
+    <tr>
+        <th>Stage 1 Total Dollars ($):</th>
+        <td>{{ real_Stage_1 }}</td>
+    </tr>
+    <tr>
+        <th>Stage 2 Total Dollars ($):</th>
+        <td>{{ real_Stage_2 }}</td>
+    </tr>
+    <tr>
+        <th>Total Stage 1 & 2 Dollars ($):</th>
+        <td>{{ real_final }}</td>
+    </tr>
+    <tr>
+        <th>Participation Fee ($):</th>
+        <td>$10</td>
+    </tr>
+    <tr class="last" style="height: 1px">
+        <th colspan="2" style="height: 1px"></th>
+    </tr>
+    <tr class="last">
+        <th>Ending Total Dollars ($)</th>
+        <td>{{ final }}</td>
+    </tr>
+</table>
+
+{{ endblock }}

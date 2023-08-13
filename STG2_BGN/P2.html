@@ -1,0 +1,41 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
+<script src="{{ static 'JavaScript_Crd2.js' }}"></script>
+
+{{ block title }}
+Stage 2 (cont.)
+{{ endblock }}
+
+<!-- General Information Body -->
+<p>In many ways, Stage 2 is like Stage 1.</p>
+<div style="margin-left: 30px">
+    <p>1)	Player Bs will choose whether or not to invest their endowment in an investment opportunity. </p>
+    <p>2)	The five Player Bs in each group will again receive no information about the quality of the investment opportunity. Instead, they will receive a message from Player A, either “Invest” or “Do Not Invest”. All Player Bs will see the same message from their group’s Player A before making their investment decisions. </p>
+</div>
+<p style="margin-top: 100px; margin-bottom: unset">Please click "Continue"</p>
+<p style="font-size: 16px; margin-top: unset; margin-bottom: 10px" >*** Page will not continue until everyone has clicked continue ***</p>
+
+<!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
+<button type="button" id="validation" class="Instructions" onclick="validating()">Continue</button>
+
+<script>
+// Checking if button has been clicked
+window.onload = function () {
+    const IsClicked = sessionStorage.getItem('IsClicked');
+
+    if (IsClicked === 'true') {
+        document.getElementById('validation').disabled = true;
+    }
+}
+
+// Websocket to check if all players are ready
+function liveRecv(data) {
+    if (data === 'all_ready') {
+        sessionStorage.setItem('IsClicked', 'false')
+        document.forms[0].submit();
+    }
+}
+</script>
+{{ endblock }}

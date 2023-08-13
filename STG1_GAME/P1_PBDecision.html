@@ -1,0 +1,121 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
+<script src="{{ static 'JavaScript_Crd2.js' }}"></script>
+
+<!-- Title -->
+<div style="margin-bottom: 20px; margin-top: 10px">
+    <div align="left" style="position: absolute"><h2 class="Title">Round {{ player.round_number }}</h2></div>
+    <div align="right"><span class="advice">Player A's Advice: <b>{{ advice }}</b></span></div>
+</div>
+<h3>You are Player B</h3>
+
+<!--Payoff Tables-->
+<div class="tables-container">
+    <div>
+        <p class="payofftableheader">Your Payoff Table</p>
+        <table class="playerpayofftable" style="display: flex; margin: unset">
+            <tr>
+                <td style="width: 75px;"></td>
+                <td class="header" colspan="5">Total Investors (including you)</td>
+            </tr>
+            <tr>
+                <td style="font-style: italic; width: 75px;">Quality</td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
+                <td class="row1">5</td>
+            </tr>
+            <tr>
+                <td class="column1">Low</td>
+                <td>0</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td class="column1">Medium</td>
+                <td>1</td>
+                <td>3</td>
+                <td>5</td>
+                <td>7</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td class="column1">High</td>
+                <td>2</td>
+                <td>4</td>
+                <td>8</td>
+                <td>14</td>
+                <td>22</td>
+            </tr>
+        </table>
+    </div>
+    <div style="margin: 20px"></div>
+    <div>
+        <p class="payofftableheader">Player A's Payoff Table</p>
+        <table class="playerpayofftable" style="display: flex; margin: unset">
+            <tr>
+                <td style="width: 75px;"></td>
+                <td class="header" colspan="6">Total Investors</td>
+            </tr>
+            <tr>
+                <td  style="font-style: italic; width: 75px;">Quality</td>
+                <td class="row1">0</td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
+                <td class="row1">5</td>
+            </tr>
+            <tr>
+                <td class="column1">Low</td>
+                <td>12</td>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td class="column1">Medium</td>
+                <td>6</td>
+                <td>6</td>
+                <td>6</td>
+                <td>6</td>
+                <td>6</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td class="column1">High</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>30</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!--Form Fields/Decisions-->
+<h4 style="margin-bottom: 50px">Remember, If you choose not to invest, you will receive a payoff of 12 ECUs</h4>
+<table class="decisiontable">
+    <tr>
+        <td class="playera"><input name="pb_decision" value="Invest" type="radio"> Invest</td>
+        <td rowspan="2" class="error">{{ formfield_errors 'pb_decision' }}</td>
+    </tr>
+    <tr>
+        <td class="playera"><input name="pb_decision" value="No Invest" type="radio"> Don't Invest</td>
+    </tr>
+</table>
+
+
+<!-- Next Button with confirmation pop-up-->
+<button onclick="ConfirmDecision(event)">Continue</button>
+
+{{ endblock }}
