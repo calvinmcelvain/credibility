@@ -6,8 +6,12 @@
 
 <!-- Title -->
 <span class="sample" >**Sample**</span>
-<h2 class="Title">End of Round X</h2>
+<div style="margin-bottom: 10px; margin-top: 10px">
+    <div align="left" style="position: absolute"><h2>Round 7</h2></div>
+    <div align="right"><span class="advice">Player A's Advice: <b>Invest</b></span></div>
+</div>
 <h3>You are Player B</h3>
+
 
 <!--Payoff Tables-->
 <div class="tables-container">
@@ -100,6 +104,14 @@
     </div>
 </div>
 
+<!--Form Fields/Decisions-->
+<h4 style="margin-bottom: 20px">Remember, If you choose not to invest, you will receive a payoff of 12 ECUs</h4>
+<table class="decisiontable" style="width: 450px">
+    <tr>
+        <td class="playera"><input name="decision" type="radio"> Invest</td>
+        <td class="playera"><input name="decision" type="radio"> Don't Invest</td>
+    </tr>
+</table>
 
 <!--Player History Table-->
 <div style="margin: 125px"></div>
@@ -117,83 +129,72 @@
             <th>Player A Payoff</th>
         </tr>
     </table>
-    <table>
+    <table id="data_table">
         <tr>
-            <td width="62.05">X</td>
-            <td width="160.38">Invest</td>
-            <td width="128.34">Invest</td>
-            <td width="145.02">4</td>
-            <td width="137.8">5</td>
-            <td width="114.45">Low</td>
-            <td width="108.75">4</td>
-            <td width="142.22">3</td>
+            <td>6</td>
+            <td>Invest</td>
+            <td>Invest</td>
+            <td>3</td>
+            <td>4</td>
+            <td>Medium</td>
+            <td>7</td>
+            <td>6</td>
         </tr>
         <tr>
-            <td width="62.05">6</td>
-            <td width="160.38">Invest</td>
-            <td width="128.34">Invest</td>
-            <td width="145.02">3</td>
-            <td width="137.8">4</td>
-            <td width="114.45">Medium</td>
-            <td width="108.75">7</td>
-            <td width="142.22">6</td>
+            <td>5</td>
+            <td>Don't Invest</td>
+            <td>Invest</td>
+            <td>1</td>
+            <td>2</td>
+            <td>Low</td>
+            <td>1</td>
+            <td>3</td>
         </tr>
         <tr>
-            <td width="62.05">5</td>
-            <td width="160.38">Don't Invest</td>
-            <td width="128.34">Invest</td>
-            <td width="145.02">1</td>
-            <td width="137.8">2</td>
-            <td width="114.45">Low</td>
-            <td width="108.75">1</td>
-            <td width="142.22">3</td>
+            <td>4</td>
+            <td>Invest</td>
+            <td>Invest</td>
+            <td>4</td>
+            <td>5</td>
+            <td>Low</td>
+            <td>4</td>
+            <td>3</td>
         </tr>
         <tr>
-            <td width="62.05">4</td>
-            <td width="160.38">Invest</td>
-            <td width="128.34">Invest</td>
-            <td width="145.02">4</td>
-            <td width="137.8">5</td>
-            <td width="114.45">Low</td>
-            <td width="108.75">4</td>
-            <td width="142.22">3</td>
+            <td>3</td>
+            <td>Invest</td>
+            <td>Invest</td>
+            <td>3</td>
+            <td>4</td>
+            <td>High</td>
+            <td>14</td>
+            <td>0</td>
         </tr>
         <tr>
-            <td width="62.05">3</td>
-            <td width="160.38">Invest</td>
-            <td width="128.34">Invest</td>
-            <td width="145.02">3</td>
-            <td width="137.8">4</td>
-            <td width="114.45">High</td>
-            <td width="108.75">14</td>
-            <td width="142.22">0</td>
+            <td>2</td>
+            <td>Don't Invest</td>
+            <td>Invest</td>
+            <td>2</td>
+            <td>3</td>
+            <td>Medium</td>
+            <td>5</td>
+            <td>6</td>
         </tr>
         <tr>
-            <td width="62.05">2</td>
-            <td width="160.38">Don't Invest</td>
-            <td width="128.34">Invest</td>
-            <td width="145.02">2</td>
-            <td width="137.8">3</td>
-            <td width="114.45">Medium</td>
-            <td width="108.75">5</td>
-            <td width="142.22">6</td>
+            <td>1</td>
+            <td>Invest</td>
+            <td>Invest</td>
+            <td>0</td>
+            <td>1</td>
+            <td>Low</td>
+            <td>0</td>
+            <td>3</td>
         </tr>
-        <tr>
-            <td width="62.05">1</td>
-            <td width="160.38">Invest</td>
-            <td width="128.34">Invest</td>
-            <td width="145.02">0</td>
-            <td width="137.8">1</td>
-            <td width="114.45">Low</td>
-            <td width="108.75">0</td>
-            <td width="142.22">3</td>
-        </tr>
-
     </table>
 </div>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
-<button type="button" id="validation" onclick="validating()">Continue</button>
+<button type="button" id="validation" onclick="validating_sample()">Continue</button>
 
 <script>
 // Checking if button has been clicked
@@ -202,6 +203,9 @@ window.onload = function () {
 
     if (IsClicked === 'true') {
         document.getElementById('validation').disabled = true;
+        document.querySelectorAll('input[type=radio]').forEach(function (radioButton) {
+            radioButton.disabled = true
+        });
     }
 }
 
@@ -212,6 +216,16 @@ function liveRecv(data) {
         document.forms[0].submit();
     }
 }
+
+// Adjusting History Width
+window.onload = function() {
+  const headerCells = document.querySelectorAll('.history_header th');
+  const dataCells = document.querySelectorAll('#data_table td');
+
+  headerCells.forEach((headerCell, index) => {
+      dataCells[index].style.width = headerCell.offsetWidth + 'px';
+  });
+};
 </script>
 
 {{ endblock }}

@@ -5,15 +5,58 @@
 <script src="{{ static 'JavaScript_Crd2.js' }}"></script>
 
 {{ block title }}
-Description of Player B Information About Quality of the Investment Opportunity
+Description of Player B Payoffs (Cont.)
 {{ endblock }}
 
 <!--Description Body-->
-<p>In each round, the Player A will receive an estimate of the quality of the investment opportunity. There is an 5/6 chance that the estimate Player A receives is correct and a 1/6 chance that it is incorrect. In other words, there is a 5 in 6 chance that the estimate Player A receives will be exactly equal to the true quality level of the investment opportunity, and a 1 in 6 chance that the estimate Player A receives will be equal to some level other than the true quality of the investment opportunity. You can think of this like rolling a single die. If the computer rolls a 1 through 5, Player A receives a correct estimate. If a 6 is rolled, Player A receives an incorrect estimate.</p>
-<p>If Player A receives an incorrect estimate, each of the two possible incorrect levels is equally likely. In other words, if the estimate is <i><b>not</b></i> equal to the true quality of the investment opportunity, there is a 1 in 2 chance (like flipping a coin) that it is equal to each of the other possible qualities. </p>
-<p>So, for example, if the <i>Quality</i> in a round is High, then there is a 83.3 percent (5 in 6) chance that Player B will receive an estimate equal to “High”, and there is a 16.7 percent (1 in 6) that Player A will receive an estimate equal to one of the other possible values of <i>Quality</i> (“Low” or “Medium”). Each of the other possible estimates is equally likely. </p>
-<p>This estimate is <i>private</i> information. In other words, the Player A can see the estimate, but the Player Bs will never be told what estimate their group’s Player A received.</p>
-<p style="margin-top: 100px; margin-bottom: unset">Please click "Continue"</p>
+<p>When you make your decision in each round, you will see the payoff table below showing your payoffs if you invest, for each possible combination of <i>Quality</i> (given by the row) and <i>Total Investors</i> (given by the column), the total number of group members that invest <i>including you.</i></p>
+
+<!--Payoff Table-->
+<div class="margin"></div>
+<table class="playerpayofftable">
+    <tr>
+        <td style="width: 75px;"></td>
+        <td class="header" colspan="5">Total Investors (including you)</td>
+    </tr>
+    <tr>
+        <td style="font-style: italic; width: 75px;">Quality</td>
+        <td class="row1">1</td>
+        <td class="row1">2</td>
+        <td class="row1">3</td>
+        <td class="row1">4</td>
+        <td class="row1">5</td>
+    </tr>
+    <tr>
+        <td class="column1">Low</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+    </tr>
+    <tr>
+        <td class="column1">Medium</td>
+        <td>1</td>
+        <td>3</td>
+        <td>5</td>
+        <td>7</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td class="column1">High</td>
+        <td>2</td>
+        <td>4</td>
+        <td>8</td>
+        <td>14</td>
+        <td>22</td>
+    </tr>
+</table>
+
+<!-- Description Body Cont.-->
+<div style="margin-top: 100px"></div>
+<p>Remember that if you keep your endowment, you will earn 12 ECU regardless of the quality of the investment opportunity.</p>
+<p>Please look at an overhead screen as we go through some examples on how to read the <i>Player B</i> payoff tables.</p>
+<p style="margin-top: 60px; margin-bottom: unset">Please click "Continue"</p>
 <p style="font-size: 16px; margin-top: unset; margin-bottom: 10px" >*** Page will not continue until everyone has clicked continue ***</p>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->

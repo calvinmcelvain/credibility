@@ -145,8 +145,8 @@ h4.History {
         display: flex;
         margin-left: unset;
         margin-right: unset;
-        margin-top: 50px;
-        margin-bottom: 100px;
+        margin-top: 75px;
+        margin-bottom: 50px;
     }
 
 /* Player Decision Tables */
@@ -185,6 +185,7 @@ h4.History {
     .tablescroll table.history_header {
         border-collapse: collapse;
         position: sticky;
+        border: unset;
         top: 0;
     }
     .tablescroll table {
@@ -210,7 +211,7 @@ h4.History {
     div.quiz .tf {
         font-size: 19px;
         margin-bottom: unset;
-        margin-top: 20px;
+        margin-top: 10px;
     }
 
 /* Decision Slider Design */
@@ -241,4 +242,11 @@ h4.History {
     }
     .Final td {
         height: auto;
+    }
+    .history_header th {
+        white-space: nowrap; /* Prevent text wrapping */
+    }
+
+    #data_table td {
+        white-space: nowrap;
     }

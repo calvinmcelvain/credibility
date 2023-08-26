@@ -5,13 +5,62 @@
 <script src="{{ static 'JavaScript_Crd2.js' }}"></script>
 
 {{ block title }}
-Making Decisions in the Games
+Description of Player A Payoffs
 {{ endblock }}
 
 <!--Description Body-->
-<p>Recall that each game starts with Player A receiving an estimate of the quality level. <b><i>Before receiving their estimate,</i></b> Player A will choose a message for each possible estimate, recommending either “Invest” or “Do Not Invest.” The computer will then show the Player A their estimate and send whatever message the Player A chose for this estimate to all of the Player Bs in their group. The Player Bs choose whether or not to invest after seeing this message.</p>
-<p>To help you understand how this works, we are now going to walk through a practice round. We will tell you what choices to make and this practice round will not count towards your payment.  In other words, this practice round is only to illustrate how you will actually make decisions in each round of Stage 1. As we go through the sample round, please do not make any choices until the experimenter tells you to do so.</p>
-<p style="margin-top: 100px; margin-bottom: unset">Please click "Continue"</p>
+<p>If you are a Player A, your payoffs will depend on the total number of Player A’s in your group that invest (<i>Total Investors</i>) and on the quality level of the investment opportunity (<i>Quality</i>). </p>
+<p>The payoff table below shows a Player A’s payoffs for each possible combination of how many Player Bs in the group invest (<i>Total Investors</i>) and the <i>Quality</i> of the investment opportunity. </p>
+
+<!--Payoff Table-->
+<div class="margin"></div>
+<table class="playerpayofftable">
+    <tr>
+        <td style="width: 75px;"></td>
+        <td class="header" colspan="6">Total Investors</td>
+    </tr>
+    <tr>
+        <td  style="font-style: italic; width: 75px;">Quality</td>
+        <td class="row1">0</td>
+        <td class="row1">1</td>
+        <td class="row1">2</td>
+        <td class="row1">3</td>
+        <td class="row1">4</td>
+        <td class="row1">5</td>
+    </tr>
+    <tr>
+        <td class="column1">Low</td>
+        <td>12</td>
+        <td>3</td>
+        <td>3</td>
+        <td>3</td>
+        <td>3</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td class="column1">Medium</td>
+        <td>6</td>
+        <td>6</td>
+        <td>6</td>
+        <td>6</td>
+        <td>6</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td class="column1">High</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>30</td>
+    </tr>
+</table>
+
+<!-- Description Body Cont.-->
+<div style="margin-top: 100px"></div>
+<p>Please look at an overhead screen as we go through some examples on how to read the <i>Player Bs’</i> payoff tables. </p>
+<p style="margin-top: 60px; margin-bottom: unset">Please click "Continue"</p>
 <p style="font-size: 16px; margin-top: unset; margin-bottom: 10px" >*** Page will not continue until everyone has clicked continue ***</p>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
@@ -35,4 +84,5 @@ function liveRecv(data) {
     }
 }
 </script>
+
 {{ endblock }}

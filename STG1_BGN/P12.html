@@ -7,12 +7,54 @@
 <!-- Title -->
 <span class="sample" >**Sample**</span>
 <h2 class="Title">End of Round X</h2>
-<h3>You are Player A</h3>
+<h3>You are Player B</h3>
 
 <!--Payoff Tables-->
 <div class="tables-container">
     <div>
         <p class="payofftableheader">Your Payoff Table</p>
+        <table class="playerpayofftable" style="display: flex; margin: unset">
+            <tr>
+                <td style="width: 75px;"></td>
+                <td class="header" colspan="5">Total Investors (including you)</td>
+            </tr>
+            <tr>
+                <td style="font-style: italic; width: 75px;">Quality</td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
+                <td class="row1">5</td>
+            </tr>
+            <tr>
+                <td class="column1">Low</td>
+                <td>0</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td class="column1">Medium</td>
+                <td>1</td>
+                <td>3</td>
+                <td>5</td>
+                <td>7</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td class="column1">High</td>
+                <td>2</td>
+                <td>4</td>
+                <td>8</td>
+                <td>14</td>
+                <td>22</td>
+            </tr>
+        </table>
+    </div>
+    <div style="margin: 20px"></div>
+    <div>
+        <p class="payofftableheader">Player A's Payoff Table</p>
         <table class="playerpayofftable" style="display: flex; margin: unset">
             <tr>
                 <td style="width: 75px;"></td>
@@ -56,139 +98,97 @@
             </tr>
         </table>
     </div>
-    <div style="margin: 20px"></div>
-    <div>
-        <p class="payofftableheader">Player Bs Payoff Table</p>
-        <table class="playerpayofftable" style="display: flex; margin: unset">
-            <tr>
-                <td style="width: 75px;"></td>
-                <td class="header" colspan="5">Total Investors</td>
-            </tr>
-            <tr>
-                <td style="font-style: italic; width: 75px;">Quality</td>
-                <td class="row1">1</td>
-                <td class="row1">2</td>
-                <td class="row1">3</td>
-                <td class="row1">4</td>
-                <td class="row1">5</td>
-            </tr>
-            <tr>
-                <td class="column1">Low</td>
-                <td>0</td>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-            </tr>
-            <tr>
-                <td class="column1">Medium</td>
-                <td>1</td>
-                <td>3</td>
-                <td>5</td>
-                <td>7</td>
-                <td>9</td>
-            </tr>
-            <tr>
-                <td class="column1">High</td>
-                <td>2</td>
-                <td>4</td>
-                <td>8</td>
-                <td>14</td>
-                <td>22</td>
-            </tr>
-        </table>
-    </div>
 </div>
 
 
 <!--Player History Table-->
 <div style="margin: 125px"></div>
 <h4 class="History">History Table:</h4>
-<h5>*** You will see the <u>Actual Signal</u> round marked in <span class="highlight">yellow</span> ***</h5>
 <div class="tablescroll">
     <table class="history_header">
         <tr>
             <th>Round</th>
-            <th>Low Signal Advice</th>
-            <th>Medium Signal Advice</th>
-            <th>High Signal Advice</th>
+            <th>Player A's Advice</th>
+            <th>Your Decision</th>
+            <th>Other Investors</th>
             <th>Total Investors</th>
-            <th>Estimate</th>
+            <th>True Quality</th>
             <th>Your Payoff</th>
-            <th>Player Bs Payoff</th>
+            <th>Player A Payoff</th>
         </tr>
     </table>
-    <table>
+    <table id="data_table">
         <tr>
-            <td width="56.83">X</td>
-            <td bgcolor="yellow" width="153.94">Invest</td>
-            <td width="187.28">Don't Invest</td>
-            <td width="159.34">Don't Invest</td>
-            <td width="126.2">5</td>
-            <td width="76.78">Low</td>
-            <td width="99.61">3</td>
-            <td width="139.02">4</td>
+            <td>7</td>
+            <td>Invest</td>
+            <td>Invest</td>
+            <td>4</td>
+            <td>5</td>
+            <td>Low</td>
+            <td>4</td>
+            <td>3</td>
         </tr>
         <tr>
-            <td width="56.83">6</td>
-            <td width="153.94">Invest</td>
-            <td width="187.28">Invest</td>
-            <td bgcolor="yellow" width="159.34">Invest</td>
-            <td width="126.2">4</td>
-            <td width="76.78">Low</td>
-            <td width="99.61">6</td>
-            <td width="139.02">7</td>
+            <td>6</td>
+            <td>Invest</td>
+            <td>Invest</td>
+            <td>3</td>
+            <td>4</td>
+            <td>Medium</td>
+            <td>7</td>
+            <td>6</td>
         </tr>
         <tr>
-            <td width="56.83">5</td>
-            <td width="153.94">Don't Invest</td>
-            <td width="187.28">Don't Invest</td>
-            <td bgcolor="yellow" width="159.34">Invest</td>
-            <td width="126.2">2</td>
-            <td width="76.78">Low</td>
-            <td width="99.61">3</td>
-            <td width="139.02">1</td>
+            <td>5</td>
+            <td>Don't Invest</td>
+            <td>Invest</td>
+            <td>1</td>
+            <td>2</td>
+            <td>Low</td>
+            <td>1</td>
+            <td>3</td>
         </tr>
         <tr>
-            <td width="56.83">4</td>
-            <td width="153.94">Invest</td>
-            <td width="187.28">Invest</td>
-            <td bgcolor="yellow" width="159.34">Don't Invest</td>
-            <td width="126.2">5</td>
-            <td width="76.78">Low</td>
-            <td width="99.61">3</td>
-            <td width="139.02">4</td>
+            <td>4</td>
+            <td>Invest</td>
+            <td>Invest</td>
+            <td>4</td>
+            <td>5</td>
+            <td>Low</td>
+            <td>4</td>
+            <td>3</td>
         </tr>
         <tr>
-            <td width="56.83">3</td>
-            <td bgcolor="yellow" width="153.94">Don't Invest</td>
-            <td width="187.28">Invest</td>
-            <td width="159.34">Invest</td>
-            <td width="126.2">4</td>
-            <td width="76.78">High</td>
-            <td width="99.61">0</td>
-            <td width="139.02">14</td>
+            <td>3</td>
+            <td>Invest</td>
+            <td>Invest</td>
+            <td>3</td>
+            <td>4</td>
+            <td>High</td>
+            <td>14</td>
+            <td>0</td>
         </tr>
         <tr>
-            <td width="56.83">2</td>
-            <td width="153.94">Don't Invest</td>
-            <td bgcolor="yellow" width="187.28">Don't Invest</td>
-            <td width="159.34">Invest</td>
-            <td width="126.2">3</td>
-            <td width="76.78">Medium</td>
-            <td width="99.61">6</td>
-            <td width="139.02">5</td>
+            <td>2</td>
+            <td>Don't Invest</td>
+            <td>Invest</td>
+            <td>2</td>
+            <td>3</td>
+            <td>Medium</td>
+            <td>5</td>
+            <td>6</td>
         </tr>
         <tr>
-            <td width="56.83">1</td>
-            <td bgcolor="yellow" width="153.94">Don't Invest</td>
-            <td width="187.28">Don't Invest</td>
-            <td width="159.34">Don't Invest</td>
-            <td width="126.2">1</td>
-            <td width="76.78">High</td>
-            <td width="99.61">3</td>
-            <td width="139.02">0</td>
+            <td>1</td>
+            <td>Invest</td>
+            <td>Invest</td>
+            <td>0</td>
+            <td>1</td>
+            <td>Low</td>
+            <td>0</td>
+            <td>3</td>
         </tr>
+
     </table>
 </div>
 
@@ -212,6 +212,16 @@ function liveRecv(data) {
         document.forms[0].submit();
     }
 }
+
+// Adjusting History Width
+window.onload = function() {
+  const headerCells = document.querySelectorAll('.history_header th');
+  const dataCells = document.querySelectorAll('#data_table td');
+
+  headerCells.forEach((headerCell, index) => {
+      dataCells[index].style.width = headerCell.offsetWidth + 'px';
+  });
+};
 </script>
 
 {{ endblock }}

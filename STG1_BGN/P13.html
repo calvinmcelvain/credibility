@@ -6,9 +6,8 @@
 
 <!-- Title -->
 <span class="sample" >**Sample**</span>
-<h2 class="Title">Round 7</h2>
+<h2 class="Title">End of Round X</h2>
 <h3>You are Player A</h3>
-
 
 <!--Payoff Tables-->
 <div class="tables-container">
@@ -101,39 +100,6 @@
     </div>
 </div>
 
-<!--Form Fields/Decisions-->
-<h4>Remember, Player Bs who choose not invest will receive a payoff of 12 ECUs</h4>
-<h5>*** You will see the estimated signal for this round marked in <span>yellow</span> after you choose what advice to give below ***</h5>
-<table class="decisiontable">
-    <tr>
-        <th>Investment Quality:</th>
-        <th rowspan="9" width="150px"></th>
-        <th style="width: 120px">Advice:</th>
-    </tr>
-    <tr>
-        <td class="header_" rowspan="2">Low</td>
-        <td><input type="radio" name="low"> Invest</td>
-    </tr>
-    <tr>
-        <td><input type="radio" name="low"> Don't Invest</td>
-    </tr>
-    <tr><td colspan="2" height="30px"></td></tr>
-    <tr>
-        <td class="header_" rowspan="2">Medium</td>
-        <td><input type="radio" name="med"> Invest</td>
-    </tr>
-    <tr>
-        <td><input type="radio" name="med"> Don't Invest</td>
-    </tr>
-    <tr><td colspan="2" height="30px"></td></tr>
-    <tr>
-        <td class="header_" rowspan="2">High</td>
-        <td><input type="radio" name="high"> Invest</td>
-    </tr>
-    <tr>
-        <td><input type="radio" name="high"> Don't Invest</td>
-    </tr>
-</table>
 
 <!--Player History Table-->
 <div style="margin: 75px"></div>
@@ -153,6 +119,17 @@
         </tr>
     </table>
     <table id="data_table">
+        <tr>
+            <td>7</td>
+            <td bgcolor="yellow">Invest</td>
+            <td>Don't Invest</td>
+            <td>Don't Invest</td>
+            <td>Low</td>
+            <td>Low</td>
+            <td>5</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
         <tr>
             <td>6</td>
             <td bgcolor="yellow">Invest</td>
@@ -223,7 +200,7 @@
 </div>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
-<button type="button" id="validation" onclick="validating_sample()">Continue</button>
+<button type="button" id="validation" onclick="validating()">Continue</button>
 
 <script>
 // Checking if button has been clicked
@@ -232,9 +209,6 @@ window.onload = function () {
 
     if (IsClicked === 'true') {
         document.getElementById('validation').disabled = true;
-        document.querySelectorAll('input[type=radio]').forEach(function (radioButton) {
-            radioButton.disabled = true
-        });
     }
 }
 
