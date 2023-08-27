@@ -92,6 +92,14 @@ h4.History {
     font-weight: bold;
 }
 
+/* Stage 2 Instructions List */
+    div.List {
+        margin-left: 30px;
+    }
+    div.List p {
+        margin-top: 10px;
+    }
+
 
 /* Otree Timer */
     .otree-timer {
