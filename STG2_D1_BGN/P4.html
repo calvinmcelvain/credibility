@@ -5,21 +5,23 @@
 <script src="{{ static 'JavaScript_Crd2.js' }}"></script>
 
 {{ block title }}
-Description of Player B Payoffs (Cont.)
+Stage 2: Decision 1
 {{ endblock }}
 
-<!--Description Body-->
-<p>When you make your decision in each round, you will see the payoff table below showing your payoffs if you invest, for each possible combination of <i>Quality</i> (given by the row) and <i>Total Investors</i> (given by the column), the total number of group members that invest <i>including you.</i></p>
+<!-- General Information Body -->
+<p>In Decision 1, There are two possible qualities of the investment opportunity, Low or High, with each quality being equally likely. Player A sees the true Quality and then sends all Player Bs a recommendation (“Invest” or “Do Not Invest”). All Player Bs receive the same recommendation and then simultaneously choose whether or not to invest. </p>
+<p>Player A will receive 20 for each Player B who chooses to invest. This is shown in the payoff table below.</p>
 
-<!--Payoff Table-->
-<div class="margin"></div>
-<table class="playerpayofftable">
+<!-- Player A's Payoff Table -->
+<p class="payofftableheader">Player A's Payoff Table</p>
+<table class="playerpayofftable" style="display: flex; margin-left: 150px">
     <tr>
         <td style="width: 75px;"></td>
-        <td class="header" colspan="5">Total Investors (including you)</td>
+        <td class="header" colspan="6">Total Investors</td>
     </tr>
     <tr>
-        <td style="font-style: italic; width: 75px;">Quality</td>
+        <td  style="font-style: italic; width: 75px;">Quality</td>
+        <td class="row1">0</td>
         <td class="row1">1</td>
         <td class="row1">2</td>
         <td class="row1">3</td>
@@ -29,34 +31,25 @@ Description of Player B Payoffs (Cont.)
     <tr>
         <td class="column1">Low</td>
         <td>0</td>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-    </tr>
-    <tr>
-        <td class="column1">Medium</td>
-        <td>1</td>
-        <td>3</td>
-        <td>5</td>
-        <td>7</td>
-        <td>9</td>
+        <td>20</td>
+        <td>40</td>
+        <td>60</td>
+        <td>80</td>
+        <td>100</td>
     </tr>
     <tr>
         <td class="column1">High</td>
-        <td>2</td>
-        <td>4</td>
-        <td>8</td>
-        <td>14</td>
-        <td>22</td>
+        <td>0</td>
+        <td>20</td>
+        <td>40</td>
+        <td>60</td>
+        <td>80</td>
+        <td>100</td>
     </tr>
 </table>
 
-<!-- Description Body Cont.-->
-<div style="margin-top: 100px"></div>
-<p>Remember that if you keep your endowment, you will earn 12 ECU regardless of the quality of the investment opportunity.</p>
-<p>Please look at an overhead screen as we go through some examples on how to read the <i>Player B</i> payoff tables.</p>
-<p style="margin-top: 60px; margin-bottom: unset">Please click "Continue"</p>
+<!-- General Information Body Cont. -->
+<p style="margin-top: 100px; margin-bottom: unset">Please click "Continue"</p>
 <p style="font-size: 16px; margin-top: unset; margin-bottom: 10px" >*** Page will not continue until everyone has clicked continue ***</p>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
@@ -80,5 +73,4 @@ function liveRecv(data) {
     }
 }
 </script>
-
 {{ endblock }}

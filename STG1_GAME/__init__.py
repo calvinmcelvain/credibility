@@ -8,7 +8,7 @@ Stage STG1_GAME Game
 class C(BaseConstants):
     NAME_IN_URL = 'STG1_GAME'
     PLAYERS_PER_GROUP = 2
-    NUM_ROUNDS = 1
+    NUM_ROUNDS = 3
 
     # Timeout seconds for decision page
     decision_time = 60
@@ -139,6 +139,10 @@ class P1_PADecision(Page):
     form_fields = ['pa_low_advice', 'pa_med_advice', 'pa_high_advice']
     is_displayed = is_displayed_pa
 
+    @staticmethod
+    def vars_for_template(player: Player):
+        return dict(history=reversed(player.in_previous_rounds()))
+
 
 class PlayerBWaitPage(WaitPage):
     body_text = 'Waiting for Player A to give investment advice'
@@ -159,7 +163,7 @@ class P1_PBDecision(Page):
         estimated_signal = decoder[treatment_signal[treatment][round_number]]
         advice_dict = {'Low': player.group.get_player_by_role(C.pa_ROLE).pa_low_advice, 'Medium': player.group.get_player_by_role(C.pa_ROLE).pa_med_advice, 'High': player.group.get_player_by_role(C.pa_ROLE).pa_high_advice}
         advice = advice_dict[estimated_signal]
-        return {'advice': advice}
+        return {'advice': advice, 'history': reversed(player.in_previous_rounds())}
 
 
 class P2_BetweenWaitPage(Page):
@@ -181,7 +185,7 @@ class P2_BetweenWaitPage(Page):
             low = player.pa_low_advice
             med = player.pa_med_advice
             high = player.pa_high_advice
-            return {'estimated_signal': estimated_signal, 'low': low, 'med': med, 'high': high}
+            return {'estimated_signal': estimated_signal, 'low': low, 'med': med, 'high': high, 'history': reversed(player.in_previous_rounds())}
 
 
 class PayoffWaitPage(WaitPage):

@@ -5,50 +5,12 @@
 <script src="{{ static 'JavaScript_Crd2.js' }}"></script>
 
 {{ block title }}
-Stage 2: Decision 1
+Stage 2: Using a Slider
 {{ endblock }}
 
 <!-- General Information Body -->
-<p>In Decision 1, There are two possible qualities of the investment opportunity, Low or High, with each quality being equally likely. Player A sees the true Quality and then sends all Player Bs a recommendation (“Invest” or “Do Not Invest”). All Player Bs receive the same recommendation and then simultaneously choose whether or not to invest. </p>
-<p>Player A will receive 20 for each Player B who chooses to invest. This is shown in the payoff table below.</p>
-
-<!-- Player A's Payoff Table -->
-<p class="payofftableheader">Player A's Payoff Table</p>
-<table class="playerpayofftable" style="display: flex; margin-left: 150px">
-    <tr>
-        <td style="width: 75px;"></td>
-        <td class="header" colspan="6">Total Investors</td>
-    </tr>
-    <tr>
-        <td  style="font-style: italic; width: 75px;">Quality</td>
-        <td class="row1">0</td>
-        <td class="row1">1</td>
-        <td class="row1">2</td>
-        <td class="row1">3</td>
-        <td class="row1">4</td>
-        <td class="row1">5</td>
-    </tr>
-    <tr>
-        <td class="column1">Low</td>
-        <td>0</td>
-        <td>20</td>
-        <td>40</td>
-        <td>60</td>
-        <td>80</td>
-        <td>100</td>
-    </tr>
-    <tr>
-        <td class="column1">High</td>
-        <td>0</td>
-        <td>20</td>
-        <td>40</td>
-        <td>60</td>
-        <td>80</td>
-        <td>100</td>
-    </tr>
-</table>
-
-<!-- General Information Body Cont. -->
+<p>Player Bs who choose to not invest will receive their outside option. In Stage 2, the outside option for each Player B will be randomly drawn from the numbers between 1 and 300. All numbers are equally likely to be drawn. Each Player B will use a slider similar to the one you see below to select the <span style="color: red">minimum</span> outside option for which you will choose not to invest. Any price drawn at random below the minimum selected outside option will result in Player B choosing to Invest.  If a price is drawn at or above the minimum selected outside option, the Player B will choose to <span style="color: red">not</span> Invest and receive the outside option. </p>
+<p>As a Player B, your best choice is to set the slider <span style="color: red">equal</span> to the value you believe should be assigned to Invest. If the randomly drawn outside option is higher than your value of choosing Invest, you would be better off with the outside option. If the outside option is lower than your value of choosing Invest, you would be better of choosing Invest. Setting the minimum outside option equal to your individual value of choosing Invest ensures that you only choose Invest when it is to your benefit to do so. Please look at the over screen for examples illustrating why this is true.</p>
 <p style="margin-top: 100px; margin-bottom: unset">Please click "Continue"</p>
 <p style="font-size: 16px; margin-top: unset; margin-bottom: 10px" >*** Page will not continue until everyone has clicked continue ***</p>
 

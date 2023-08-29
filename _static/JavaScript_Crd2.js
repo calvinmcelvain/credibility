@@ -119,9 +119,3 @@
   function updateInputValue(value) {
       document.getElementById("sliderInput").value = value;
   }
-
-  function updateSliderFromInput(value) {
-      value = Math.min(100, Math.max(0, value));
-      document.getElementById("slider").value = value;
-      document.getElementById("sliderInput").value = value;
-  }

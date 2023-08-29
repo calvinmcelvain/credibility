@@ -4,141 +4,18 @@
 <link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
 <script src="{{ static 'JavaScript_Crd2.js' }}"></script>
 
-<!-- Title -->
-<span class="sample" >**Sample**</span>
-<h2 class="Title">Round X</h2>
-<h3>You are Player A</h3>
+{{ block title }}
+Making Decisions in the Games
+{{ endblock }}
 
-<!--Payoff Tables-->
-<div class="tables-container">
-    <div>
-        <p class="payofftableheader">Your Payoff Table</p>
-        <table class="playerpayofftable" style="display: flex; margin: unset">
-            <tr>
-                <td style="width: 75px;"></td>
-                <td class="header" colspan="6">Total Investors</td>
-            </tr>
-            <tr>
-                <td  style="font-style: italic; width: 75px;">Quality</td>
-                <td class="row1">0</td>
-                <td class="row1">1</td>
-                <td class="row1">2</td>
-                <td class="row1">3</td>
-                <td class="row1">4</td>
-                <td class="row1">5</td>
-            </tr>
-            <tr>
-                <td class="column1">Low</td>
-                <td>12</td>
-                <td>3</td>
-                <td>3</td>
-                <td>3</td>
-                <td>3</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td class="column1">Medium</td>
-                <td>6</td>
-                <td>6</td>
-                <td>6</td>
-                <td>6</td>
-                <td>6</td>
-                <td>12</td>
-            </tr>
-            <tr>
-                <td class="column1">High</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>30</td>
-            </tr>
-        </table>
-    </div>
-    <div style="margin: 20px"></div>
-    <div>
-        <p class="payofftableheader">Player Bs Payoff Table</p>
-        <table class="playerpayofftable" style="display: flex; margin: unset">
-            <tr>
-                <td style="width: 75px;"></td>
-                <td class="header" colspan="5">Total Investors</td>
-            </tr>
-            <tr>
-                <td style="font-style: italic; width: 75px;">Quality</td>
-                <td class="row1">1</td>
-                <td class="row1">2</td>
-                <td class="row1">3</td>
-                <td class="row1">4</td>
-                <td class="row1">5</td>
-            </tr>
-            <tr>
-                <td class="column1">Low</td>
-                <td>0</td>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-            </tr>
-            <tr>
-                <td class="column1">Medium</td>
-                <td>1</td>
-                <td>3</td>
-                <td>5</td>
-                <td>7</td>
-                <td>9</td>
-            </tr>
-            <tr>
-                <td class="column1">High</td>
-                <td>2</td>
-                <td>4</td>
-                <td>8</td>
-                <td>14</td>
-                <td>22</td>
-            </tr>
-        </table>
-    </div>
-</div>
-
-<!--Form Fields/Decisions-->
-<h4>Advice Sent, waiting on Player Bs decision</h4>
-<h5>*** The estimated signal you received for this round is marked in <span>yellow</span> ***</h5>
-<table class="decisiontable">
-    <tr>
-        <th>Investment Quality:</th>
-        <th width="150px"></th>
-        <th style="width: 120px">Advice:</th>
-    </tr>
-    <tr bgcolor="yellow">
-        <td class="header_" rowspan="2">Low</td>
-        <th width="150px"rowspan="2"></th>
-        <td><input type="radio" disabled checked> Invest</td>
-    </tr>
-    <tr bgcolor="yellow">
-        <td><input type="radio" disabled> Don't Invest</td>
-    </tr>
-    <tr><td colspan="2" height="30px"></td></tr>
-    <tr>
-        <td class="header_" rowspan="2">Medium</td>
-        <th width="150px"rowspan="2"></th>
-        <td><input type="radio" disabled> Invest</td>
-    </tr>
-    <tr>
-        <td><input type="radio" disabled checked> Don't Invest</td>
-    </tr>
-    <tr><td colspan="2" height="30px"></td></tr>
-    <tr>
-        <td class="header_" rowspan="2">High</td>
-        <th width="150px"rowspan="2"></th>
-        <td><input type="radio" disabled> Invest</td>
-    </tr>
-    <tr>
-        <td><input type="radio" disabled checked> Don't Invest</td>
-    </tr>
-</table>
+<!--Description Body-->
+<p>Recall that each game starts with Player A receiving an estimate of the quality level. <b><i>Before receiving their estimate,</i></b> Player A will choose a message for each possible estimate, recommending either “Invest” or “Do Not Invest.” The computer will then show the Player A their estimate and send whatever message the Player A chose for this estimate to all of the Player Bs in their group. The Player Bs choose whether or not to invest after seeing this message.</p>
+<p>To help you understand how this works, we are now going to walk through a practice round. We will tell you what choices to make and this practice round will not count towards your payment.  In other words, this practice round is only to illustrate how you will actually make decisions in each round of Stage 1. As we go through the sample round, please do not make any choices until the experimenter tells you to do so.</p>
+<p style="margin-top: 100px; margin-bottom: unset">Please click "Continue"</p>
+<p style="font-size: 16px; margin-top: unset; margin-bottom: 10px" >*** Page will not continue until everyone has clicked continue ***</p>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
-<button type="button" id="validation" onclick="validating()">Continue</button>
+<button type="button" id="validation" class="Instructions" onclick="validating()">Continue</button>
 
 <script>
 // Checking if button has been clicked
@@ -158,5 +35,4 @@ function liveRecv(data) {
     }
 }
 </script>
-
 {{ endblock }}

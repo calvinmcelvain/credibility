@@ -131,6 +131,15 @@ class P12(Page):
             return {0: 'all_ready'}
 
 
+class P13(Page):
+    @staticmethod
+    def live_method(player: Player, data):
+        player.group.all_players_ready += 1
+        players_in_session = len(player.subsession.get_players()) * 12
+        if player.group.all_players_ready == players_in_session:
+            return {0: 'all_ready'}
+
+
 class Quiz(Page):
     pass
 
@@ -146,9 +155,9 @@ class STG1Information(Page):
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players()) * 12
+        players_in_session = len(player.subsession.get_players()) * 13
         if player.group.all_players_ready == players_in_session:
             return {0: 'all_ready'}
 
 
-page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, Quiz, STG1Information]
+page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, Quiz, STG1Information]
