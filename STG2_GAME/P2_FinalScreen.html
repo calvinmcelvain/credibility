@@ -8,6 +8,8 @@
 <h2 class="Title">End of Experiment</h2>
 
 <!-- Stage 2 Feedback -->
+<p>The experiment has now ended. Below you will see a summary of the experiment. You will also see the ECU you earned from the experiment, and your total earnings in dollars, including your $10 show-up fee. </p>
+<p>Thank you for participating. You will now privately receive your payment, by check.</p>
 <div style="margin: 75px"></div>
 <h4 class="History">Stage 2 Feedback:</h4>
 <h5>*** The decision randomly chosen towards payment is marked in <span class="highlight">yellow</span> ***</h5>
@@ -24,14 +26,14 @@
             <th>Player B Payoff</th>
         </tr>
     </table>
-    <table>
+    <table id="data_table">
         {{ for player in player_history.history }}
         <tr {{ if decision_counts == player.round_number }} bgcolor="yellow"{{ endif }}>
-            <td width="117.52">{{ player.round_number }}</td>
-            <td width="151.59">{{ player.group.actual_signal }}</td>
-            <td width="174.33">{{ player.pa_advice }}</td>
-            <td width="197.31">{{ player.group.total_players_invest }}</td>
-            <td width="155.72">{{ player.payoff }}</td>
+            <td>{{ player.round_number }}</td>
+            <td>{{ player.group.actual_signal }}</td>
+            <td>{{ player.group.pa_advice }}</td>
+            <td>{{ player.group.total_players_invest }}</td>
+            <td>{{ player.payoff }}</td>
             <td>{{ player.group.pb_payoff }}</td>
         </tr>
         {{ endfor }}
@@ -45,7 +47,8 @@
         <tr>
             <th>Round</th>
             <th>Player A's Advice</th>
-            <th>Your Outside</th>
+            <th>Outside Draw</th>
+            <th>Your Decision</th>
             <th>Other Investors</th>
             <th>Total Investors</th>
             <th>True Quality</th>
@@ -53,17 +56,18 @@
             <th>Player A Payoff</th>
         </tr>
     </table>
-    <table>
+    <table id="data_table">
         {{ for player in player_history.history }}
         <tr {{ if decision_counts == player.round_number }} bgcolor="yellow"{{ endif }}>
-            <td width="62.5">{{ player.round_number }}</td>
-            <td width="161.53">{{ if player.pb_outside_option <= player.group.random_draw }}{{ player.pb_outside_option }} = Invest{{ else }}{{ player.pb_outside_option }} = Don't Invest{{ endif }}</td>
-            <td width="122.09">{{ player.other_investors }}</td>
-            <td width="146.05">{{ player.other_investors }}</td>
-            <td width="138.78">{{ player.group.total_players_invest }}</td>
-            <td width="115.28">{{ player.group.actual_signal }}</td>
-            <td width="109.53">{{ player.payoff }}</td>
-            <td width="143.23">{{ player.group.pa_payoff }}</td>
+            <td>{{ player.round_number }}</td>
+            <td>{{ player.group.pa_advice }}</td>
+            <td>{{ player.random_draw }}</td>
+            <td>{{ player.pb_outside_option }}</td>
+            <td>{{ player.other_investors }}</td>
+            <td>{{ player.group.total_players_invest }}</td>
+            <td>{{ player.group.actual_signal }}</td>
+            <td>{{ player.payoff }}</td>
+            <td>{{ player.group.pa_payoff }}</td>
         </tr>
         {{ endfor }}
     </table>
@@ -85,6 +89,10 @@
         <td>{{ Stage_2 }}</td>
     </tr>
     <tr>
+        <tr class="last" style="height: 1px">
+        <th colspan="2" style="height: 1px"></th>
+    </tr>
+    <tr>
         <th>Total ECUs:</th>
         <td>{{ final_payoff }}</td>
     </tr>
@@ -104,9 +112,13 @@
         <td>{{ real_Stage_2 }}</td>
     </tr>
     <tr>
+        <tr class="last" style="height: 1px">
+        <th colspan="2" style="height: 1px"></th>
+    </tr>
+    <tr>
         <th>Total Stage 1 & 2 Dollars ($):</th>
         <td>{{ real_final }}</td>
-    </tr>
+
     <tr>
         <th>Participation Fee ($):</th>
         <td>$10</td>
@@ -120,4 +132,16 @@
     </tr>
 </table>
 
+
+<script>
+// Adjusting History Width
+window.onload = function() {
+  const headerCells = document.querySelectorAll('.history_header th');
+  const dataCells = document.querySelectorAll('#data_table td');
+
+  headerCells.forEach((headerCell, index) => {
+      dataCells[index].style.width = headerCell.offsetWidth + 'px';
+  });
+};
+</script>
 {{ endblock }}

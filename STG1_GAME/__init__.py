@@ -81,8 +81,6 @@ class Group(BaseGroup):
         for p in self.get_players():
             if p.role != C.pa_ROLE and p.pb_decision == 'Invest':
                 return p.payoff
-            elif p.role != C.pa_ROLE and p.pb_decision != 'Invest':
-                return p.payoff
 
     def pa_payoff(self):
         for p in self.get_players():

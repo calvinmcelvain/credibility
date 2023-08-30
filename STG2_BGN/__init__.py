@@ -125,7 +125,14 @@ class P11(Page):
             return {0: 'all_ready'}
 
 
-class P12(Page):
+class STG2Information(Page):
+    @staticmethod
+    def vars_for_template(player: Player):
+        if player.participant.vars['role'] == 'Player A':
+            return {'role': 'Player A'}
+        else:
+            return {'role': 'Player B'}
+
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
@@ -134,4 +141,4 @@ class P12(Page):
             return {0: 'all_ready'}
 
 
-page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12]
+page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, STG2Information]
