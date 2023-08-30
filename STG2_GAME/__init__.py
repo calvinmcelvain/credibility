@@ -24,14 +24,14 @@ class C(BaseConstants):
 
     # Decision Payoff dictionaries
     pb_payoffs = {
-        1: {1: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}, 3: {1: 100, 2: 100, 3: 100, 4: 100, 5: 100}},
-        2: {1: {1: 0, 2: 0, 3: 100, 4: 100, 5: 100}, 3: {1: 0, 2: 0, 3: 100, 4: 100, 5: 100}},
-        3: {1: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}, 3: {1: 0, 2: 0, 3: 100, 4: 100, 5: 100}}
+        1: {1: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}, 3: {1: 300, 2: 300, 3: 300, 4: 300, 5: 300}},
+        2: {1: {1: 0, 2: 0, 3: 300, 4: 300, 5: 300}, 3: {1: 0, 2: 0, 3: 300, 4: 300, 5: 300}},
+        3: {1: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}, 3: {1: 0, 2: 0, 3: 300, 4: 300, 5: 300}}
     }
     pa_payoffs = {
-        1: {1: {0: 0, 1: 20, 2: 40, 3: 60, 4: 80, 5: 100}, 3: {0: 0, 1: 20, 2: 40, 3: 60, 4: 80, 5: 100}},
-        2: {1: {0: 0, 1: 0, 2: 0, 3: 100, 4: 100, 5: 100}, 3: {0: 0, 1: 0, 2: 0, 3: 100, 4: 100, 5: 100}},
-        3: {1: {0: 0,1: 0, 2: 0, 3: 100, 4: 100, 5: 100}, 3: {0: 0, 1: 0, 2: 0, 3: 100, 4: 100, 5: 100}}
+        1: {1: {0: 0, 1: 60, 2: 120, 3: 180, 4: 240, 5: 300}, 3: {0: 0, 1: 60, 2: 120, 3: 180, 4: 240, 5: 300}},
+        2: {1: {0: 0, 1: 0, 2: 0, 3: 300, 4: 300, 5: 300}, 3: {0: 0, 1: 0, 2: 0, 3: 300, 4: 300, 5: 300}},
+        3: {1: {0: 0, 1: 0, 2: 0, 3: 300, 4: 300, 5: 300}, 3: {0: 0, 1: 0, 2: 0, 3: 300, 4: 300, 5: 300}}
     }
 
 
@@ -45,7 +45,6 @@ class Group(BaseGroup):
 
     # Randomly drawn fields
     actual_signal = models.StringField()
-    random_draw = models.IntegerField()
     decision_towards_payment = models.IntegerField()
 
     # Chosen stage 2 payoff
@@ -57,9 +56,9 @@ class Group(BaseGroup):
     # Player history functions meant to be passed to template in feedback page
     def pb_payoff(self):
         for p in self.get_players():
-            if p.role != C.pa_ROLE and p.pb_outside_option <= self.random_draw:
+            if p.role != C.pa_ROLE and p.pb_outside_option <= p.random_draw:
                 return p.payoff
-            elif p.role != C.pa_ROLE and p.pb_outside_option > self.random_draw:
+            elif p.role != C.pa_ROLE and p.pb_outside_option > p.random_draw:
                 return p.payoff
 
     def pa_payoff(self):
@@ -68,13 +67,15 @@ class Group(BaseGroup):
                 return p.payoff
 
     def total_players_invest(self):
-        return sum(1 for player in self.get_players() if player.role != C.pa_ROLE and player.pb_outside_option <= self.random_draw)
+        return sum(1 for player in self.get_players() if player.role != C.pa_ROLE and player.pb_outside_option <= player.random_draw)
 
 
 class Player(BasePlayer):
     # Decision fields for Player A and B
-    pa_advice = models.StringField(blank=False)
-    pb_outside_option = models.IntegerField(blank=False)
+    pa_low_advice = models.StringField(blank=False)
+    pa_high_advice = models.StringField(blank=False)
+    pb_outside_option = models.IntegerField(blank=False, min=0, max=300)
+    random_draw = models.IntegerField(min=0, max=300)
 
     # Player history functions meant to be passed to template in feedback page
     def other_investors(self):
@@ -94,6 +95,7 @@ def creating_session(subsession):
     for group in subsession.get_groups():
         group.decision_towards_payment = random.randint(1, 3)
 
+
 def is_displayed_pa(player: Player):
     # Is displayed function for role Player A
     return player.role == C.pa_ROLE
@@ -106,7 +108,7 @@ def is_displayed_pb(player: Player):
 # PAGES
 class P1_PADecision(Page):
     form_model = 'player'
-    form_fields = ['pa_advice']
+    form_fields = ['pa_low_advice', 'pa_high_advice']
     timeout_seconds = C.decision_time
     is_displayed = is_displayed_pa
 
@@ -126,6 +128,12 @@ class PlayerBWaitPage(WaitPage):
     body_text = 'Waiting for Player A to give investment advice'
     is_displayed = is_displayed_pb
 
+    @staticmethod
+    def after_all_players_arrive(group: Group):
+        for player in group.get_players():
+            if player.role != C.pa_ROLE:
+                player.random_draw = random.randint(1, 300)
+
 
 class P1_PBDecision(Page):
     form_model = 'player'
@@ -135,14 +143,16 @@ class P1_PBDecision(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        advice = player.group.get_player_by_role(C.pa_ROLE).pa_advice
-        player.group.random_draw = random.randint(1, 100)
-        draw = player.group.random_draw
+        if player.group.actual_signal == 'High':
+            advice = player.group.get_player_by_role(C.pa_ROLE).pa_high_advice
+        else:
+            advice = player.group.get_player_by_role(C.pa_ROLE).pa_low_advice
+
         pb_payoff_table = C.pb_payoffs[player.round_number]
         pa_payoff_table = C.pa_payoffs[player.round_number]
         pa_table_preprocessed = {key: list(value.values()) for key, value in pa_payoff_table.items()}
         pb_table_preprocessed = {key: list(value.values()) for key, value in pb_payoff_table.items()}
-        return {'advice': advice, 'draw': draw, 'pa_table': pa_table_preprocessed, 'pb_table': pb_table_preprocessed}
+        return {'advice': advice, 'pa_table': pa_table_preprocessed, 'pb_table': pb_table_preprocessed}
 
 
 class PayoffWaitPage(WaitPage):
@@ -157,10 +167,10 @@ class PayoffWaitPage(WaitPage):
         decoder = C.decoder
         for player in group.get_players():
             if player.role != C.pa_ROLE:
-                if player.pb_outside_option <= group.random_draw:
+                if player.pb_outside_option <= player.random_draw:
                     player.payoff = pb_payoff[player.round_number][decoder[signal]][group.total_players_invest()]
                 else:
-                    player.payoff = group.random_draw
+                    player.payoff = player.random_draw
             else:
                 player.payoff = pa_payoff[player.round_number][decoder[signal]][group.total_players_invest()]
 

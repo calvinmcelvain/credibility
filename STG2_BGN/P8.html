@@ -5,23 +5,21 @@
 <script src="{{ static 'JavaScript_Crd2.js' }}"></script>
 
 {{ block title }}
-Stage 1: Decision 2
+Stage 1: Decision 2 (Cont.)
 {{ endblock }}
 
 <!-- General Information Body Cont. -->
-<p>Decision 2 has several similar features to Decision 1. There are two possible qualities of the investment opportunity, Low or High, with each quality being equally likely. Player A sees the true <i>Quality</i> and then sends all Player Bs a recommendation (“Invest” or “Do Not Invest”). All Player Bs receive the same recommendation and then simultaneously choose whether or not to invest. </p>
-<p>Decision 2 involves new payoff tables for players in both roles. Player A will receive 100 if the majority (three or more) of Player Bs choose to invest, regardless of Quality. This is shown in the payoff table below.</p>
+<p>Player Bs who choose to invest will earn 300 if the majority of Player Bs in their group (three or more) choose to invest, regardless of Quality. This is shown in the table below. As before, you will not know the quality level of the investment opportunity when you decide to invest. Notice that Quality does <span style="font-weight: bold">not</span> matter for the payoff of either Player A or Player Bs.</p>
 
-<!-- Player A's Payoff Table -->
-<p class="payofftableheader">Player A's Payoff Table</p>
+<!-- Player Bs Payoff Table -->
+<p class="payofftableheader">Player Bs Payoff Table</p>
 <table class="playerpayofftable" style="display: flex; margin-left: 150px">
     <tr>
         <td style="width: 75px;"></td>
-        <td class="header" colspan="6">Total Investors</td>
+        <td class="header" colspan="5">Total Investors (Including You)</td>
     </tr>
     <tr>
-        <td  style="font-style: italic; width: 75px;">Quality</td>
-        <td class="row1">0</td>
+        <td style="font-style: italic; width: 75px;">Quality</td>
         <td class="row1">1</td>
         <td class="row1">2</td>
         <td class="row1">3</td>
@@ -32,23 +30,23 @@ Stage 1: Decision 2
         <td class="column1">Low</td>
         <td>0</td>
         <td>0</td>
-        <td>0</td>
-        <td>100</td>
-        <td>100</td>
-        <td>100</td>
+        <td>300</td>
+        <td>300</td>
+        <td>300</td>
     </tr>
     <tr>
         <td class="column1">High</td>
         <td>0</td>
         <td>0</td>
-        <td>0</td>
-        <td>100</td>
-        <td>100</td>
-        <td>100</td>
+        <td>300</td>
+        <td>300</td>
+        <td>300</td>
     </tr>
 </table>
 
-<p style="margin-top: 100px; margin-bottom: unset">Please click "Continue"</p>
+<!-- General Information Body Cont. -->
+<p style="margin-top: 100px;">As in Decision 1, any Player B who chooses not to invest will receive their outside option, which will be drawn at random.  Players will again use the slider to identify their minimum value of the outside option that will lead them to choose the outside option.</p>
+<p style="margin-top: 50px; margin-bottom: unset">Please click "Continue"</p>
 <p style="font-size: 16px; margin-top: unset; margin-bottom: 10px" >*** Page will not continue until everyone has clicked continue ***</p>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
