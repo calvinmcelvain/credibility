@@ -11,8 +11,8 @@ class C(BaseConstants):
     NUM_ROUNDS = 3
 
     # Timeout seconds for decision page
-    decision_time = 60
-    feedback_time = 30
+    decision_time = None
+    feedback_time = None
 
     # Defining Role "Player A"
     pa_ROLE = 'Player A'
