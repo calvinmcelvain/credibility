@@ -9,20 +9,22 @@
 
 <h2 class="BeforeStart">You are still <span class="highlight">{{ role }}</span> role</h2>
 
-<script>
-    window.onload = function() {
-        const loaded = sessionStorage.getItem('loaded');
+<!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
+<button type="button" id="validation" class="Instructions" onclick="validating()">Continue</button>
 
-        if (loaded !== 'true') {
-            liveSend('send');
-            sessionStorage.setItem('loaded', 'true');
+<script>
+    // Checking if button has been clicked
+    window.onload = function () {
+        const IsClicked = sessionStorage.getItem('IsClicked');
+
+        if (IsClicked === 'true') {
+            document.getElementById('validation').disabled = true;
         }
     }
-
     // Websocket to check if all players are ready
     function liveRecv(data) {
         if (data === 'all_ready') {
-            sessionStorage.setItem('loaded', 'false');
+            sessionStorage.setItem('IsClicked', 'false')
             document.forms[0].submit();
         }
     }

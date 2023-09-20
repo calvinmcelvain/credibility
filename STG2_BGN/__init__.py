@@ -32,6 +32,7 @@ class P1(Page):
         player.group.all_players_ready += 1
         players_in_session = len(player.subsession.get_players())
         if player.group.all_players_ready == players_in_session:
+            player.group.all_players_ready = 0
             return {0: 'all_ready'}
 
 
@@ -39,8 +40,9 @@ class P2(Page):
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players()) * 2
+        players_in_session = len(player.subsession.get_players())
         if player.group.all_players_ready == players_in_session:
+            player.group.all_players_ready = 0
             return {0: 'all_ready'}
 
 
@@ -48,8 +50,9 @@ class P3(Page):
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players()) * 3
+        players_in_session = len(player.subsession.get_players())
         if player.group.all_players_ready == players_in_session:
+            player.group.all_players_ready = 0
             return {0: 'all_ready'}
 
 
@@ -57,8 +60,9 @@ class P4(Page):
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players()) * 4
+        players_in_session = len(player.subsession.get_players())
         if player.group.all_players_ready == players_in_session:
+            player.group.all_players_ready = 0
             return {0: 'all_ready'}
 
 
@@ -66,8 +70,9 @@ class P5(Page):
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players()) * 5
+        players_in_session = len(player.subsession.get_players())
         if player.group.all_players_ready == players_in_session:
+            player.group.all_players_ready = 0
             return {0: 'all_ready'}
 
 
@@ -75,8 +80,9 @@ class P6(Page):
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players()) * 6
+        players_in_session = len(player.subsession.get_players())
         if player.group.all_players_ready == players_in_session:
+            player.group.all_players_ready = 0
             return {0: 'all_ready'}
 
 
@@ -84,8 +90,9 @@ class P7(Page):
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players()) * 7
+        players_in_session = len(player.subsession.get_players())
         if player.group.all_players_ready == players_in_session:
+            player.group.all_players_ready = 0
             return {0: 'all_ready'}
 
 
@@ -93,8 +100,9 @@ class P8(Page):
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players()) * 8
+        players_in_session = len(player.subsession.get_players())
         if player.group.all_players_ready == players_in_session:
+            player.group.all_players_ready = 0
             return {0: 'all_ready'}
 
 
@@ -102,8 +110,9 @@ class P9(Page):
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players()) * 9
+        players_in_session = len(player.subsession.get_players())
         if player.group.all_players_ready == players_in_session:
+            player.group.all_players_ready = 0
             return {0: 'all_ready'}
 
 
@@ -111,8 +120,9 @@ class P10(Page):
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players()) * 10
+        players_in_session = len(player.subsession.get_players())
         if player.group.all_players_ready == players_in_session:
+            player.group.all_players_ready = 0
             return {0: 'all_ready'}
 
 
@@ -120,8 +130,9 @@ class P11(Page):
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players()) * 11
+        players_in_session = len(player.subsession.get_players())
         if player.group.all_players_ready == players_in_session:
+            player.group.all_players_ready = 0
             return {0: 'all_ready'}
 
 
@@ -136,8 +147,9 @@ class STG2Information(Page):
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players()) * 12
+        players_in_session = len(player.subsession.get_players())
         if player.group.all_players_ready == players_in_session:
+            player.group.all_players_ready = 0
             return {0: 'all_ready'}
 
 
