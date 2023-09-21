@@ -31,6 +31,11 @@ class P1(Page):
     form_model = 'player'
     form_fields = ['player_id']
 
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        id = player.player_id
+        player.participant.vars['PlayerID'] = id
+
 
 class P2(Page):
     @staticmethod

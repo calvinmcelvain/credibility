@@ -60,7 +60,7 @@ SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=0.25, participation_fee=10.00, doc=""
 )
 
-PARTICIPANT_FIELDS = ['role', 'Stage1_payoff']
+PARTICIPANT_FIELDS = ['role', 'Stage1_payoff', 'PlayerID']
 SESSION_FIELDS = ['group_matrix']
 
 # ISO-639 code
