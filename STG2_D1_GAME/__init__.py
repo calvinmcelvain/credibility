@@ -8,7 +8,7 @@ Stage 2 Game
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'STG2_GAME'
+    NAME_IN_URL = 'STG2_D1_GAME'
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 3
 

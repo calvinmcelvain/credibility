@@ -7,9 +7,13 @@ Stage 2 Instructions
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'STG2_BGN'
+    NAME_IN_URL = 'STG2_D1_BGN'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
+
+    # Timeout seconds
+    instructions_time = None
+    standby_time = None
 
 
 class Subsession(BaseSubsession):
@@ -27,6 +31,8 @@ class Player(BasePlayer):
 
 # PAGES
 class P1(Page):
+    timeout_seconds = C.instructions_time
+
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
@@ -37,6 +43,8 @@ class P1(Page):
 
 
 class P2(Page):
+    timeout_seconds = C.instructions_time
+
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
@@ -47,6 +55,8 @@ class P2(Page):
 
 
 class P3(Page):
+    timeout_seconds = C.instructions_time
+
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
@@ -57,6 +67,8 @@ class P3(Page):
 
 
 class P4(Page):
+    timeout_seconds = C.instructions_time
+
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
@@ -67,6 +79,8 @@ class P4(Page):
 
 
 class P5(Page):
+    timeout_seconds = C.instructions_time
+
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
@@ -77,6 +91,8 @@ class P5(Page):
 
 
 class P6(Page):
+    timeout_seconds = C.instructions_time
+
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
@@ -87,6 +103,8 @@ class P6(Page):
 
 
 class P7(Page):
+    timeout_seconds = C.instructions_time
+
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
@@ -96,47 +114,9 @@ class P7(Page):
             return {0: 'all_ready'}
 
 
-class P8(Page):
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
+class P8_standby(Page):
+    timeout_seconds = C.standby_time
 
-
-class P9(Page):
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
-
-
-class P10(Page):
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
-
-
-class P11(Page):
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
-
-
-class STG2Information(Page):
     @staticmethod
     def vars_for_template(player: Player):
         if player.participant.vars['role'] == 'Player A':
@@ -153,4 +133,4 @@ class STG2Information(Page):
             return {0: 'all_ready'}
 
 
-page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, STG2Information]
+page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8_standby]
