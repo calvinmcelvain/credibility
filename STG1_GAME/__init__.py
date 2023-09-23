@@ -122,20 +122,36 @@ def creating_session(subsession):
     for i, group in enumerate(groups):
         group.treatment = treatments[i % len(treatments)]
 
+
 def is_displayed_pa(player: Player):
     # Is displayed function for role Player A
     return player.role == C.pa_ROLE
+
 
 def is_displayed_pb(player: Player):
     # Is displayed function for role Player B
     return player.role != C.pa_ROLE
 
+<<<<<<< Updated upstream
+=======
+
+def custom_export(players):
+    # Header rows
+    yield ['session', 'participant_code', 'role', 'treatment', 'round_number', 'estimated_signal', 'actual_signal', 'payoff', 'low_advice', 'med_advice', 'high_advice', 'invest_decision']
+    # Data
+    for p in players:
+        participant = p.participant
+        session = p.session
+        yield [session.code, participant.code, participant.role, p.group.treatment, p.round_number, p.group.estimated_signal, p.group.actual_signal, p.payoff, p.pa_low_advice, p.pa_med_advice, p.pa_high_advice, p.pb_decision]
+
+>>>>>>> Stashed changes
 
 # PAGES
 class P1_PADecision(Page):
     form_model = 'player'
     form_fields = ['pa_low_advice', 'pa_med_advice', 'pa_high_advice']
     is_displayed = is_displayed_pa
+    timeout_seconds = C.decision_time
 
     @staticmethod
     def vars_for_template(player: Player):
@@ -151,6 +167,7 @@ class P1_PBDecision(Page):
     form_model = 'player'
     form_fields = ['pb_decision']
     is_displayed = is_displayed_pb
+    timeout_seconds = C.decision_time
 
     @staticmethod
     def vars_for_template(player: Player):
@@ -217,6 +234,8 @@ class PayoffWaitPage(WaitPage):
 
 
 class P3_Feedback(Page):
+    timeout_seconds = C.feedback_time
+
     @staticmethod
     def vars_for_template(player: Player):
         return dict(history=reversed(player.in_all_rounds()))

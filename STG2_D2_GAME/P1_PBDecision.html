@@ -1,0 +1,355 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
+<script src="{{ static 'JavaScript_Crd2.js' }}"></script>
+
+<!-- Title -->
+<div style="margin-bottom: 20px; margin-top: 10px">
+    <div align="left" style="position: absolute"><h2 class="Title">Stage 2: Decision {{ player.round_number }}</h2></div>
+    <div align="right"><span class="advice">Player A's Advice: <b>{{ advice }}</b></span></div>
+</div>
+<h3>You are Player B</h3>
+
+<!-- Payoff Tables -->
+<div class="tables-container">
+    <div>
+        <p class="payofftableheader">Your Payoff Table</p>
+        <table class="playerpayofftable" style="display: flex; margin: unset">
+            <tr>
+                <td style="width: 75px;"></td>
+                <td class="header" colspan="5">Total Investors (Including You)</td>
+            </tr>
+            <tr>
+                <td style="font-style: italic; width: 75px;">Quality</td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
+                <td class="row1">5</td>
+            </tr>
+            <tr>
+                <td class="column1">Low</td>
+                {{ for p in pb_table.1 }}
+                <td>{{ p }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td class="column1">High</td>
+                {{ for p in pb_table.3 }}
+                <td>{{ p }}</td>
+                {{ endfor }}
+            </tr>
+        </table>
+
+    </div>
+    <div style="margin: 20px"></div>
+    <div>
+        <p class="payofftableheader">Player A's Payoff Table</p>
+        <table class="playerpayofftable" style="display: flex; margin: unset">
+            <tr>
+                <td style="width: 75px;"></td>
+                <td class="header" colspan="6">Total Investors</td>
+            </tr>
+            <tr>
+                <td  style="font-style: italic; width: 75px;">Quality</td>
+                <td class="row1">0</td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
+                <td class="row1">5</td>
+            </tr>
+            <tr>
+                <td class="column1">Low</td>
+                {{ for p in pa_table.1 }}
+                <td>{{ p }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td class="column1">High</td>
+                {{ for p in pa_table.3 }}
+                <td>{{ p }}</td>
+                {{ endfor }}
+            </tr>
+        </table>
+    </div>
+</div>
+
+<h4>Please use the slider to select the <span style="color: red">maximum</span> outside option for which you will choose Invest.</h4>
+<input class="decision-slider" type="range" name="pb_outside_option" id="slider" oninput="updateInputValue(this.value)" value="1" min="1" max="300">
+<input type="number" id="sliderInput" name="pb_outside_option" oninput="updateSliderFromInput(this.value)" value="1" size="3" min="1" max="300">
+
+
+<!-- Next Button with confirmation pop-up & Instructions Button-->
+<div style="margin-top: 100px">
+    <button onclick="ConfirmDecision(event)" class="Instructions">Continue</button>
+    <button id="pop-up" class="Instructions" style="float: left; background-color: red">Instructions</button>
+</div>
+
+<div id="popup-window">
+    <button id="close-button" type="button" style="background-color: red; margin: unset">X</button>
+    <h2 style="margin-bottom: 20px">Instructions for Stage 1 & Decision {{ player.round_number }}</h2>
+    <h3 style="margin-bottom: unset">Stage 2:</h3>
+    <p>We have now concluded Stage 1 of the experiment. Stage 2 will consist of a series of three decisions. One decision will be drawn after the experiment to count towards your payment.  Because you will not know which decision will count until the end of the experiment, you should treat each decision as if it is the one that counts.</p>
+    <p>Your group in Stage 2 is the same six participants as in Stage 1 and your role (Player A or Player B) is the same as well.</p>
+    <p>In many ways, Stage 2 is like Stage 1.</p>
+    <div class="List">
+        <p><b>1)</b>	Player Bs will choose whether or not to invest their endowment in an investment opportunity. </p>
+        <p><b>2)</b>	The five Player Bs in each group will again receive no information about the quality of the investment opportunity. Instead, they will receive a message from Player A, either “Invest” or “Do Not Invest”. All Player Bs will see the same message from their group’s Player A before making their investment decisions. </p>
+        <p><b>3)</b>   The conversion rate of ECU to dollars remains $1 per 25 ECU.</p>
+    </div>
+    <p>There are also a number of differences between Stage 2 and Stage 1</p>
+    <div class="List">
+        <p><b>1)</b>	The payoff tables will change for each decision in Stage 2. Be certain to look at the payoff tables and instructions before making your decisions in Stage 2, as these will <span style="color: red">not</span> be the same as Stage 1 or the other decisions in Stage 2. </p>
+        <p><b>2)</b>	The outside option is <span style="color: red">not</span> the same for every decision in Stage 2. Instead, an outside option will be randomly drawn for each decision. Later in these instructions, you will receive more instructions on exactly how this works and how you will make choices.</p>
+        <p><b>3)</b>    In Stage 2, there now will only be two possible quality levels, “Low” and “High”. Each possible quality level is equally likely, like the flip of a coin. </p>
+        <p><b>4)</b>   In Stage 2, rather than receiving an estimate, Player A will directly observe the true quality level. In other words, Player A will know the actual quality level (rather than an estimate) when they choose a message. </p>
+        <p><b>5)</b>   The stakes for each decision in Stage 2 are substantially higher than those in Stage 1. Also remember that you will make a total of three decisions, but only one will be randomly chosen to count towards your earnings in today’s experiment.</p>
+        <p><b>6)</b>   Unlike Stage 1, you will not see feedback after each decision.  In other words, you will make all three decisions without seeing any results before advancing to the next decision. At the end of Stage 2, you will see the results from all three decisions and will learn which decision has been randomly chosen to count towards your payment. You will also see your total earnings from Stage 1, and your total earnings from today’s session.</p>
+        <p><b>7)</b>   Rather than choosing “Invest” or “Do Not Invest” directly, in Stage 2, Player Bs will choose threshold levels of the outside option that will determine their investment decision.  We will explain this in detail now.</p>
+    </div>
+    <h3 style="margin-bottom: unset">Using a Slider:</h3>
+    <p>Player Bs who choose to not invest will receive their outside option. In Stage 2, the outside option for each Player B will be randomly drawn from the numbers between 1 and 300. All numbers are equally likely to be drawn. Each Player B will use a slider similar to the one you see below to select the <span style="color: red">minimum</span> outside option for which you will choose not to invest. Any price drawn at random below the minimum selected outside option will result in Player B choosing to Invest.  If a price is drawn at or above the minimum selected outside option, the Player B will choose to <span style="color: red">not</span> Invest and receive the outside option. </p>
+    <p>As a Player B, your best choice is to set the slider <span style="color: red">equal</span> to the value you believe should be assigned to Invest. If the randomly drawn outside option is higher than your value of choosing Invest, you would be better off with the outside option. If the outside option is lower than your value of choosing Invest, you would be better of choosing Invest. Setting the minimum outside option equal to your individual value of choosing Invest ensures that you only choose Invest when it is to your benefit to do so. Please look at the over screen for examples illustrating why this is true.</p>
+    {{ if player.round_number == 1 }}
+    <h3 style="margin-bottom: unset">Decision 1:</h3>
+    <p><span style="color: red; font-weight: bold">Decision 1 involves different payoff tables than Stage 1 for both Player As and Player Bs. </span></p>
+    <p style="margin-bottom: 50px">In Decision 1, Player A will receive 60 for each Player B who chooses to invest. This is shown in the payoff table below. Player A’s payoffs does not depend on the quality of the investment.</p>
+    <p class="payofftableheader">Player A's Payoff Table</p>
+    <table class="playerpayofftable" style="display: flex; margin-left: 150px">
+        <tr>
+            <td style="width: 75px;"></td>
+            <td class="header" colspan="6">Total Investors</td>
+        </tr>
+        <tr>
+            <td  style="font-style: italic; width: 75px;">Quality</td>
+            <td class="row1">0</td>
+            <td class="row1">1</td>
+            <td class="row1">2</td>
+            <td class="row1">3</td>
+            <td class="row1">4</td>
+            <td class="row1">5</td>
+        </tr>
+        <tr>
+            <td class="column1">Low</td>
+            <td>0</td>
+            <td>60</td>
+            <td>120</td>
+            <td>180</td>
+            <td>240</td>
+            <td>300</td>
+        </tr>
+        <tr>
+            <td class="column1">High</td>
+            <td>0</td>
+            <td>60</td>
+            <td>120</td>
+            <td>180</td>
+            <td>240</td>
+            <td>300</td>
+        </tr>
+    </table>
+    <p style="margin-top: 100px">Player Bs’ payoffs are determined by the table shown below. Player Bs who invest will receive earnings of 300 if the Quality is High, <span style="color: red">regardless of the number of other Player Bs who invest. </span></p>
+    <p style="margin-bottom: 50px">As before, you will receive a recommendation from Player A but will <span style="color: red">not</span> know the quality level of the investment opportunity when you decide to invest.</p>
+    <p>Player Bs’ payoffs are determined by the table shown below. Player Bs who invest will receive earnings of 300 if the Quality is High, <span style="color: red">regardless of the number of other Player Bs who invest. </span></p>
+    <p style="margin-bottom: 50px">As before, you will receive a recommendation from Player A but will <span style="color: red">not</span> know the quality level of the investment opportunity when you decide to invest.</p>
+    <p class="payofftableheader">Player Bs Payoff Table</p>
+    <table class="playerpayofftable" style="display: flex; margin-left: 150px">
+        <tr>
+            <td style="width: 75px;"></td>
+            <td class="header" colspan="5">Total Investors (Including You)</td>
+        </tr>
+        <tr>
+            <td style="font-style: italic; width: 75px;">Quality</td>
+            <td class="row1">1</td>
+            <td class="row1">2</td>
+            <td class="row1">3</td>
+            <td class="row1">4</td>
+            <td class="row1">5</td>
+        </tr>
+        <tr>
+            <td class="column1">Low</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td class="column1">High</td>
+            <td>300</td>
+            <td>300</td>
+            <td>300</td>
+            <td>300</td>
+            <td>300</td>
+        </tr>
+    </table>
+    {{ elif player.round_number == 2 }}
+    <h3 style="margin-bottom: unset">Decision 2:</h3>
+    <p><span style="color: red; font-weight: bold">Decision 2 involves new payoff tables for both Player As and Player Bs. </span></p>
+    <p style="margin-bottom: 50px">Player A will receive 300 if the majority (three or more) of Player Bs choose to invest, regardless of Quality. This is shown in the payoff table below. Player A’s payoffs does <span style="color: red">not</span> depend on the quality of the investment.</p>
+    <p class="payofftableheader">Player A's Payoff Table</p>
+    <table class="playerpayofftable" style="display: flex; margin-left: 150px">
+        <tr>
+            <td style="width: 75px;"></td>
+            <td class="header" colspan="6">Total Investors</td>
+        </tr>
+        <tr>
+            <td  style="font-style: italic; width: 75px;">Quality</td>
+            <td class="row1">0</td>
+            <td class="row1">1</td>
+            <td class="row1">2</td>
+            <td class="row1">3</td>
+            <td class="row1">4</td>
+            <td class="row1">5</td>
+        </tr>
+        <tr>
+            <td class="column1">Low</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>300</td>
+            <td>300</td>
+            <td>300</td>
+        </tr>
+        <tr>
+            <td class="column1">High</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>300</td>
+            <td>300</td>
+            <td>300</td>
+        </tr>
+    </table>
+    <p>Player Bs who choose to invest will earn 300 if the majority of Player Bs in their group (three or more) choose to invest, regardless of Quality. This is shown in the table below. As before, you will not know the quality level of the investment opportunity when you decide to invest. Notice that Quality does <span style="font-weight: bold">not</span> matter for the payoff of either Player A or Player Bs.</p>
+    <p class="payofftableheader">Player Bs Payoff Table</p>
+    <table class="playerpayofftable" style="display: flex; margin-left: 150px">
+        <tr>
+            <td style="width: 75px;"></td>
+            <td class="header" colspan="5">Total Investors (Including You)</td>
+        </tr>
+        <tr>
+            <td style="font-style: italic; width: 75px;">Quality</td>
+            <td class="row1">1</td>
+            <td class="row1">2</td>
+            <td class="row1">3</td>
+            <td class="row1">4</td>
+            <td class="row1">5</td>
+        </tr>
+        <tr>
+            <td class="column1">Low</td>
+            <td>0</td>
+            <td>0</td>
+            <td>300</td>
+            <td>300</td>
+            <td>300</td>
+        </tr>
+        <tr>
+            <td class="column1">High</td>
+            <td>0</td>
+            <td>0</td>
+            <td>300</td>
+            <td>300</td>
+            <td>300</td>
+        </tr>
+    </table>
+    <p style="margin-top: 100px;">As in Decision 1, any Player B who chooses not to invest will receive their outside option, which will be drawn at random.  Players will again use the slider to identify their minimum value of the outside option that will lead them to choose the outside option.</p>
+    {{ else }}
+    <p><span style="color: red; font-weight: bold">Decision 3 involves a new payoff table for Player Bs. Player As have the same payoff table as in Decision 2.</span></p>
+    <p style="margin-bottom: 50px">As in Decision 2, Player A will receive 300 if the majority (three or more) of Player Bs choose to invest, regardless of Quality. This is shown in the payoff table below. </p>
+    <p class="payofftableheader">Player A's Payoff Table</p>
+    <table class="playerpayofftable" style="display: flex; margin-left: 150px">
+        <tr>
+            <td style="width: 75px;"></td>
+            <td class="header" colspan="6">Total Investors</td>
+        </tr>
+        <tr>
+            <td  style="font-style: italic; width: 75px;">Quality</td>
+            <td class="row1">0</td>
+            <td class="row1">1</td>
+            <td class="row1">2</td>
+            <td class="row1">3</td>
+            <td class="row1">4</td>
+            <td class="row1">5</td>
+        </tr>
+        <tr>
+            <td class="column1">Low</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>300</td>
+            <td>300</td>
+            <td>300</td>
+        </tr>
+        <tr>
+            <td class="column1">High</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>300</td>
+            <td>300</td>
+            <td>300</td>
+        </tr>
+    </table>
+    <p style="margin-bottom: 50px">Player Bs who choose to invest will earn 300 if the majority of Player Bs in their group (three or more) choose to invest <span style="color: red">and</span> the Quality is High. Unlike Decision 2, the payoff of Player B depends on the quality of the investment.</p>
+    <p class="payofftableheader">Player Bs Payoff Table</p>
+    <table class="playerpayofftable" style="display: flex; margin-left: 150px">
+        <tr>
+            <td style="width: 75px;"></td>
+            <td class="header" colspan="5">Total Investors (Including You)</td>
+        </tr>
+        <tr>
+            <td style="font-style: italic; width: 75px;">Quality</td>
+            <td class="row1">1</td>
+            <td class="row1">2</td>
+            <td class="row1">3</td>
+            <td class="row1">4</td>
+            <td class="row1">5</td>
+        </tr>
+        <tr>
+            <td class="column1">Low</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td class="column1">High</td>
+            <td>0</td>
+            <td>0</td>
+            <td>300</td>
+            <td>300</td>
+            <td>300</td>
+        </tr>
+    </table>
+    <p style="margin-top: 50px">As in Decision 1, any Player B who chooses not to invest will receive their outside option, which will be drawn at random.  Players will again use the slider to identify their minimum value of the outside option that will lead them to not invest.</p>
+    {{ endif }}
+    <h3 style="margin-bottom: unset">Feedback:</h3>
+    <p>After completing Decision 3, all participants will see the results from all decisions made in Stage 2, as well as the decision that has been drawn to count towards your payment.  You will also see your total earnings from Stage 1, and your total earnings from today’s session.</p>
+    <button id="close-button2" type="button" style="background-color: red; margin: unset">X</button>
+</div>
+
+<script>
+// Get the elements by their ID
+var popupLink = document.getElementById("pop-up");
+var popupWindow = document.getElementById("popup-window");
+var closeButton = document.getElementById("close-button");
+var closeButton2 = document.getElementById("close-button2");
+// Show the pop-up window when the link is clicked
+popupLink.addEventListener("click", function(event) {
+event.preventDefault();
+popupWindow.style.display = "block";
+});
+// Hide the pop-up window when the close button is clicked
+closeButton.addEventListener("click", function() {
+popupWindow.style.display = "none";
+});
+closeButton2.addEventListener("click", function() {
+popupWindow.style.display = "none";
+});
+</script>
+
+{{ endblock }}
