@@ -132,8 +132,6 @@ def is_displayed_pb(player: Player):
     # Is displayed function for role Player B
     return player.role != C.pa_ROLE
 
-<<<<<<< Updated upstream
-=======
 
 def custom_export(players):
     # Header rows
@@ -144,7 +142,6 @@ def custom_export(players):
         session = p.session
         yield [session.code, participant.code, participant.role, p.group.treatment, p.round_number, p.group.estimated_signal, p.group.actual_signal, p.payoff, p.pa_low_advice, p.pa_med_advice, p.pa_high_advice, p.pb_decision]
 
->>>>>>> Stashed changes
 
 def custom_export(players):
     # Header rows
