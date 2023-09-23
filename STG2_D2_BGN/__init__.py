@@ -2,14 +2,28 @@ from otree.api import *
 
 
 doc = """
-Stage 2 Instructions
+Stage 2 Decision 2 Instructions
 """
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'STG2_D1_BGN'
+    NAME_IN_URL = 'STG2_D2_BGN'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
+
+    # Timeout seconds
+    instructions_time = None
+    standby_time = None
+
+    # Decision Payoff dictionaries
+    pb_payoff = {
+        1: {1: 0, 2: 0, 3: 300, 4: 300, 5: 300},
+        3: {1: 0, 2: 0, 3: 300, 4: 300, 5: 300},
+    }
+    pa_payoff = {
+        1: {0: 0, 1: 0, 2: 0, 3: 300, 4: 300, 5: 300},
+        3: {0: 0, 1: 0, 2: 0, 3: 300, 4: 300, 5: 300},
+    }
 
 
 class Subsession(BaseSubsession):
@@ -27,6 +41,14 @@ class Player(BasePlayer):
 
 # PAGES
 class P1(Page):
+    timeout_seconds = C.instructions_time
+
+    @staticmethod
+    def vars_for_template(player: Player):
+        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
+        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
+        return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
+
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
@@ -37,6 +59,14 @@ class P1(Page):
 
 
 class P2(Page):
+    timeout_seconds = C.instructions_time
+
+    @staticmethod
+    def vars_for_template(player: Player):
+        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
+        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
+        return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
+
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
@@ -46,97 +76,9 @@ class P2(Page):
             return {0: 'all_ready'}
 
 
-class P3(Page):
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
+class P3_standby(Page):
+    timeout_seconds = C.standby_time
 
-
-class P4(Page):
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
-
-
-class P5(Page):
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
-
-
-class P6(Page):
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
-
-
-class P7(Page):
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
-
-
-class P8(Page):
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
-
-
-class P9(Page):
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
-
-
-class P10(Page):
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
-
-
-class P11(Page):
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
-
-
-class STG2Information(Page):
     @staticmethod
     def vars_for_template(player: Player):
         if player.participant.vars['role'] == 'Player A':
@@ -153,4 +95,4 @@ class STG2Information(Page):
             return {0: 'all_ready'}
 
 
-page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, STG2Information]
+page_sequence = [P1, P2, P3_standby]

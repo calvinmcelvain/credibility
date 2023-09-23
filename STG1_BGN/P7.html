@@ -29,31 +29,22 @@ Description of Player A Payoffs
         <td class="row1">5</td>
     </tr>
     <tr>
-        <td class="column1">Low</td>
-        <td>12</td>
-        <td>3</td>
-        <td>3</td>
-        <td>3</td>
-        <td>3</td>
-        <td>3</td>
+    <td class="column1">Low</td>
+        {{ for p in pa_table.1 }}
+        <td>{{ p }}</td>
+        {{ endfor }}
     </tr>
     <tr>
         <td class="column1">Medium</td>
-        <td>6</td>
-        <td>6</td>
-        <td>6</td>
-        <td>6</td>
-        <td>6</td>
-        <td>12</td>
+        {{ for p in pa_table.2 }}
+        <td>{{ p }}</td>
+        {{ endfor }}
     </tr>
     <tr>
         <td class="column1">High</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>30</td>
+        {{ for p in pa_table.3 }}
+        <td>{{ p }}</td>
+        {{ endfor }}
     </tr>
 </table>
 

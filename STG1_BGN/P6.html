@@ -28,27 +28,22 @@ Description of Player B Payoffs (Cont.)
     </tr>
     <tr>
         <td class="column1">Low</td>
-        <td>0</td>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
+        {{ for p in pb_table.1 }}
+        <td>{{ p }}</td>
+        {{ endfor }}
     </tr>
     <tr>
         <td class="column1">Medium</td>
-        <td>1</td>
-        <td>3</td>
-        <td>5</td>
-        <td>7</td>
-        <td>9</td>
+        {{ for p in pb_table.2 }}
+        <td>{{ p }}</td>
+        {{ endfor }}
     </tr>
     <tr>
         <td class="column1">High</td>
-        <td>2</td>
-        <td>4</td>
-        <td>8</td>
-        <td>14</td>
-        <td>22</td>
+        {{ for p in pb_table.3 }}
+        <td>{{ p }}</td>
+        {{ endfor }}
+    </tr>
     </tr>
 </table>
 

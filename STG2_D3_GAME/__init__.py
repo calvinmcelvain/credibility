@@ -3,14 +3,14 @@ import random
 
 
 doc = """
-Stage 2 Game
+Stage 2 Decision 3 Game & Final Payoff screen
 """
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'STG2_D1_GAME'
+    NAME_IN_URL = 'STG2_D3_GAME'
     PLAYERS_PER_GROUP = 2
-    NUM_ROUNDS = 3
+    NUM_ROUNDS = 1
 
     # Timeout seconds for decision page
     decision_time = None
@@ -23,15 +23,13 @@ class C(BaseConstants):
     decoder = {1: 'Low', 3: 'High', 'Low': 1, 'High': 3}
 
     # Decision Payoff dictionaries
-    pb_payoffs = {
-        1: {1: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}, 3: {1: 300, 2: 300, 3: 300, 4: 300, 5: 300}},
-        2: {1: {1: 0, 2: 0, 3: 300, 4: 300, 5: 300}, 3: {1: 0, 2: 0, 3: 300, 4: 300, 5: 300}},
-        3: {1: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}, 3: {1: 0, 2: 0, 3: 300, 4: 300, 5: 300}}
+    pb_payoff = {
+        1: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0},
+        3: {1: 0, 2: 0, 3: 300, 4: 300, 5: 300}
     }
-    pa_payoffs = {
-        1: {1: {0: 0, 1: 60, 2: 120, 3: 180, 4: 240, 5: 300}, 3: {0: 0, 1: 60, 2: 120, 3: 180, 4: 240, 5: 300}},
-        2: {1: {0: 0, 1: 0, 2: 0, 3: 300, 4: 300, 5: 300}, 3: {0: 0, 1: 0, 2: 0, 3: 300, 4: 300, 5: 300}},
-        3: {1: {0: 0, 1: 0, 2: 0, 3: 300, 4: 300, 5: 300}, 3: {0: 0, 1: 0, 2: 0, 3: 300, 4: 300, 5: 300}}
+    pa_payoff = {
+        1: {0: 0, 1: 0, 2: 0, 3: 300, 4: 300, 5: 300},
+        3: {0: 0, 1: 0, 2: 0, 3: 300, 4: 300, 5: 300}
     }
 
 
@@ -47,7 +45,6 @@ class Group(BaseGroup):
     actual_signal = models.StringField()
     pa_advice = models.StringField()
     decision_towards_payment = models.IntegerField()
-
 
     # Player history functions meant to be passed to template in feedback page
     def pb_payoff(self):
@@ -113,11 +110,9 @@ class P1_PADecision(Page):
         possible_signals = ['Low', 'High']
         player.group.actual_signal = random.choice(possible_signals)
         signal = player.group.actual_signal
-        pb_payoff_table = C.pb_payoffs[player.round_number]
-        pa_payoff_table = C.pa_payoffs[player.round_number]
-        pa_table_preprocessed = {key: list(value.values()) for key, value in pa_payoff_table.items()}
-        pb_table_preprocessed = {key: list(value.values()) for key, value in pb_payoff_table.items()}
-        return {'signal': signal, 'pa_table': pa_table_preprocessed, 'pb_table': pb_table_preprocessed}
+        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
+        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
+        return {'signal': signal, 'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
 
 
 class PlayerBWaitPage(WaitPage):
@@ -144,19 +139,17 @@ class P1_PBDecision(Page):
         else:
             player.group.pa_advice = player.group.get_player_by_role(C.pa_ROLE).pa_low_advice
 
-        pb_payoff_table = C.pb_payoffs[player.round_number]
-        pa_payoff_table = C.pa_payoffs[player.round_number]
-        pa_table_preprocessed = {key: list(value.values()) for key, value in pa_payoff_table.items()}
-        pb_table_preprocessed = {key: list(value.values()) for key, value in pb_payoff_table.items()}
-        return {'advice': player.group.pa_advice, 'pa_table': pa_table_preprocessed, 'pb_table': pb_table_preprocessed}
+        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
+        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
+        return {'advice': player.group.pa_advice, 'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
 
 
 class PayoffWaitPage(WaitPage):
     @staticmethod
     def after_all_players_arrive(group: Group):
         # Payoff Dictionaries
-        pb_payoff = C.pb_payoffs
-        pa_payoff = C.pa_payoffs
+        pb_payoff = C.pb_payoff
+        pa_payoff = C.pa_payoff
         signal = group.actual_signal
 
         # Defining payoffs
@@ -164,11 +157,11 @@ class PayoffWaitPage(WaitPage):
         for player in group.get_players():
             if player.role != C.pa_ROLE:
                 if player.pb_outside_option > player.random_draw:
-                    player.payoff = pb_payoff[player.round_number][decoder[signal]][group.total_players_invest()]
+                    player.payoff = pb_payoff[decoder[signal]][group.total_players_invest()]
                 else:
                     player.payoff = player.random_draw
             else:
-                player.payoff = pa_payoff[player.round_number][decoder[signal]][group.total_players_invest()]
+                player.payoff = pa_payoff[decoder[signal]][group.total_players_invest()]
 
 
 class P2_FinalScreen(Page):
