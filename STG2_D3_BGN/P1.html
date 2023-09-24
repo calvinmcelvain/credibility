@@ -13,14 +13,14 @@ Stage 1: Decision 3
 <p style="margin-bottom: 50px">As in Decision 2, Player A will receive 300 if the majority (three or more) of Player Bs choose to invest, regardless of Quality. This is shown in the payoff table below. </p>
 
 <!-- Player A's Payoff Table -->
-<p class="payofftableheader">Player A's Payoff Table</p>
+<p class="payofftableheader">Player As Payoff Table</p>
 <table class="playerpayofftable" style="display: flex; margin-left: 150px">
     <tr>
         <td style="width: 75px;"></td>
-        <td class="header" colspan="6">Total Investors</td>
+        <td class="header" colspan="5">Total Investors (Including You)</td>
     </tr>
     <tr>
-        <td  style="font-style: italic; width: 75px;">Quality</td>
+        <td style="font-style: italic; width: 75px;">Quality</td>
         <td class="row1">0</td>
         <td class="row1">1</td>
         <td class="row1">2</td>
@@ -30,21 +30,15 @@ Stage 1: Decision 3
     </tr>
     <tr>
         <td class="column1">Low</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>300</td>
-        <td>300</td>
-        <td>300</td>
+        {{ for p in pa_table.1 }}
+        <td>{{ p }}</td>
+        {{ endfor }}
     </tr>
     <tr>
         <td class="column1">High</td>
-        <td>0</td>
-        <td>0</td>
-        <td>0</td>
-        <td>300</td>
-        <td>300</td>
-        <td>300</td>
+        {{ for p in pa_table.3 }}
+        <td>{{ p }}</td>
+        {{ endfor }}
     </tr>
 </table>
 

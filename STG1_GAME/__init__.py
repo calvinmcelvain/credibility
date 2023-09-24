@@ -134,13 +134,12 @@ def is_displayed_pb(player: Player):
 
 
 def custom_export(players):
-    # Header rows
-    yield ['session', 'participant_code', 'role', 'treatment', 'round_number', 'estimated_signal', 'actual_signal', 'payoff', 'low_advice', 'med_advice', 'high_advice', 'invest_decision']
-    # Data
+    # header rows
+    yield ['session', 'participant_code', 'player_id', 'role', 'treatment', 'round_number', 'estimated_signal', 'actual_signal', 'payoff', 'low_advice', 'med_advice', 'high_advice', 'invest_decision']
     for p in players:
         participant = p.participant
         session = p.session
-        yield [session.code, participant.code, participant.role, p.group.treatment, p.round_number, p.group.estimated_signal, p.group.actual_signal, p.payoff, p.pa_low_advice, p.pa_med_advice, p.pa_high_advice, p.pb_decision]
+        yield [session.code, participant.code, participant.PlayerID, participant.role, p.group.treatment, p.round_number, p.group.estimated_signal, p.group.actual_signal, p.payoff, p.group.pa_advice, p.pa_low_advice, p.pa_med_advice, p.pa_high_advice, p.pb_decision]
 
 
 # PAGES
@@ -152,7 +151,9 @@ class P1_PADecision(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        return dict(history=reversed(player.in_previous_rounds()))
+        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
+        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
+        return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table, 'history': reversed(player.in_previous_rounds())}
 
 
 class PlayerBWaitPage(WaitPage):
@@ -175,7 +176,9 @@ class P1_PBDecision(Page):
         estimated_signal = decoder[treatment_signal[treatment][round_number]]
         advice_dict = {'Low': player.group.get_player_by_role(C.pa_ROLE).pa_low_advice, 'Medium': player.group.get_player_by_role(C.pa_ROLE).pa_med_advice, 'High': player.group.get_player_by_role(C.pa_ROLE).pa_high_advice}
         advice = advice_dict[estimated_signal]
-        return {'advice': advice, 'history': reversed(player.in_previous_rounds())}
+        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
+        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
+        return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table, 'advice': advice, 'history': reversed(player.in_previous_rounds())}
 
 
 class P2_BetweenWaitPage(Page):
@@ -188,6 +191,8 @@ class P2_BetweenWaitPage(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
+        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
+        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
         if player.role == C.pa_ROLE:
             treatment_signal = C.treatment_signal
             round_number = player.round_number
@@ -197,8 +202,9 @@ class P2_BetweenWaitPage(Page):
             low = player.pa_low_advice
             med = player.pa_med_advice
             high = player.pa_high_advice
-            return {'estimated_signal': estimated_signal, 'low': low, 'med': med, 'high': high, 'history': reversed(player.in_previous_rounds())}
-
+            return {'estimated_signal': estimated_signal, 'low': low, 'med': med, 'high': high, 'history': reversed(player.in_previous_rounds()), 'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
+        else:
+            return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
 
 class PayoffWaitPage(WaitPage):
     # Defining Payoffs
@@ -235,7 +241,9 @@ class P3_Feedback(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        return dict(history=reversed(player.in_all_rounds()))
+        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
+        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
+        return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table, 'history': reversed(player.in_all_rounds())}
 
     # Storing stage 1 payoffs in participant field
     @staticmethod

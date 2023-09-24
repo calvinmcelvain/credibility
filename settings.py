@@ -1,53 +1,93 @@
 from os import environ
 
+demo_instructions = 2
+demo_game = 2
+demo_final = 2
+
 SESSION_CONFIGS = [
     dict(
-        name='STG1_BGN',
-        display_name="STG1_GAME Instructions",
+        name='Stage_1_Instructions_Only',
+        display_name="Stage 1 Instructions (Only)",
         app_sequence=['START', 'STG1_BGN'],
-        num_demo_participants=2,
+        num_demo_participants=demo_instructions,
     ),
     dict(
-        name='STG1_GAME',
-        display_name="STG1_GAME",
+        name='Stage_1_Game_Only',
+        display_name='Stage 1 Game (Only)',
         app_sequence=['START', 'STG1_GAME'],
-        num_demo_participants=2,
+        num_demo_participants=demo_game,
     ),
     dict(
-        name='Stage_1_Final',
-        display_name="Final: STG1",
+        name='Stage_1',
+        display_name='Stage 1',
         app_sequence=['START', 'STG1_BGN', 'STG1_GAME'],
-        num_demo_participants=2,
+        num_demo_participants=demo_final,
     ),
     dict(
-        name='STG2_D1_BGN',
-        display_name="STG2_D1_GAME Instructions",
+        name='Stage_2_Decision_1_Instructions_Only',
+        display_name='Stage 2: Decision 1 Instructions (Only)',
         app_sequence=['START', 'STG2_D1_BGN'],
-        num_demo_participants=2,
+        num_demo_participants=demo_instructions,
     ),
     dict(
-        name='STG2_D1_GAME',
-        display_name="STG2_D1_GAME",
+        name='Stage_2_Decision_1_Game_Only',
+        display_name='Stage 2: Decision 1 Game (Only)',
         app_sequence=['START', 'STG2_D1_GAME'],
-        num_demo_participants=2,
+        num_demo_participants=demo_game,
     ),
     dict(
-        name='Stage_2_Final',
-        display_name="Final: STG2_D1_GAME",
+        name='Stage_2_Decision_1',
+        display_name='Stage 2: Decision 1',
         app_sequence=['START', 'STG2_D1_BGN', 'STG2_D1_GAME'],
-        num_demo_participants=2,
+        num_demo_participants=demo_final,
     ),
     dict(
-        name='Final',
-        display_name="Final: STG 1 & 2",
-        app_sequence=['START', 'STG1_BGN', 'STG1_GAME', 'STG2_D1_BGN', 'STG2_D1_GAME'],
-        num_demo_participants=2,
+        name='Stage_2_Decision_2_Instructions_Only',
+        display_name='Stage 2: Decision 2 Instructions (Only)',
+        app_sequence=['START', 'STG2_D2_BGN'],
+        num_demo_participants=demo_instructions,
     ),
     dict(
-        name='Final_Games',
-        display_name="Final STG 1 & 2 Games",
-        app_sequence=['START', 'STG1_GAME', 'STG2_D1_GAME'],
-        num_demo_participants=2,
+        name='Stage_2_Decision_2_Game_Only',
+        display_name='Stage 2: Decision 2 Game (Only)',
+        app_sequence=['START', 'STG2_D2_GAME'],
+        num_demo_participants=demo_game,
+    ),
+    dict(
+        name='Stage_2_Decision_2',
+        display_name='Stage 2: Decision 2',
+        app_sequence=['START', 'STG2_D2_BGN', 'STG2_D2_GAME'],
+        num_demo_participants=demo_final,
+    ),
+    dict(
+        name='Stage_2_Decision_3_Instructions_Only',
+        display_name='Stage 2: Decision 3 Instructions (Only)',
+        app_sequence=['START', 'STG2_D3_BGN'],
+        num_demo_participants=demo_instructions,
+    ),
+    dict(
+        name='Stage_2_Decision_3_Game_Only',
+        display_name='Stage 2: Decision 3 Game (Only)',
+        app_sequence=['START', 'STG2_D3_GAME'],
+        num_demo_participants=demo_game,
+    ),
+    dict(
+        name='Stage_2_Decision_3',
+        display_name='Stage 2: Decision 3',
+        app_sequence=['START', 'STG2_D3_BGN', 'STG2_D3_GAME'],
+        num_demo_participants=demo_final,
+    ),
+    dict(
+        name='Stage_2',
+        display_name='Stage 2',
+        app_sequence=['START', 'STG2_D1_BGN', 'STG2_D1_GAME', 'STG2_D2_BGN', 'STG2_D2_GAME', 'STG2_D3_BGN', 'STG2_D3_GAME'],
+        num_demo_participants=demo_final,
+    ),
+    dict(
+        name='Stage_1_Stage_2',
+        display_name='Stage 1 & Stage 2',
+        app_sequence=['START', 'STG1_BGN', 'STG1_GAME', 'STG2_D1_BGN', 'STG2_D1_GAME', 'STG2_D2_BGN', 'STG2_D2_GAME', 'STG2_D3_BGN', 'STG2_D3_GAME'],
+        num_demo_participants=demo_final,
     ),
 ]
 
@@ -60,7 +100,7 @@ SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=0.25, participation_fee=10.00, doc=""
 )
 
-PARTICIPANT_FIELDS = ['role', 'Stage1_payoff']
+PARTICIPANT_FIELDS = ['role', 'Stage1_payoff', 'D1', 'D2', 'PlayerID']
 SESSION_FIELDS = ['group_matrix']
 
 # ISO-639 code

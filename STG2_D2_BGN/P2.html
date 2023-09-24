@@ -28,19 +28,15 @@ Stage 1: Decision 2 (Cont.)
     </tr>
     <tr>
         <td class="column1">Low</td>
-        <td>0</td>
-        <td>0</td>
-        <td>300</td>
-        <td>300</td>
-        <td>300</td>
+        {{ for p in pb_table.1 }}
+        <td>{{ p }}</td>
+        {{ endfor }}
     </tr>
     <tr>
         <td class="column1">High</td>
-        <td>0</td>
-        <td>0</td>
-        <td>300</td>
-        <td>300</td>
-        <td>300</td>
+        {{ for p in pb_table.3 }}
+        <td>{{ p }}</td>
+        {{ endfor }}
     </tr>
 </table>
 

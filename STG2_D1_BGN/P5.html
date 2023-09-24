@@ -30,21 +30,15 @@ Stage 2: Decision 1
     </tr>
     <tr>
         <td class="column1">Low</td>
-        <td>0</td>
-        <td>60</td>
-        <td>120</td>
-        <td>180</td>
-        <td>240</td>
-        <td>300</td>
+        {{ for p in pa_table.1 }}
+        <td>{{ p }}</td>
+        {{ endfor }}
     </tr>
     <tr>
         <td class="column1">High</td>
-        <td>0</td>
-        <td>60</td>
-        <td>120</td>
-        <td>180</td>
-        <td>240</td>
-        <td>300</td>
+        {{ for p in pa_table.3 }}
+        <td>{{ p }}</td>
+        {{ endfor }}
     </tr>
 </table>
 
