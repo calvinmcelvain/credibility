@@ -8,11 +8,7 @@ Stage 2 Decision 3 Game & Final Payoff screen
 
 
 class C(BaseConstants):
-<<<<<<<< HEAD:STG2_D1_GAME/__init__.py
-    NAME_IN_URL = 'STG2_D1_GAME'
-========
     NAME_IN_URL = 'STG2_D3_GAME'
->>>>>>>> Data_Structure:STG2_D3_GAME/__init__.py
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 1
 
