@@ -163,11 +163,31 @@ class PayoffWaitPage(WaitPage):
             else:
                 player.payoff = pa_payoff[decoder[signal]][group.total_players_invest()]
 
-            player.participant.vars['D2'] = player.in_all_rounds()
-
 
 class BeforeNextDecision(WaitPage):
     wait_for_all_groups = True
 
+    @staticmethod
+    def after_all_players_arrive(subsession: Subsession):
+        for player in subsession.get_players():
+            signal = player.group.actual_signal
+            if player.role != C.pa_ROLE:
+                if player.pb_outside_option > player.random_draw:
+                    player.participant.vars['D2'] = {'payoff': player.payoff, 'signal': signal,
+                                                     'advice': player.group.pa_advice, 'draw': player.random_draw, 'decision': 'Invest',
+                                                     'other_investors': player.other_investors(),
+                                                     'investors': player.group.total_players_invest(), 'pa_payoff': player.group.pa_payoff()}
+                else:
+                    player.participant.vars['D2'] = {'payoff': player.payoff, 'signal': signal,
+                                                     'advice': player.group.pa_advice, 'draw': player.random_draw,
+                                                     'decision': "Don't Invest",
+                                                     'other_investors': player.other_investors(),
+                                                     'investors': player.group.total_players_invest(),
+                                                     'pa_payoff': player.group.pa_payoff()}
+            else:
+                player.participant.vars['D2'] = {'payoff': player.payoff, 'signal': signal, 'advice': player.group.pa_advice,
+                                                 'investors': player.group.total_players_invest(),
+                                                 'pb_payoff': player.group.pb_payoff()}
 
-page_sequence = [P1_PADecision, PlayerBWaitPage, P1_PBDecision, BeforeNextDecision]
+
+page_sequence = [P1_PADecision, PlayerBWaitPage, P1_PBDecision, PayoffWaitPage, BeforeNextDecision]

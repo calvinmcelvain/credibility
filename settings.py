@@ -78,6 +78,13 @@ SESSION_CONFIGS = [
         num_demo_participants=demo_final,
     ),
     dict(
+        name='Stage_2_Games',
+        display_name='Stage 2 Games (Only)',
+        app_sequence=['START', 'STG2_D1_GAME', 'STG2_D2_GAME',
+                      'STG2_D3_GAME'],
+        num_demo_participants=demo_final,
+    ),
+    dict(
         name='Stage_2',
         display_name='Stage 2',
         app_sequence=['START', 'STG2_D1_BGN', 'STG2_D1_GAME', 'STG2_D2_BGN', 'STG2_D2_GAME', 'STG2_D3_BGN', 'STG2_D3_GAME'],

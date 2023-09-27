@@ -139,7 +139,7 @@ def custom_export(players):
     for p in players:
         participant = p.participant
         session = p.session
-        yield [session.code, participant.code, participant.PlayerID, participant.role, p.group.treatment, p.round_number, p.group.estimated_signal, p.group.actual_signal, p.payoff, p.group.pa_advice, p.pa_low_advice, p.pa_med_advice, p.pa_high_advice, p.pb_decision]
+        yield [session.code, participant.code, participant.PlayerID, participant.role, p.group.treatment, p.round_number, p.group.estimated_signal, p.group.actual_signal, p.payoff, p.pa_low_advice, p.pa_med_advice, p.pa_high_advice, p.pb_decision]
 
 
 # PAGES
@@ -205,6 +205,7 @@ class P2_BetweenWaitPage(Page):
             return {'estimated_signal': estimated_signal, 'low': low, 'med': med, 'high': high, 'history': reversed(player.in_previous_rounds()), 'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
         else:
             return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
+
 
 class PayoffWaitPage(WaitPage):
     # Defining Payoffs

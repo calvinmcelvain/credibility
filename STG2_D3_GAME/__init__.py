@@ -78,6 +78,13 @@ class Player(BasePlayer):
         else:
             return self.group.total_players_invest()
 
+    def pb_decision(self):
+        if self.role != C.pa_ROLE:
+            if self.pb_outside_option > self.random_draw:
+                return 'Invest'
+            else:
+                return "Don't Invest"
+
 
 # Functions
 def creating_session(subsession):
@@ -170,10 +177,17 @@ class P2_FinalScreen(Page):
     @staticmethod
     def vars_for_template(player: Player):
         stage1_payoff = player.participant.vars['Stage1_payoff']
-        stage2_payoff = player.in_round(player.group.decision_towards_payment).payoff
+        D1 = player.participant.vars['D1']['payoff']
+        D2 = player.participant.vars['D2']['payoff']
+        stage2_payoff_dict = {
+            1: D1,
+            2: D2,
+            3: player.payoff
+        }
+        stage2_payoff = stage2_payoff_dict[player.group.decision_towards_payment]
 
         # Calculating Participant payoff (Based on chosen decision)
-        remainder = (player.participant.payoff - stage1_payoff - player.in_round(player.group.in_round(1).decision_towards_payment).payoff)
+        remainder = (player.participant.payoff - stage1_payoff - stage2_payoff)
         player.participant.payoff = (player.participant.payoff - remainder)
 
         final_payoff = stage1_payoff + stage2_payoff
@@ -182,9 +196,14 @@ class P2_FinalScreen(Page):
         real_final = final_payoff.to_real_world_currency(player.session)
         final = real_final + 10
         decision_counts = player.group.in_round(1).decision_towards_payment
+        history = {
+            1: player.participant.vars['D1'],
+            2: player.participant.vars['D2'],
+            3: player.in_all_rounds()
+        }
         return {'final_payoff': final_payoff, 'Stage_1': stage1_payoff, 'Stage_2': stage2_payoff
                 , 'real_final': real_final, 'real_Stage_1': real_stg1, 'real_Stage_2': real_stg2,
-                'final': final, 'decision_counts': decision_counts, 'player_history': dict(history=player.in_all_rounds())}
+                'final': final, 'decision_counts': decision_counts, 'history': history}
 
     @staticmethod
     def is_displayed(player: Player):
