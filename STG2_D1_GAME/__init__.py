@@ -9,7 +9,7 @@ Stage 2 Decision 1 Game
 
 class C(BaseConstants):
     NAME_IN_URL = 'STG2_D1_GAME'
-    PLAYERS_PER_GROUP = 2
+    PLAYERS_PER_GROUP = 6
     NUM_ROUNDS = 1
 
     # Timeout seconds for decision page
@@ -44,7 +44,6 @@ class Group(BaseGroup):
     # Randomly drawn fields
     actual_signal = models.StringField()
     pa_advice = models.StringField()
-    decision_towards_payment = models.IntegerField()
 
     # Player history functions meant to be passed to template in feedback page
     def pb_payoff(self):
@@ -83,10 +82,11 @@ class Player(BasePlayer):
 def creating_session(subsession):
     # Retrieving group matrix from Stage 1
     subsession.set_group_matrix(subsession.session.vars['group_matrix'])
-
-    # Randomly choosing decision to count
-    for group in subsession.get_groups():
-        group.decision_towards_payment = random.randint(1, 3)
+    # Assigning Treatments
+    groups = subsession.get_groups()
+    treatments = ['LCLE', 'LCHE', 'HCLE', 'HCHE']
+    for i, group in enumerate(groups):
+        group.treatment = treatments[i % len(treatments)]
 
 
 def is_displayed_pa(player: Player):
@@ -97,6 +97,15 @@ def is_displayed_pa(player: Player):
 def is_displayed_pb(player: Player):
     # Is displayed function for role Player B
     return player.role != C.pa_ROLE
+
+
+def custom_export(players):
+    # header rows
+    yield ['session', 'participant_code', 'player_id', 'role', 'treatment', 'decision_number', 'actual_signal', 'payoff', 'low_advice', 'high_advice', 'random_draw', 'max_outside_option']
+    for p in players:
+        participant = p.participant
+        session = p.session
+        yield [session.code, participant.code, participant.PlayerID, participant.role, p.group.treatment, 1, p.group.actual_signal, p.payoff, p.pa_low_advice, p.pa_high_advice, p.random_draw, p.pb_outside_option]
 
 
 # PAGES

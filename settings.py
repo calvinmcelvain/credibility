@@ -2,7 +2,7 @@ from os import environ
 
 demo_instructions = 2
 demo_game = 2
-demo_final = 2
+demo_final = 6
 
 SESSION_CONFIGS = [
     dict(
