@@ -236,25 +236,14 @@ class P13(Page):
             return {0: 'all_ready'}
 
 
-class P14_Quiz(Page):
-    timeout_seconds = C.quiz_time
+class P14(Page):
+    timeout_seconds = C.instructions_time
 
     @staticmethod
     def vars_for_template(player: Player):
         pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
         pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
         return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
-
-
-class P15_standby(Page):
-    timeout_seconds = C.standby_time
-
-    @staticmethod
-    def vars_for_template(player: Player):
-        if player.participant.vars['role'] == 'Player A':
-            return {'role': 'Player A'}
-        else:
-            return {'role': 'Player B'}
 
     @staticmethod
     def live_method(player: Player, data):
@@ -265,4 +254,33 @@ class P15_standby(Page):
             return {0: 'all_ready'}
 
 
-page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14_Quiz, P15_standby]
+class P15_Quiz(Page):
+    timeout_seconds = C.quiz_time
+
+    @staticmethod
+    def vars_for_template(player: Player):
+        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
+        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
+        return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
+
+
+class P16_standby(Page):
+    timeout_seconds = C.standby_time
+
+    @staticmethod
+    def vars_for_template(player: Player):
+        if player.participant.vars['role'] == 'Advisor':
+            return {'role': 'Advisor'}
+        else:
+            return {'role': 'Investor'}
+
+    @staticmethod
+    def live_method(player: Player, data):
+        player.group.all_players_ready += 1
+        players_in_session = len(player.subsession.get_players())
+        if player.group.all_players_ready == players_in_session:
+            player.group.all_players_ready = 0
+            return {0: 'all_ready'}
+
+
+page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14, P15_Quiz, P16_standby]

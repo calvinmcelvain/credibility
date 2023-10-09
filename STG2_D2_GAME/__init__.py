@@ -9,7 +9,7 @@ Stage 2 Decision 2 Game
 
 class C(BaseConstants):
     NAME_IN_URL = 'STG2_D2_GAME'
-    PLAYERS_PER_GROUP = 6
+    PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 1
 
     # Timeout seconds for decision page
@@ -76,6 +76,13 @@ class Player(BasePlayer):
             return others
         else:
             return self.group.total_players_invest()
+
+    def pb_decision(self):
+        if self.role != C.pa_ROLE:
+            if self.pb_outside_option > self.random_draw:
+                return 'Invest'
+            else:
+                return "Keep"
 
 
 # Functions
@@ -182,18 +189,12 @@ class BeforeNextDecision(WaitPage):
         for player in subsession.get_players():
             signal = player.group.actual_signal
             if player.role != C.pa_ROLE:
-                if player.pb_outside_option > player.random_draw:
-                    player.participant.vars['D2'] = {'payoff': player.payoff, 'signal': signal,
-                                                     'advice': player.group.pa_advice, 'draw': player.random_draw, 'decision': 'Invest',
-                                                     'other_investors': player.other_investors(),
-                                                     'investors': player.group.total_players_invest(), 'pa_payoff': player.group.pa_payoff()}
-                else:
-                    player.participant.vars['D2'] = {'payoff': player.payoff, 'signal': signal,
-                                                     'advice': player.group.pa_advice, 'draw': player.random_draw,
-                                                     'decision': "Don't Invest",
-                                                     'other_investors': player.other_investors(),
-                                                     'investors': player.group.total_players_invest(),
-                                                     'pa_payoff': player.group.pa_payoff()}
+                player.participant.vars['D1'] = {'payoff': player.payoff, 'signal': signal,
+                                                 'advice': player.group.pa_advice, 'draw': player.random_draw,
+                                                 'decision': player.pb_decision(),
+                                                 'other_investors': player.other_investors(),
+                                                 'investors': player.group.total_players_invest(),
+                                                 'pa_payoff': player.group.pa_payoff()}
             else:
                 player.participant.vars['D2'] = {'payoff': player.payoff, 'signal': signal, 'advice': player.group.pa_advice,
                                                  'investors': player.group.total_players_invest(),

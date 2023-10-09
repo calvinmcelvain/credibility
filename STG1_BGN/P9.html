@@ -5,12 +5,13 @@
 <script src="{{ static 'JavaScript_Crd2.js' }}"></script>
 
 {{ block title }}
-Making Decisions in the Games
+Advisor's Information (Cont.)
 {{ endblock }}
 
 <!--Description Body-->
-<p>Recall that each game starts with Player A receiving an estimate of the quality level. <b><i>Before receiving their estimate,</i></b> Player A will choose a message for each possible estimate, recommending either “Invest” or “Do Not Invest.” The computer will then show the Player A their estimate and send whatever message the Player A chose for this estimate to all of the Player Bs in their group. The Player Bs choose whether or not to invest after seeing this message.</p>
-<p>To help you understand how this works, we are now going to walk through a practice round. We will tell you what choices to make and this practice round will not count towards your payment.  In other words, this practice round is only to illustrate how you will actually make decisions in each round of Stage 1. As we go through the sample round, please do not make any choices until the experimenter tells you to do so.</p>
+<p>If the Advisor receives an incorrect estimate, each of the two possible incorrect levels is equally likely. In other words, if the estimate is <b><i>not</i></b> equal to the true quality of the investment opportunity, there is a 1 in 2 chance (like flipping a coin) that it is equal to each of the other possible qualities.</p>
+<p>So, for example, if the <i>Quality</i> in a round is High, then there is a 83.3 percent (5 in 6) chance that the Investor will receive an estimate equal to “High”, and there is a 16.7 percent (1 in 6) that the Advisor will receive an estimate equal to one of the other possible values of <i>Quality</i> (“Low” or “Medium”). Each of the other possible estimates is equally likely. </p>
+<p>This estimate is <i>private</i> information. In other words, the Advisor can see the estimate, but the Investors will never be told what estimate their group’s Advisor received.</p>
 <p style="margin-top: 100px; margin-bottom: unset">Please click "Continue"</p>
 <p style="font-size: 16px; margin-top: unset; margin-bottom: 10px" >*** Page will not continue until everyone has clicked continue ***</p>
 
@@ -35,4 +36,5 @@ function liveRecv(data) {
     }
 }
 </script>
+
 {{ endblock }}

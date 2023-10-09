@@ -9,7 +9,7 @@ Stage 2 Decision 3 Game & Final Payoff screen
 
 class C(BaseConstants):
     NAME_IN_URL = 'STG2_D3_GAME'
-    PLAYERS_PER_GROUP = 6
+    PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 1
 
     # Timeout seconds for decision page
@@ -17,7 +17,7 @@ class C(BaseConstants):
     feedback_time = None
 
     # Defining "Player A" role
-    pa_ROLE = 'Player A'
+    pa_ROLE = 'Advisor'
 
     # Signal decoder
     decoder = {1: 'Low', 3: 'High', 'Low': 1, 'High': 3}
@@ -83,7 +83,7 @@ class Player(BasePlayer):
             if self.pb_outside_option > self.random_draw:
                 return 'Invest'
             else:
-                return "Don't Invest"
+                return "Keep"
 
 
 # Functions

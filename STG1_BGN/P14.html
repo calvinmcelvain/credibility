@@ -6,51 +6,11 @@
 
 <!-- Title -->
 <span class="sample" >**Sample**</span>
-<div style="margin-bottom: 10px; margin-top: 10px">
-    <div align="left" style="position: absolute"><h2>Round 7</h2></div>
-    <div align="right"><span class="advice">Advisor's Advice: <b>Invest</b></span></div>
-</div>
-<h3>You are a Investor</h3>
-
+<h2 class="Title">End of Round X</h2>
+<h3>You are the Advisor</h3>
 
 <!--Payoff Tables-->
 <div class="tables-container">
-    <div>
-        <p class="payofftableheader">Investors Payoff Table</p>
-        <table class="playerpayofftable" style="display: flex; margin: unset">
-            <tr>
-                <td style="width: 75px;"></td>
-                <td class="header" colspan="5">Total Investors (including you)</td>
-            </tr>
-            <tr>
-                <td style="font-style: italic; width: 75px;">Quality</td>
-                <td class="row1">1</td>
-                <td class="row1">2</td>
-                <td class="row1">3</td>
-                <td class="row1">4</td>
-                <td class="row1">5</td>
-            </tr>
-            <tr>
-                <td class="column1">Low</td>
-                {{ for p in pb_table.1 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-            <tr>
-                <td class="column1">Medium</td>
-                {{ for p in pb_table.2 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-            <tr>
-                <td class="column1">High</td>
-                {{ for p in pb_table.3 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-        </table>
-    </div>
-    <div style="margin: 20px"></div>
     <div>
         <p class="payofftableheader">Advisor's Payoff Table</p>
         <table class="playerpayofftable" style="display: flex; margin: unset">
@@ -87,100 +47,146 @@
             </tr>
         </table>
     </div>
+    <div style="margin: 20px"></div>
+    <div>
+        <p class="payofftableheader">Investors Payoff Table</p>
+        <table class="playerpayofftable" style="display: flex; margin: unset">
+            <tr>
+                <td style="width: 75px;"></td>
+                <td class="header" colspan="5">Total Investors</td>
+            </tr>
+            <tr>
+                <td style="font-style: italic; width: 75px;">Quality</td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
+                <td class="row1">5</td>
+            </tr>
+            <tr>
+                <td class="column1">Low</td>
+                {{ for p in pb_table.1 }}
+                <td>{{ p }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td class="column1">Medium</td>
+                {{ for p in pb_table.2 }}
+                <td>{{ p }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td class="column1">High</td>
+                {{ for p in pb_table.3 }}
+                <td>{{ p }}</td>
+                {{ endfor }}
+            </tr>
+        </table>
+    </div>
 </div>
 
-<!--Form Fields/Decisions-->
-<h4 style="margin-bottom: 20px">Remember, If you choose to Keep, you will receive a payoff of 12 ECUs</h4>
-<table class="decisiontable" style="width: 450px">
-    <tr>
-        <td class="playera"><input name="decision" type="radio"> Invest</td>
-        <td class="playera"><input name="decision" type="radio"> Keep</td>
-    </tr>
-</table>
 
 <!--Player History Table-->
-<div style="margin: 50px"></div>
+<div style="margin: 75px"></div>
 <h4 class="History">History Table:</h4>
 <div class="tablescroll">
     <table class="history_header">
         <tr>
             <th>Round</th>
-            <th>Advisor's Advice</th>
-            <th>Your Decision</th>
-            <th>Other Investors</th>
+            <th>Low Advice</th>
+            <th>Medium Advice</th>
+            <th>High Advice</th>
+            <th>Estimate Sig.</th>
+            <th>Actual Sig.</th>
             <th>Total Investors</th>
-            <th>True Quality</th>
             <th>Your Payoff</th>
-            <th>Advisor's Payoff</th>
+            <th>Investors Payoff</th>
         </tr>
     </table>
     <table id="data_table">
         <tr>
-            <td>6</td>
-            <td>Invest</td>
-            <td>Invest</td>
-            <td>3</td>
-            <td>4</td>
-            <td>Medium</td>
             <td>7</td>
-            <td>6</td>
-        </tr>
-        <tr>
-            <td>5</td>
+            <td bgcolor="yellow">Invest</td>
             <td>Keep</td>
-            <td>Invest</td>
-            <td>1</td>
-            <td>2</td>
+            <td>Keep</td>
             <td>Low</td>
-            <td>1</td>
-            <td>3</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Invest</td>
-            <td>Invest</td>
-            <td>4</td>
+            <td>Low</td>
             <td>5</td>
-            <td>Low</td>
-            <td>4</td>
             <td>3</td>
+            <td>4</td>
         </tr>
         <tr>
-            <td>3</td>
+            <td>6</td>
+            <td bgcolor="yellow">Invest</td>
             <td>Invest</td>
             <td>Invest</td>
-            <td>3</td>
-            <td>4</td>
+            <td>Low</td>
             <td>High</td>
-            <td>14</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Keep</td>
-            <td>Invest</td>
-            <td>2</td>
-            <td>3</td>
-            <td>Medium</td>
-            <td>5</td>
+            <td>4</td>
             <td>6</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Don't Invest</td>
+            <td bgcolor="yellow">Keep</td>
+            <td>Invest</td>
+            <td>Low</td>
+            <td>High</td>
+            <td>2</td>
+            <td>3</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td bgcolor="yellow">Invest</td>
+            <td>Invest</td>
+            <td>Keep</td>
+            <td>Low</td>
+            <td>High</td>
+            <td>5</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Invest</td>
+            <td>Invest</td>
+            <td bgcolor="yellow">Keep</td>
+            <td>High</td>
+            <td>Low</td>
+            <td>4</td>
+            <td>0</td>
+            <td>14</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td width="106.39">Keep</td>
+            <td bgcolor="yellow">Keep</td>
+            <td>Invest</td>
+            <td>Medium</td>
+            <td>Medium</td>
+            <td>3</td>
+            <td>6</td>
+            <td>5</td>
         </tr>
         <tr>
             <td>1</td>
-            <td>Invest</td>
-            <td>Invest</td>
-            <td>0</td>
-            <td>1</td>
+            <td>Keep</td>
+            <td>Keep</td>
+            <td bgcolor="yellow">Keep</td>
+            <td>High</td>
             <td>Low</td>
-            <td>0</td>
+            <td>1</td>
             <td>3</td>
+            <td>0</td>
         </tr>
     </table>
 </div>
 
 <!-- Next Button with confirmation pop-up & Instructions Button-->
 <div style="margin-top: 100px">
-    <button class="Instructions" type="button" id="validation" onclick="validating_sample()">Continue</button>
+    <button class="Instructions" type="button" id="validation" onclick="validating()">Continue</button>
     <button id="pop-up" class="Instructions" style="float: left; background-color: red">Instructions</button>
 </div>
 
@@ -303,9 +309,6 @@ window.onload = function () {
 
     if (IsClicked === 'true') {
         document.getElementById('validation').disabled = true;
-        document.querySelectorAll('input[type=radio]').forEach(function (radioButton) {
-            radioButton.disabled = true
-        });
     }
     // Adjusting History Width
   const headerCells = document.querySelectorAll('.history_header th');
@@ -315,7 +318,6 @@ window.onload = function () {
       dataCells[index].style.width = headerCell.offsetWidth + 'px';
   });
 };
-
 // Websocket to check if all players are ready
 function liveRecv(data) {
     if (data === 'all_ready') {
