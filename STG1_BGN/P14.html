@@ -5,7 +5,8 @@
 <script src="{{ static 'JavaScript_Crd2.js' }}"></script>
 
 <!-- Title -->
-<h2 class="Title">Round {{ player.round_number }}</h2>
+<span class="sample" >**Sample**</span>
+<h2 class="Title">End of Round X</h2>
 <h3>You are the Advisor</h3>
 
 <!--Payoff Tables-->
@@ -84,43 +85,9 @@
     </div>
 </div>
 
-<!--Form Fields/Decisions-->
-<h4>Remember, the Investors who choose not invest will receive a payoff of 12 ECUs</h4>
-<h5>*** You will see the estimated signal marked in <span class="highlight">yellow</span> after you choose what advice to give below ***</h5>
-<table class="decisiontable">
-    <tr>
-        <th>Low</th>
-        <th>Medium</th>
-        <th>High</th>
-    </tr>
-    <tr style="height: 5px"></tr>
-    <tr>
-        <td><input name="pa_low_advice" value="Invest" type="radio"> Invest</td>
-        <td><input name="pa_med_advice" value="Invest" type="radio"> Invest</td>
-        <td><input name="pa_high_advice" value="Invest" type="radio"> Invest</td>
-    </tr>
-    <tr style="height: 5px"></tr>
-    <tr>
-        <td><input name="pa_low_advice" value="Keep" type="radio"> Keep</td>
-        <td><input name="pa_med_advice" value="Keep" type="radio"> Keep</td>
-        <td><input name="pa_high_advice" value="Keep" type="radio"> Keep</td>
-    </tr>
-    <tr>
-        <td rowspan="2" class="error">{{ formfield_errors 'pa_low_advice' }}</td>
-        <td rowspan="2" class="error">{{ formfield_errors 'pa_med_advice' }}</td>
-        <td rowspan="2" class="error">{{ formfield_errors 'pa_high_advice' }}</td>
-    </tr>
-</table>
 
-<!-- Next Button with confirmation pop-up & Instructions Button-->
-<div style="margin-top: 50px;">
-    <button onclick="ConfirmDecision(event)" class="Instructions">Continue</button>
-    <button id="pop-up" class="Instructions" style="float: left; background-color: red">Instructions</button>
-</div>
-
-{{ if player.round_number != 1 }}
 <!--Player History Table-->
-<div style="margin: 100px"></div>
+<div style="margin: 75px"></div>
 <h4 class="History">History Table:</h4>
 <div class="tablescroll">
     <table class="history_header">
@@ -137,22 +104,91 @@
         </tr>
     </table>
     <table id="data_table">
-        {{ for p in history }}
         <tr>
-            <td>{{ p.round_number }}</td>
-            <td{{ if p.group.estimated_signal == 'Low' }} bgcolor="yellow" {{ else }}{{ endif }} >{{ p.pa_low_advice }}</td>
-            <td{{ if p.group.estimated_signal == 'Medium' }} bgcolor="yellow" {{ else }}{{ endif }} >{{ p.pa_med_advice }}</td>
-            <td{{ if p.group.estimated_signal == 'High' }} bgcolor="yellow" {{ else }}{{ endif }} >{{ p.pa_high_advice }}</td>
-            <td>{{ p.group.estimated_signal }}</td>
-            <td>{{ p.group.actual_signal }}</td>
-            <td>{{ p.group.total_players_invest }}</td>
-            <td>{{ p.payoff }}</td>
-            <td>{{ p.group.pb_payoff }}</td>
+            <td>7</td>
+            <td bgcolor="yellow">Invest</td>
+            <td>Keep</td>
+            <td>Keep</td>
+            <td>Low</td>
+            <td>Low</td>
+            <td>5</td>
+            <td>3</td>
+            <td>4</td>
         </tr>
-        {{ endfor }}
+        <tr>
+            <td>6</td>
+            <td bgcolor="yellow">Invest</td>
+            <td>Invest</td>
+            <td>Invest</td>
+            <td>Low</td>
+            <td>High</td>
+            <td>4</td>
+            <td>6</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Don't Invest</td>
+            <td bgcolor="yellow">Keep</td>
+            <td>Invest</td>
+            <td>Low</td>
+            <td>High</td>
+            <td>2</td>
+            <td>3</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td bgcolor="yellow">Invest</td>
+            <td>Invest</td>
+            <td>Keep</td>
+            <td>Low</td>
+            <td>High</td>
+            <td>5</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Invest</td>
+            <td>Invest</td>
+            <td bgcolor="yellow">Keep</td>
+            <td>High</td>
+            <td>Low</td>
+            <td>4</td>
+            <td>0</td>
+            <td>14</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td width="106.39">Keep</td>
+            <td bgcolor="yellow">Keep</td>
+            <td>Invest</td>
+            <td>Medium</td>
+            <td>Medium</td>
+            <td>3</td>
+            <td>6</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Keep</td>
+            <td>Keep</td>
+            <td bgcolor="yellow">Keep</td>
+            <td>High</td>
+            <td>Low</td>
+            <td>1</td>
+            <td>3</td>
+            <td>0</td>
+        </tr>
     </table>
 </div>
-{{ endif }}
+
+<!-- Next Button with confirmation pop-up & Instructions Button-->
+<div style="margin-top: 100px">
+    <button class="Instructions" type="button" id="validation" onclick="validating()">Continue</button>
+    <button id="pop-up" class="Instructions" style="float: left; background-color: red">Instructions</button>
+</div>
 
 <!-- Instructions pop-up -->
 <div id="popup-window">
@@ -267,8 +303,14 @@ closeButton2.addEventListener("click", function() {
 popupWindow.style.display = "none";
 });
 
-// Adjusting History Width
-window.onload = function() {
+// Checking if button has been clicked
+window.onload = function () {
+    const IsClicked = sessionStorage.getItem('IsClicked');
+
+    if (IsClicked === 'true') {
+        document.getElementById('validation').disabled = true;
+    }
+    // Adjusting History Width
   const headerCells = document.querySelectorAll('.history_header th');
   const dataCells = document.querySelectorAll('#data_table td');
 
@@ -276,6 +318,13 @@ window.onload = function() {
       dataCells[index].style.width = headerCell.offsetWidth + 'px';
   });
 };
+// Websocket to check if all players are ready
+function liveRecv(data) {
+    if (data === 'all_ready') {
+        sessionStorage.setItem('IsClicked', 'false')
+        document.forms[0].submit();
+    }
+}
 </script>
 
 {{ endblock }}

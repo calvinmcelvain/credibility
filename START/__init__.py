@@ -34,9 +34,9 @@ def creating_session(subsession):
         player.participant.vars['PlayerID'] = 00
         player.participant.vars['Stage1_payoff'] = cu(0)
         if player.id_in_group == 1:
-            player.participant.vars['role'] = 'Player A'
+            player.participant.vars['role'] = 'Advisor'
         else:
-            player.participant.vars['role'] = 'Player B'
+            player.participant.vars['role'] = 'Investor'
 
 
 # PAGES

@@ -15,7 +15,7 @@ class C(BaseConstants):
     feedback_time = None
 
     # Defining Role "Player A"
-    pa_ROLE = 'Player A'
+    pa_ROLE = 'Advisor'
 
     # Signal Dictionaries
     treatment_signal = {
@@ -99,7 +99,7 @@ class Player(BasePlayer):
     def player_decision(self):
         if self.role != C.pa_ROLE:
             if self.payoff == C.pb_endowment:
-                return "Don't Invest"
+                return "Keep"
             else:
                 return "Invest"
 

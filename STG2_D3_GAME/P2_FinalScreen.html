@@ -13,6 +13,7 @@
 <div style="margin: 75px"></div>
 <h4 class="History">Stage 2 Feedback:</h4>
 <h5>*** The decision randomly chosen towards payment is marked in <span class="highlight">yellow</span> ***</h5>
+
 {{ if player.role == C.pa_ROLE }}
 
 <div class="tablescroll">
@@ -23,7 +24,7 @@
             <th>Advice Given</th>
             <th>Total Investors</th>
             <th>Your Payoff</th>
-            <th>Player B Payoff</th>
+            <th>Investors Payoff</th>
         </tr>
     </table>
     <table id="data_table">
@@ -62,14 +63,14 @@
     <table class="history_header">
         <tr>
             <th>Round</th>
-            <th>Player A's Advice</th>
+            <th>Advisor's Advice</th>
             <th>Outside Draw</th>
             <th>Your Decision</th>
             <th>Other Investors</th>
             <th>Total Investors</th>
             <th>True Quality</th>
             <th>Your Payoff</th>
-            <th>Player A Payoff</th>
+            <th>Advisor's Payoff</th>
         </tr>
     </table>
     <table id="data_table">
@@ -102,7 +103,7 @@
             <td>{{ value.random_draw }}</td>
             <td>{{ value.pb_decision() }}</td>
             <td>{{ value.other_investors() }}</td>
-            <td>{{ value.group.total_players_invest }}</td>
+            <td>{{ value.group.totala_players_invest }}</td>
             <td>{{ value.group.actual_signal }}</td>
             <td>{{ value.payoff }}</td>
             <td>{{ value.group.pa_payoff() }}</td>

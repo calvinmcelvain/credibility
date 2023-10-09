@@ -163,14 +163,21 @@ h4.History {
     }
     table.decisiontable th {
         font-size: 21px;
+        width: 190px;
+        text-align: center;
         text-decoration: underline;
     }
     table.decisiontable td {
         font-size: 17px;
         height: 25px;
+        text-align: center;
+    }
+    button.input {
+        margin: unset;
     }
     table.decisiontable .header_ {
         font-size: 19px;
+        height: 50px;
         font-style: italic;
         text-align: center;
     }

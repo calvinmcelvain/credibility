@@ -8,12 +8,12 @@
 
 <!-- Title -->
 <h2 class="Title">End of Round {{ player.round_number }}</h2>
-<h3>You are Player A</h3>
+<h3>You are the Advisor</h3>
 
 <!--Payoff Tables-->
 <div class="tables-container">
     <div>
-        <p class="payofftableheader">Your Payoff Table</p>
+        <p class="payofftableheader">Advisor's Payoff Table</p>
         <table class="playerpayofftable" style="display: flex; margin: unset">
             <tr>
                 <td style="width: 75px;"></td>
@@ -50,7 +50,7 @@
     </div>
     <div style="margin: 20px"></div>
     <div>
-        <p class="payofftableheader">Player Bs Payoff Table</p>
+        <p class="payofftableheader">Investors Payoff Table</p>
         <table class="playerpayofftable" style="display: flex; margin: unset">
             <tr>
                 <td style="width: 75px;"></td>
@@ -100,8 +100,8 @@
             <th>Estimate Sig.</th>
             <th>Actual Sig.</th>
             <th>Total Investors</th>
-            <th>Your Payoff</th>
-            <th>Player Bs Payoff</th>
+            <th>Advisor's Payoff</th>
+            <th>Investors Payoff</th>
         </tr>
     </table>
     <table id="data_table">
@@ -125,12 +125,12 @@
 
 <!-- Title -->
 <h2 class="Title">End of Round {{ player.round_number }}</h2>
-<h3>You are Player B</h3>
+<h3>You are a Investor</h3>
 
 <!--Payoff Tables-->
 <div class="tables-container">
     <div>
-        <p class="payofftableheader">Your Payoff Table</p>
+        <p class="payofftableheader">Investors Payoff Table</p>
         <table class="playerpayofftable" style="display: flex; margin: unset">
             <tr>
                 <td style="width: 75px;"></td>
@@ -166,7 +166,7 @@
     </div>
     <div style="margin: 20px"></div>
     <div>
-        <p class="payofftableheader">Player A's Payoff Table</p>
+        <p class="payofftableheader">Advisor's Payoff Table</p>
         <table class="playerpayofftable" style="display: flex; margin: unset">
             <tr>
                 <td style="width: 75px;"></td>
@@ -211,13 +211,13 @@
     <table class="history_header">
         <tr>
             <th>Round</th>
-            <th>Player A's Advice</th>
+            <th>Advisor's Advice</th>
             <th>Your Decision</th>
             <th>Other Investors</th>
             <th>Total Investors</th>
             <th>True Quality</th>
             <th>Your Payoff</th>
-            <th>Player A Payoff</th>
+            <th>Advisor's Payoff</th>
         </tr>
     </table>
     <table id="data_table">
@@ -251,11 +251,11 @@
     <p>This is an experiment in decision-making. In addition to a $10 participation fee, you will be paid any additional money you accumulate during the experiment at the conclusion of today's session.All payoffs during the experiment are denominated in an artificial currency, experimental currency units (ECU). At the end of the experiment, ECU will be converted to cash at the rate of <span class="highlight">$1 per 25</span> ECU. Upon completion of the experiment, your earnings will be converted to dollars and you will be paid privately, by check. The exact amount you receive will be determined during the experiment and will depend on your decisions and the decisions of others. The identities of participants will remain confidential, meaning that at no point in time will we identify the role or actions of any individual to other participants. In other words, the actions that you take during this experiment will remain confidential.</p>
     <h3 style="margin-bottom: unset">Description of Game:</h3>
     <h4>Description of Stages, Rounds, and Groups</h4>
-    <p>This experiment will consist of two stages. Right now we will only go through the instructions for Stage 1. You will receive instructions for Stage 2 after Stage 1 concludes. Stage 1 will last for 30 rounds. In each round, you will be in a six-person group with five other participants. The participants you are grouped with will be the same for all rounds of Stage 1. Your group will consist of participants in two roles. Five of the participants will participate in the experiment in the role of <i>Player A</i>. The remaining participants in each group will be in the role of <i>Player B</i>. You will be informed of your role (<i>Player A</i> or <i>Player B</i>) prior to the beginning of Stage 1.</p></p>
+    <p>This experiment will consist of two stages. Right now we will only go through the instructions for Stage 1. You will receive instructions for Stage 2 after Stage 1 concludes. Stage 1 will last for 30 rounds. In each round, you will be in a six-person group with five other participants. The participants you are grouped with will be the same for all rounds of Stage 1. Your group will consist of participants in two roles. Five of the participants will participate in the experiment in the role of <i>Advisor</i>. The remaining participants in each group will be in the role of <i>Investor</i>. You will be informed of your role (<i>Advisor</i> or <i>Investor</i>) prior to the beginning of Stage 1.</p>
     <h4>Description of the Decision Tasks in Stage 1</h4>
-    <p>The five Player Bs in each group will begin each round with an endowment of 12 ECU. If you are a Player B, you will decide individually whether to invest your 12 ECU endowment into an investment opportunity or to keep it. You cannot split your endowment – you must either invest all 12 ECU or keep all 12 ECU. Therefore, each Player B’s only decision in each round is whether to invest or keep their endowment. Before the Player Bs make their decisions, the Player A in each group will receive an estimate of the quality of the investment opportunity. We will explain the details of this estimate later in the instructions. After seeing their estimate, the Player A will then send a message to all Player Bs in the group. This message will include a recommendation: either “Invest” or “Do Not Invest.”. All Player Bs will receive the same message from the Player A. They can see the message, but not Player A’s estimate. After receiving Player A’s message, all Player Bs will make their investment decisions at the same time.  This means that Player Bs will not know whether the other members of their group have invested or not when making their own decisions.</p>
-    <h3 style="margin-bottom: unset">Description of Player B Payoffs:</h3>
-    <p>If you are a Player B and you choose to <i>keep</i> your endowment, you will retain your initial 12 ECU. This will be your payoff for the round. If you are a Player B and choose to invest your endowment, your payoff will depend on the total number of Player B’s in your group, including you, that invest (<i>Total Investors</i>) and the quality of the investment opportunity (<i>Quality</i>). The <i>Quality</i> will be drawn randomly in each round from three possible levels: Low, Medium, or High. Each quality level is equally likely to be drawn. In other words, the chance of each of level being drawn is 1/3. You can imagine that the computer rolls a single six-sided die at the beginning of each round. If the roll is a 1 or 2, the quality is low. If the roll is a 3 or 4, the quality is medium. And if the computer rolls a 5 or 6, the quality is high. A new quality level is drawn in each round (i.e. a new die roll), so knowing the quality drawn in the previous round tells you nothing about the quality drawn for the current round. <b>You will not know the quality level of the investment opportunity when you decide to invest. </b>When you make your decision in each round, you will see the payoff table below showing your payoffs if you invest, for each possible combination of <i>Quality</i> (given by the row) and <i>Total Investors</i> (given by the column), the total number of group members that invest <i>including you.</i></p>
+    <p>The five Investors in each group will begin each round with an endowment of 12 ECU. If you are a Investor, you will decide individually whether to invest your 12 ECU endowment into an investment opportunity or to keep it. You cannot split your endowment – you must either invest all 12 ECU or keep all 12 ECU. Therefore, each Investor’s only decision in each round is whether to invest or keep their endowment. Before the Investors make their decisions, the Advisor in each group will receive an estimate of the quality of the investment opportunity. We will explain the details of this estimate later in the instructions. After seeing their estimate, the Advisor will then send a message to all Investors in the group. This message will include a recommendation: either “Invest” or “Keep”. All Investors will receive the same message from the Advisor. They can see the message, but not Advisor’s estimate. After receiving Advisor’s message, all Investors will make their investment decisions at the same time.  This means that Investors will not know whether the other members of their group have invested or not when making their own decisions.</p>
+    <h3 style="margin-bottom: unset">Description of Investors Payoffs:</h3>
+    <p>If you are a Investor and you choose to <i>keep</i> your endowment, you will retain your initial 12 ECU. This will be your payoff for the round. If you are a Investor and choose to invest your endowment, your payoff will depend on the total number of Investor’s in your group, including you, that invest (<i>Total Investors</i>) and the quality of the investment opportunity (<i>Quality</i>). The <i>Quality</i> will be drawn randomly in each round from three possible levels: Low, Medium, or High. Each quality level is equally likely to be drawn. In other words, the chance of each of level being drawn is 1/3. You can imagine that the computer rolls a single six-sided die at the beginning of each round. If the roll is a 1 or 2, the quality is low. If the roll is a 3 or 4, the quality is medium. And if the computer rolls a 5 or 6, the quality is high. A new quality level is drawn in each round (i.e. a new die roll), so knowing the quality drawn in the previous round tells you nothing about the quality drawn for the current round. <b>You will not know the quality level of the investment opportunity when you decide to invest. </b> When you make your decision in each round, you will see the payoff table below showing your payoffs if you invest, for each possible combination of <i>Quality</i> (given by the row) and <i>Total Investors</i> (given by the column), the total number of group members that invest <i>including you.</i></p>
     <div class="margin"></div>
     <table class="playerpayofftable">
         <tr>
@@ -288,11 +288,12 @@
             <td>{{ p }}</td>
             {{ endfor }}
         </tr>
+        </tr>
     </table>
     <div class="margin"></div>
-    <p>Remember that if you keep your endowment, you will earn 12 ECU regardless of the quality of the investment opportunity. Please look at an overhead screen as we go through some examples on how to read the <i>Player B</i> payoff tables.</p>
+    <p>Remember that if you keep your endowment, you will earn 12 ECU regardless of the quality of the investment opportunity. Please look at an overhead screen as we go through some examples on how to read the <i>Investor</i> payoff tables.</p>
     <h3 style="margin-bottom: unset">Description of Player A Payoffs:</h3>
-    <p>If you are a Player A, your payoffs will depend on the total number of Player A’s in your group that invest (<i>Total Investors</i>) and on the quality level of the investment opportunity (<i>Quality</i>). The payoff table below shows a Player A’s payoffs for each possible combination of how many Player Bs in the group invest (<i>Total Investors</i>) and the <i>Quality</i> of the investment opportunity. </p>
+    <p>If you are a Advisor, your payoffs will depend on the total number of Investors in your group that invest (<i>Total Investors</i>) and on the quality level of the investment opportunity (<i>Quality</i>). The payoff table below shows a Advisor’s payoffs for each possible combination of how many Investors in the group invest (<i>Total Investors</i>) and the <i>Quality</i> of the investment opportunity. </p>
     <div class="margin"></div>
     <table class="playerpayofftable">
         <tr>
@@ -328,11 +329,11 @@
         </tr>
     </table>
     <div class="margin"></div>
-    <p>Please look at an overhead screen as we go through some examples on how to read the <i>Player Bs’</i> payoff tables. </p>
-    <h3 style="margin-bottom: unset">Description of Player B Information About Quality of the Investment Opportunity:</h3>
-    <p>In each round, the Player A will receive an estimate of the quality of the investment opportunity. There is an 5/6 chance that the estimate Player A receives is correct and a 1/6 chance that it is incorrect. In other words, there is a 5 in 6 chance that the estimate Player A receives will be exactly equal to the true quality level of the investment opportunity, and a 1 in 6 chance that the estimate Player A receives will be equal to some level other than the true quality of the investment opportunity. You can think of this like rolling a single die. If the computer rolls a 1 through 5, Player A receives a correct estimate. If a 6 is rolled, Player A receives an incorrect estimate. If Player A receives an incorrect estimate, each of the two possible incorrect levels is equally likely. In other words, if the estimate is <i><b>not</b></i> equal to the true quality of the investment opportunity, there is a 1 in 2 chance (like flipping a coin) that it is equal to each of the other possible qualities. So, for example, if the <i>Quality</i> in a round is High, then there is a 83.3 percent (5 in 6) chance that Player B will receive an estimate equal to “High”, and there is a 16.7 percent (1 in 6) that Player A will receive an estimate equal to one of the other possible values of <i>Quality</i> (“Low” or “Medium”). Each of the other possible estimates is equally likely. This estimate is <i>private</i> information. In other words, the Player A can see the estimate, but the Player Bs will never be told what estimate their group’s Player A received.</p>
+    <p>Please look at an overhead screen as we go through some examples on how to read the <i>Investors’</i> payoff tables. </p>
+    <h3 style="margin-bottom: unset">Description of PAdvisor Payoffs:</h3>
+    <p>If you are a Advisor, your payoffs will depend on the total number of Advisor’s in your group that invest (<i>Total Investors</i>) and on the quality level of the investment opportunity (<i>Quality</i>). The payoff table below shows a Advisor’s payoffs for each possible combination of how many Investors in the group invest (<i>Total Investors</i>) and the <i>Quality</i> of the investment opportunity. If the Advisor receives an incorrect estimate, each of the two possible incorrect levels is equally likely. In other words, if the estimate is <b><i>not</i></b> equal to the true quality of the investment opportunity, there is a 1 in 2 chance (like flipping a coin) that it is equal to each of the other possible qualities. So, for example, if the <i>Quality</i> in a round is High, then there is a 83.3 percent (5 in 6) chance that the Investor will receive an estimate equal to “High”, and there is a 16.7 percent (1 in 6) that the Advisor will receive an estimate equal to one of the other possible values of <i>Quality</i> (“Low” or “Medium”). Each of the other possible estimates is equally likely. This estimate is <i>private</i> information. In other words, the Advisor can see the estimate, but the Investors will never be told what estimate their group’s Advisor received.</p>
     <h3 style="margin-bottom: unset">Making Decisions in the Games:</h3>
-    <p>Recall that each game starts with Player A receiving an estimate of the quality level. <b><i>Before receiving their estimate,</i></b> Player A will choose a message for each possible estimate, recommending either “Invest” or “Do Not Invest.” The computer will then show the Player A their estimate and send whatever message the Player A chose for this estimate to all of the Player Bs in their group. The Player Bs choose whether or not to invest after seeing this message. To help you understand how this works, we are now going to walk through a practice round. We will tell you what choices to make and this practice round will not count towards your payment.  In other words, this practice round is only to illustrate how you will actually make decisions in each round of Stage 1. As we go through the sample round, please do not make any choices until the experimenter tells you to do so.</p>
+    <p>Recall that each game starts with the Advisor receiving an estimate of the quality level. <b><i>Before receiving their estimate,</i></b> the Advisor will choose a message for each possible estimate, recommending either “Invest” or “Keep”. The computer will then show the Advisor their estimate and send whatever message the Advisor chose for this estimate to all of the Investors in their group. The Investors choose whether or not to invest after seeing this message. To help you understand how this works, we are now going to walk through a practice round. We will tell you what choices to make and this practice round will not count towards your payment.  In other words, this practice round is only to illustrate how you will actually make decisions in each round of Stage 1. As we go through the sample round, please do not make any choices until the experimenter tells you to do so.</p>
     <button id="close-button2" type="button" style="background-color: red; margin: unset">X</button>
 </div>
 
