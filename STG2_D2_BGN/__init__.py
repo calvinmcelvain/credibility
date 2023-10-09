@@ -81,10 +81,10 @@ class P3_standby(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        if player.participant.vars['role'] == 'Player A':
-            return {'role': 'Player A'}
+        if player.participant.vars['role'] == 'Advisor':
+            return {'role': 'Advisor'}
         else:
-            return {'role': 'Player B'}
+            return {'role': 'Investor'}
 
     @staticmethod
     def live_method(player: Player, data):

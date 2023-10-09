@@ -94,6 +94,9 @@ def creating_session(subsession):
     treatments = ['LCLE', 'LCHE', 'HCLE', 'HCHE']
     for i, group in enumerate(groups):
         group.treatment = treatments[i % len(treatments)]
+        # Assigning a Signal
+        possible_signals = ['Low', 'High']
+        group.actual_signal = random.choice(possible_signals)
 
 
 def is_displayed_pa(player: Player):
@@ -124,8 +127,6 @@ class P1_PADecision(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        possible_signals = ['Low', 'High']
-        player.group.actual_signal = random.choice(possible_signals)
         signal = player.group.actual_signal
         pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
         pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}

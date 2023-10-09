@@ -43,6 +43,10 @@ h3 {
     font-weight: bold;
 }
 
+h3.role {
+    text-align: center;
+}
+
 span.sample {
     font-size: 21px;
     font-family: Arial;
@@ -153,7 +157,7 @@ h4.History {
         display: flex;
         margin-left: unset;
         margin-right: unset;
-        margin-top: 75px;
+        margin-top: 50px;
         margin-bottom: 50px;
     }
 

@@ -97,6 +97,10 @@ def creating_session(subsession):
     for i, group in enumerate(groups):
         group.treatment = treatments[i % len(treatments)]
 
+        # Assigning a Signal
+        possible_signals = ['Low', 'High']
+        group.actual_signal = random.choice(possible_signals)
+
     # Randomly choosing decision to count
     for group in subsession.get_groups():
         group.decision_towards_payment = random.randint(1, 3)
