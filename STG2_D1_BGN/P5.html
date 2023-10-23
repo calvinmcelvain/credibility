@@ -5,47 +5,17 @@
 <script src="{{ static 'JavaScript_Crd2.js' }}"></script>
 
 {{ block title }}
-Stage 2: Decision 1
+Stage 2 Game Play
 {{ endblock }}
 
 <!-- General Information Body -->
-<p><span style="color: red; font-weight: bold">Decision 1 involves different payoff tables than Stage 1 for both the Advisors and Investors. </span></p>
-<p style="margin-bottom: 50px">In Decision 1, the Advisor will receive 60 for each Investor who chooses to invest. This is shown in the payoff table below. The Advisor’s payoffs does not depend on the quality of the investment.</p>
-
-<!-- Player A's Payoff Table -->
-<p class="payofftableheader">Advisor's Payoff Table</p>
-<table class="playerpayofftable" style="display: flex; margin-left: 150px">
-    <tr>
-        <td style="width: 75px;"></td>
-        <td class="header" colspan="6">Total Investors</td>
-    </tr>
-    <tr>
-        <td  style="font-style: italic; width: 75px;">Quality</td>
-        <td class="row1">0</td>
-        <td class="row1">1</td>
-        <td class="row1">2</td>
-        <td class="row1">3</td>
-        <td class="row1">4</td>
-        <td class="row1">5</td>
-    </tr>
-    <tr>
-        <td class="column1">Low</td>
-        {{ for p in pa_table.1 }}
-        <td>{{ p }}</td>
-        {{ endfor }}
-    </tr>
-    <tr>
-        <td class="column1">High</td>
-        {{ for p in pa_table.3 }}
-        <td>{{ p }}</td>
-        {{ endfor }}
-    </tr>
-</table>
-
-<!-- General Information Body Cont. -->
-<p style="margin-top: 100px">Investors’ payoffs are determined by the table shown below. Investors who invest will receive earnings of 300 if the Quality is High, <span style="color: red">regardless of the number of other Investors who invest. </span></p>
-<p style="margin-bottom: 50px">As before, you will receive a recommendation from the Advisor but will <span style="color: red">not</span> know the quality level of the investment opportunity when you decide to invest.</p>
-<p style="margin-bottom: unset">Please click "Continue"</p>
+<div class="List">
+    <p><b>1)</b>    In Stage 2, there now will only be two possible quality levels, “Low” and “High”. Each possible quality level is equally likely, like the flip of a coin. </p>
+    <p><b>2)</b>    In Stage 2, rather than receiving an estimate, the Advisor will directly observe the true quality level. In other words, the Advisor will know the actual quality level (rather than an estimate) when they choose a message. </p>
+    <p><b>3)</b>    Unlike Stage 1, you will not see feedback after each decision.  In other words, you will make all three decisions without seeing any results before advancing to the next decision. At the end of Stage 2, you will see the results from all three decisions and will learn which decision has been randomly chosen to count towards your payment. You will also see your total earnings from Stage 1, and your total earnings from today’s session.</p>
+    <p><b>4)</b>    Rather than choosing “Invest” or “Keep” directly, in Stage 2, Investors will choose threshold levels of the outside option that will determine their investment decision.  We will explain this in detail now.</p>
+</div>
+<p style="margin-top: 100px; margin-bottom: unset">Please click "Continue"</p>
 <p style="font-size: 16px; margin-top: unset; margin-bottom: 10px" >*** Page will not continue until everyone has clicked continue ***</p>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->

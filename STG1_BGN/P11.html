@@ -6,8 +6,11 @@
 
 <!-- Title -->
 <span class="sample" >**Sample**</span>
-<h2 class="Title">Round 7</h2>
-<h3>You are the Advisor</h3>
+<div style="margin-bottom: 50px; margin-top: 10px; contain: content">
+    <h3 style="float: left"><u>Role:</u> Advisor</h3>
+    <h3 style="float: right">Round 7</h3>
+</div>
+
 
 <!--Payoff Tables-->
 <div class="tables-container">
@@ -96,27 +99,32 @@
     </tr>
     <tr style="height: 5px"></tr>
     <tr>
-        <td><input type="radio"> Invest</td>
-        <td><input type="radio"> Invest</td>
-        <td><input type="radio"> Invest</td>
+        <td><input name="pa_low_advice" value="Invest" type="radio"> Invest</td>
+        <td><input name="pa_med_advice" value="Invest" type="radio"> Invest</td>
+        <td><input name="pa_high_advice" value="Invest" type="radio"> Invest</td>
     </tr>
     <tr style="height: 5px"></tr>
     <tr>
-        <td><input type="radio"> Keep</td>
-        <td><input type="radio"> Keep</td>
-        <td><input type="radio"> Keep</td>
+        <td><input name="pa_low_advice" value="Keep" type="radio"> Keep</td>
+        <td><input name="pa_med_advice" value="Keep" type="radio"> Keep</td>
+        <td><input name="pa_high_advice" value="Keep" type="radio"> Keep</td>
+    </tr>
+    <tr>
+        <td rowspan="2" class="error">{{ formfield_errors 'pa_low_advice' }}</td>
+        <td rowspan="2" class="error">{{ formfield_errors 'pa_med_advice' }}</td>
+        <td rowspan="2" class="error">{{ formfield_errors 'pa_high_advice' }}</td>
     </tr>
 </table>
 
 <!-- Next Button with confirmation pop-up & Instructions Button-->
 <div style="margin-top: 50px">
-    <button class="Instructions" type="button" id="validation" onclick="validating_sample()">Continue</button>
+    <button onclick="ConfirmDecision(event)" class="Instructions">Continue</button>
     <button id="pop-up" class="Instructions" style="float: left; background-color: red">Instructions</button>
 </div>
 
 <!--Player History Table-->
 <div style="margin: 100px"></div>
-<h4 class="History">History Table:</h4>
+<h4 class="History">Previous Results:</h4>
 <div class="tablescroll">
     <table class="history_header">
         <tr>
@@ -314,16 +322,6 @@ closeButton2.addEventListener("click", function() {
 popupWindow.style.display = "none";
 });
 
-// Checking if button has been clicked
-window.onload = function () {
-    const IsClicked = sessionStorage.getItem('IsClicked');
-
-    if (IsClicked === 'true') {
-        document.getElementById('validation').disabled = true;
-        document.querySelectorAll('input[type=radio]').forEach(function (radioButton) {
-            radioButton.disabled = true
-        });
-    }
 // Adjusting History Width
   const headerCells = document.querySelectorAll('.history_header th');
   const dataCells = document.querySelectorAll('#data_table td');
@@ -333,13 +331,6 @@ window.onload = function () {
   });
 };
 
-// Websocket to check if all players are ready
-function liveRecv(data) {
-    if (data === 'all_ready') {
-        sessionStorage.setItem('IsClicked', 'false')
-        document.forms[0].submit();
-    }
-}
 </script>
 
 {{ endblock }}

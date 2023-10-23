@@ -8,7 +8,7 @@
     }
   }
 
-// Player A Confirmation
+// Player Confirmation
   function ConfirmDecision() {
     let confirmed = confirm("Are you sure you want to continue?");
     if (confirmed) {
@@ -86,20 +86,6 @@
     liveSend('send');
   }
 
-  function validating_sample() {
-    let confirmed = confirm("Are you sure you want to continue?");
-    if (confirmed) {
-      document.getElementById('validation').disabled = true;
-      document.querySelectorAll('input[type=radio]').forEach(function (radioButton) {
-        radioButton.disabled = true
-      });
-      sessionStorage.setItem('IsClicked', 'true');
-      liveSend('send');
-    }
-    else {
-      event.preventDefault();
-    }
-  }
 
 // Hiding Otree Timer
   document.addEventListener("DOMContentLoaded", function (event) {

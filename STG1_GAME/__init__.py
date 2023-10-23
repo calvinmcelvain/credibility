@@ -204,7 +204,16 @@ class P2_BetweenWaitPage(Page):
             high = player.pa_high_advice
             return {'estimated_signal': estimated_signal, 'low': low, 'med': med, 'high': high, 'history': reversed(player.in_previous_rounds()), 'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
         else:
-            return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
+            treatment_signal = C.treatment_signal
+            round_number = player.round_number
+            treatment = player.group.treatment
+            decoder = C.decoder
+            estimated_signal = decoder[treatment_signal[treatment][round_number]]
+            advice_dict = {'Low': player.group.get_player_by_role(C.pa_ROLE).pa_low_advice,
+                           'Medium': player.group.get_player_by_role(C.pa_ROLE).pa_med_advice,
+                           'High': player.group.get_player_by_role(C.pa_ROLE).pa_high_advice}
+            advice = advice_dict[estimated_signal]
+            return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table, 'advice': advice, 'history': reversed(player.in_previous_rounds())}
 
 
 class PayoffWaitPage(WaitPage):

@@ -2,7 +2,7 @@ from otree.api import *
 
 
 doc = """
-Stage STG1_GAME Instructions App 
+Stage Stage 1 Instructions App 
 """
 
 
@@ -42,6 +42,12 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     # ID Field
     player_id = models.IntegerField(blank=False, label='')
+
+    # Sample Decision Models
+    pb_decision = models.StringField(blank=False)
+    pa_low_advice = models.StringField(blank=False)
+    pa_med_advice = models.StringField(blank=False)
+    pa_high_advice = models.StringField(blank=False)
 
 
 # PAGES
@@ -183,6 +189,8 @@ class P10(Page):
 
 
 class P11(Page):
+    form_model = 'player'
+    form_fields = ['pa_low_advice', 'pa_med_advice', 'pa_high_advice']
     timeout_seconds = C.instructions_time
 
     @staticmethod
@@ -202,6 +210,8 @@ class P11(Page):
 
 class P12(Page):
     timeout_seconds = C.instructions_time
+    form_model = 'player'
+    form_fields = ['pb_decision']
 
     @staticmethod
     def vars_for_template(player: Player):

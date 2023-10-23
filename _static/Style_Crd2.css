@@ -38,15 +38,12 @@ h2.BeforeStart {
 
 
 h3 {
-    font-size: 24px;
+    font-size: 28px;
     font-family: Arial;
     font-weight: bold;
 }
 
-h3.role {
-    text-align: center;
-}
-
+/* Page Header Styling */
 span.sample {
     font-size: 21px;
     font-family: Arial;
@@ -262,13 +259,36 @@ h4.History {
     .Final td {
         height: auto;
     }
-    .history_header th {
-        white-space: nowrap; /* Prevent text wrapping */
+
+/*Stage 1 feedback table */
+    table.feed {
+        font-size: 19px;
+    }
+    table.feed th {
+        font-weight: unset;
+        height: 50px;
+        width: 400px;
+    }
+    .feed tr.last th{
+        text-decoration: unset;
+        border-top: 1px solid black;
+        font-weight: bold;
+    }
+    .last td {
+        border-top: 1px solid black;
+        font-weight: bold;
+    }
+    .feed td {
+        height: auto;
     }
 
-    #data_table td {
-        white-space: nowrap;
-    }
+.history_header th {
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+#data_table td {
+    white-space: nowrap;
+}
 
 /* Instructions Pop-up */
     #popup-window {
