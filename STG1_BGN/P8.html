@@ -11,11 +11,16 @@ Advisor's Information
 <!--Description Body-->
 <p>In each round, the Advisor will receive an estimate of the quality of the investment opportunity. This estimate is <i>private</i> information. In other words, the Advisor can see the estimate, but the Investors will never be told what estimate their group’s Advisor received.</p>
 <p>There is an 5/6 chance that the estimate the Advisor receives is correct and a 1/6 chance that it is incorrect. In other words, there is a 5 in 6 chance that the estimate the Advisor receives will be exactly equal to the true quality level of the investment opportunity, and a 1 in 6 chance that the estimate the Advisor receives will be equal to some level other than the true quality of the investment opportunity. You can think of this like rolling a single die. If the computer rolls a 1 through 5, the Advisor receives a correct estimate. If a 6 is rolled, the Advisor receives an incorrect estimate.</p>
-<p style="margin-top: 100px; margin-bottom: unset">Please click "Continue"</p>
-<p style="font-size: 16px; margin-top: unset; margin-bottom: 10px" >*** Page will not continue until everyone has clicked continue ***</p>
+
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
-<button type="button" id="validation" class="Instructions" onclick="validating()">Continue</button>
+<div style="margin-top: 50px; margin-top: 100px">
+    <div style="float: left">
+        <p style="margin-top: unset; margin-bottom: unset;">Please click "Continue"</p>
+        <p style="font-size: 16px; margin-top: unset; margin-bottom: 10px;" >*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" class="Instructions" onclick="validating()" style="float: right">Continue</button>
+</div>
 
 <script>
 // Checking if button has been clicked

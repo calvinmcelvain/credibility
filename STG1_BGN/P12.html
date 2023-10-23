@@ -6,11 +6,11 @@
 
 <!-- Title -->
 <span class="sample" >**Sample**</span>
-<div style="margin-bottom: 10px; margin-top: 10px">
-    <div align="left" style="position: absolute"><h2>Round 7</h2></div>
-    <div align="right"><span class="advice">Advisor's Advice: <b>Invest</b></span></div>
+<div style="margin-bottom: 100px; margin-top: 10px; text-align: center">
+    <h3 style="float: left"><u>Role:</u> Investor</h3>
+    <span class="advice">Advisor's Advice: <b style="color: red">Invest</b></span>
+    <h3 style="float: right">Round 7</h3>
 </div>
-<h3>You are a Investor</h3>
 
 
 <!--Payoff Tables-->
@@ -90,17 +90,26 @@
 </div>
 
 <!--Form Fields/Decisions-->
-<h4 style="margin-bottom: 20px">Remember, If you choose to Keep, you will receive a payoff of 12 ECUs</h4>
-<table class="decisiontable" style="width: 450px">
+<h4 style="margin-bottom: 50px">Remember, If you choose not to invest, you will receive a payoff of 12 ECUs</h4>
+<table class="decisiontable">
     <tr>
-        <td class="playera"><input name="decision" type="radio"> Invest</td>
-        <td class="playera"><input name="decision" type="radio"> Keep</td>
+        <td class="playera" style="width: 200px"><input name="pb_decision" value="Invest" type="radio"> Invest</td>
+        <td class="playera"><input name="pb_decision" value="Don't Invest" type="radio"> Keep</td>
+    </tr>
+    <tr>
+        <td colspan="2" class="error">{{ formfield_errors 'pb_decision' }}</td>
     </tr>
 </table>
 
+<!-- Next Button with confirmation pop-up & Instructions Button-->
+<div style="margin-top: 50px">
+    <button onclick="ConfirmDecision(event)" class="Instructions">Continue</button>
+    <button id="pop-up" class="Instructions" style="float: left; background-color: red">Instructions</button>
+</div>
+
 <!--Player History Table-->
-<div style="margin: 50px"></div>
-<h4 class="History">History Table:</h4>
+<div style="margin: 100px"></div>
+<h4 class="History">Previous Results:</h4>
 <div class="tablescroll">
     <table class="history_header">
         <tr>
@@ -176,12 +185,6 @@
             <td>3</td>
         </tr>
     </table>
-</div>
-
-<!-- Next Button with confirmation pop-up & Instructions Button-->
-<div style="margin-top: 100px">
-    <button class="Instructions" type="button" id="validation" onclick="validating_sample()">Continue</button>
-    <button id="pop-up" class="Instructions" style="float: left; background-color: red">Instructions</button>
 </div>
 
 <!-- Instructions pop-up -->
@@ -297,32 +300,14 @@ closeButton2.addEventListener("click", function() {
 popupWindow.style.display = "none";
 });
 
-// Checking if button has been clicked
-window.onload = function () {
-    const IsClicked = sessionStorage.getItem('IsClicked');
 
-    if (IsClicked === 'true') {
-        document.getElementById('validation').disabled = true;
-        document.querySelectorAll('input[type=radio]').forEach(function (radioButton) {
-            radioButton.disabled = true
-        });
-    }
-    // Adjusting History Width
-  const headerCells = document.querySelectorAll('.history_header th');
-  const dataCells = document.querySelectorAll('#data_table td');
+// Adjusting History Width
+const headerCells = document.querySelectorAll('.history_header th');
+const dataCells = document.querySelectorAll('#data_table td');
 
-  headerCells.forEach((headerCell, index) => {
-      dataCells[index].style.width = headerCell.offsetWidth + 'px';
-  });
-};
-
-// Websocket to check if all players are ready
-function liveRecv(data) {
-    if (data === 'all_ready') {
-        sessionStorage.setItem('IsClicked', 'false')
-        document.forms[0].submit();
-    }
-}
+headerCells.forEach((headerCell, index) => {
+  dataCells[index].style.width = headerCell.offsetWidth + 'px';
+});
 </script>
 
 {{ endblock }}

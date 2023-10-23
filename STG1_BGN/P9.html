@@ -12,11 +12,16 @@ Advisor's Information (Cont.)
 <p>If the Advisor receives an incorrect estimate, each of the two possible incorrect levels is equally likely. In other words, if the estimate is <b><i>not</i></b> equal to the true quality of the investment opportunity, there is a 1 in 2 chance (like flipping a coin) that it is equal to each of the other possible qualities.</p>
 <p>So, for example, if the <i>Quality</i> in a round is High, then there is a 83.3 percent (5 in 6) chance that the Investor will receive an estimate equal to “High”, and there is a 16.7 percent (1 in 6) that the Advisor will receive an estimate equal to one of the other possible values of <i>Quality</i> (“Low” or “Medium”). Each of the other possible estimates is equally likely. </p>
 <p>This estimate is <i>private</i> information. In other words, the Advisor can see the estimate, but the Investors will never be told what estimate their group’s Advisor received.</p>
-<p style="margin-top: 100px; margin-bottom: unset">Please click "Continue"</p>
-<p style="font-size: 16px; margin-top: unset; margin-bottom: 10px" >*** Page will not continue until everyone has clicked continue ***</p>
+
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
-<button type="button" id="validation" class="Instructions" onclick="validating()">Continue</button>
+<div style="margin-top: 50px; margin-top: 100px">
+    <div style="float: left">
+        <p style="margin-top: unset; margin-bottom: unset;">Please click "Continue"</p>
+        <p style="font-size: 16px; margin-top: unset; margin-bottom: 10px;" >*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" class="Instructions" onclick="validating()" style="float: right">Continue</button>
+</div>
 
 <script>
 // Checking if button has been clicked

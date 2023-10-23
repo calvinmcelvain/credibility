@@ -6,89 +6,45 @@
 
 <!-- Title -->
 <span class="sample" >**Sample**</span>
-<h2 class="Title">End of Round X</h2>
-<h3>You are a Investor</h3>
-
-<!--Payoff Tables-->
-<div class="tables-container">
-    <div>
-        <p class="payofftableheader">Investors Payoff Table</p>
-        <table class="playerpayofftable" style="display: flex; margin: unset">
-            <tr>
-                <td style="width: 75px;"></td>
-                <td class="header" colspan="5">Total Investors (including you)</td>
-            </tr>
-            <tr>
-                <td style="font-style: italic; width: 75px;">Quality</td>
-                <td class="row1">1</td>
-                <td class="row1">2</td>
-                <td class="row1">3</td>
-                <td class="row1">4</td>
-                <td class="row1">5</td>
-            </tr>
-            <tr>
-                <td class="column1">Low</td>
-                {{ for p in pb_table.1 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-            <tr>
-                <td class="column1">Medium</td>
-                {{ for p in pb_table.2 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-            <tr>
-                <td class="column1">High</td>
-                {{ for p in pb_table.3 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-        </table>
-    </div>
-    <div style="margin: 20px"></div>
-    <div>
-        <p class="payofftableheader">Advisor's Payoff Table</p>
-        <table class="playerpayofftable" style="display: flex; margin: unset">
-            <tr>
-                <td style="width: 75px;"></td>
-                <td class="header" colspan="6">Total Investors</td>
-            </tr>
-            <tr>
-                <td  style="font-style: italic; width: 75px;">Quality</td>
-                <td class="row1">0</td>
-                <td class="row1">1</td>
-                <td class="row1">2</td>
-                <td class="row1">3</td>
-                <td class="row1">4</td>
-                <td class="row1">5</td>
-            </tr>
-            <tr>
-                <td class="column1">Low</td>
-                {{ for p in pa_table.1 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-            <tr>
-                <td class="column1">Medium</td>
-                {{ for p in pa_table.2 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-            <tr>
-                <td class="column1">High</td>
-                {{ for p in pa_table.3 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-        </table>
-    </div>
+<div style="margin-bottom: 100px; margin-top: 10px; text-align: center">
+    <h3 style="float: left"><u>Role:</u> Investor</h3>
+    <h3 style="float: right">End of Round 7</h3>
 </div>
 
+<!-- End of Round Results -->
+<div style="margin-top: 75px">
+<h4 class="History" style="text-align: unset">End of Round Results:</h4>
+    <table class="feed">
+        <tr>
+            <th>True Investment Quality:</th>
+            <td>Low</td>
+        </tr>
+        <tr>
+            <th>Advisor's Advice:</th>
+            <td>Invest</td>
+        </tr>
+        <tr>
+            <th>Your Decision:</th>
+            <td>Invest</td>
+        </tr>
+        <tr>
+            <th>Total Investors:</th>
+            <td>5</td>
+        </tr>
+        <tr>
+            <th>Advisor's Payoff:</th>
+            <td>3 Points</td>
+        </tr>
+        <tr class="last">
+            <th>Your Payoff:</th>
+            <td>4 Points</td>
+        </tr>
+    </table>
+</div>
 
 <!--Player History Table-->
 <div style="margin: 75px"></div>
-<h4 class="History">History Table:</h4>
+<h4 class="History">Previous Results:</h4>
 <div class="tablescroll">
     <table class="history_header">
         <tr>

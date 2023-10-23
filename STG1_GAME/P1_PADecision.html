@@ -5,8 +5,11 @@
 <script src="{{ static 'JavaScript_Crd2.js' }}"></script>
 
 <!-- Title -->
-<h2 class="Title">Round {{ player.round_number }}</h2>
-<h3 class="role">You are the Advisor</h3>
+<div style="margin-bottom: 50px; margin-top: 10px; contain: content">
+    <h3 style="float: left"><u>Role:</u> Advisor</h3>
+    <h3 style="float: right">Round {{ player.round_number }}</h3>
+</div>
+
 
 <!--Payoff Tables-->
 <div class="tables-container">
@@ -121,7 +124,7 @@
 {{ if player.round_number != 1 }}
 <!--Player History Table-->
 <div style="margin: 100px"></div>
-<h4 class="History">History Table:</h4>
+<h4 class="History">Previous Results:</h4>
 <div class="tablescroll">
     <table class="history_header">
         <tr>
