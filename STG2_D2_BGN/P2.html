@@ -42,11 +42,15 @@ Stage 2: Decision 2 (Cont.)
 
 <!-- General Information Body Cont. -->
 <p style="margin-top: 100px;">As in Decision 1, any Investor who chooses not to invest will receive their outside option, which will be drawn at random.  Players will again use the slider to identify their minimum value of the outside option that will lead them to choose the outside option.</p>
-<p style="margin-top: 50px; margin-bottom: unset">Please click "Continue"</p>
-<p style="font-size: 16px; margin-top: unset; margin-bottom: 10px" >*** Page will not continue until everyone has clicked continue ***</p>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
-<button type="button" id="validation" class="Instructions" onclick="validating()">Continue</button>
+<div style="margin-top: 50px; margin-top: 100px">
+    <div style="float: left">
+        <p style="margin-top: unset; margin-bottom: unset;">Please click "Continue"</p>
+        <p style="font-size: 16px; margin-top: unset; margin-bottom: 10px;" >*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" class="Instructions" onclick="validating()" style="float: right">Continue</button>
+</div>
 
 <script>
 // Checking if button has been clicked

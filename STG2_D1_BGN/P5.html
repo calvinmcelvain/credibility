@@ -5,21 +5,21 @@
 <script src="{{ static 'JavaScript_Crd2.js' }}"></script>
 
 {{ block title }}
-Stage 2 Game Play
+Stage 2: Using a Slider
 {{ endblock }}
 
 <!-- General Information Body -->
-<div class="List">
-    <p><b>1)</b>    In Stage 2, there now will only be two possible quality levels, “Low” and “High”. Each possible quality level is equally likely, like the flip of a coin. </p>
-    <p><b>2)</b>    In Stage 2, rather than receiving an estimate, the Advisor will directly observe the true quality level. In other words, the Advisor will know the actual quality level (rather than an estimate) when they choose a message. </p>
-    <p><b>3)</b>    Unlike Stage 1, you will not see feedback after each decision.  In other words, you will make all three decisions without seeing any results before advancing to the next decision. At the end of Stage 2, you will see the results from all three decisions and will learn which decision has been randomly chosen to count towards your payment. You will also see your total earnings from Stage 1, and your total earnings from today’s session.</p>
-    <p><b>4)</b>    Rather than choosing “Invest” or “Keep” directly, in Stage 2, Investors will choose threshold levels of the outside option that will determine their investment decision.  We will explain this in detail now.</p>
-</div>
-<p style="margin-top: 100px; margin-bottom: unset">Please click "Continue"</p>
-<p style="font-size: 16px; margin-top: unset; margin-bottom: 10px" >*** Page will not continue until everyone has clicked continue ***</p>
+<p>Investors who choose to not invest will receive their outside option. In Stage 2, the outside option for each Investor will be randomly drawn from the numbers between 1 and 300. All numbers are equally likely to be drawn. Each Investor will use a slider similar to the one you see below to select the <span style="color: red">minimum</span> outside option for which you will choose not to invest. Any price drawn at random below the minimum selected outside option will result in a Investor choosing to Invest.  If a price is drawn at or above the minimum selected outside option, the Investor will choose to <span style="color: red">not</span> Invest and receive the outside option. </p>
+<p>As a Investor, your best choice is to set the slider <span style="color: red">equal</span> to the value you believe should be assigned to Invest. If the randomly drawn outside option is higher than your value of choosing Invest, you would be better off with the outside option. If the outside option is lower than your value of choosing Invest, you would be better of choosing Invest. Setting the minimum outside option equal to your individual value of choosing Invest ensures that you only choose Invest when it is to your benefit to do so. Please look at the over screen for examples illustrating why this is true.</p>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
-<button type="button" id="validation" class="Instructions" onclick="validating()">Continue</button>
+<div style="margin-top: 50px; margin-top: 100px">
+    <div style="float: left">
+        <p style="margin-top: unset; margin-bottom: unset;">Please click "Continue"</p>
+        <p style="font-size: 16px; margin-top: unset; margin-bottom: 10px;" >*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" class="Instructions" onclick="validating()" style="float: right">Continue</button>
+</div>
 
 <script>
 // Checking if button has been clicked

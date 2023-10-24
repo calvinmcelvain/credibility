@@ -43,11 +43,15 @@ Stage 2: Decision 1 (Cont.)
 
 <!-- General Information Body Cont. -->
 <p style="margin-top: 100px">If you choose to not invest, you will receive your outside option. As explained previously, the outside option for each Investor will be randomly drawn from the numbers between 1 and 300. Investors will use the slider on their screen to select the <span style="color: red">mininum</span> outside option for which you will choose the outside option. If the randomly chosen outside option is below the number you choose with the slider, you will choose to Invest.  Otherwise, you will receive the outside option. As shown in the example we went through previously, your best choice is to set the slider <span style="color: red">equal</span> to the outside option where you would switch from choosing to invest to taking the outside option.</p>
-<p style="margin-top: 50px; margin-bottom: unset">Please click "Continue"</p>
-<p style="font-size: 16px; margin-top: unset; margin-bottom: 10px" >*** Page will not continue until everyone has clicked continue ***</p>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
-<button type="button" id="validation" class="Instructions" onclick="validating()">Continue</button>
+<div style="margin-top: 50px; margin-top: 100px">
+    <div style="float: left">
+        <p style="margin-top: unset; margin-bottom: unset;">Please click "Continue"</p>
+        <p style="font-size: 16px; margin-top: unset; margin-bottom: 10px;" >*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" class="Instructions" onclick="validating()" style="float: right">Continue</button>
+</div>
 
 <script>
 // Checking if button has been clicked

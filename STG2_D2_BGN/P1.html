@@ -9,8 +9,7 @@ Stage 2: Decision 2
 {{ endblock }}
 
 <!-- General Information Body Cont. -->
-<p><span style="color: red; font-weight: bold">Decision 2 involves new payoff tables for both Advisors and Investors. </span></p>
-<p style="margin-bottom: 50px">The Advisor will receive 300 if the majority (three or more) of Investors choose to invest, regardless of Quality. This is shown in the payoff table below. The Advisor’s payoffs does <span style="color: red">not</span> depend on the quality of the investment.</p>
+<p style="margin-bottom: 50px">Like Decision 1, the Advisor will receive 60 for each Investor who chooses to invest. This is shown in the payoff table below. The Advisor’s payoffs does not depend on the quality of the investment.</p>
 
 <!-- Player A's Payoff Table -->
 <p class="payofftableheader">Advisor's Payoff Table</p>
@@ -42,12 +41,14 @@ Stage 2: Decision 2
     </tr>
 </table>
 
-<!-- General Information Body Cont. -->
-<p style="margin-top: 100px; margin-bottom: unset">Please click "Continue"</p>
-<p style="font-size: 16px; margin-top: unset; margin-bottom: 10px" >*** Page will not continue until everyone has clicked continue ***</p>
-
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
-<button type="button" id="validation" class="Instructions" onclick="validating()">Continue</button>
+<div style="margin-top: 50px; margin-top: 100px">
+    <div style="float: left">
+        <p style="margin-top: unset; margin-bottom: unset;">Please click "Continue"</p>
+        <p style="font-size: 16px; margin-top: unset; margin-bottom: 10px;" >*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" class="Instructions" onclick="validating()" style="float: right">Continue</button>
+</div>
 
 <script>
 // Checking if button has been clicked
