@@ -5,11 +5,19 @@
 <script src="{{ static 'JavaScript_Crd2.js' }}"></script>
 
 {{ block title }}
-Feedback
+Using a Slider
 {{ endblock }}
 
 <!-- General Information Body -->
-<p>After completing Decision 3, all participants will see the results from all decisions made in Stage 2, as well as the decision that has been drawn to count towards your payment.  You will also see your total earnings from Stage 1, and your total earnings from today’s session.</p>
+<p>Investors who do not choose to invest will receive their outside option. In Stage 2, the outside option for each investor will be randomly drawn from the numbers between 0 and 300. All numbers are equally likely to be drawn.</p>
+<p>Each investor will use a slider like the one you see below to select the <span style="color: red">minimum</span> outside option for which you will choose <span style="color: red">not</span> to invest.</p>
+<div class="List">
+    <ul>
+        <li>Any outside option below your minimum will result in you choosing to Invest.</li>
+        <li>If an outside option is drawn at or above your minimum, you will <span style="color: red">not</span> Invest. You will receive the outside option.</li>
+    </ul>
+</div>
+<p>As an investor, your best choice is always to set the slider exact <span style="color: red">equal</span> to the value you believe you will earn on average by choosing Invest.</p>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div style="margin-top: 50px; margin-top: 100px">

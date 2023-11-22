@@ -2,18 +2,17 @@ from otree.api import *
 
 
 doc = """
-Stage 2 Decision 1 Instructions
+Stage 2 Instructions PT 1
 """
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'STG2_D1_BGN'
+    NAME_IN_URL = 'STG2_BGN'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
 
     # Timeout seconds
     instructions_time = None
-    standby_time = None
 
     # Decision Payoff dictionaries
     pb_payoff = {
@@ -76,15 +75,8 @@ class P3(Page):
             return {0: 'all_ready'}
 
 
-class P4_standby(Page):
-    timeout_seconds = C.standby_time
-
-    @staticmethod
-    def vars_for_template(player: Player):
-        if player.participant.vars['role'] == 'Advisor':
-            return {'role': 'Advisor'}
-        else:
-            return {'role': 'Investor'}
+class P4(Page):
+    timeout_seconds = C.instructions_time
 
     @staticmethod
     def live_method(player: Player, data):
@@ -95,4 +87,4 @@ class P4_standby(Page):
             return {0: 'all_ready'}
 
 
-page_sequence = [P1, P2, P3, P4_standby]
+page_sequence = [P1, P2, P3, P4]

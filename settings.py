@@ -26,7 +26,7 @@ SESSION_CONFIGS = [
     dict(
         name='Stage_2_Decision_1_Instructions_Only',
         display_name='Stage 2: Decision 1 Instructions (Only)',
-        app_sequence=['START', 'STG2_D1_BGN'],
+        app_sequence=['START', 'STG2_BGN', 'STG2_BGN_SLDR', 'STG2_D1_BGN'],
         num_demo_participants=demo_instructions,
     ),
     dict(
@@ -87,13 +87,13 @@ SESSION_CONFIGS = [
     dict(
         name='Stage_2',
         display_name='Stage 2',
-        app_sequence=['START', 'STG2_D1_BGN', 'STG2_D1_GAME', 'STG2_D2_BGN', 'STG2_D2_GAME', 'STG2_D3_BGN', 'STG2_D3_GAME'],
+        app_sequence=['START', 'STG2_BGN', 'STG2_BGN_SLDR', 'STG2_D1_BGN', 'STG2_D1_GAME', 'STG2_D2_BGN', 'STG2_D2_GAME', 'STG2_D3_BGN', 'STG2_D3_GAME'],
         num_demo_participants=demo_final,
     ),
     dict(
         name='Stage_1_Stage_2',
         display_name='Stage 1 & Stage 2',
-        app_sequence=['START', 'STG1_BGN', 'STG1_GAME', 'STG2_D1_BGN', 'STG2_D1_GAME', 'STG2_D2_BGN', 'STG2_D2_GAME', 'STG2_D3_BGN', 'STG2_D3_GAME'],
+        app_sequence=['START', 'STG1_BGN', 'STG1_GAME', 'STG2_BGN', 'STG2_BGN_SLDR', 'STG2_D1_BGN', 'STG2_D1_GAME', 'STG2_D2_BGN', 'STG2_D2_GAME', 'STG2_D3_BGN', 'STG2_D3_GAME'],
         num_demo_participants=demo_final,
     ),
 ]
@@ -104,7 +104,7 @@ SESSION_CONFIGS = [
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=0.25, participation_fee=10.00, doc=""
+    real_world_currency_per_point=0.04, participation_fee=10.00, doc=""
 )
 
 PARTICIPANT_FIELDS = ['role', 'Stage1_payoff', 'D1', 'D2', 'PlayerID']

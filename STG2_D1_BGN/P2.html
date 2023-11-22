@@ -5,16 +5,44 @@
 <script src="{{ static 'JavaScript_Crd2.js' }}"></script>
 
 {{ block title }}
-Stage 2 (cont.)
+Stage 2: Decision 1 (Cont.)
 {{ endblock }}
 
-<!-- General Information Body -->
-<p>In many ways, Stage 2 is like Stage 1.</p>
-<div class="List">
-    <p><b>1)</b>    Investors will choose whether or not to invest their endowment in an investment opportunity. </p>
-    <p><b>2)</b>    The five Investors in each group will again receive no information about the quality of the investment opportunity. Instead, they will receive a message from the Advisor, either “Invest” or “Keep”. All Investors will see the same message from their group’s Advisor before making their investment decisions. </p>
-    <p><b>3)</b>    The conversion rate of ECU to dollars remains $1 per 25 ECU.</p>
-</div>
+<!-- General Information Body Cont. -->
+<p>Investors’ payoffs are determined by the table shown below. Investors who invest will receive earnings of 300 if the Quality is High, <span style="color: red">regardless of the number of other Investors who invest. </span></p>
+<p style="margin-bottom: 50px">As before, you will receive a recommendation from the Advisor but will <span style="color: red">not</span> know the quality level of the investment opportunity when you decide to invest.</p>
+
+<!-- Player Bs Payoff Table -->
+<p class="payofftableheader">Investors Payoff Table</p>
+<table class="playerpayofftable" style="display: flex; margin-left: 150px">
+    <tr>
+        <td style="width: 75px;"></td>
+        <td class="header" colspan="5">Total Investors (Including You)</td>
+    </tr>
+    <tr>
+        <td style="font-style: italic; width: 75px;">Quality</td>
+        <td class="row1">1</td>
+        <td class="row1">2</td>
+        <td class="row1">3</td>
+        <td class="row1">4</td>
+        <td class="row1">5</td>
+    </tr>
+    <tr>
+        <td class="column1">Low</td>
+        {{ for p in pb_table.1 }}
+        <td>{{ p }}</td>
+        {{ endfor }}
+    </tr>
+    <tr>
+        <td class="column1">High</td>
+        {{ for p in pb_table.3 }}
+        <td>{{ p }}</td>
+        {{ endfor }}
+    </tr>
+</table>
+
+<!-- General Information Body Cont. -->
+<p style="margin-top: 100px">If you choose to not invest, you will receive your outside option. As explained previously, the outside option for each Investor will be randomly drawn from the numbers between 1 and 300. Investors will use the slider on their screen to select the <span style="color: red">mininum</span> outside option for which you will choose the outside option. If the randomly chosen outside option is below the number you choose with the slider, you will choose to Invest.  Otherwise, you will receive the outside option. As shown in the example we went through previously, your best choice is to set the slider <span style="color: red">equal</span> to the outside option where you would switch from choosing to invest to taking the outside option.</p>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div style="margin-top: 50px; margin-top: 100px">

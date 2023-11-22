@@ -7,6 +7,14 @@ div.margin {
     margin: 50px;
 }
 
+ul {
+    font-size: 19px;
+}
+
+ol {
+    font-size: 19px;
+}
+
 div.BeforeStart {
     align-items: center;
 }
