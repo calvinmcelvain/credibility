@@ -16,7 +16,7 @@ class C(BaseConstants):
     decision_time = None
     feedback_time = None
 
-    # Defining "Player A" role
+    # Defining "Advisor" role
     pa_ROLE = 'Advisor'
 
     # Signal decoder

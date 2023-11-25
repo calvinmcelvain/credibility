@@ -5,18 +5,19 @@
 <script src="{{ static 'JavaScript_Crd2.js' }}"></script>
 
 {{ block title }}
-Stage 2 Gameplay
+Using a Slider
 {{ endblock }}
 
 <!-- General Information Body -->
+<p>Investors who do not choose to invest will receive their outside option. In Stage 2, the outside option for each investor will be randomly drawn from the numbers between 0 and 300. All numbers are equally likely to be drawn.</p>
+<p style="margin-top: unset">Each investor will use a slider like the one you see below to select the <span style="color: red">minimum</span> outside option for which you will choose <span style="color: red">not</span> to invest.</p>
 <div class="List">
-    <ol>
-        <li>In Stage 2, there now will only be two possible quality levels, “Low” and “High”. Each possible quality level is equally likely, like the flip of a coin.</li>
-        <li>In Stage 2, rather than receiving an estimate, the Advisor will directly observe the true quality level. In other words, the Advisor will know the actual quality level (rather than an estimate) when they choose a message.</li>
-        <li>Unlike Stage 1, you will not see feedback after each decision.  In other words, you will make all three decisions without seeing any results before advancing to the next decision. At the end of Stage 2, you will see the results from all three decisions and will learn which decision has been randomly chosen to count towards your payment. You will also see your total earnings from Stage 1, and your total earnings from today’s session.</li>
-        <li>Rather than choosing “Invest” or “Keep” directly, in Stage 2, Investors will choose threshold levels of the outside option that will determine their investment decision.  We will explain this in detail now.</li>
-    </ol>
+    <ul>
+        <li>Any outside option below your minimum will result in you choosing to Invest.</li>
+        <li>If an outside option is drawn at or above your minimum, you will <span style="color: red">not</span> Invest. You will receive the outside option.</li>
+    </ul>
 </div>
+<p>As an investor, your best choice is always to set the slider exact <span style="color: red">equal</span> to the value you believe you will earn on average by choosing Invest.</p>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div style="margin-top: 50px;">

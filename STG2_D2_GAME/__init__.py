@@ -12,12 +12,12 @@ class C(BaseConstants):
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 1
 
-    # Timeout seconds for decision page
+    # Timeout seconds
     decision_time = None
     feedback_time = None
 
-    # Defining "Player A" role
-    pa_ROLE = 'Player A'
+    # Defining "Advisor" role
+    pa_ROLE = 'Advisor'
 
     # Signal decoder
     decoder = {1: 'Low', 3: 'High', 'Low': 1, 'High': 3}
@@ -193,7 +193,7 @@ class BeforeNextDecision(WaitPage):
         for player in subsession.get_players():
             signal = player.group.actual_signal
             if player.role != C.pa_ROLE:
-                player.participant.vars['D1'] = {'payoff': player.payoff, 'signal': signal,
+                player.participant.vars['D2'] = {'payoff': player.payoff, 'signal': signal,
                                                  'advice': player.group.pa_advice, 'draw': player.random_draw,
                                                  'decision': player.pb_decision(),
                                                  'other_investors': player.other_investors(),

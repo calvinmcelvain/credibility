@@ -2,7 +2,7 @@ from otree.api import *
 
 
 doc = """
-Stage Stage 1 Instructions App 
+Stage Stage 1 Instructions
 """
 
 
@@ -16,7 +16,7 @@ class C(BaseConstants):
     quiz_time = None
     standby_time = None
 
-    # Stage 1 Payoff dictionaries & Player B endowment
+    # Stage 1 Payoff dictionaries & Investor endowment
     pb_payoff = {
         1: {1: 0, 2: 1, 3: 2, 4: 3, 5: 4},
         2: {1: 1, 2: 3, 3: 5, 4: 7, 5: 9},
@@ -36,6 +36,7 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
     # Page continue validation field
+    # Not passed to data export
     all_players_ready = models.IntegerField(initial=0)
 
 
@@ -58,6 +59,7 @@ class P1(Page):
 
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
+        # Storing ID to the participant field
         id = player.player_id
         player.participant.vars['PlayerID'] = id
 
@@ -115,6 +117,8 @@ class P6(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
+        # Passing the player payoffs
+        # First made them iterable
         pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
         pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
         return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}

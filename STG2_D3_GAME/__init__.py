@@ -12,11 +12,11 @@ class C(BaseConstants):
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 1
 
-    # Timeout seconds for decision page
+    # Timeout seconds
     decision_time = None
     feedback_time = None
 
-    # Defining "Player A" role
+    # Defining "Advisor" role
     pa_ROLE = 'Advisor'
 
     # Signal decoder
@@ -195,7 +195,9 @@ class P2_FinalScreen(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        stage1_payoff = player.participant.vars['Stage1_payoff']
+        stage1_payoff = player.participant.vars['STG1_payoff']
+        SLDR_payoff_raw = player.participant.vars['SLDR_payoff']
+        SLDR_payoff = cu(SLDR_payoff_raw)
         D1 = player.participant.vars['D1']['payoff']
         D2 = player.participant.vars['D2']['payoff']
         stage2_payoff_dict = {
@@ -206,11 +208,12 @@ class P2_FinalScreen(Page):
         stage2_payoff = stage2_payoff_dict[player.group.decision_towards_payment]
 
         # Calculating Participant payoff (Based on chosen decision)
-        remainder = (player.participant.payoff - stage1_payoff - stage2_payoff)
+        remainder = (player.participant.payoff - stage1_payoff - stage2_payoff - SLDR_payoff)
         player.participant.payoff = (player.participant.payoff - remainder)
 
-        final_payoff = stage1_payoff + stage2_payoff
+        final_payoff = stage1_payoff + stage2_payoff + SLDR_payoff
         real_stg1 = stage1_payoff.to_real_world_currency(player.session)
+        real_sldr = SLDR_payoff.to_real_world_currency(player.session)
         real_stg2 = stage2_payoff.to_real_world_currency(player.session)
         real_final = final_payoff.to_real_world_currency(player.session)
         final = real_final + 10
@@ -220,8 +223,8 @@ class P2_FinalScreen(Page):
             2: player.participant.vars['D2'],
             3: player.in_all_rounds()
         }
-        return {'final_payoff': final_payoff, 'Stage_1': stage1_payoff, 'Stage_2': stage2_payoff
-                , 'real_final': real_final, 'real_Stage_1': real_stg1, 'real_Stage_2': real_stg2,
+        return {'final_payoff': final_payoff, 'Stage_1': stage1_payoff, 'Stage_2': stage2_payoff, 'slider_training': SLDR_payoff
+                , 'real_final': real_final, 'real_Stage_1': real_stg1, 'real_slider': real_sldr, 'real_Stage_2': real_stg2,
                 'final': final, 'decision_counts': decision_counts, 'history': history}
 
     @staticmethod
