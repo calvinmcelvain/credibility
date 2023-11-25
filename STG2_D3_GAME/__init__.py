@@ -196,6 +196,7 @@ class P2_FinalScreen(Page):
     @staticmethod
     def vars_for_template(player: Player):
         stage1_payoff = player.participant.vars['Stage1_payoff']
+        SLDR_payoff = player.participant.vars['SLDR_payoff']
         D1 = player.participant.vars['D1']['payoff']
         D2 = player.participant.vars['D2']['payoff']
         stage2_payoff_dict = {
@@ -206,11 +207,12 @@ class P2_FinalScreen(Page):
         stage2_payoff = stage2_payoff_dict[player.group.decision_towards_payment]
 
         # Calculating Participant payoff (Based on chosen decision)
-        remainder = (player.participant.payoff - stage1_payoff - stage2_payoff)
+        remainder = (player.participant.payoff - stage1_payoff - stage2_payoff - SLDR_payoff)
         player.participant.payoff = (player.participant.payoff - remainder)
 
-        final_payoff = stage1_payoff + stage2_payoff
+        final_payoff = stage1_payoff + stage2_payoff + SLDR_payoff
         real_stg1 = stage1_payoff.to_real_world_currency(player.session)
+        real_sldr = SLDR_payoff.to_real_world_currency(player.session)
         real_stg2 = stage2_payoff.to_real_world_currency(player.session)
         real_final = final_payoff.to_real_world_currency(player.session)
         final = real_final + 10

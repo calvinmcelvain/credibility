@@ -97,11 +97,11 @@
   });
 
 // Slider design | i.e. Value of outputs and optional input box
-  window.onload = function() {
-      const initialValue = document.getElementById("slider").value;
-      document.getElementById("sliderInput").value = initialValue;
-  };
+window.onload = function() {
+    document.getElementById("slider").value = 0;
+    document.getElementById("sliderInput").value = 0;
+};
 
-  function updateInputValue(value) {
-      document.getElementById("sliderInput").value = value;
-  }
+function updateInputValue(value) {
+    document.getElementById("sliderInput").value = value;
+}

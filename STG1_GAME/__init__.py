@@ -8,13 +8,13 @@ Stage STG1_GAME Game
 class C(BaseConstants):
     NAME_IN_URL = 'STG1_GAME'
     PLAYERS_PER_GROUP = 2
-    NUM_ROUNDS = 30
+    NUM_ROUNDS = 10
 
-    # Timeout seconds for decision page
+    # Timeout seconds
     decision_time = None
     feedback_time = None
 
-    # Defining Role "Player A"
+    # Defining Role "Advisor"
     pa_ROLE = 'Advisor'
 
     # Signal Dictionaries
@@ -42,7 +42,7 @@ class C(BaseConstants):
     # Signal decoder
     decoder = {1: 'Low', 2: 'Medium', 3: 'High', 'Low': 1, 'Medium': 2, 'High': 3}
 
-    # Stage 1 Payoff dictionaries & Player B endowment
+    # Stage 1 Payoff dictionaries & Investor endowment
     pb_payoff = {
         1: {1: 0, 2: 1, 3: 2, 4: 3, 5: 4},
         2: {1: 1, 2: 3, 3: 5, 4: 7, 5: 9},
@@ -89,7 +89,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    # Decision fields for Player A and B
+    # Decision fields for Advisor and Investor
     pb_decision = models.StringField(blank=False)
     pa_low_advice = models.StringField(blank=False)
     pa_med_advice = models.StringField(blank=False)
@@ -124,15 +124,16 @@ def creating_session(subsession):
 
 
 def is_displayed_pa(player: Player):
-    # Is displayed function for role Player A
+    # Is displayed function for role Investor
     return player.role == C.pa_ROLE
 
 
 def is_displayed_pb(player: Player):
-    # Is displayed function for role Player B
+    # Is displayed function for role Advisor
     return player.role != C.pa_ROLE
 
 
+# Custom data export for this game
 def custom_export(players):
     # header rows
     yield ['session', 'participant_code', 'player_id', 'role', 'treatment', 'round_number', 'estimated_signal', 'actual_signal', 'payoff', 'low_advice', 'med_advice', 'high_advice', 'invest_decision']
@@ -169,6 +170,7 @@ class P1_PBDecision(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
+        # Returning the Advisors advice to the Investors
         treatment_signal = C.treatment_signal
         round_number = player.round_number
         treatment = player.group.treatment
@@ -194,6 +196,7 @@ class P2_BetweenWaitPage(Page):
         pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
         pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
         if player.role == C.pa_ROLE:
+            # Returning the estimate for the Advisor and creating a seamless transision
             treatment_signal = C.treatment_signal
             round_number = player.round_number
             treatment = player.group.treatment
@@ -234,7 +237,7 @@ class PayoffWaitPage(WaitPage):
         advice_dict = {'Low': group.get_player_by_role(C.pa_ROLE).pa_low_advice, 'Medium': group.get_player_by_role(C.pa_ROLE).pa_med_advice, 'High': group.get_player_by_role(C.pa_ROLE).pa_high_advice}
         group.pa_advice = advice_dict[estimated_signal]
 
-        # Counting investors based on Player B's advice & Payoffs
+        # Counting investors based on Advisors advice & Payoffs
         group.invest_count = sum(1 for player in group.get_players() if player.role != C.pa_ROLE and player.pb_decision == 'Invest')
         for player in group.get_players():
             if player.role == C.pa_ROLE:

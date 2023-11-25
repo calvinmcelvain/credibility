@@ -1,0 +1,88 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
+<script src="{{ static 'JavaScript_Crd2.js' }}"></script>
+
+<!-- Title -->
+<div style="margin-bottom: 40px; margin-top: 10px; text-align: center; contain: content">
+    <h3 style="float: left"><u>Slider Training:</u> Feedback</h3>
+    <h3 style="float: right">Round {{ player.round_number }}</h3>
+</div>
+
+<!-- Invest Value and your selection info. -->
+<div style="margin-bottom: 20px; text-align: center; contain: content;" class="draws">
+    <h3 style="float: left"><u>Invest Value:</u> {{ C.invest_value }}</h3>
+    <h3 style="float: right"><u>Your Minimum Outside Option:</u> {{ player.pb_outside_option }}</h3>
+</div>
+
+<!-- Table of draws -->
+<table class="draws_table">
+    <tr>
+        <th>Draw:</th>
+        <th>Outside Option:</th>
+        <th>Your Payoff:</th>
+        <th>Alternate Payoff:</th>
+        <th>Payoff Difference:</th>
+    </tr>
+    {{ for key, values in draw_dict.items() }}
+    <tr {{ if values.1 == player.selected_draw_number }} style="font-weight: bold" {{ endif }}>
+        <td {{ if values.1 == player.selected_draw_number }} style="background-color: yellow" {{ endif }}>{{ values.1 }}</td>
+        <td>{{ values.2 }}</td>
+        <td>{{ values.3 }}</td>
+        <td>{{ values.4 }}</td>
+        <td {{ if values.6 == 0 }} style="background-color: red" {{ endif }}>{{ values.5 }}</td>
+    </tr>
+    {{ endfor }}
+    <tr style="border-top: 2px solid black"></tr>
+</table>
+
+<!-- Highlighting Key -->
+<div style="display: flex; align-items: center; margin-top: 20px">
+    <table style="margin: auto">
+        <th>Randomly Selected <br>Outside Option = </th>
+        <th width="25px"></th>
+        <td width="50px" style="border: 1px solid black; background-color: yellow"></td>
+    </table>
+    <table style="margin: auto">
+        <th>Minimum = Value: <br>Earns Less</th>
+        <th width="25px"></th>
+        <td width="50px" style="border: 1px solid black; background-color: greenyellow"></td>
+    </table>
+    <table style="margin: auto">
+        <th>Minimum = Value: <br>Earns More</th>
+        <th width="25px"></th>
+        <td width="50px" style="border: 1px solid black; background-color: red"></td>
+    </table>
+</div>
+
+<!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
+<div style="margin-top: 50px;">
+    <div style="float: left">
+        <p style="margin-top: unset; margin-bottom: unset;">Please click "Continue"</p>
+        <p style="font-size: 16px; margin-top: unset; margin-bottom: 10px;" >*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" class="Instructions" onclick="validating()" style="float: right">Continue</button>
+</div>
+
+<script>
+// Checking if button has been clicked
+window.onload = function () {
+    const IsClicked = sessionStorage.getItem('IsClicked');
+
+    if (IsClicked === 'true') {
+        document.getElementById('validation').disabled = true;
+    }
+}
+
+// Websocket to check if all players are ready
+function liveRecv(data) {
+    if (data === 'all_ready') {
+        sessionStorage.setItem('IsClicked', 'false')
+        document.forms[0].submit();
+    }
+}
+
+</script>
+
+{{ endblock }}

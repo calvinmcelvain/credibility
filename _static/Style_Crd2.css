@@ -15,6 +15,10 @@ ol {
     font-size: 19px;
 }
 
+ol li {
+    margin-top: 20px;
+}
+
 div.BeforeStart {
     align-items: center;
 }
@@ -97,8 +101,14 @@ button.Instructions {
 }
 
 h4.History {
+    margin-top: 100px;
     font-style: unset;
     font-weight: bold;
+}
+
+ul.draws_list {
+    margin-top: 75px;
+    font-size: 19px;
 }
 
 /* Stage 2 Instructions List */
@@ -246,6 +256,25 @@ h4.History {
     }
     #sliderInput {
         width: 3em;
+    }
+
+/* Draws Table */
+    table.draws_table {
+        font-size: 15px;
+        text-align: center;
+        width: 1000px;
+    }
+    .draws_table th {
+        border-bottom: 1px solid black;
+        width: 200px;
+        vertical-align: bottom;
+    }
+    .draws_table td {
+        height: 20px;
+    }
+    .draws h3 {
+        font-size: 19px;
+        font-style: italic;
     }
 
 /* Final Feedback Page */

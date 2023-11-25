@@ -48,6 +48,12 @@ SESSION_CONFIGS = [
         num_demo_participants=demo_instructions,
     ),
     dict(
+        name='Stage_2_Decision_2_Slider',
+        display_name='Stage 2: Slider Training',
+        app_sequence=['START', 'STG2_BGN_SLDR'],
+        num_demo_participants=demo_instructions,
+    ),
+    dict(
         name='Stage_2_Decision_2_Game_Only',
         display_name='Stage 2: Decision 2 Game (Only)',
         app_sequence=['START', 'STG2_D2_GAME'],
@@ -107,7 +113,7 @@ SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=0.04, participation_fee=10.00, doc=""
 )
 
-PARTICIPANT_FIELDS = ['role', 'Stage1_payoff', 'D1', 'D2', 'PlayerID']
+PARTICIPANT_FIELDS = ['role', 'STG1_payoff', 'SLDR_payoff', 'D1_payoff', 'D2_payoff', 'PlayerID']
 SESSION_FIELDS = ['group_matrix']
 
 # ISO-639 code
