@@ -1,70 +1,77 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
-<script src="{{ static 'JavaScript_Crd2.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/stage_2.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/stage_2.js' }}"></script>
 
 <!-- Title -->
-<h2 class="Title">End of Experiment</h2>
+{{ block title }}
+<u><b>End of Experiment</b></u>
+{{ endblock }}
 
-<!-- Stage 2 Feedback -->
+<!-- Information Body -->
 <p>The experiment has now ended. Below you will see a summary of the experiment. You will also see the ECU you earned from the experiment, and your total earnings in dollars, including your $10 show-up fee. </p>
 <p>Thank you for participating. You will now privately receive your payment, by check.</p>
-<h4 class="History" style="margin: 75px">Stage 2 Feedback:</h4>
-<h5>*** The decision randomly chosen towards payment is marked in <span class="highlight">yellow</span> ***</h5>
 
+<!-- Stage 2 Feedback -->
 {{ if player.role == C.pa_ROLE }}
 
 <div class="tablescroll">
-    <table class="history_header">
-        <tr>
-            <th>Decision</th>
-            <th>True Signal</th>
-            <th>Advice Given</th>
-            <th>Total Investors</th>
-            <th>Your Payoff</th>
-            <th>Investors Payoff</th>
-        </tr>
-    </table>
-    <table id="data_table">
-        <tr {{ if decision_counts == 1 }} bgcolor="yellow"{{ endif }}>
-            <td>1</td>
-            <td>{{ history.1.signal }}</td>
-            <td>{{ history.1.advice }}</td>
-            <td>{{ history.1.investors }}</td>
-            <td>{{ history.1.payoff }}</td>
-            <td>{{ history.1.pb_payoff }}</td>
-        </tr>
-        <tr {{ if decision_counts == 2 }} bgcolor="yellow"{{ endif }}>
-            <td>2</td>
-            <td>{{ history.2.signal }}</td>
-            <td>{{ history.2.advice }}</td>
-            <td>{{ history.2.investors }}</td>
-            <td>{{ history.2.payoff }}</td>
-            <td>{{ history.2.pb_payoff }}</td>
-        </tr>
-        <tr {{ if decision_counts == 3 }} bgcolor="yellow"{{ endif }}>
-            {{ for value in history.3 }}
-            <td>3</td>
-            <td>{{ value.group.actual_signal }}</td>
-            <td>{{ value.group.pa_advice }}</td>
-            <td>{{ value.group.total_players_invest() }}</td>
-            <td>{{ value.payoff }}</td>
-            <td>{{ value.group.pb_payoff }}</td>
-            {{ endfor }}
-        </tr>
-    </table>
+    <h4>Stage 2 Decision Results:</h4>
+    <h5>*** The decision randomly chosen towards payment is <span class="highlight">Decision {{ decision_counts }}</span> ***</h5>
+    <div>
+        <table class="history_header">
+            <tr>
+                <th>Decision</th>
+                <th>True Signal</th>
+                <th>Advice Given</th>
+                <th>Total Investors</th>
+                <th>Your Payoff</th>
+                <th>Investors Payoff</th>
+            </tr>
+        </table>
+        <table id="data_table">
+            <tr {{ if decision_counts == 1 }} bgcolor="yellow"{{ endif }}>
+                <td>1</td>
+                <td>{{ history.1.signal }}</td>
+                <td>{{ history.1.advice }}</td>
+                <td>{{ history.1.investors }}</td>
+                <td>{{ history.1.payoff }}</td>
+                <td>{{ history.1.pb_payoff }}</td>
+            </tr>
+            <tr {{ if decision_counts == 2 }} bgcolor="yellow"{{ endif }}>
+                <td>2</td>
+                <td>{{ history.2.signal }}</td>
+                <td>{{ history.2.advice }}</td>
+                <td>{{ history.2.investors }}</td>
+                <td>{{ history.2.payoff }}</td>
+                <td>{{ history.2.pb_payoff }}</td>
+            </tr>
+            <tr {{ if decision_counts == 3 }} bgcolor="yellow"{{ endif }}>
+                {{ for value in history.3 }}
+                <td>3</td>
+                <td>{{ value.group.actual_signal }}</td>
+                <td>{{ value.group.pa_advice }}</td>
+                <td>{{ value.group.total_players_invest() }}</td>
+                <td>{{ value.payoff }}</td>
+                <td>{{ value.group.pb_payoff }}</td>
+                {{ endfor }}
+            </tr>
+        </table>
+    </div>
 </div>
 
 {{ else }}
 
 <div class="tablescroll">
+    <h4>Stage 2 Decision Results:</h4>
+    <h5>*** The decision randomly chosen towards payment is <span class="highlight">Decision {{ decision_counts }}</span> ***</h5>
     <table class="history_header">
         <tr>
-            <th>Round</th>
-            <th>Advisor's Advice</th>
-            <th>Outside Draw</th>
-            <th>Your Decision</th>
+            <th>Decision</th>
+            <th>Advice</th>
+            <th>Invest Draw</th>
+            <th>Decision</th>
             <th>Other Investors</th>
             <th>Total Investors</th>
             <th>True Quality</th>
@@ -102,7 +109,7 @@
             <td>{{ value.random_draw }}</td>
             <td>{{ value.pb_decision() }}</td>
             <td>{{ value.other_investors() }}</td>
-            <td>{{ value.group.totala_players_invest }}</td>
+            <td>{{ value.group.total_players_invest }}</td>
             <td>{{ value.group.actual_signal }}</td>
             <td>{{ value.payoff }}</td>
             <td>{{ value.group.pa_payoff() }}</td>
@@ -114,70 +121,73 @@
 {{ endif }}
 
 <!--Player History Table (ECUs) -->
-<div style="margin: 125px"></div>
-<h4 class="History">ECUs earned in Experiment:</h4>
-<h5>*** Remember, <span style="text-decoration: underline">Decision {{ decision_counts }}</span> of Stage 2 was randomly drawn to count towards payment ***</h5>
-<table class="Final">
-    <tr>
-        <th>Stage 1 Total ECUs:</th>
-        <td>{{ Stage_1 }}</td>
-    </tr>
-    <tr>
-        <th>Slider Training ECUs:</th>
-        <td>{{ slider_training }}</td>
-    </tr>
-    <tr>
-        <th>Stage 2 Total ECUs:</th>
-        <td>{{ Stage_2 }}</td>
-    </tr>
-    <tr>
-        <tr class="last" style="height: 1px">
-        <th colspan="2" style="height: 1px"></th>
-    </tr>
-    <tr>
-        <th>Total ECUs:</th>
-        <td>{{ final_payoff }}</td>
-    </tr>
-</table>
+<div class="final">
+    <h4>ECUs earned in Experiment:</h4>
+    <table>
+        <tr>
+            <th>Stage 1 Total ECUs:</th>
+            <td>{{ Stage_1 }}</td>
+        </tr>
+        <tr>
+            <th>Slider Training ECUs:</th>
+            <td>{{ slider_training }}</td>
+        </tr>
+        <tr>
+            <th>Stage 2 Total ECUs:</th>
+            <td>{{ Stage_2 }}</td>
+        </tr>
+        <tr>
+            <tr class="last" style="height: 1px">
+            <th colspan="2" style="height: 1px"></th>
+        </tr>
+        <tr>
+            <th>Total ECUs:</th>
+            <td>{{ final_payoff }}</td>
+        </tr>
+    </table>
+</div>
 
 <!--Player History Table ($) -->
-<div style="margin: 50px"></div>
-<h4 class="History">Dollars($) earned in Experiment:</h4>
-<h5>*** Remember, $0.04 = 1 ECU ***</h5>
-<table class="Final">
-    <tr>
-        <th>Stage 1 Total Dollars ($):</th>
-        <td>{{ real_Stage_1 }}</td>
-    </tr>
-    <tr>
-        <th>Slider Training Dollars ($):</th>
-        <td>{{ real_slider }}</td>
-    </tr>
-    <tr>
-        <th>Stage 2 Total Dollars ($):</th>
-        <td>{{ real_Stage_2 }}</td>
-    </tr>
-    <tr>
+<div class="final">
+    <h4>Dollars($) earned in Experiment:</h4>
+    <h5>*** $0.04 = 1 ECU ***</h5>
+    <table class="Final">
+        <tr>
+            <th>Stage 1 Total Dollars ($):</th>
+            <td>{{ real_Stage_1 }}</td>
+        </tr>
+        <tr>
+            <th>Slider Training Dollars ($):</th>
+            <td>{{ real_slider }}</td>
+        </tr>
+        <tr>
+            <th>Stage 2 Total Dollars ($):</th>
+            <td>{{ real_Stage_2 }}</td>
+        </tr>
+        <tr>
+            <tr class="last" style="height: 1px">
+            <th colspan="2" style="height: 1px"></th>
+        </tr>
+        <tr>
+            <th>Total Stage 1 & 2 Dollars ($):</th>
+            <td>{{ real_final }}</td>
+        <tr>
+            <th>Participation Fee ($):</th>
+            <td>$10</td>
+        </tr>
         <tr class="last" style="height: 1px">
-        <th colspan="2" style="height: 1px"></th>
-    </tr>
-    <tr>
-        <th>Total Stage 1 & 2 Dollars ($):</th>
-        <td>{{ real_final }}</td>
-    <tr>
-        <th>Participation Fee ($):</th>
-        <td>$10</td>
-    </tr>
-    <tr class="last" style="height: 1px">
-        <th colspan="2" style="height: 1px"></th>
-    </tr>
-    <tr class="last">
-        <th>Ending Total Dollars ($)</th>
-        <td>{{ final }}</td>
-    </tr>
-</table>
+            <th colspan="2" style="height: 1px"></th>
+        </tr>
+        <tr class="last">
+            <th>Ending Total Dollars ($)</th>
+            <td>{{ final }}</td>
+        </tr>
+    </table>
+</div>
 
-<button>Continue</button>
+<div class="button">
+    <button>Continue</button>
+</div>
 
 <script>
 // Adjusting History Width

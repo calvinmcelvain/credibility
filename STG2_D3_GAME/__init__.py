@@ -110,6 +110,7 @@ def is_displayed_pa(player: Player):
     # Is displayed function for role Player A
     return player.role == C.pa_ROLE
 
+
 def is_displayed_pb(player: Player):
     # Is displayed function for role Player B
     return player.role != C.pa_ROLE

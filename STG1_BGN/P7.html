@@ -1,11 +1,11 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
-<script src="{{ static 'JavaScript_Crd2.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/stage_1.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/stage_1.js' }}"></script>
 
 {{ block title }}
-Description of Advisor Payoffs
+<b><u>Description of Advisor Payoffs</u></b>
 {{ endblock }}
 
 <!--Description Body-->
@@ -13,7 +13,6 @@ Description of Advisor Payoffs
 <p>The payoff table below shows a Advisor’s payoffs for each possible combination of how many Investors in the group invest (<i>Total Investors</i>) and the <i>Quality</i> of the investment opportunity. </p>
 
 <!--Payoff Table-->
-<div class="margin"></div>
 <table class="playerpayofftable">
     <tr>
         <td style="width: 75px;"></td>
@@ -49,16 +48,16 @@ Description of Advisor Payoffs
 </table>
 
 <!-- Description Body Cont.-->
-<p style="margin-top: 100px">Please look at an overhead screen as we go through some examples on how to read the <i>Investors’</i> payoff tables. </p>
+<p style="margin-top: 50px">Please look at an overhead screen as we go through some examples on how to read the <i>Investors’</i> payoff tables. </p>
 
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
-<div style="margin-top: 50px;">
-    <div style="float: left">
-        <p style="margin-top: unset; margin-bottom: unset;">Please click "Continue"</p>
-        <p style="font-size: 16px; margin-top: unset; margin-bottom: 10px;" >*** Page will not continue until everyone has clicked continue ***</p>
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p style="font-size: 16px;" >*** Page will not continue until everyone has clicked continue ***</p>
     </div>
-    <button type="button" id="validation" class="Instructions" onclick="validating()" style="float: right">Continue</button>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
 </div>
 
 <script>

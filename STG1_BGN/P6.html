@@ -1,18 +1,17 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
-<script src="{{ static 'JavaScript_Crd2.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/stage_1.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/stage_1.js' }}"></script>
 
 {{ block title }}
-Description of Investor Payoffs (Cont.)
+<b><u>Description of Investor Payoffs (Continued)</u></b>
 {{ endblock }}
 
 <!--Description Body-->
 <p>When you make your decision in each round, you will see the payoff table below showing your payoffs if you invest, for each possible combination of <i>Quality</i> (given by the row) and <i>Total Investors</i> (given by the column), the total number of group members that invest <i>including you.</i></p>
 
 <!--Payoff Table-->
-<div class="margin"></div>
 <table class="playerpayofftable">
     <tr>
         <td style="width: 75px;"></td>
@@ -47,17 +46,17 @@ Description of Investor Payoffs (Cont.)
 </table>
 
 <!-- Description Body Cont.-->
-<p style="margin-top: 100px">Remember that if you keep your endowment, you will earn 12 ECU regardless of the quality of the investment opportunity.</p>
+<p style="margin-top: 50px">Remember that if you keep your endowment, you will earn 12 ECU regardless of the quality of the investment opportunity.</p>
 <p>Please look at an overhead screen as we go through some examples on how to read the <i>Investor</i> payoff tables.</p>
 
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
-<div style="margin-top: 50px;">
-    <div style="float: left">
-        <p style="margin-top: unset; margin-bottom: unset;">Please click "Continue"</p>
-        <p style="font-size: 16px; margin-top: unset; margin-bottom: 10px;" >*** Page will not continue until everyone has clicked continue ***</p>
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p style="font-size: 16px;" >*** Page will not continue until everyone has clicked continue ***</p>
     </div>
-    <button type="button" id="validation" class="Instructions" onclick="validating()" style="float: right">Continue</button>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
 </div>
 
 <script>

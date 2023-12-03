@@ -42,7 +42,7 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     # ID Field
-    player_id = models.IntegerField(blank=False, label='')
+    player_id = models.IntegerField(blank=False, label='', max=99)
 
     # Sample Decision Models
     pb_decision = models.StringField(blank=False)

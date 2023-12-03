@@ -1,17 +1,18 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
-<script src="{{ static 'JavaScript_Crd2.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/stage_1.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/stage_1.js' }}"></script>
 
 <!-- Title -->
+{{ block title }}
 <span class="sample" >**Sample**</span>
-<div style="margin-bottom: 100px; margin-top: 10px; text-align: center">
+<div class="Title_decision">
     <h3 style="float: left"><u>Role:</u> Investor</h3>
-    <span class="advice">Advisor's Advice: <b style="color: red">Invest</b></span>
+    <span>Advisor's Advice: <b style="color: red">Invest</b></span>
     <h3 style="float: right">Round 7</h3>
 </div>
-
+{{ endblock }}
 
 <!--Payoff Tables-->
 <div class="tables-container">
@@ -90,10 +91,10 @@
 </div>
 
 <!--Form Fields/Decisions-->
-<h4 style="margin-bottom: 50px">Remember, If you choose not to invest, you will receive a payoff of 12 ECUs</h4>
+<h4 style="margin-top: 25px; margin-bottom: 20px">Remember, If you choose not to invest, you will receive a payoff of 12 ECUs</h4>
 <table class="decisiontable">
     <tr>
-        <td class="playera" style="width: 200px"><label><input name="pb_decision" value="Invest" type="radio"> Invest</label></td>
+        <td class="playera"><label><input name="pb_decision" value="Invest" type="radio"> Invest</label></td>
         <td class="playera"><label><input name="pb_decision" value="Don't Invest" type="radio"> Keep</label></td>
     </tr>
     <tr>
@@ -102,91 +103,93 @@
 </table>
 
 <!-- Next Button with confirmation pop-up & Instructions Button-->
-<div style="margin-top: 50px">
-    <button onclick="ConfirmDecision(event)" class="Instructions">Continue</button>
-    <button id="pop-up" class="Instructions" style="float: left; background-color: red">Instructions</button>
+<div class="button">
+    <button onclick="ConfirmDecision(event)">Continue</button>
+    <button id="pop-up" style="float: left; background-color: red">Instructions</button>
 </div>
 
 <!-- Sample Player History Table-->
-<h4 class="History">Previous Results:</h4>
 <div class="tablescroll">
-    <table class="history_header">
-        <tr>
-            <th>Round</th>
-            <th>Advisor's Advice</th>
-            <th>Your Decision</th>
-            <th>Other Investors</th>
-            <th>Total Investors</th>
-            <th>True Quality</th>
-            <th>Your Payoff</th>
-            <th>Advisor's Payoff</th>
-        </tr>
-    </table>
-    <table id="data_table">
-        <tr>
-            <td>6</td>
-            <td>Invest</td>
-            <td>Invest</td>
-            <td>3</td>
-            <td>4</td>
-            <td>Medium</td>
-            <td>7</td>
-            <td>6</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>Keep</td>
-            <td>Invest</td>
-            <td>1</td>
-            <td>2</td>
-            <td>Low</td>
-            <td>1</td>
-            <td>3</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Invest</td>
-            <td>Invest</td>
-            <td>4</td>
-            <td>5</td>
-            <td>Low</td>
-            <td>4</td>
-            <td>3</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Invest</td>
-            <td>Invest</td>
-            <td>3</td>
-            <td>4</td>
-            <td>High</td>
-            <td>14</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Keep</td>
-            <td>Invest</td>
-            <td>2</td>
-            <td>3</td>
-            <td>Medium</td>
-            <td>5</td>
-            <td>6</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Invest</td>
-            <td>Invest</td>
-            <td>0</td>
-            <td>1</td>
-            <td>Low</td>
-            <td>0</td>
-            <td>3</td>
-        </tr>
-    </table>
+    <h4>Previous Results:</h4>
+    <div>
+          <table class="history_header">
+            <tr>
+                <th>Round</th>
+                <th>Advisor's Advice</th>
+                <th>Your Decision</th>
+                <th>Other Investors</th>
+                <th>Total Investors</th>
+                <th>True Quality</th>
+                <th>Your Payoff</th>
+                <th>Advisor's Payoff</th>
+            </tr>
+        </table>
+        <table id="data_table">
+            <tr>
+                <td>6</td>
+                <td>Invest</td>
+                <td>Invest</td>
+                <td>3</td>
+                <td>4</td>
+                <td>Medium</td>
+                <td>7</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Keep</td>
+                <td>Invest</td>
+                <td>1</td>
+                <td>2</td>
+                <td>Low</td>
+                <td>1</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Invest</td>
+                <td>Invest</td>
+                <td>4</td>
+                <td>5</td>
+                <td>Low</td>
+                <td>4</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Invest</td>
+                <td>Invest</td>
+                <td>3</td>
+                <td>4</td>
+                <td>High</td>
+                <td>14</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Keep</td>
+                <td>Invest</td>
+                <td>2</td>
+                <td>3</td>
+                <td>Medium</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Invest</td>
+                <td>Invest</td>
+                <td>0</td>
+                <td>1</td>
+                <td>Low</td>
+                <td>0</td>
+                <td>3</td>
+            </tr>
+        </table>
+    </div>
 </div>
 
-{{ include '_static/stg1_instructions.html' }}
+{{ include '_static/instructions/stage_1_instructions.html' }}
 
 <script>
 // Adjusting History Width

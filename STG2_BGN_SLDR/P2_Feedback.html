@@ -1,20 +1,25 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
-<script src="{{ static 'JavaScript_Crd2.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/stage_2.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/stage_2.js' }}"></script>
 
 <!-- Title -->
-<div style="margin-bottom: 40px; margin-top: 10px; text-align: center; contain: content">
+{{ block title }}
+<div style="margin-bottom: 10px; margin-top: 10px; text-align: center; contain: content">
     <h3 style="float: left"><u>Slider Training:</u> Feedback</h3>
     <h3 style="float: right">Round {{ player.round_number }}</h3>
 </div>
+{{ endblock }}
 
 <!-- Invest Value and your selection info. -->
-<div style="margin-bottom: 20px; text-align: center; contain: content;" class="draws">
+<div class="draws">
     <h3 style="float: left"><u>Invest Value:</u> {{ C.invest_value }}</h3>
     <h3 style="float: right"><u>Your Minimum Outside Option:</u> {{ player.pb_outside_option }}</h3>
 </div>
+
+<!-- Result of minimum choice -->
+<p class="draws"><u>Note:</u> You did worse setting your minimum <b>{{ choice }}</b> the invest value [<b>{{ worse }}</b>] times and did better [<b>0</b>] times</p>
 
 <!-- Table of draws -->
 <table class="draws_table">
@@ -38,34 +43,31 @@
 </table>
 
 <!-- Highlighting Key -->
-<div style="display: flex; align-items: center; margin-top: 20px">
-    <table style="margin: auto">
-        <th>Randomly Selected <br>Outside Option = </th>
-        <th width="25px"></th>
-        <td width="50px" style="border: 1px solid black; background-color: yellow"></td>
+<div class="draws_key">
+    <table>
+        <th>Selected Outside Option:</th>
+        <th style="width: 20px"></th>
+        <td style="border: 1px solid black; background-color: yellow"></td>
     </table>
-    <table style="margin: auto">
-        <th>Minimum = Value: <br>Earns Less</th>
-        <th width="25px"></th>
-        <td width="50px" style="border: 1px solid black; background-color: greenyellow"></td>
+    <table>
+        <th>Earned Less:</th>
+        <th style="width: 20px"></th>
+        <td style="border: 1px solid black; background-color: greenyellow"></td>
     </table>
-    <table style="margin: auto">
-        <th>Minimum = Value: <br>Earns More</th>
-        <th width="25px"></th>
-        <td width="50px" style="border: 1px solid black; background-color: red"></td>
+    <table>
+        <th>Earned More:</th>
+        <th style="width: 20px"></th>
+        <td style="border: 1px solid black; background-color: red"></td>
     </table>
 </div>
 
-<!-- Result of minimum choice -->
-<h3 class="draws"><u>Note:</u> You did worse by setting your minimum <b>{{ choice }}</b> the value [<b>{{ worse }}</b>] times, and you did better by setting your minimum <b>{{ choice }}</b> the value [<b>0</b>] times</h3>
-
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
-<div style="margin-top: 50px;">
-    <div style="float: left">
-        <p style="margin-top: unset; margin-bottom: unset;">Please click "Continue"</p>
-        <p style="font-size: 16px; margin-top: unset; margin-bottom: 10px;" >*** Page will not continue until everyone has clicked continue ***</p>
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p style="font-size: 16px;" >*** Page will not continue until everyone has clicked continue ***</p>
     </div>
-    <button type="button" id="validation" class="Instructions" onclick="validating()" style="float: right">Continue</button>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
 </div>
 
 <script>

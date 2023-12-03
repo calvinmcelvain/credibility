@@ -85,6 +85,8 @@ class P2_Feedback(Page):
         min_worse = 0
         if player.pb_outside_option > C.invest_value:
             choice_over_alt = 'above'
+        elif player.pb_outside_option == C.invest_value:
+            choice_over_alt = 'at'
         else:
             choice_over_alt = 'below'
         for i in random_draws:
@@ -144,9 +146,9 @@ class P3_Feedback(Page):
 
     @staticmethod
     def vars_for_template(player):
-        random_draw = player.in_round(player.round_towards_payment).selected_draw
-        outside_option = player.in_round(player.round_towards_payment).pb_outside_option
-        payoff = player.in_round(player.round_towards_payment).payoff
+        random_draw = player.in_round(player.in_round(1).round_towards_payment).selected_draw
+        outside_option = player.in_round(player.in_round(1).round_towards_payment).pb_outside_option
+        payoff = player.in_round(player.in_round(1).round_towards_payment).payoff
         return {'random_draw': random_draw, 'outside_option': outside_option, 'payoff': payoff}
 
 

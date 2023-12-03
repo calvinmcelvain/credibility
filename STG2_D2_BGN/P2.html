@@ -1,19 +1,18 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
-<script src="{{ static 'JavaScript_Crd2.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/stage_2.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/stage_2.js' }}"></script>
 
 {{ block title }}
-Stage 2: Decision 2 (Cont.)
+<u><b>Stage 2: Decision 2 (Continued)</b></u>
 {{ endblock }}
 
 <!-- General Information Body Cont. -->
 <p>Investors who choose to invest will earn 300 if the majority of Investors in their group (three or more) choose to invest, regardless of Quality. This is shown in the table below. As before, you will not know the quality level of the investment opportunity when you decide to invest. Notice that Quality does <span style="font-weight: bold">not</span> matter for the payoff of either the Advisor or Investors.</p>
 
-<!-- nvestors Payoff Table -->
-<p class="payofftableheader">Investors Payoff Table</p>
-<table class="playerpayofftable" style="display: flex; margin-left: 150px">
+<!-- Investors Payoff Table -->
+<table class="playerpayofftable">
     <tr>
         <td style="width: 75px;"></td>
         <td class="header" colspan="5">Total Investors (Including You)</td>
@@ -41,15 +40,15 @@ Stage 2: Decision 2 (Cont.)
 </table>
 
 <!-- General Information Body Cont. -->
-<p style="margin-top: 100px;">As in Decision 1, any Investor who chooses not to invest will receive their outside option, which will be drawn at random.  Players will again use the slider to identify their minimum value of the outside option that will lead them to choose the outside option.</p>
+<p>As in Decision 1, any Investor who chooses not to invest will receive their outside option, which will be drawn at random.  Players will again use the slider to identify their minimum value of the outside option that will lead them to choose the outside option.</p>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
-<div style="margin-top: 50px;">
-    <div style="float: left">
-        <p style="margin-top: unset; margin-bottom: unset;">Please click "Continue"</p>
-        <p style="font-size: 16px; margin-top: unset; margin-bottom: 10px;" >*** Page will not continue until everyone has clicked continue ***</p>
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p style="font-size: 16px;" >*** Page will not continue until everyone has clicked continue ***</p>
     </div>
-    <button type="button" id="validation" class="Instructions" onclick="validating()" style="float: right">Continue</button>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
 </div>
 
 <script>

@@ -1,20 +1,21 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
-<script src="{{ static 'JavaScript_Crd2.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/stage_2.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/stage_2.js' }}"></script>
 
 <!-- Title -->
-<div style="margin-bottom: 40px; margin-top: 10px; contain: content">
+{{ block title }}
+<div class="Title">
     <h3 style="float: left"><u>Slider Training:</u> Decision Screen</h3>
     <h3 style="float: right">Round {{ player.round_number }}</h3>
 </div>
+{{ endblock }}
 
 <!-- Invest Value Info. -->
-<div style="margin-bottom: 20px; text-align: center; contain: content;" class="draws"
+<div style="margin-bottom: 20px; text-align: center; contain: content;" class="draws">
     <h3>Invest Value = <span style="background-color: yellow">{{ C.invest_value }}</span></h3>
 </div>
-
 
 <!-- Slider & Info. -->
 <p style="text-align: center">Use the slider to pick the minimum outside option for which you will <span style="color: red">not</span> choose Invest</p>
@@ -30,7 +31,7 @@
 </ul>
 
 <!-- Next Button with confirmation pop-up & Instructions Button-->
-<div style="margin-top: 100px">
+<div class="button">
     <button>Continue</button>
 </div>
 

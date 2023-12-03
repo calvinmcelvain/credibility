@@ -1,11 +1,11 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
-<script src="{{ static 'JavaScript_Crd2.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/stage_1.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/stage_1.js' }}"></script>
 
 {{ block title }}
-Instructions Quiz
+<b><u>Instructions Quiz</u></b>
 {{ endblock }}
 
 <!--Instruction Quiz Body-->
@@ -137,6 +137,8 @@ Instructions Quiz
 </div>
 
 <!--Next Button-->
-<button type="button" onclick="checkAnswers()">Continue</button>
+<div class="button">
+    <button type="button" onclick="checkAnswers()">Continue</button>
+</div>
 
 {{ endblock }}

@@ -1,11 +1,11 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'Style_Crd2.css' }}" type="text/css">
-<script src="{{ static 'JavaScript_Crd2.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/stage_2.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/stage_2.js' }}"></script>
 
 {{ block title }}
-Slider Training Exercise (Cont.)
+<u><b>Slider Training Exercise (Continued)</b></u>
 {{ endblock }}
 
 <!-- General Information Body -->
@@ -20,16 +20,16 @@ Slider Training Exercise (Cont.)
 </div>
 <p>As an investor, your best choice is always to set the slider exactly <span style="color: red">equal</span> to the value.</p>
 <p>The feedback will highlight in <span style="background-color: red">red</span> all outside options where you would have earned <span style="color: red">more</span> by setting the slider equal to the value than the minimum outside option you chose.</p>
-<p>The feedback will highlight in <span style="background-color: greenyellow">green</span> all outside options where you would have earned <span style="color: red">less</span> by setting the slider equal to the value than the minimum outside option you chose.</p>
+<p>The feedback will highlight in <span style="background-color: greenyellow">green</span> all outside options where you would have earned <span style="color: green">less</span> by setting the slider equal to the value than the minimum outside option you chose.</p>
 <p>One outside option will randomly be selected for payment. Your payoff is highlighted in <span style="background-color: yellow">yellow</span>.</p>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
-<div style="margin-top: 50px;">
-    <div style="float: left">
-        <p style="margin-top: unset; margin-bottom: unset;">Please click "Continue"</p>
-        <p style="font-size: 16px; margin-top: unset; margin-bottom: 10px;" >*** Page will not continue until everyone has clicked continue ***</p>
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p style="font-size: 16px;" >*** Page will not continue until everyone has clicked continue ***</p>
     </div>
-    <button type="button" id="validation" class="Instructions" onclick="validating()" style="float: right">Continue</button>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
 </div>
 
 <script>
