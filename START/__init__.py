@@ -8,7 +8,7 @@ Experiment Wait-room: Sets group matrix and assigns player roles
 
 class C(BaseConstants):
     NAME_IN_URL = 'START'
-    PLAYERS_PER_GROUP = 2
+    PLAYERS_PER_GROUP = 6
     NUM_ROUNDS = 1
 
 

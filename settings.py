@@ -98,7 +98,7 @@ SESSION_CONFIGS = [
     ),
     dict(
         name='Stage_1_Stage_2',
-        display_name='Stage 1 & Stage 2',
+        display_name='Lab Ready (Stage 1 & 2)',
         app_sequence=['START', 'STG1_BGN', 'STG1_GAME', 'STG2_BGN', 'STG2_BGN_SLDR', 'STG2_D1_BGN', 'STG2_D1_GAME', 'STG2_D2_BGN', 'STG2_D2_GAME', 'STG2_D3_BGN', 'STG2_D3_GAME'],
         num_demo_participants=demo_final,
     ),
