@@ -5,46 +5,88 @@
 <script src="{{ static 'java_scripts/stage_2.js' }}"></script>
 
 {{ block title }}
-<u><b>Slider Training Exercise</b></u>
+<u><b>Using a Slider (Continued)</b></u>
 {{ endblock }}
 
-<!-- General Information Body -->
-<p>As an investor, your best choice is always to set the slider exact <span style="color: red">equal</span> to the value you believe you will earn on average by choosing Invest.</p>
-<p>To help you understand why this is true, you will now complete a short training exercise.</p>
-<div class="List">
-    <ul>
-        <li>There are 10 rounds in the training exercise. You will be paid for one randomly selected round of the training exercise.</li>
-        <li>In each round, the computer will randomly select a value that you will earn by choosing Invest. You will know the randomly selected value. You will earn this value <span style="color: red">for certain</span> if you choose Invest.</li>
-    </ul>
-</div>
-<p>In each round, you will use a slider to select the <span style="color: red">minimum</span> outside option for which you will choose not to invest.</p>
+<p><u>Instructions:</u> For the following, set the sliders to the value in <span style="color: red">red</span> above each slider</p>
+
+<!-- Slider Manipulation Exercises -->
+<p  style="text-align: center; margin-top: 50px">Set the value to <span style="color: red">210</span>, using the <u>slider</u></p>
+<label><input style="margin-top: 20px" class="decision-slider" type="range" name="pb_outside_option" id="slider1" oninput="updateInputValue1(this.value)" min="0" max="300"></label>
+<label><input disabled type="number" id="sliderInput1" name="pb_outside_option" oninput="updateSliderFromInput1(this.value)" size="3" min="0" max="300"></label>
+
+<p  style="text-align: center; margin-top: 30px">Set the value to <span style="color: red">97</span>, using the <u>text box</u></p>
+<label><input disabled style="margin-top: 20px" class="decision-slider" type="range" name="pb_outside_option" id="slider2" oninput="updateInputValue2(this.value)" min="0" max="300"></label>
+<label><input type="number" id="sliderInput2" name="pb_outside_option" oninput="updateSliderFromInput2(this.value)" size="3" min="0" max="300"></label>
+
+<p  style="text-align: center; margin-top: 30px">Set the value to <span style="color: red">170</span></p>
+<label><input style="margin-top: 20px" class="decision-slider" type="range" name="pb_outside_option" id="slider3" oninput="updateInputValue3(this.value)" min="0" max="300"></label>
+<label><input type="number" id="sliderInput3" name="pb_outside_option" oninput="updateSliderFromInput3(this.value)" size="3" min="0" max="300"></label>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
-    <div>
-        <p>Please click "Continue"</p>
-        <p style="font-size: 16px;" >*** Page will not continue until everyone has clicked continue ***</p>
-    </div>
-    <button type="button" id="validation" onclick="validating()">Continue</button>
+    <button type="submit">Continue</button>
 </div>
 
 <script>
-// Checking if button has been clicked
-window.onload = function () {
-    const IsClicked = sessionStorage.getItem('IsClicked');
+// Disable the button on window load
+  window.onload = function() {
+    checkSliders();
+  };
+  function checkSliders() {
+    var slider1Value = document.getElementById('sliderInput1').value;
+    var slider2Value = document.getElementById('sliderInput2').value;
+    var slider3Value = document.getElementById('sliderInput3').value;
 
-    if (IsClicked === 'true') {
-        document.getElementById('validation').disabled = true;
-    }
-}
+    // Define target values
+    var targetValues = {
+      slider1: 210,
+      slider2: 97,
+      slider3: 170
+    };
 
-// Websocket to check if all players are ready
-function liveRecv(data) {
-    if (data === 'all_ready') {
-        sessionStorage.setItem('IsClicked', 'false')
-        document.forms[0].submit();
+    // Check if all sliders match the target values
+    if (
+      slider1Value == targetValues.slider1 &&
+      slider2Value == targetValues.slider2 &&
+      slider3Value == targetValues.slider3
+    ) {
+      document.querySelector('.button button').disabled = false; // Enable the Continue button
+    } else {
+      document.querySelector('.button button').disabled = true; // Disable the Continue button
     }
-}
+  }
+    // Function to update slider from input
+  function updateSliderFromInput1(value) {
+    document.getElementById('slider1').value = value;
+    checkSliders();
+  }
+
+  function updateSliderFromInput2(value) {
+    document.getElementById('slider2').value = value;
+    checkSliders();
+  }
+
+  function updateSliderFromInput3(value) {
+    document.getElementById('slider3').value = value;
+    checkSliders();
+  }
+
+// Function to update input from slider
+  function updateInputValue1(value) {
+    document.getElementById('sliderInput1').value = value;
+    checkSliders();
+  }
+
+  function updateInputValue2(value) {
+    document.getElementById('sliderInput2').value = value;
+    checkSliders();
+  }
+
+  function updateInputValue3(value) {
+    document.getElementById('sliderInput3').value = value;
+    checkSliders();
+  }
 </script>
 
 {{ endblock }}

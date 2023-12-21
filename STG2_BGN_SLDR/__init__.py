@@ -10,7 +10,6 @@ class C(BaseConstants):
     NAME_IN_URL = 'STG2_BGN_SLDR'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 10
-    invest_value = 150      # Invest value
 
     decision_time = None    # Timeout seconds for decision page
     feedback_time = None    # Timeout seconds for feedback page
@@ -31,6 +30,7 @@ class Player(BasePlayer):
     random_draws = models.LongStringField()
     selected_draw = models.IntegerField(initial=301)
     selected_draw_number = models.IntegerField()
+    invest_value = models.IntegerField(initial=301)
 
     def get_random_draws(self):
         list_of_draws = [r.randint(0, 300) for _ in range(20)]  # Generate 20 random draws
@@ -52,19 +52,24 @@ class P1_Decision(Page):
 
     @staticmethod
     def vars_for_template(player):
+        if player.invest_value == 301:
+            player.invest_value = r.randint(0, 300)
+            invest_value = player.invest_value
+        else:
+            invest_value = player.invest_value
         player.random_draws = player.get_random_draws()
         cleaned_random_draws = player.random_draws.replace('[', '').replace(']', '')
         random_draws = [int(x) for x in cleaned_random_draws.split(',')]
         player.selected_draw = r.choice(random_draws)
         player.selected_draw_number = random_draws.index(player.selected_draw) + 1
-        return {'invest_value': C.invest_value}
+        return {'invest_value': invest_value}
 
     @staticmethod
     def before_next_page(player, timeout_happened):
         if player.round_number == player.in_round(1).round_towards_payment:
             if player.pb_outside_option > player.selected_draw:
-                player.payoff = C.invest_value
-                player.participant.vars['SLDR_payoff'] = C.invest_value
+                player.payoff = player.invest_value
+                player.participant.vars['SLDR_payoff'] = player.invest_value
             else:
                 player.payoff = player.selected_draw
                 player.participant.vars['SLDR_payoff'] = player.selected_draw
@@ -83,29 +88,29 @@ class P2_Feedback(Page):
         payoff_diff = []
         sign = []
         min_worse = 0
-        if player.pb_outside_option > C.invest_value:
+        if player.pb_outside_option > player.invest_value:
             choice_over_alt = 'above'
-        elif player.pb_outside_option == C.invest_value:
+        elif player.pb_outside_option == player.invest_value:
             choice_over_alt = 'at'
         else:
             choice_over_alt = 'below'
         for i in random_draws:
             if player.pb_outside_option > i:
-                payoffs.append(C.invest_value)
-                if C.invest_value > i:
-                    alt_payoffs.append(C.invest_value)
+                payoffs.append(player.invest_value)
+                if player.invest_value > i:
+                    alt_payoffs.append(player.invest_value)
                     payoff_diff.append(0)
                     sign.append(2)
                 else:
                     alt_payoffs.append(i)
-                    payoff_diff.append(abs(i - C.invest_value))
+                    payoff_diff.append(abs(i - player.invest_value))
                     sign.append(0)
                     min_worse += 1
             else:
                 payoffs.append(i)
-                if C.invest_value > i:
-                    alt_payoffs.append(C.invest_value)
-                    payoff_diff.append(abs(i - C.invest_value))
+                if player.invest_value > i:
+                    alt_payoffs.append(player.invest_value)
+                    payoff_diff.append(abs(i - player.invest_value))
                     sign.append(0)
                     min_worse += 1
                 else:
@@ -119,8 +124,7 @@ class P2_Feedback(Page):
             for i in range(len(draw_numbers))
         }
 
-        return {'draw_dict': draw_dict, 'worse': min_worse, 'choice': choice_over_alt}
-
+        return {'draw_dict': draw_dict, 'worse': min_worse, 'choice': choice_over_alt, 'invest_value': player.invest_value}
 
     @staticmethod
     def live_method(player: Player, data):

@@ -1,0 +1,53 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'style_sheets/stage_2.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/stage_2.js' }}"></script>
+
+{{ block title }}
+<u><b>Slider Training Exercise (Continued)</b></u>
+{{ endblock }}
+
+<!-- General Information Body -->
+<p>After each round, you will receive feedback. This will show you the twenty randomly drawn outside options. For each outside option, the feedback will show you four things:</p>
+<div class="List">
+    <ul>
+        <li>The value of the outside option.</li>
+        <li>What you earn given the minimum outside option you picked with the slider</li>
+        <li>What you would have earned if you had set the minimum outside option equal to the value</li>
+        <li>The difference between these two numbers</li>
+    </ul>
+</div>
+<p>As an investor, your best choice is always to set the slider exactly <span style="color: red">equal</span> to the value.</p>
+<p>The feedback will highlight in <span style="background-color: red">red</span> all outside options where you would have earned <span style="color: red">more</span> by setting the slider equal to the value than the minimum outside option you chose.</p>
+<p>The feedback will highlight in <span style="background-color: greenyellow">green</span> all outside options where you would have earned <span style="color: green">less</span> by setting the slider equal to the value than the minimum outside option you chose.</p>
+<p>One outside option will randomly be selected for payment. Your payoff is highlighted in <span style="background-color: yellow">yellow</span>.</p>
+
+<!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p style="font-size: 16px;" >*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
+</div>
+
+<script>
+// Checking if button has been clicked
+window.onload = function () {
+    const IsClicked = sessionStorage.getItem('IsClicked');
+
+    if (IsClicked === 'true') {
+        document.getElementById('validation').disabled = true;
+    }
+}
+
+// Websocket to check if all players are ready
+function liveRecv(data) {
+    if (data === 'all_ready') {
+        sessionStorage.setItem('IsClicked', 'false')
+        document.forms[0].submit();
+    }
+}
+</script>
+{{ endblock }}

@@ -5,18 +5,19 @@
 <script src="{{ static 'java_scripts/stage_2.js' }}"></script>
 
 {{ block title }}
-<u><b>Slider Training Exercise (Continued)</b></u>
+<u><b>Slider Training Exercise</b></u>
 {{ endblock }}
 
 <!-- General Information Body -->
-<p>After you see the value and choose your minimum outside option in each round, the computer will randomly draw twenty numbers between 0 and 300.  This will represent twenty possibly outcomes you could have seen in this round.</p>
+<p>As an investor, your best choice is always to set the slider exact <span style="color: red">equal</span> to the value you believe you will earn on average by choosing Invest.</p>
+<p>To help you understand why this is true, you will now complete a short training exercise.</p>
 <div class="List">
     <ul>
-        <li>For each draw, any number is equally likely to be drawn.</li>
-        <li>A draw below your minimum will result you choosing to Invest. You will receive the value.</li>
-        <li>If a draw is at or above your minimum, you will <span style="color: red">not</span> Invest. You will receive the outside option.</li>
+        <li>There are 10 rounds in the training exercise. You will be paid for one randomly selected round of the training exercise.</li>
+        <li>In each round, the computer will randomly select a value that you will earn by choosing Invest. You will know the randomly selected value. You will earn this value <span style="color: red">for certain</span> if you choose Invest.</li>
     </ul>
 </div>
+<p>In each round, you will use a slider to select the <span style="color: red">minimum</span> outside option for which you will choose not to invest.</p>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
@@ -45,4 +46,5 @@ function liveRecv(data) {
     }
 }
 </script>
+
 {{ endblock }}
