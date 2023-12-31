@@ -14,12 +14,13 @@
 <p>Before proceeding, please enter your participant number in the box below. Please enter the number exactly as it appears on your card. Once you have entered it and clicked "Continue" you will be asked to confirm your choice. Please check to make sure you entered the number correctly before clicking again to proceed.</p>
 
 <!-- Formfields-->
-<p style="margin-bottom: unset">Please enter your unique ID number:</p>
-{{ formfields 'player_id' }}
+<label class="id">Please enter your unique ID number: <input class="id" maxlength="2" max="99" name="player_id" id="player_id" type="number"></label>
+<span id="errorMessage" style="color: red; display: none;"></span>
+{{ formfield_errors 'player_id' }}
 
 <!-- Next Button with confirmation pop-up-->
 <div class="button">
-    <button onclick="confirmID(event)">Continue</button>
+    <button onclick="validateForm(event)">Continue</button>
 </div>
 
 {{ endblock }}

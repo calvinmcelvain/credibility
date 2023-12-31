@@ -1,4 +1,5 @@
 from otree.api import *
+import random as r
 
 doc = """
 Stage STG1_GAME Game
@@ -7,7 +8,7 @@ Stage STG1_GAME Game
 
 class C(BaseConstants):
     NAME_IN_URL = 'STG1_GAME'
-    PLAYERS_PER_GROUP = 6
+    PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 30
 
     # Timeout seconds
@@ -152,9 +153,15 @@ class P1_PADecision(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
-        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
-        return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table, 'history': reversed(player.in_previous_rounds())}
+        # Passing the player payoffs
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff, 'history': reversed(player.in_previous_rounds())}
+
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        if timeout_happened:
+            player.pa_low_advice = r.choice(['Invest', 'Keep'])
+            player.pa_med_advice = r.choice(['Invest', 'Keep'])
+            player.pa_high_advice = r.choice(['Invest', 'Keep'])
 
 
 class PlayerBWaitPage(WaitPage):
@@ -178,9 +185,12 @@ class P1_PBDecision(Page):
         estimated_signal = decoder[treatment_signal[treatment][round_number]]
         advice_dict = {'Low': player.group.get_player_by_role(C.pa_ROLE).pa_low_advice, 'Medium': player.group.get_player_by_role(C.pa_ROLE).pa_med_advice, 'High': player.group.get_player_by_role(C.pa_ROLE).pa_high_advice}
         advice = advice_dict[estimated_signal]
-        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
-        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
-        return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table, 'advice': advice, 'history': reversed(player.in_previous_rounds())}
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff, 'advice': advice, 'history': reversed(player.in_previous_rounds())}
+
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        if timeout_happened:
+            player.pb_decision = r.choice(['Invest', 'Keep'])
 
 
 class P2_BetweenWaitPage(Page):
@@ -193,8 +203,6 @@ class P2_BetweenWaitPage(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
-        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
         if player.role == C.pa_ROLE:
             # Returning the estimate for the Advisor and creating a seamless transision
             treatment_signal = C.treatment_signal
@@ -205,7 +213,7 @@ class P2_BetweenWaitPage(Page):
             low = player.pa_low_advice
             med = player.pa_med_advice
             high = player.pa_high_advice
-            return {'estimated_signal': estimated_signal, 'low': low, 'med': med, 'high': high, 'history': reversed(player.in_previous_rounds()), 'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
+            return {'estimated_signal': estimated_signal, 'low': low, 'med': med, 'high': high, 'history': reversed(player.in_previous_rounds()), 'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
         else:
             treatment_signal = C.treatment_signal
             round_number = player.round_number
@@ -216,7 +224,7 @@ class P2_BetweenWaitPage(Page):
                            'Medium': player.group.get_player_by_role(C.pa_ROLE).pa_med_advice,
                            'High': player.group.get_player_by_role(C.pa_ROLE).pa_high_advice}
             advice = advice_dict[estimated_signal]
-            return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table, 'advice': advice, 'history': reversed(player.in_previous_rounds())}
+            return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff, 'advice': advice, 'history': reversed(player.in_previous_rounds())}
 
 
 class PayoffWaitPage(WaitPage):
@@ -254,9 +262,7 @@ class P3_Feedback(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
-        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
-        return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table, 'history': reversed(player.in_all_rounds())}
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff, 'history': reversed(player.in_all_rounds())}
 
     # Storing stage 1 payoffs in participant field
     @staticmethod

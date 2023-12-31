@@ -10,14 +10,15 @@
 
 <!--Description Body-->
 <p>In each round, the Advisor will receive an estimate of the quality of the investment opportunity. This estimate is <i>private</i> information. In other words, the Advisor can see the estimate, but the Investors will never be told what estimate their group’s Advisor received.</p>
-<p>There is an 5/6 chance that the estimate the Advisor receives is correct and a 1/6 chance that it is incorrect. In other words, there is a 5 in 6 chance that the estimate the Advisor receives will be exactly equal to the true quality level of the investment opportunity, and a 1 in 6 chance that the estimate the Advisor receives will be equal to some level other than the true quality of the investment opportunity. You can think of this like rolling a single die. If the computer rolls a 1 through 5, the Advisor receives a correct estimate. If a 6 is rolled, the Advisor receives an incorrect estimate.</p>
+<p>There is an 5/6 chance that the estimate the Advisor receives is correct and a 1/6 chance that it is incorrect. You can think of this like rolling a single die. If the computer rolls a 1 through 5, the Advisor receives a correct estimate.</p>
+<p>If the Advisor receives an <i><b>incorrect</b></i> estimate, each of the two possible incorrect levels is equally likely. In other words, if the estimate is <b><i>not</i></b> equal to the true quality of the investment opportunity, there is a 1 in 2 chance (like flipping a coin) that it is equal to each of the other possible qualities.</p>
 
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
     <div>
         <p>Please click "Continue"</p>
-        <p style="font-size: 16px;" >*** Page will not continue until everyone has clicked continue ***</p>
+        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
     </div>
     <button type="button" id="validation" onclick="validating()">Continue</button>
 </div>

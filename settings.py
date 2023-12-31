@@ -109,7 +109,7 @@ ROOMS = [
         name='LabTest_122623',
         display_name='Lab Test 12/26/2023',
         participant_label_file='_rooms/labtest',
-        use_secure_urls=False
+        use_secure_urls=True
     ),
 ]
 

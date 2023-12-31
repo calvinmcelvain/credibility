@@ -1,5 +1,5 @@
 from otree.api import *
-import random
+import random as r
 
 
 doc = """
@@ -13,8 +13,8 @@ class C(BaseConstants):
     NUM_ROUNDS = 1
 
     # Timeout seconds for decision page
-    decision_time = None
-    feedback_time = None
+    decision_time = 30
+    feedback_time = 30
 
     # Defining "Advisor" role
     pa_ROLE = 'Advisor'
@@ -96,7 +96,7 @@ def creating_session(subsession):
         group.treatment = treatments[i % len(treatments)]
         # Assigning a Signal
         possible_signals = ['Low', 'High']
-        group.actual_signal = random.choice(possible_signals)
+        group.actual_signal = r.choice(possible_signals)
 
 
 def is_displayed_pa(player: Player):
@@ -111,11 +111,11 @@ def is_displayed_pb(player: Player):
 
 def custom_export(players):
     # header rows
-    yield ['session', 'participant_code', 'player_id', 'role', 'treatment', 'decision_number', 'actual_signal', 'payoff', 'low_advice', 'high_advice', 'random_draw', 'max_outside_option']
+    yield ['session', 'participant_code', 'player_id', 'role', 'decision_number', 'actual_signal', 'payoff', 'low_advice', 'high_advice', 'invest_signal', 'max_outside_option']
     for p in players:
         participant = p.participant
         session = p.session
-        yield [session.code, participant.code, participant.PlayerID, participant.role, p.group.treatment, 1, p.group.actual_signal, p.payoff, p.pa_low_advice, p.pa_high_advice, p.random_draw, p.pb_outside_option]
+        yield [session.code, participant.code, participant.PlayerID, participant.role, 1, p.group.actual_signal, p.payoff, p.pa_low_advice, p.pa_high_advice, p.random_draw, p.pb_outside_option]
 
 
 # PAGES
@@ -132,6 +132,12 @@ class P1_PADecision(Page):
         pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
         return {'signal': signal, 'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
 
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        if timeout_happened:
+            player.pa_low_advice = r.choice(['Invest', 'Keep'])
+            player.pa_high_advice = r.choice(['Invest', 'Keep'])
+
 
 class PlayerBWaitPage(WaitPage):
     body_text = 'Waiting for Player A to give investment advice'
@@ -141,7 +147,7 @@ class PlayerBWaitPage(WaitPage):
     def after_all_players_arrive(group: Group):
         for player in group.get_players():
             if player.role != C.pa_ROLE:
-                player.random_draw = random.randint(1, 300)
+                player.random_draw = r.randint(1, 300)
 
 
 class P1_PBDecision(Page):
@@ -159,6 +165,11 @@ class P1_PBDecision(Page):
         pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
         pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
         return {'advice': player.group.pa_advice, 'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
+
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        if timeout_happened:
+            player.pb_outside_option = r.randint(0,300)
 
 
 class PayoffWaitPage(WaitPage):

@@ -43,6 +43,16 @@ def creating_session(subsession):
     for player in players:
         player.round_towards_payment = r.randint(1, 10)
 
+# Custom data export for this game
+def custom_export(players):
+    # header rows
+    yield ['session', 'participant_code', 'player_id', 'role', 'round_number', 'invest_signal', 'max_outside_option']
+    for p in players:
+        participant = p.participant
+        session = p.session
+        yield [session.code, participant.code, participant.PlayerID, participant.role, p.round_number, p.selected_draw,p.pb_outside_option]
+
+
 
 # PAGES
 class P1_Decision(Page):

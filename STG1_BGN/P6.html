@@ -14,11 +14,11 @@
 <!--Payoff Table-->
 <table class="playerpayofftable">
     <tr>
-        <td style="width: 75px;"></td>
+        <td></td>
         <td class="header" colspan="5">Total Investors (including you)</td>
     </tr>
     <tr>
-        <td style="font-style: italic; width: 75px;">Quality</td>
+        <td><i>Quality</i></td>
         <td class="row1">1</td>
         <td class="row1">2</td>
         <td class="row1">3</td>
@@ -27,19 +27,19 @@
     </tr>
     <tr>
         <td class="column1">Low</td>
-        {{ for p in pb_table.1 }}
+        {{ for n, p in pb_table.1.items() }}
         <td>{{ p }}</td>
         {{ endfor }}
     </tr>
     <tr>
         <td class="column1">Medium</td>
-        {{ for p in pb_table.2 }}
+        {{ for n, p in pb_table.2.items() }}
         <td>{{ p }}</td>
         {{ endfor }}
     </tr>
     <tr>
         <td class="column1">High</td>
-        {{ for p in pb_table.3 }}
+        {{ for n, p in pb_table.3.items() }}
         <td>{{ p }}</td>
         {{ endfor }}
     </tr>
@@ -54,7 +54,7 @@
 <div class="button">
     <div>
         <p>Please click "Continue"</p>
-        <p style="font-size: 16px;" >*** Page will not continue until everyone has clicked continue ***</p>
+        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
     </div>
     <button type="button" id="validation" onclick="validating()">Continue</button>
 </div>

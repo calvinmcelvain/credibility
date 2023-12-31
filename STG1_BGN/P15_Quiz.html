@@ -9,7 +9,7 @@
 {{ endblock }}
 
 <!--Instruction Quiz Body-->
-<p>To make sure that everyone understands the instructions for Stage I, please take a moment to answer the following questions. Once everyone has responded correctly, we will proceed to the first round of Stage 1.</p>
+<p style="margin-bottom: 40px">To make sure that everyone understands the instructions for Stage I, please take a moment to answer the following questions. Once everyone has responded correctly, we will proceed to the first round of Stage 1.</p>
 
 <!--Payoff Tables-->
 <div class="tables-container">
@@ -30,23 +30,24 @@
             </tr>
             <tr>
                 <td class="column1">Low</td>
-                {{ for p in pb_table.1 }}
+                {{ for n, p in pb_table.1.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
                 <td class="column1">Medium</td>
-                {{ for p in pb_table.2 }}
+                {{ for n, p in pb_table.2.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
                 <td class="column1">High</td>
-                {{ for p in pb_table.3 }}
+                {{ for n, p in pb_table.3.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
         </table>
+        <p class="reminder">Remember, If Investors choose not to invest, they will receive a payoff of <span style="text-decoration: underline">12 ECUs</span></p>
     </div>
     <div style="margin: 20px"></div>
     <div>
@@ -67,19 +68,19 @@
             </tr>
             <tr>
                 <td class="column1">Low</td>
-                {{ for p in pa_table.1 }}
+                {{ for n, p in pa_table.1.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
                 <td class="column1">Medium</td>
-                {{ for p in pa_table.2 }}
+                {{ for n, p in pa_table.2.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
                 <td class="column1">High</td>
-                {{ for p in pa_table.3 }}
+                {{ for n, p in pa_table.3.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>

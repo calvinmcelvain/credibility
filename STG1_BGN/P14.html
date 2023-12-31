@@ -14,134 +14,76 @@
 {{ endblock }}
 
 <!-- Sample End of Round Results -->
-<div class="feed">
-    <h4>End of Round Results:</h4>
-    <table>
-        <tr>
-            <th>Quality Estimate:</th>
-            <td>Low</td>
-        </tr>
-        <tr>
-            <th>True Quality Drawn:</th>
-            <td>Low</td>
-        </tr>
-        <tr>
-            <th>Your Advice:</th>
-            <td>Invest</td>
-        </tr>
-        <tr>
-            <th>Total Investors:</th>
-            <td>5</td>
-        </tr>
-        <tr>
-            <th>Investor's Payoff:</th>
-            <td>4 Points</td>
-        </tr>
-        <tr class="last">
-            <th>Your Payoff:</th>
-            <td>3 Points</td>
-        </tr>
-    </table>
-</div>
-
-<!-- Sample Player History Table-->
-<div class="tablescroll">
-    <h4>Previous Results:</h4>
-    <div>
-        <table class="history_header">
+<div class="feed-div">
+    <div class="feed">
+        <h4>End of Round Results:</h4>
+        <table>
             <tr>
-                <th>Round</th>
-                <th>Low Advice</th>
-                <th>Medium Advice</th>
-                <th>High Advice</th>
-                <th>Estimate Sig.</th>
-                <th>Actual Sig.</th>
-                <th>Total Investors</th>
-                <th>Your Payoff</th>
-                <th>Investors Payoff</th>
+                <th>Quality Estimate:</th>
+                <td>Low</td>
+            </tr>
+            <tr>
+                <th>True Quality Drawn:</th>
+                <td>Low</td>
+            </tr>
+            <tr>
+                <th>Your Advice:</th>
+                <td>Invest</td>
+            </tr>
+            <tr>
+                <th>Total Investors:</th>
+                <td>5</td>
+            </tr>
+            <tr>
+                <th>Investor's Payoff:</th>
+                <td>4 Points</td>
+            </tr>
+            <tr class="last">
+                <th>Your Payoff:</th>
+                <td>3 Points</td>
             </tr>
         </table>
-        <table id="data_table">
+    </div>
+    <div style="float: right">
+        <p class="payofftableheader">Your Payoff Table</p>
+        <table class="playerpayofftable" style="display: flex; margin: unset">
             <tr>
-                <td>7</td>
-                <td bgcolor="yellow">Invest</td>
-                <td>Keep</td>
-                <td>Keep</td>
-                <td>Low</td>
-                <td>Low</td>
-                <td>5</td>
-                <td>3</td>
-                <td>4</td>
+                <td style="width: 75px;"></td>
+                <td class="header" colspan="6">Total Investors</td>
             </tr>
             <tr>
-                <td>6</td>
-                <td bgcolor="yellow">Invest</td>
-                <td>Invest</td>
-                <td>Invest</td>
-                <td>Low</td>
-                <td>High</td>
-                <td>4</td>
-                <td>6</td>
-                <td>7</td>
+                <td  style="font-style: italic; width: 75px;">Quality</td>
+                <td class="row1">0</td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
+                <td class="row1">5</td>
             </tr>
             <tr>
-                <td>5</td>
-                <td>Don't Invest</td>
-                <td bgcolor="yellow">Keep</td>
-                <td>Invest</td>
-                <td>Low</td>
-                <td>High</td>
-                <td>2</td>
-                <td>3</td>
-                <td>1</td>
+                <td class="column1">Low</td>
+                {{ for n, p in pa_table.1.items() }}
+                <td {{ if n == 5 }} style="background-color: greenyellow; font-weight: bold"{{ endif }}>{{ p }}</td>
+                {{ endfor }}
             </tr>
             <tr>
-                <td>4</td>
-                <td bgcolor="yellow">Invest</td>
-                <td>Invest</td>
-                <td>Keep</td>
-                <td>Low</td>
-                <td>High</td>
-                <td>5</td>
-                <td>3</td>
-                <td>4</td>
+                <td class="column1">Medium</td>
+                {{ for n, p in pa_table.2.items() }}
+                <td>{{ p }}</td>
+                {{ endfor }}
             </tr>
             <tr>
-                <td>3</td>
-                <td>Invest</td>
-                <td>Invest</td>
-                <td bgcolor="yellow">Keep</td>
-                <td>High</td>
-                <td>Low</td>
-                <td>4</td>
-                <td>0</td>
-                <td>14</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td width="106.39">Keep</td>
-                <td bgcolor="yellow">Keep</td>
-                <td>Invest</td>
-                <td>Medium</td>
-                <td>Medium</td>
-                <td>3</td>
-                <td>6</td>
-                <td>5</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Keep</td>
-                <td>Keep</td>
-                <td bgcolor="yellow">Keep</td>
-                <td>High</td>
-                <td>Low</td>
-                <td>1</td>
-                <td>3</td>
-                <td>0</td>
+                <td class="column1">High</td>
+                {{ for n, p in pa_table.3.items() }}
+                <td>{{ p }}</td>
+                {{ endfor }}
             </tr>
         </table>
     </div>
 </div>
+
+<!-- Sample Player History Table-->
+{{ include '_static/_other/sample_feedback_advisor2.html' }}
 
 <!-- Next Button with confirmation pop-up & Instructions Button-->
 <div class="button">

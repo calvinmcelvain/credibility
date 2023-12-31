@@ -20,11 +20,11 @@
         <p class="payofftableheader">Your Payoff Table</p>
         <table class="playerpayofftable" style="display: flex; margin: unset">
             <tr>
-                <td style="width: 75px;"></td>
+                <td></td>
                 <td class="header" colspan="6">Total Investors</td>
             </tr>
             <tr>
-                <td  style="font-style: italic; width: 75px;">Quality</td>
+                <td><i>Quality</i></td>
                 <td class="row1">0</td>
                 <td class="row1">1</td>
                 <td class="row1">2</td>
@@ -34,34 +34,34 @@
             </tr>
             <tr>
                 <td class="column1">Low</td>
-                {{ for p in pa_table.1 }}
+                {{ for n, p in pa_table.1.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
                 <td class="column1">Medium</td>
-                {{ for p in pa_table.2 }}
+                {{ for n, p in pa_table.2.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
                 <td class="column1">High</td>
-                {{ for p in pa_table.3 }}
+                {{ for n, p in pa_table.3.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
         </table>
     </div>
-    <div style="margin: 20px"></div>
+    <div style="margin: 40px"></div>
     <div>
         <p class="payofftableheader">Investors Payoff Table</p>
         <table class="playerpayofftable" style="display: flex; margin: unset">
             <tr>
-                <td style="width: 75px;"></td>
+                <td></td>
                 <td class="header" colspan="5">Total Investors</td>
             </tr>
             <tr>
-                <td style="font-style: italic; width: 75px;">Quality</td>
+                <td><i>Quality</i></td>
                 <td class="row1">1</td>
                 <td class="row1">2</td>
                 <td class="row1">3</td>
@@ -70,147 +70,76 @@
             </tr>
             <tr>
                 <td class="column1">Low</td>
-                {{ for p in pb_table.1 }}
+                {{ for n, p in pb_table.1.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
                 <td class="column1">Medium</td>
-                {{ for p in pb_table.2 }}
+                {{ for n, p in pb_table.2.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
                 <td class="column1">High</td>
-                {{ for p in pb_table.3 }}
+                {{ for n, p in pb_table.3.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
         </table>
+        <p class="reminder">Remember, Investors who choose not invest will receive a payoff of <span style="text-decoration: underline">12 ECUs</span></p>
     </div>
 </div>
 
 <!--Form Fields/Decisions-->
-<h4 style="margin-top: 25px">Remember, Investors who choose not invest will receive a payoff of 12 ECUs</h4>
-<h5>*** You will see the estimated signal for this round marked in <span>yellow</span> after you choose what advice to give below ***</h5>
 <table class="decisiontable">
+    <tr style="height: 10px"></tr>
     <tr>
-        <th>Low</th>
-        <th>Medium</th>
-        <th>High</th>
+        <th style="width: 30px"></th>
+        <th colspan="5" class="qlty_header">Investment Quality Estimate</th>
+        <th style="width: 30px"></th>
     </tr>
-    <tr style="height: 5px"></tr>
-    <tr>
+    <tr class="decision_header">
+        <th style="width: 30px"></th>
+        <th>Low</th>
+        <th style="width: 30px" rowspan="4"></th>
+        <th>Medium</th>
+        <th style="width: 30px" rowspan="4"></th>
+        <th>High</th>
+        <th style="width: 30px"></th>
+    </tr>
+    <tr class="advice">
+        <th style="width: 30px"></th>
         <td><label><input name="pa_low_advice" value="Invest" type="radio"> Invest</label></td>
         <td><label><input name="pa_med_advice" value="Invest" type="radio"> Invest</label></td>
         <td><label><input name="pa_high_advice" value="Invest" type="radio"> Invest</label></td>
+        <th style="width: 30px"></th>
     </tr>
-    <tr style="height: 5px"></tr>
     <tr>
-        <td><label><input name="pa_low_advice" value="Keep" type="radio"> Keep</label></td>
+        <th style="width: 30px"></th>
+        <td class="column1"><label><input name="pa_low_advice" value="Keep" type="radio"> Keep</label></td>
         <td><label><input name="pa_med_advice" value="Keep" type="radio"> Keep</label></td>
         <td><label><input name="pa_high_advice" value="Keep" type="radio"> Keep</label></td>
+        <th style="width: 30px"></th>
     </tr>
-    <tr>
-        <td rowspan="2" class="error">{{ formfield_errors 'pa_low_advice' }}</td>
-        <td rowspan="2" class="error">{{ formfield_errors 'pa_med_advice' }}</td>
-        <td rowspan="2" class="error">{{ formfield_errors 'pa_high_advice' }}</td>
+    <tr class="error">
+        <th style="width: 30px"></th>
+        <td><span id="low_error" style="color: red; display: none;"></span></td>
+        <td><span id="med_error" style="color: red; display: none;"></span></td>
+        <td><span id="high_error" style="color: red; display: none;"></span></td>
+        <th style="width: 30px"></th>
     </tr>
+    <tr style="height: 30px"></tr>
 </table>
 
 <!-- Next Button with confirmation pop-up & Instructions Button-->
 <div class="button">
-    <button onclick="ConfirmDecision(event)">Continue</button>
+    <button id="validation" onclick="DecisionFormsampleadvisor(event)">Continue</button>
     <button id="pop-up" style="float: left; background-color: red">Instructions</button>
 </div>
 
 <!-- Sample Player History Table-->
-<div class="tablescroll">
-    <h4>Previous Results:</h4>
-    <div>
-        <table class="history_header">
-            <tr>
-                <th>Round</th>
-                <th>Low Advice</th>
-                <th>Medium Advice</th>
-                <th>High Advice</th>
-                <th>Estimate Sig.</th>
-                <th>Actual Sig.</th>
-                <th>Total Investors</th>
-                <th>Your Payoff</th>
-                <th>Investors Payoff</th>
-            </tr>
-        </table>
-        <table id="data_table">
-            <tr>
-                <td>6</td>
-                <td bgcolor="yellow">Invest</td>
-                <td>Invest</td>
-                <td>Invest</td>
-                <td>Low</td>
-                <td>High</td>
-                <td>4</td>
-                <td>6</td>
-                <td>7</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Keep</td>
-                <td bgcolor="yellow">Keep</td>
-                <td>Invest</td>
-                <td>Low</td>
-                <td>Medium</td>
-                <td>2</td>
-                <td>3</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td bgcolor="yellow">Invest</td>
-                <td>Invest</td>
-                <td>Keep</td>
-                <td>Low</td>
-                <td>High</td>
-                <td>5</td>
-                <td>3</td>
-                <td>4</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Invest</td>
-                <td>Invest</td>
-                <td bgcolor="yellow">Keep</td>
-                <td>High</td>
-                <td>Low</td>
-                <td>4</td>
-                <td>0</td>
-                <td>14</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td width="106.39">Keep</td>
-                <td bgcolor="yellow">Keep</td>
-                <td>Invest</td>
-                <td>Medium</td>
-                <td>Medium</td>
-                <td>3</td>
-                <td>6</td>
-                <td>5</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Keep</td>
-                <td>Keep</td>
-                <td bgcolor="yellow">Keep</td>
-                <td>High</td>
-                <td>Low</td>
-                <td>1</td>
-                <td>3</td>
-                <td>0</td>
-            </tr>
-        </table>
-    </div>
-</div>
+{{ include '_static/_other/sample_feedback_advisor.html' }}
 
 {{ include '_static/instructions/stage_1_instructions.html' }}
 
@@ -223,8 +152,18 @@ window.onload = function() {
   headerCells.forEach((headerCell, index) => {
       dataCells[index].style.width = headerCell.offsetWidth + 'px';
   });
+  const IsClicked = sessionStorage.getItem('IsClicked');
+    if (IsClicked === 'true') {
+        document.getElementById('validation').disabled = true;
+    }
 };
-
+// Websocket to check if all players are ready
+function liveRecv(data) {
+    if (data === 'all_ready') {
+        sessionStorage.setItem('IsClicked', 'false')
+        document.forms[0].submit();
+    }
+}
 </script>
 
 {{ endblock }}

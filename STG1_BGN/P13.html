@@ -14,7 +14,8 @@
 {{ endblock }}
 
 <!-- Sample End of Round Results -->
-<div class="feed">
+<div class="feed-div">
+    <div class="feed">
     <h4>End of Round Results:</h4>
     <table>
         <tr>
@@ -42,98 +43,47 @@
             <td>4 Points</td>
         </tr>
     </table>
+    </div>
+    <div style="float: right;">
+        <p class="payofftableheader">Investors Payoff Table</p>
+        <table class="playerpayofftable" style="display: flex; margin: unset">
+            <tr>
+                <td style="width: 75px;"></td>
+                <td class="header" colspan="5">Total Investors (including you)</td>
+            </tr>
+            <tr>
+                <td style="font-style: italic; width: 75px;">Quality</td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
+                <td class="row1">5</td>
+            </tr>
+            <tr>
+                <td class="column1">Low</td>
+                {{ for n, p in pb_table.1.items() }}
+                <td {{ if n == 5 }} style="background-color: greenyellow; font-weight: bold"{{ endif }}>{{ p }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td class="column1">Medium</td>
+                {{ for n, p in pb_table.2.items() }}
+                <td>{{ p }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td class="column1">High</td>
+                {{ for n, p in pb_table.3.items() }}
+                <td>{{ p }}</td>
+                {{ endfor }}
+            </tr>
+        </table>
+        <p class="reminder">Remember, If you chose not to invest, you received a payoff of <span style="text-decoration: underline">12 ECUs</span></p>
+    </div>
 </div>
 
 <!-- Sample Player History Table-->
-<div class="tablescroll">
-    <h4>Previous Results:</h4>
-    <div>
-        <table class="history_header">
-            <tr>
-                <th>Round</th>
-                <th>Advisor's Advice</th>
-                <th>Your Decision</th>
-                <th>Other Investors</th>
-                <th>Total Investors</th>
-                <th>True Quality</th>
-                <th>Your Payoff</th>
-                <th>Advisor's Payoff</th>
-            </tr>
-        </table>
-        <table id="data_table">
-            <tr>
-                <td>7</td>
-                <td>Invest</td>
-                <td>Invest</td>
-                <td>4</td>
-                <td>5</td>
-                <td>Low</td>
-                <td>4</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Invest</td>
-                <td>Invest</td>
-                <td>3</td>
-                <td>4</td>
-                <td>Medium</td>
-                <td>7</td>
-                <td>6</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Keep</td>
-                <td>Invest</td>
-                <td>1</td>
-                <td>2</td>
-                <td>Low</td>
-                <td>1</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Invest</td>
-                <td>Invest</td>
-                <td>4</td>
-                <td>5</td>
-                <td>Low</td>
-                <td>4</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Invest</td>
-                <td>Invest</td>
-                <td>3</td>
-                <td>4</td>
-                <td>High</td>
-                <td>14</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Keep</td>
-                <td>Invest</td>
-                <td>2</td>
-                <td>3</td>
-                <td>Medium</td>
-                <td>5</td>
-                <td>6</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Invest</td>
-                <td>Invest</td>
-                <td>0</td>
-                <td>1</td>
-                <td>Low</td>
-                <td>0</td>
-                <td>3</td>
-            </tr>
-        </table>
-    </div>
-</div>
+{{ include '_static/_other/sample_feedback_investors2.html' }}
 
 <!-- Next Button with confirmation pop-up & Instructions Button-->
 <div class="button">

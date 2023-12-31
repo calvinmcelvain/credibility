@@ -32,23 +32,24 @@
             </tr>
             <tr>
                 <td class="column1">Low</td>
-                {{ for p in pb_table.1 }}
+                {{ for n, p in pb_table.1.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
                 <td class="column1">Medium</td>
-                {{ for p in pb_table.2 }}
+                {{ for n, p in pb_table.2.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
                 <td class="column1">High</td>
-                {{ for p in pb_table.3 }}
+                {{ for n, p in pb_table.3.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
         </table>
+        <p class="reminder">Remember, If you choose not to invest, you will receive a payoff of <span style="text-decoration: underline">12 ECUs</span></p>
     </div>
     <div style="margin: 20px"></div>
     <div>
@@ -69,19 +70,19 @@
             </tr>
             <tr>
                 <td class="column1">Low</td>
-                {{ for p in pa_table.1 }}
+                {{ for n, p in pa_table.1.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
                 <td class="column1">Medium</td>
-                {{ for p in pa_table.2 }}
+                {{ for n, p in pa_table.2.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
                 <td class="column1">High</td>
-                {{ for p in pa_table.3 }}
+                {{ for n, p in pa_table.3.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
@@ -90,22 +91,26 @@
 </div>
 
 <!--Form Fields/Decisions-->
-<h4 style="margin-top: 25px; margin-bottom: 20px">Remember, If you choose not to invest, you will receive a payoff of 12 ECUs</h4>
 <table class="decisiontable">
+    <tr style="height: 30px"></tr>
     <tr>
-        <td class="playera" style="width: 200px"><label><input name="pb_decision" value="Invest" type="radio"> Invest</label></td>
-        <td class="playera"><label><input name="pb_decision" value="Don't Invest" type="radio"> Keep</label></td>
+        <th style="width: 30px"></th>
+        <td class="playera"><label><input name="pb_decision" value="Invest" type="radio"> Invest</label></td>
+        <td class="playera"><label><input name="pb_decision" value="Keep" type="radio"> Keep</label></td>
+        <th style="width: 30px"></th>
     </tr>
-    <tr>
-        <td colspan="2" class="error">{{ formfield_errors 'pb_decision' }}</td>
+    <tr class="error">
+        <td colspan="2"><span id="error" style="color: red; display: none;"></span></td>
     </tr>
+    <tr style="height: 30px"></tr>
 </table>
 
 <!-- Next Button with confirmation pop-up & Instructions Button-->
 <div class="button">
-    <button onclick="ConfirmDecision(event)">Continue</button>
+    <button id="validation" onclick="DecisionForminvestor(event)">Continue</button>
     <button id="pop-up" style="float: left; background-color: red">Instructions</button>
 </div>
+
 
 {{ if player.round_number != 1 }}
 
@@ -125,20 +130,22 @@
                 <th>Advisor's Payoff</th>
             </tr>
         </table>
-        <table id="data_table">
-            {{ for p in history }}
-            <tr>
-                <td>{{ p.round_number }}</td>
-                <td>{{ p.group.pa_advice }}</td>
-                <td>{{ p.pb_decision }}</td>
-                <td>{{ p.other_investors }}</td>
-                <td>{{ p.group.total_players_invest }}</td>
-                <td>{{ p.group.actual_signal }}</td>
-                <td>{{ p.payoff }}</td>
-                <td>{{ p.group.pa_payoff }}</td>
-            </tr>
-            {{ endfor }}
-        </table>
+        <div class="scroll">
+            <table id="data_table">
+                {{ for p in history }}
+                <tr>
+                    <td>{{ p.round_number }}</td>
+                    <td>{{ p.group.pa_advice }}</td>
+                    <td>{{ p.pb_decision }}</td>
+                    <td>{{ p.other_investors }}</td>
+                    <td>{{ p.group.total_players_invest }}</td>
+                    <td>{{ p.group.actual_signal }}</td>
+                    <td>{{ p.payoff }}</td>
+                    <td>{{ p.group.pa_payoff }}</td>
+                </tr>
+                {{ endfor }}
+            </table>
+        </div>
     </div>
 </div>
 

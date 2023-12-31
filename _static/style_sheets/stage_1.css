@@ -4,8 +4,15 @@
 }
 
 /* General Styling */
+div.otree-body.container {
+    max-width: unset;
+    padding-left: 550px;
+    padding-right: 550px;
+    padding-bottom: 100px;
+    padding-top: 0;
+}
 p {
-    font-size: 19px;
+    font-size: 21px;
     margin-top: 20px;
 }
 h1 {
@@ -15,17 +22,18 @@ h1 {
     font-style: italic;
 }
 h2 {
+    font-size: 38px;
     font-weight: bold;
     font-family: Arial, serif;
     text-decoration: underline;
 }
 h3 {
-    font-size: 28px;
+    font-size: 32px;
     font-family: Arial, serif;
     font-weight: bold;
 }
 h4 {
-    font-size: 19px;
+    font-size: 21px;
     text-align: center;
     font-style: italic;
     text-decoration: underline;
@@ -45,11 +53,22 @@ ol li {
     margin-top: 20px;
 }
 
+/* id input styling */
+label.id {
+    font-size: 21px;
+    margin-top: 30px;
+}
+input.id {
+    max-width: 50px;
+    font-size: 19px;
+    border: 1px solid black;
+}
+
 /* Sample Page Header Styling */
 span.sample {
     font-size: 21px;
     font-family: Arial, serif;
-    background-color: yellow;
+    color: red;
 }
 
 /* Standby Page Styling */
@@ -75,7 +94,7 @@ div.Title_decision {
     padding-bottom: 10px;
 }
 .Title_decision span {
-   font-size: 24px;
+    font-size: 24px;
     font-family: Arial, serif;
     border: 2px solid black;
     font-style: normal;
@@ -93,55 +112,55 @@ div.Title_decision {
 /* Button Styling */
 div.button {
     margin-top: 40px;
+    margin-bottom: 20px;
+    contain: content;
 }
-div.button div {
+.button div {
     float: left;
 }
-div.button button {
+.button button {
     margin: unset;
     float: right;
+    font-size: 19px;
 }
-div.button p {
+.button p {
     margin: unset;
+}
+.button p.bttm-sent {
+    font-size: 18px;
 }
 
 /* Player Payoff Table */
 table.playerpayofftable {
     margin: auto;
     align-self: center;
+    font-size: 21px;
 }
 table.playerpayofftable td {
     height: 30px;
     text-align: center;
-    font-size: 19px;
     font-family: "Times New Roman", serif;
 }
 table.playerpayofftable .header {
     text-align: center;
-    height: 50px;
+    height: 40px;
     font-style: italic;
     font-weight: normal;
-    font-size: 19px;
     font-family: "Times New Roman", serif;
 }
 table.playerpayofftable .column1 {
-    width: 75px;
-    height: 30px;
+    width: 100px;
     text-align: center;
-    border-right: 1px solid black;
-    font-size: 19px;
+    border-right: 2px solid black;
     font-family: "Times New Roman", serif;
 }
 table.playerpayofftable .row1 {
     width: 100px;
-    height: 30px;
     text-align: center;
-    border-bottom: 1px solid black;
-    font-size: 19px;
+    border-bottom: 2px solid black;
     font-family: "Times New Roman", serif;
 }
 .payofftableheader {
-    font-size: 19px;
     font-family: "Times New Roman", serif;
     font-weight: bold;
     text-align: center;
@@ -151,53 +170,57 @@ table.playerpayofftable .row1 {
     display: flex;
     margin-left: unset;
     margin-right: unset;
-    margin-top: 30px;
+    margin-top: 20px;
+}
+.tables-container p.reminder {
+    font-style: italic;
+    font-size: 19px;
 }
 
 /* Player Decision Tables */
 table.decisiontable {
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 10px;
+    margin-bottom: 150px;
+    margin-top: 100px;
+    font-family: "Times New Roman", serif;
+    font-size: 26px;
+    border: 1px solid black;
 }
-table.decisiontable th {
-    font-size: 21px;
-    width: 190px;
-    text-align: center;
-    text-decoration: underline;
-}
-table.decisiontable td {
-    font-size: 17px;
-    height: 25px;
-    text-align: center;
-}
-button.input {
-    margin: unset;
-}
-table.decisiontable .header_ {
-    font-size: 19px;
-    height: 50px;
+.decisiontable th.qlty_header {
+    height: 60px;
+    font-weight: unset;
     font-style: italic;
     text-align: center;
 }
-table.decisiontable td.playera {
-    text-align: center;
-    font-size: 20px;
-    width: 200px
+.decisiontable tr.advice td {
+    border-top: 2px solid black;
 }
-table.decisiontable td.error {
+tr.decision_header th {
     text-align: center;
+    height: 40px;
+}
+.decisiontable td {
+    text-align: center;
+    width: 175px;
+}
+.decisiontable tr.advice th {
+    font-weight: unset;
+    font-style: italic;
+    text-align: center;
+    width: 150px;
+}
+.decisiontable tr.error td {
+    font-size: 19px;
 }
 
 /* Scrollable History Table */
 div.tablescroll {
     contain: content;
-    width: 950px;
     margin-top: 40px;
 }
 div.tablescroll div {
-    max-height: 125px;
-    overflow-y: scroll;
+    height: 150px;
     text-align: center;
 }
 .tablescroll h4 {
@@ -211,28 +234,34 @@ div.tablescroll div {
     position: sticky;
     border: unset;
     top: 0;
+    width: 1425px;
+}
+div.scroll {
+    width: 1425px;
+    contain: content;
+    overflow-y: scroll;
+    border: 1px solid black;
+    max-height: 110px;
 }
 .tablescroll table {
-    width: 950px;
-    border: 1px solid black;
     border-top: none;
+    font-size: 19px;
     text-align: center;
 }
 .tablescroll th {
     background-color: #f5f5f5;
-    font-size: 16px;
+    font-size: 19px;
     border: 1px solid black;
-}
-.history_header th {
-    white-space: nowrap; /* Prevent text wrapping */
-}
-#data_table td {
-    white-space: nowrap;
 }
 
 /* Feedback table */
-div.feed {
+div.feed-div {
     margin-top: 20px;
+    contain: content;
+    margin-bottom: 100px;
+}
+div.feed {
+    float: left;
 }
 div.feed h4 {
     font-style: unset;

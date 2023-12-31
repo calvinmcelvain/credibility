@@ -118,10 +118,7 @@ class P6(Page):
     @staticmethod
     def vars_for_template(player: Player):
         # Passing the player payoffs
-        # First made them iterable
-        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
-        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
-        return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
     @staticmethod
     def live_method(player: Player, data):
@@ -137,9 +134,7 @@ class P7(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
-        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
-        return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
     @staticmethod
     def live_method(player: Player, data):
@@ -179,9 +174,7 @@ class P10(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
-        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
-        return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
     @staticmethod
     def live_method(player: Player, data):
@@ -199,9 +192,7 @@ class P11(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
-        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
-        return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
     @staticmethod
     def live_method(player: Player, data):
@@ -219,9 +210,7 @@ class P12(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
-        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
-        return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
     @staticmethod
     def live_method(player: Player, data):
@@ -237,9 +226,7 @@ class P13(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
-        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
-        return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
     @staticmethod
     def live_method(player: Player, data):
@@ -255,9 +242,7 @@ class P14(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
-        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
-        return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
     @staticmethod
     def live_method(player: Player, data):
@@ -273,9 +258,7 @@ class P15_Quiz(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
-        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
-        return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
 
 class P16_standby(Page):

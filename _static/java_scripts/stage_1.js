@@ -8,14 +8,155 @@ function validating() {
   liveSend('send');
 }
 
-/// Confirmation pop-up for ID screen
-function confirmID() {
-  let confirmed = confirm("Are you sure your ID is correct?");
-  if (confirmed) {
-    document.submit();
-  } else {
-    event.preventDefault();
-  }
+/// ID screen
+function validateForm(event) {
+    event.preventDefault(); // Prevents the form from submitting by default
+    var playerId = document.getElementById("player_id").value;
+    var errorMessage = document.getElementById("errorMessage");
+
+    if (playerId.trim() === "") {
+        errorMessage.textContent = "Please enter your player ID"; // Error message for empty input
+        errorMessage.style.display = "block"; // Show error message if the input is empty
+    } else if (playerId.length > 2) {
+        errorMessage.textContent = "Player ID cannot be more than 2 digits"; // Error message for more than 2 digits
+        errorMessage.style.display = "block"; // Show error message for more than 2 digits
+    } else {
+        errorMessage.style.display = "none"; // Hide error message if input is not empty and within 2 digits
+        let confirmed = confirm("Are you sure your ID is correct?");
+        if (confirmed) {
+            document.forms[0].submit();
+        } else {
+            event.preventDefault();
+        }
+    }
+}
+
+/// Decision Table errors
+function DecisionFormadvisor(event) {
+    event.preventDefault(); // Prevents the form from submitting by default
+    const lowError = document.getElementById("low_error");
+    const medError = document.getElementById("med_error");
+    const highError = document.getElementById("high_error");
+
+    const lowChecked = document.querySelector('input[name="pa_low_advice"]:checked');
+    const medChecked = document.querySelector('input[name="pa_med_advice"]:checked');
+    const highChecked = document.querySelector('input[name="pa_high_advice"]:checked');
+
+    if (!lowChecked) {
+        lowError.textContent = "Field must be selected";
+        lowError.style.display = "block";
+    } else {
+        lowError.style.display = "none";
+    }
+
+    if (!medChecked) {
+        medError.textContent = "Field must be selected";
+        medError.style.display = "block";
+    } else {
+        medError.style.display = "none";
+    }
+
+    if (!highChecked) {
+        highError.textContent = "Field must be selected";
+        highError.style.display = "block";
+    } else {
+        highError.style.display = "none";
+    }
+
+    // Check if all three are checked before submitting the form
+    if (lowChecked && medChecked && highChecked) {
+        let confirmed = confirm("Are you sure you want to continue?");
+        if (confirmed) {
+              document.forms[0].submit();
+        } else {
+            event.preventDefault();
+        }
+    }
+}
+function DecisionForminvestor(event) {
+    event.preventDefault(); // Prevents the form from submitting by default
+    const Error = document.getElementById("error");
+    const ErrorChecked = document.querySelector('input[name="pb_decision"]:checked');
+
+    if (!ErrorChecked) {
+        Error.textContent = "Field must be selected";
+        Error.style.display = "block";
+
+    } else {
+        Error.style.display = "none";
+        let confirmed = confirm("Are you sure you want to continue?");
+        if (confirmed) {
+              document.forms[0].submit();
+        } else {
+            event.preventDefault();
+        }
+    }
+}
+
+/// Sample Decision Table errors
+function DecisionFormsampleadvisor(event) {
+    event.preventDefault(); // Prevents the form from submitting by default
+    const lowError = document.getElementById("low_error");
+    const medError = document.getElementById("med_error");
+    const highError = document.getElementById("high_error");
+
+    const lowChecked = document.querySelector('input[name="pa_low_advice"]:checked');
+    const medChecked = document.querySelector('input[name="pa_med_advice"]:checked');
+    const highChecked = document.querySelector('input[name="pa_high_advice"]:checked');
+
+    if (!lowChecked) {
+        lowError.textContent = "Field must be selected";
+        lowError.style.display = "block";
+    } else {
+        lowError.style.display = "none";
+    }
+
+    if (!medChecked) {
+        medError.textContent = "Field must be selected";
+        medError.style.display = "block";
+    } else {
+        medError.style.display = "none";
+    }
+
+    if (!highChecked) {
+        highError.textContent = "Field must be selected";
+        highError.style.display = "block";
+    } else {
+        highError.style.display = "none";
+    }
+
+    // Check if all three are checked before submitting the form
+    if (lowChecked && medChecked && highChecked) {
+        let confirmed = confirm("Are you sure you want to continue?");
+        if (confirmed) {
+              document.getElementById('validation').disabled = true;
+              sessionStorage.setItem('IsClicked', 'true');
+              liveSend('send');
+        } else {
+            event.preventDefault();
+        }
+    }
+}
+function DecisionFormsampleinvestor(event) {
+    event.preventDefault(); // Prevents the form from submitting by default
+    const Error = document.getElementById("error");
+    const ErrorChecked = document.querySelector('input[name="pb_decision"]:checked');
+
+    if (!ErrorChecked) {
+        Error.textContent = "Field must be selected";
+        Error.style.display = "block";
+
+    } else {
+        Error.style.display = "none";
+        let confirmed = confirm("Are you sure you want to continue?");
+        if (confirmed) {
+              document.getElementById('validation').disabled = true;
+              sessionStorage.setItem('IsClicked', 'true');
+              liveSend('send');
+        } else {
+            event.preventDefault();
+        }
+    }
 }
 
 /// Hiding Otree Timer
