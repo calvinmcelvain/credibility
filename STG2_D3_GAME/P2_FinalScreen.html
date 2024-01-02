@@ -30,34 +30,36 @@
                 <th>Investors Payoff</th>
             </tr>
         </table>
-        <table id="data_table">
-            <tr {{ if decision_counts == 1 }} bgcolor="yellow"{{ endif }}>
-                <td>1</td>
-                <td>{{ history.1.signal }}</td>
-                <td>{{ history.1.advice }}</td>
-                <td>{{ history.1.investors }}</td>
-                <td>{{ history.1.payoff }}</td>
-                <td>{{ history.1.pb_payoff }}</td>
-            </tr>
-            <tr {{ if decision_counts == 2 }} bgcolor="yellow"{{ endif }}>
-                <td>2</td>
-                <td>{{ history.2.signal }}</td>
-                <td>{{ history.2.advice }}</td>
-                <td>{{ history.2.investors }}</td>
-                <td>{{ history.2.payoff }}</td>
-                <td>{{ history.2.pb_payoff }}</td>
-            </tr>
-            <tr {{ if decision_counts == 3 }} bgcolor="yellow"{{ endif }}>
-                {{ for value in history.3 }}
-                <td>3</td>
-                <td>{{ value.group.actual_signal }}</td>
-                <td>{{ value.group.pa_advice }}</td>
-                <td>{{ value.group.total_players_invest() }}</td>
-                <td>{{ value.payoff }}</td>
-                <td>{{ value.group.pb_payoff }}</td>
-                {{ endfor }}
-            </tr>
-        </table>
+        <div class="scroll">
+            <table id="data_table">
+                <tr {{ if decision_counts == 1 }} bgcolor="yellow"{{ endif }}>
+                    <td>1</td>
+                    <td>{{ history.1.signal }}</td>
+                    <td>{{ history.1.advice }}</td>
+                    <td>{{ history.1.investors }}</td>
+                    <td>{{ history.1.payoff }}</td>
+                    <td>{{ history.1.pb_payoff }}</td>
+                </tr>
+                <tr {{ if decision_counts == 2 }} bgcolor="yellow"{{ endif }}>
+                    <td>2</td>
+                    <td>{{ history.2.signal }}</td>
+                    <td>{{ history.2.advice }}</td>
+                    <td>{{ history.2.investors }}</td>
+                    <td>{{ history.2.payoff }}</td>
+                    <td>{{ history.2.pb_payoff }}</td>
+                </tr>
+                <tr {{ if decision_counts == 3 }} bgcolor="yellow"{{ endif }}>
+                    {{ for value in history.3 }}
+                    <td>3</td>
+                    <td>{{ value.group.actual_signal }}</td>
+                    <td>{{ value.group.pa_advice }}</td>
+                    <td>{{ value.group.total_players_invest() }}</td>
+                    <td>{{ value.payoff }}</td>
+                    <td>{{ value.group.pb_payoff }}</td>
+                    {{ endfor }}
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -79,43 +81,45 @@
             <th>Advisor's Payoff</th>
         </tr>
     </table>
-    <table id="data_table">
-        <tr {{ if decision_counts == 1 }} bgcolor="yellow"{{ endif }}>
-            <td>1</td>
-            <td>{{ history.1.advice }}</td>
-            <td>{{ history.1.draw }}</td>
-            <td>{{ history.1.decision }}</td>
-            <td>{{ history.1.other_investors }}</td>
-            <td>{{ history.1.investors }}</td>
-            <td>{{ history.1.signal }}</td>
-            <td>{{ history.1.payoff }}</td>
-            <td>{{ history.1.pa_payoff }}</td>
-        </tr>
-        <tr {{ if decision_counts == 2 }} bgcolor="yellow"{{ endif }}>
-            <td>2</td>
-            <td>{{ history.2.advice }}</td>
-            <td>{{ history.2.draw }}</td>
-            <td>{{ history.2.decision }}</td>
-            <td>{{ history.2.other_investors }}</td>
-            <td>{{ history.2.investors }}</td>
-            <td>{{ history.2.signal }}</td>
-            <td>{{ history.2.payoff }}</td>
-            <td>{{ history.2.pa_payoff }}</td>
-        </tr>
-        <tr {{ if decision_counts == 3 }} bgcolor="yellow"{{ endif }}>
-            {{ for value in history.3 }}
-            <td>3</td>
-            <td>{{ value.group.pa_advice }}</td>
-            <td>{{ value.random_draw }}</td>
-            <td>{{ value.pb_decision() }}</td>
-            <td>{{ value.other_investors() }}</td>
-            <td>{{ value.group.total_players_invest }}</td>
-            <td>{{ value.group.actual_signal }}</td>
-            <td>{{ value.payoff }}</td>
-            <td>{{ value.group.pa_payoff() }}</td>
-            {{ endfor }}
-        </tr>
-    </table>
+    <div class="scroll">
+        <table id="data_table">
+            <tr {{ if decision_counts == 1 }} bgcolor="yellow"{{ endif }}>
+                <td>1</td>
+                <td>{{ history.1.advice }}</td>
+                <td>{{ history.1.draw }}</td>
+                <td>{{ history.1.decision }}</td>
+                <td>{{ history.1.other_investors }}</td>
+                <td>{{ history.1.investors }}</td>
+                <td>{{ history.1.signal }}</td>
+                <td>{{ history.1.payoff }}</td>
+                <td>{{ history.1.pa_payoff }}</td>
+            </tr>
+            <tr {{ if decision_counts == 2 }} bgcolor="yellow"{{ endif }}>
+                <td>2</td>
+                <td>{{ history.2.advice }}</td>
+                <td>{{ history.2.draw }}</td>
+                <td>{{ history.2.decision }}</td>
+                <td>{{ history.2.other_investors }}</td>
+                <td>{{ history.2.investors }}</td>
+                <td>{{ history.2.signal }}</td>
+                <td>{{ history.2.payoff }}</td>
+                <td>{{ history.2.pa_payoff }}</td>
+            </tr>
+            <tr {{ if decision_counts == 3 }} bgcolor="yellow"{{ endif }}>
+                {{ for value in history.3 }}
+                <td>3</td>
+                <td>{{ value.group.pa_advice }}</td>
+                <td>{{ value.random_draw }}</td>
+                <td>{{ value.pb_decision() }}</td>
+                <td>{{ value.other_investors() }}</td>
+                <td>{{ value.group.total_players_invest }}</td>
+                <td>{{ value.group.actual_signal }}</td>
+                <td>{{ value.payoff }}</td>
+                <td>{{ value.group.pa_payoff() }}</td>
+                {{ endfor }}
+            </tr>
+        </table>
+    </div>
 </div>
 
 {{ endif }}
@@ -200,4 +204,5 @@ window.onload = function() {
   });
 };
 </script>
+
 {{ endblock }}

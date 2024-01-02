@@ -9,12 +9,12 @@ Stage 2 Decision 1 Game
 
 class C(BaseConstants):
     NAME_IN_URL = 'STG2_D1_GAME'
-    PLAYERS_PER_GROUP = 6
+    PLAYERS_PER_GROUP = 3
     NUM_ROUNDS = 1
 
     # Timeout seconds for decision page
-    decision_time = 30
-    feedback_time = 30
+    decision_time = None
+    feedback_time = None
 
     # Defining "Advisor" role
     pa_ROLE = 'Advisor'
@@ -128,9 +128,7 @@ class P1_PADecision(Page):
     @staticmethod
     def vars_for_template(player: Player):
         signal = player.group.actual_signal
-        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
-        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
-        return {'signal': signal, 'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
+        return {'signal': signal, 'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -162,9 +160,7 @@ class P1_PBDecision(Page):
             player.group.pa_advice = player.group.get_player_by_role(C.pa_ROLE).pa_high_advice
         else:
             player.group.pa_advice = player.group.get_player_by_role(C.pa_ROLE).pa_low_advice
-        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
-        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
-        return {'advice': player.group.pa_advice, 'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
+        return {'advice': player.group.pa_advice, 'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
     @staticmethod
     def before_next_page(player: Player, timeout_happened):

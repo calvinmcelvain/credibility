@@ -19,11 +19,11 @@
         <p class="payofftableheader">Advisor's Payoff Table</p>
         <table class="playerpayofftable" style="display: flex; margin: unset">
             <tr>
-                <td style="width: 75px;"></td>
+                <td></td>
                 <td class="header" colspan="6">Total Investors</td>
             </tr>
             <tr>
-                <td  style="font-style: italic; width: 75px;">Quality</td>
+                <td><i>Quality</i></td>
                 <td class="row1">0</td>
                 <td class="row1">1</td>
                 <td class="row1">2</td>
@@ -33,13 +33,13 @@
             </tr>
             <tr>
                 <td class="column1">Low</td>
-                {{ for p in pa_table.1 }}
+                {{ for n, p in pa_table.1.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
                 <td class="column1">High</td>
-                {{ for p in pa_table.3 }}
+                {{ for n, p in pa_table.3.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
@@ -50,11 +50,11 @@
         <p class="payofftableheader">Investors Payoff Table</p>
         <table class="playerpayofftable" style="display: flex; margin: unset">
             <tr>
-                <td style="width: 75px;"></td>
+                <td></td>
                 <td class="header" colspan="5">Total Investors (Including You)</td>
             </tr>
             <tr>
-                <td style="font-style: italic; width: 75px;">Quality</td>
+                <td><i>Quality</i></td>
                 <td class="row1">1</td>
                 <td class="row1">2</td>
                 <td class="row1">3</td>
@@ -63,13 +63,13 @@
             </tr>
             <tr>
                 <td class="column1">Low</td>
-                {{ for p in pb_table.1 }}
+                {{ for n, p in pb_table.1.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
                 <td class="column1">High</td>
-                {{ for p in pb_table.3 }}
+                {{ for n, p in pb_table.3.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
@@ -77,34 +77,67 @@
     </div>
 </div>
 
-<!-- Decision Fields -->
-<table class="decisiontable" style="margin-top: 25px">
+<!--Form Fields/Decisions-->
+<table class="decisiontable">
+    <tr style="height: 10px"></tr>
     <tr>
-        <th>Low</th>
-        <th>High</th>
+        <th style="width: 30px"></th>
+        <th colspan="5" class="qlty_header">Investment Quality Estimate</th>
+        <th style="width: 30px"></th>
     </tr>
-    <tr style="height: 5px"></tr>
-    <tr>
+    <tr class="decision_header">
+        <th style="width: 30px"></th>
+        <th>Low</th>
+        <th style="width: 30px" rowspan="4"></th>
+        <th>High</th>
+        <th style="width: 30px"></th>
+    </tr>
+    <tr class="advice">
+        <th style="width: 30px"></th>
         <td><label><input name="pa_low_advice" value="Invest" type="radio"> Invest</label></td>
         <td><label><input name="pa_high_advice" value="Invest" type="radio"> Invest</label></td>
+        <th style="width: 30px"></th>
     </tr>
-    <tr style="height: 5px"></tr>
     <tr>
-        <td><label><input name="pa_low_advice" value="Keep" type="radio"> Keep</label></td>
+        <th style="width: 30px"></th>
+        <td class="column1"><label><input name="pa_low_advice" value="Keep" type="radio"> Keep</label></td>
         <td><label><input name="pa_high_advice" value="Keep" type="radio"> Keep</label></td>
+        <th style="width: 30px"></th>
     </tr>
-    <tr>
-        <td rowspan="2" class="error">{{ formfield_errors 'pa_low_advice' }}</td>
-        <td rowspan="2" class="error">{{ formfield_errors 'pa_high_advice' }}</td>
+    <tr class="error">
+        <th style="width: 30px"></th>
+        <td><span id="low_error" style="color: red; display: none;"></span></td>
+        <td><span id="high_error" style="color: red; display: none;"></span></td>
+        <th style="width: 30px"></th>
     </tr>
+    <tr style="height: 30px"></tr>
 </table>
 
 <!-- Next Button with confirmation pop-up & Instructions Button -->
 <div class="button">
-    <button onclick="ConfirmDecision(event)" class="Instructions">Continue</button>
+    <button onclick="DecisionFormadvisor(event)" class="Instructions">Continue</button>
     <button id="pop-up" class="Instructions" style="float: left; background-color: red">Instructions</button>
 </div>
 
 {{ include '_static/instructions/stage_2_decision_1_instructions.html' }}
+
+<!-- Bootstrap modal structure -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure your you want to continue?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirmButton">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 {{ endblock }}

@@ -13,17 +13,16 @@
 </div>
 {{ endblock }}
 
-<!-- Payoff Tables -->
 <div class="tables-container">
     <div>
         <p class="payofftableheader">Investors Payoff Table</p>
         <table class="playerpayofftable" style="display: flex; margin: unset">
             <tr>
-                <td style="width: 75px;"></td>
+                <td></td>
                 <td class="header" colspan="5">Total Investors (Including You)</td>
             </tr>
             <tr>
-                <td style="font-style: italic; width: 75px;">Quality</td>
+                <td><i>Quality</i></td>
                 <td class="row1">1</td>
                 <td class="row1">2</td>
                 <td class="row1">3</td>
@@ -50,11 +49,11 @@
         <p class="payofftableheader">Advisor's Payoff Table</p>
         <table class="playerpayofftable" style="display: flex; margin: unset">
             <tr>
-                <td style="width: 75px;"></td>
+                <td></td>
                 <td class="header" colspan="6">Total Investors</td>
             </tr>
             <tr>
-                <td  style="font-style: italic; width: 75px;">Quality</td>
+                <td><i>Quality</i></td>
                 <td class="row1">0</td>
                 <td class="row1">1</td>
                 <td class="row1">2</td>
@@ -79,17 +78,39 @@
 </div>
 
 <!-- Slider & Info. -->
-<h4 style="margin: 50px">Please use the slider to select the <span style="color: red">maximum</span> outside option for which you will choose Invest.</h4>
-<label><input class="decision-slider" type="range" name="pb_outside_option" id="slider" oninput="updateInputValue(this.value)" value="1" min="1" max="300"></label>
-<label><input type="number" id="sliderInput" name="pb_outside_option" oninput="updateSliderFromInput(this.value)" value="1" size="3" min="1" max="300"></label>
-
+<div class="decision-div">
+    <h4>Please use the slider to select the <span style="color: red">maximum</span> outside option for which you will choose Invest.</h4>
+    <div class="decision-slider">
+        <label><input type="range" name="pb_outside_option" id="slider" oninput="updateInputValue(this.value)" value="1" min="1" max="300"></label>
+        <label><input type="number" id="sliderInput" name="pb_outside_option" oninput="updateSliderFromInput(this.value)" value="1" size="3" min="1" max="300"></label>
+    </div>
+</div>
 
 <!-- Next Button with confirmation pop-up & Instructions Button-->
 <div class="button">
-    <button onclick="ConfirmDecision(event)" class="Instructions">Continue</button>
+    <button onclick="DecisionForminvestor(event)" class="Instructions">Continue</button>
     <button id="pop-up" class="Instructions" style="float: left; background-color: red">Instructions</button>
 </div>
 
 {{ include '_static/instructions/stage_2_decision_3_instructions.html' }}
+
+<!-- Bootstrap modal structure -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure your you want to continue?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirmButton">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 {{ endblock }}

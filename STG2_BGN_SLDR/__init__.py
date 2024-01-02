@@ -9,7 +9,7 @@ Slider Training
 class C(BaseConstants):
     NAME_IN_URL = 'STG2_BGN_SLDR'
     PLAYERS_PER_GROUP = None
-    NUM_ROUNDS = 10
+    NUM_ROUNDS = 5
 
     decision_time = None    # Timeout seconds for decision page
     feedback_time = None    # Timeout seconds for feedback page
@@ -41,7 +41,8 @@ class Player(BasePlayer):
 def creating_session(subsession):
     players = subsession.get_players()
     for player in players:
-        player.round_towards_payment = r.randint(1, 10)
+        player.round_towards_payment = r.randint(1, 5)
+
 
 # Custom data export for this game
 def custom_export(players):
@@ -148,7 +149,7 @@ class P2_Feedback(Page):
 class P3_Feedback(Page):
     @staticmethod
     def is_displayed(player):
-        return player.round_number == 10
+        return player.round_number == 5
 
     @staticmethod
     def live_method(player: Player, data):

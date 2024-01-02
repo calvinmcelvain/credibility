@@ -5,11 +5,7 @@
 
 /* General Styling */
 div.otree-body.container {
-    max-width: unset;
-    margin-left: 550px;
-    margin-right: 550px;
-    margin-bottom: 100px;
-    margin-top: 0;
+    max-width: 1500px;
 }
 p {
     font-size: 21px;
@@ -44,10 +40,10 @@ h5 {
     margin-bottom: 20px;
 }
 ul {
-    font-size: 19px;
+    font-size: 21px;
 }
 ol {
-    font-size: 19px;
+    font-size: 21px;
 }
 ol li {
     margin-top: 20px;
@@ -212,6 +208,7 @@ tr.decision_header th {
 }
 .decisiontable tr.error td {
     font-size: 19px;
+    text-align: center;
 }
 
 /* Scrollable History Table */
@@ -234,10 +231,10 @@ div.tablescroll div {
     position: sticky;
     border: unset;
     top: 0;
-    width: 1425px;
+    width: 1475px;
 }
 div.scroll {
-    width: 1425px;
+    width: 1475px;
     contain: content;
     overflow-y: scroll;
     border: 1px solid black;

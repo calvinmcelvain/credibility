@@ -10,24 +10,27 @@ function validating() {
 
 /// ID screen
 function validateForm(event) {
-    event.preventDefault(); // Prevents the form from submitting by default
+    event.preventDefault();
     var playerId = document.getElementById("player_id").value;
     var errorMessage = document.getElementById("errorMessage");
 
     if (playerId.trim() === "") {
-        errorMessage.textContent = "Please enter your player ID"; // Error message for empty input
-        errorMessage.style.display = "block"; // Show error message if the input is empty
+        errorMessage.textContent = "Please enter your player ID";
+        errorMessage.style.display = "block";
     } else if (playerId.length > 2) {
-        errorMessage.textContent = "Player ID cannot be more than 2 digits"; // Error message for more than 2 digits
-        errorMessage.style.display = "block"; // Show error message for more than 2 digits
+        errorMessage.textContent = "Player ID cannot be more than 2 digits";
+        errorMessage.style.display = "block";
     } else {
-        errorMessage.style.display = "none"; // Hide error message if input is not empty and within 2 digits
-        let confirmed = confirm("Are you sure your ID is correct?");
-        if (confirmed) {
+        errorMessage.style.display = "none";
+        // Show the Bootstrap modal
+        var confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+        confirmationModal.show();
+
+        // Handle confirm button click inside the modal
+        document.getElementById("confirmButton").onclick = function() {
+            confirmationModal.hide();
             document.forms[0].submit();
-        } else {
-            event.preventDefault();
-        }
+        };
     }
 }
 
@@ -65,12 +68,14 @@ function DecisionFormadvisor(event) {
 
     // Check if all three are checked before submitting the form
     if (lowChecked && medChecked && highChecked) {
-        let confirmed = confirm("Are you sure you want to continue?");
-        if (confirmed) {
-              document.forms[0].submit();
-        } else {
-            event.preventDefault();
-        }
+        var confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+        confirmationModal.show();
+
+        // Handle confirm button click inside the modal
+        document.getElementById("confirmButton").onclick = function () {
+            confirmationModal.hide();
+            document.forms[0].submit();
+        };
     }
 }
 function DecisionForminvestor(event) {
@@ -84,12 +89,14 @@ function DecisionForminvestor(event) {
 
     } else {
         Error.style.display = "none";
-        let confirmed = confirm("Are you sure you want to continue?");
-        if (confirmed) {
-              document.forms[0].submit();
-        } else {
-            event.preventDefault();
-        }
+        var confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+        confirmationModal.show();
+
+        // Handle confirm button click inside the modal
+        document.getElementById("confirmButton").onclick = function () {
+            confirmationModal.hide();
+            document.forms[0].submit();
+        };
     }
 }
 
@@ -127,14 +134,49 @@ function DecisionFormsampleadvisor(event) {
 
     // Check if all three are checked before submitting the form
     if (lowChecked && medChecked && highChecked) {
-        let confirmed = confirm("Are you sure you want to continue?");
-        if (confirmed) {
-              document.getElementById('validation').disabled = true;
-              sessionStorage.setItem('IsClicked', 'true');
-              liveSend('send');
-        } else {
-            event.preventDefault();
-        }
+        var confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+        confirmationModal.show();
+
+        // Handle confirm button click inside the modal
+        document.getElementById("confirmButton").onclick = function () {
+            confirmationModal.hide();
+            document.getElementById('validation').disabled = true;
+            sessionStorage.setItem('IsClicked', 'true');
+            liveSend('send');
+        };
+    }
+}
+// Function to save radio button values to sessionStorage
+function saveRadioStateadvisor() {
+    const lowChecked = document.querySelector('input[name="pa_low_advice"]:checked');
+    const medChecked = document.querySelector('input[name="pa_med_advice"]:checked');
+    const highChecked = document.querySelector('input[name="pa_high_advice"]:checked');
+
+    if (lowChecked) {
+        sessionStorage.setItem('pa_low_advice', lowChecked.value);
+    }
+    if (medChecked) {
+        sessionStorage.setItem('pa_med_advice', medChecked.value);
+    }
+    if (highChecked) {
+        sessionStorage.setItem('pa_high_advice', highChecked.value);
+    }
+}
+
+// Function to restore radio button values from sessionStorage
+function restoreRadioStateadvisor() {
+    const lowValue = sessionStorage.getItem('pa_low_advice');
+    const medValue = sessionStorage.getItem('pa_med_advice');
+    const highValue = sessionStorage.getItem('pa_high_advice');
+
+    if (lowValue) {
+        document.querySelector('input[name="pa_low_advice"][value="' + lowValue + '"]').checked = true;
+    }
+    if (medValue) {
+        document.querySelector('input[name="pa_med_advice"][value="' + medValue + '"]').checked = true;
+    }
+    if (highValue) {
+        document.querySelector('input[name="pa_high_advice"][value="' + highValue + '"]').checked = true;
     }
 }
 function DecisionFormsampleinvestor(event) {
@@ -148,14 +190,33 @@ function DecisionFormsampleinvestor(event) {
 
     } else {
         Error.style.display = "none";
-        let confirmed = confirm("Are you sure you want to continue?");
-        if (confirmed) {
-              document.getElementById('validation').disabled = true;
-              sessionStorage.setItem('IsClicked', 'true');
-              liveSend('send');
-        } else {
-            event.preventDefault();
+        var confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+        confirmationModal.show();
+
+        // Handle confirm button click inside the modal
+        document.getElementById("confirmButton").onclick = function () {
+            confirmationModal.hide();
+            document.getElementById('validation').disabled = true;
+            sessionStorage.setItem('IsClicked', 'true');
+            liveSend('send');
         }
+    }
+}
+// Function to save radio button value to sessionStorage
+function saveRadioStateinvestor() {
+    const Checked = document.querySelector('input[name="pb_decision"]:checked');
+
+    if (Checked) {
+        sessionStorage.setItem('pb_decision', Checked.value);
+    }
+}
+
+// Function to restore radio button value from sessionStorage
+function restoreRadioStateinvestor() {
+    const Checkedvalue = sessionStorage.getItem('pb_decision');
+
+    if (Checkedvalue) {
+        document.querySelector('input[name="pb_decision"][value="' + Checkedvalue + '"]').checked = true;
     }
 }
 

@@ -4,8 +4,11 @@
 }
 
 /* General Styling */
+div.otree-body.container {
+    max-width: 1500px;
+}
 p {
-    font-size: 19px;
+    font-size: 21px;
     margin-top: 20px;
 }
 h1 {
@@ -15,17 +18,18 @@ h1 {
     font-style: italic;
 }
 h2 {
+    font-size: 38px;
     font-weight: bold;
     font-family: Arial, serif;
     text-decoration: underline;
 }
 h3 {
-    font-size: 28px;
+    font-size: 32px;
     font-family: Arial, serif;
     font-weight: bold;
 }
 h4 {
-    font-size: 19px;
+    font-size: 21px;
     text-align: center;
     font-style: italic;
     text-decoration: underline;
@@ -36,10 +40,10 @@ h5 {
     margin-bottom: 20px;
 }
 ul {
-    font-size: 19px;
+    font-size: 21px;
 }
 ol {
-    font-size: 19px;
+    font-size: 21px;
 }
 ol li {
     margin-top: 20px;
@@ -75,7 +79,7 @@ div.Title_decision {
     padding-bottom: 10px;
 }
 .Title_decision span {
-   font-size: 24px;
+    font-size: 24px;
     font-family: Arial, serif;
     border: 2px solid black;
     font-style: normal;
@@ -94,55 +98,54 @@ div.Title_decision {
 div.button {
     margin-top: 40px;
     margin-bottom: 20px;
+    contain: content;
 }
-div.button div {
+.button div {
     float: left;
 }
-div.button button {
+.button button {
     margin: unset;
     float: right;
+    font-size: 19px;
 }
-div.button p {
+.button p {
     margin: unset;
+}
+.button p.bttm-sent {
+    font-size: 18px;
 }
 
 /* Player Payoff Table */
 table.playerpayofftable {
     margin: auto;
     align-self: center;
+    font-size: 21px;
 }
-.playerpayofftable td {
+table.playerpayofftable td {
     height: 30px;
     text-align: center;
-    font-size: 19px;
     font-family: "Times New Roman", serif;
 }
-.playerpayofftable .header {
+table.playerpayofftable .header {
     text-align: center;
-    height: 50px;
+    height: 40px;
     font-style: italic;
     font-weight: normal;
-    font-size: 19px;
     font-family: "Times New Roman", serif;
 }
-.playerpayofftable .column1 {
-    width: 75px;
-    height: 30px;
-    text-align: center;
-    border-right: 1px solid black;
-    font-size: 19px;
-    font-family: "Times New Roman", serif;
-}
-.playerpayofftable .row1 {
+table.playerpayofftable .column1 {
     width: 100px;
-    height: 30px;
     text-align: center;
-    border-bottom: 1px solid black;
-    font-size: 19px;
+    border-right: 2px solid black;
+    font-family: "Times New Roman", serif;
+}
+table.playerpayofftable .row1 {
+    width: 100px;
+    text-align: center;
+    border-bottom: 2px solid black;
     font-family: "Times New Roman", serif;
 }
 .payofftableheader {
-    font-size: 19px;
     font-family: "Times New Roman", serif;
     font-weight: bold;
     text-align: center;
@@ -152,42 +155,49 @@ table.playerpayofftable {
     display: flex;
     margin-left: unset;
     margin-right: unset;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 /* Player Decision Tables */
 table.decisiontable {
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 10px;
+    margin-bottom: 150px;
+    margin-top: 100px;
+    font-family: "Times New Roman", serif;
+    font-size: 26px;
+    border: 1px solid black;
 }
-.decisiontable th {
-    font-size: 21px;
-    width: 190px;
-    text-align: center;
-    text-decoration: underline;
-}
-.decisiontable td {
-    font-size: 17px;
-    height: 25px;
-    text-align: center;
-}
-button.input {
-    margin: unset;
-}
-.decisiontable .header_ {
-    font-size: 19px;
-    height: 50px;
+.decisiontable th.qlty_header {
+    height: 60px;
+    font-weight: unset;
     font-style: italic;
     text-align: center;
 }
-.decisiontable td.playera {
-    text-align: center;
-    font-size: 20px;
-    width: 200px
+.decisiontable tr.advice td {
+    border-top: 2px solid black;
 }
-.decisiontable td.error {
+tr.decision_header th {
     text-align: center;
+    height: 40px;
+}
+.decisiontable td {
+    text-align: center;
+    width: 175px;
+}
+.decisiontable tr.advice th {
+    font-weight: unset;
+    font-style: italic;
+    text-align: center;
+    width: 150px;
+}
+.decisiontable tr.error td {
+    font-size: 19px;
+    text-align: center;
+}
+div.decision-div {
+    margin-top: 100px;
+    margin-bottom: 150px;
 }
 
 /* Feedback table */
@@ -239,10 +249,11 @@ div.feed {
 }
 
 /* Decision Slider Design */
-input.decision-slider {
+div.decision-slider {
     margin-top: 50px;
     margin-bottom: 50px;
-    margin-left: 400px;
+    font-size: 21px;
+    text-align: center;
 }
 #sliderInput {
     width: 3em;
@@ -250,9 +261,9 @@ input.decision-slider {
 
 /* Draws Table */
 table.draws_table {
-    font-size: 14px;
+    font-size: 17px;
     text-align: center;
-    width: 1000px;
+    width: 1500px;
 }
 .draws_table th {
     border-bottom: 1px solid black;
@@ -277,20 +288,22 @@ div.draws {
     text-align: center;
     contain: content;
     margin-bottom: 10px;
+    padding: 10px;
 }
 .draws h3 {
-    font-size: 19px;
+    font-size: 21px;
     font-style: italic;
 }
-h3.draws {
-    margin-top: 30px;
-    text-align: center;
-    font-weight: unset;
-    font-size: 19px;
-    font-style: italic;
+.draws span.value {
+    font-weight: bold;
+    color: red;
+    border: 1px solid black;
+    margin: 10px;
+    padding: 5px;
+    font-size: 24px;
 }
 p.draws {
-    font-size: 16px;
+    font-size: 21px;
     text-align: center;
     margin-top: unset;
 }
@@ -299,7 +312,7 @@ p.draws {
 div.final {
     margin-top: 50px;
     contain: content;
-    font-size: 19px;
+    font-size: 21px;
 }
 .final table {
     margin-left: 20px;
@@ -311,6 +324,7 @@ div.final {
 }
 .final h5 {
     text-align: unset;
+    font-size: 19px;
 }
 .final th {
     text-decoration: underline;
@@ -334,12 +348,10 @@ div.final {
 /* Scrollable History Table */
 div.tablescroll {
     contain: content;
-    width: 950px;
     margin-top: 40px;
 }
 div.tablescroll div {
-    max-height: 125px;
-    overflow-y: scroll;
+    height: 150px;
     text-align: center;
 }
 .tablescroll h4 {
@@ -353,21 +365,22 @@ div.tablescroll div {
     position: sticky;
     border: unset;
     top: 0;
+    width: 1475px;
+}
+div.scroll {
+    width: 1475px;
+    contain: content;
+    overflow-y: scroll;
+    border: 1px solid black;
+    max-height: 110px;
 }
 .tablescroll table {
-    width: 950px;
-    border: 1px solid black;
     border-top: none;
+    font-size: 19px;
     text-align: center;
 }
 .tablescroll th {
     background-color: #f5f5f5;
-    font-size: 16px;
+    font-size: 19px;
     border: 1px solid black;
-}
-.history_header th {
-    white-space: nowrap; /* Prevent text wrapping */
-}
-#data_table td {
-    white-space: nowrap;
 }

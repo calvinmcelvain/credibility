@@ -100,7 +100,7 @@
         <th style="width: 30px"></th>
     </tr>
     <tr class="error">
-        <td colspan="2"><span id="error" style="color: red; display: none;"></span></td>
+        <td colspan="4"><span id="error" style="color: red; display: none;"></span></td>
     </tr>
     <tr style="height: 30px"></tr>
 </table>
@@ -116,7 +116,7 @@
 
 <!--Player History Table-->
 <div class="tablescroll">
-    <h4>Previous Results:</h4>
+    <h4></h4>
     <div>
         <table class="history_header">
             <tr>
@@ -152,6 +152,25 @@
 {{ endif }}
 
 {{ include '_static/instructions/stage_1_instructions.html' }}
+
+<!-- Bootstrap modal structure -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure your you want to continue?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirmButton">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
 // Adjusting History Width
