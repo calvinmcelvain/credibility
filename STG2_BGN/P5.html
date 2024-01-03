@@ -1,24 +1,15 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_2.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_2.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/general.js' }}"></script>
 
 {{ block title }}
 <u><b>Using a Slider</b></u>
 {{ endblock }}
 
 <!-- General Information Body -->
-<p>Investors who do not choose to invest will receive their outside option. In Stage 2, the outside option for each investor will be randomly drawn from the numbers between 0 and 300. All numbers are equally likely to be drawn.</p>
-<p style="margin-top: unset">Each investor will use a slider to select the <span style="color: red">minimum</span> outside option for which you will choose <span style="color: red">not</span> to invest.</p>
-<div class="List">
-    <ul>
-        <li>Any outside option below your minimum will result in you choosing to Invest.</li>
-        <li>If an outside option is drawn at or above your minimum, you will <span style="color: red">not</span> Invest. You will receive the outside option.</li>
-    </ul>
-</div>
-<p>As an investor, your best choice is always to set the slider exactly <span style="color: red">equal</span> to the value you believe you will earn on average by choosing Invest.</p>
-
+{{ include 'STG2_BGN/instructions/using_slider.html' }}
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
@@ -29,22 +20,4 @@
     <button type="button" id="validation" onclick="validating()">Continue</button>
 </div>
 
-<script>
-// Checking if button has been clicked
-window.onload = function () {
-    const IsClicked = sessionStorage.getItem('IsClicked');
-
-    if (IsClicked === 'true') {
-        document.getElementById('validation').disabled = true;
-    }
-}
-
-// Websocket to check if all players are ready
-function liveRecv(data) {
-    if (data === 'all_ready') {
-        sessionStorage.setItem('IsClicked', 'false')
-        document.forms[0].submit();
-    }
-}
-</script>
 {{ endblock }}

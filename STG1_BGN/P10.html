@@ -1,17 +1,15 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_1.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_1.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/general.js' }}"></script>
 
 {{ block title }}
 <b><u>Making Decisions in Each Round</u></b>
 {{ endblock }}
 
 <!--Description Body-->
-<p>Recall that each round starts with the Advisor receiving an estimate of the quality level. <b><i>Before receiving their estimate,</i></b> the Advisor will choose a message for each possible estimate, recommending either “Invest” or “Keep”. The computer will then show the Advisor their estimate and send whatever message the Advisor chose for this estimate to all of the Investors in their group. The Investors choose whether or not to invest after seeing this message.</p>
-<p>To help you understand how this works, we are now going to walk through a practice round. We will tell you what choices to make and this practice round will not count towards your payment.  In other words, this practice round is only to illustrate how you will actually make decisions in each round of Stage 1. As we go through the sample round, please do not make any choices until the experimenter tells you to do so.</p>
-
+{{ include 'STG1_BGN/instructions/making_decisions.html' }}
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
@@ -22,22 +20,4 @@
     <button type="button" id="validation" onclick="validating()">Continue</button>
 </div>
 
-<script>
-// Checking if button has been clicked
-window.onload = function () {
-    const IsClicked = sessionStorage.getItem('IsClicked');
-
-    if (IsClicked === 'true') {
-        document.getElementById('validation').disabled = true;
-    }
-}
-
-// Websocket to check if all players are ready
-function liveRecv(data) {
-    if (data === 'all_ready') {
-        sessionStorage.setItem('IsClicked', 'false')
-        document.forms[0].submit();
-    }
-}
-</script>
 {{ endblock }}

@@ -1,0 +1,129 @@
+/* Otree Timer */
+.otree-timer {
+    display: none;
+}
+
+/* Otree body */
+div.otree-body.container {
+    max-width: 1500px;
+}
+
+/* General Formatting */
+p {
+    font-size: 21px;
+    margin-top: 20px;
+}
+h1 {
+    font-size: 21px;
+    text-align: center;
+    text-decoration: underline;
+    font-style: italic;
+}
+h2 {
+    font-size: 38px;
+    font-weight: bold;
+    font-family: Arial, serif;
+    text-decoration: underline;
+}
+h3 {
+    font-size: 32px;
+    font-family: Arial, serif;
+    font-weight: bold;
+}
+h4 {
+    font-size: 21px;
+    text-align: center;
+    font-style: italic;
+    text-decoration: underline;
+}
+h5 {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+ul {
+    font-size: 21px;
+}
+ol {
+    font-size: 21px;
+}
+ol li {
+    margin-top: 20px;
+}
+
+/* Title */
+div.Title {
+    contain: content;
+}
+div.Title_decision {
+    text-align: center;
+    contain: content;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.Title_decision span {
+    font-size: 24px;
+    font-family: Arial, serif;
+    border: 2px solid black;
+    font-style: normal;
+    background-color: revert;
+    padding: 10px;
+    margin-top: 20px;
+}
+.page-header {
+    margin: unset;
+    text-decoration: unset;
+    font-weight: unset;
+    padding-bottom: 10px;
+}
+
+/* Button Styling */
+div.button {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    contain: content;
+}
+.button div {
+    float: left;
+}
+.button button {
+    margin: unset;
+    float: right;
+    font-size: 19px;
+}
+.button p {
+    margin: unset;
+}
+.button p.bttm-sent {
+    font-size: 18px;
+}
+
+/* sample Page Header Styling */
+span.sample {
+    font-size: 21px;
+    font-family: Arial, serif;
+    color: red;
+}
+
+/* Standby Page Styling */
+h2.BeforeStart {
+    text-decoration: unset;
+    text-align: center;
+    margin: 200px;
+}
+
+/* Highlighting Styling */
+span.highlight {
+    background-color: yellow;
+}
+
+/* id input styling */
+label.id {
+    font-size: 21px;
+    margin-top: 30px;
+}
+input.id {
+    max-width: 50px;
+    font-size: 19px;
+    border: 1px solid black;
+}

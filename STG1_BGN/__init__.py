@@ -44,7 +44,7 @@ class Player(BasePlayer):
     # ID Field
     player_id = models.IntegerField(blank=False, label='', max=99)
 
-    # Sample Decision Models
+    # sample Decision Models
     pb_decision = models.StringField(blank=False)
     pa_low_advice = models.StringField(blank=False)
     pa_med_advice = models.StringField(blank=False)

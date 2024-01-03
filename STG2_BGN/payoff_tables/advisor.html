@@ -1,0 +1,27 @@
+<table class="playerpayofftable">
+    <tr>
+        <td></td>
+        <td class="header" colspan="6">Total Investors</td>
+    </tr>
+    <tr>
+        <td><i>Quality</i></td>
+        <td class="row1">0</td>
+        <td class="row1">1</td>
+        <td class="row1">2</td>
+        <td class="row1">3</td>
+        <td class="row1">4</td>
+        <td class="row1">5</td>
+    </tr>
+    <tr>
+        <td class="column1">Low</td>
+        {{ for n, p in pa_table.1.items() }}
+        <td>{{ p }}</td>
+        {{ endfor }}
+    </tr>
+    <tr>
+        <td class="column1">High</td>
+        {{ for n, p in pa_table.3.items() }}
+        <td>{{ p }}</td>
+        {{ endfor }}
+    </tr>
+</table>

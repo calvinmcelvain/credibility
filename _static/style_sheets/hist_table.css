@@ -1,0 +1,39 @@
+/* Scrollable History Table */
+div.tablescroll {
+    contain: content;
+    margin-top: 40px;
+}
+.tablescroll div {
+    height: 150px;
+    text-align: center;
+}
+.tablescroll h4 {
+    font-style: unset;
+    font-weight: bold;
+    position: sticky;
+    border-collapse: collapse;
+}
+.tablescroll table.history_header {
+    border-collapse: collapse;
+    position: sticky;
+    border: unset;
+    top: 0;
+    width: 1475px;
+}
+div.scroll {
+    width: 1475px;
+    contain: content;
+    overflow-y: scroll;
+    border: 1px solid black;
+    max-height: 110px;
+}
+.tablescroll table {
+    border-top: none;
+    font-size: 19px;
+    text-align: center;
+}
+.tablescroll th {
+    background-color: #f5f5f5;
+    font-size: 19px;
+    border: 1px solid black;
+}

@@ -1,8 +1,12 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_1.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_1.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/payoff_tables.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/decision_tables.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/hist_table.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/sample/advisor.js' }}"></script>
+<script src="{{ static 'java_scripts/general.js' }}"></script>
 
 <!-- Title -->
 {{ block title }}
@@ -15,122 +19,10 @@
 
 
 <!--Payoff Tables-->
-<div class="tables-container">
-    <div>
-        <p class="payofftableheader">Your Payoff Table</p>
-        <table class="playerpayofftable" style="display: flex; margin: unset">
-            <tr>
-                <td></td>
-                <td class="header" colspan="6">Total Investors</td>
-            </tr>
-            <tr>
-                <td><i>Quality</i></td>
-                <td class="row1">0</td>
-                <td class="row1">1</td>
-                <td class="row1">2</td>
-                <td class="row1">3</td>
-                <td class="row1">4</td>
-                <td class="row1">5</td>
-            </tr>
-            <tr>
-                <td class="column1">Low</td>
-                {{ for n, p in pa_table.1.items() }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-            <tr>
-                <td class="column1">Medium</td>
-                {{ for n, p in pa_table.2.items() }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-            <tr>
-                <td class="column1">High</td>
-                {{ for n, p in pa_table.3.items() }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-        </table>
-    </div>
-    <div style="margin: 40px"></div>
-    <div>
-        <p class="payofftableheader">Investors Payoff Table</p>
-        <table class="playerpayofftable" style="display: flex; margin: unset">
-            <tr>
-                <td></td>
-                <td class="header" colspan="5">Total Investors</td>
-            </tr>
-            <tr>
-                <td><i>Quality</i></td>
-                <td class="row1">1</td>
-                <td class="row1">2</td>
-                <td class="row1">3</td>
-                <td class="row1">4</td>
-                <td class="row1">5</td>
-            </tr>
-            <tr>
-                <td class="column1">Low</td>
-                {{ for n, p in pb_table.1.items() }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-            <tr>
-                <td class="column1">Medium</td>
-                {{ for n, p in pb_table.2.items() }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-            <tr>
-                <td class="column1">High</td>
-                {{ for n, p in pb_table.3.items() }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-        </table>
-        <p class="reminder">Remember, Investors who choose not invest will receive a payoff of <span style="text-decoration: underline">12 ECUs</span></p>
-    </div>
-</div>
+{{ include 'STG1_BGN/payoff_tables/advisor_investor.html' }}
 
 <!--Form Fields/Decisions-->
-<table class="decisiontable">
-    <tr style="height: 10px"></tr>
-    <tr>
-        <th style="width: 30px"></th>
-        <th colspan="5" class="qlty_header">Investment Quality Estimate</th>
-        <th style="width: 30px"></th>
-    </tr>
-    <tr class="decision_header">
-        <th style="width: 30px"></th>
-        <th>Low</th>
-        <th style="width: 30px" rowspan="4"></th>
-        <th>Medium</th>
-        <th style="width: 30px" rowspan="4"></th>
-        <th>High</th>
-        <th style="width: 30px"></th>
-    </tr>
-    <tr class="advice">
-        <th style="width: 30px"></th>
-        <td><label><input name="pa_low_advice" value="Invest" type="radio"> Invest</label></td>
-        <td><label><input name="pa_med_advice" value="Invest" type="radio"> Invest</label></td>
-        <td><label><input name="pa_high_advice" value="Invest" type="radio"> Invest</label></td>
-        <th style="width: 30px"></th>
-    </tr>
-    <tr>
-        <th style="width: 30px"></th>
-        <td class="column1"><label><input name="pa_low_advice" value="Keep" type="radio"> Keep</label></td>
-        <td><label><input name="pa_med_advice" value="Keep" type="radio"> Keep</label></td>
-        <td><label><input name="pa_high_advice" value="Keep" type="radio"> Keep</label></td>
-        <th style="width: 30px"></th>
-    </tr>
-    <tr class="error">
-        <th style="width: 30px"></th>
-        <td><span id="low_error" style="color: red; display: none;"></span></td>
-        <td><span id="med_error" style="color: red; display: none;"></span></td>
-        <td><span id="high_error" style="color: red; display: none;"></span></td>
-        <th style="width: 30px"></th>
-    </tr>
-    <tr style="height: 30px"></tr>
-</table>
+{{ include 'STG1_BGN/decision_tables/advisor.html' }}
 
 <!-- Next Button with confirmation pop-up & Instructions Button-->
 <div class="button">
@@ -138,60 +30,13 @@
     <button id="pop-up" style="float: left; background-color: red">Instructions</button>
 </div>
 
-<!-- Sample Player History Table-->
-{{ include '_static/_other/sample_feedback_advisor.html' }}
+<!-- sample Player History Table-->
+{{ include 'STG1_BGN/history_tables/sample_history/advisor.html' }}
 
-{{ include '_static/instructions/stage_1_instructions.html' }}
+<!-- Instructions -->
+{{ include '_static/instr_bttn/stage_1.html' }}
 
-<!-- Bootstrap modal structure -->
-<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Are you sure your you want to continue?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" id="confirmButton">Confirm</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-// Adjusting History Width
-window.onload = function() {
-  const headerCells = document.querySelectorAll('.history_header th');
-  const dataCells = document.querySelectorAll('#data_table td');
-
-  headerCells.forEach((headerCell, index) => {
-      dataCells[index].style.width = headerCell.offsetWidth + 'px';
-  });
-  const IsClicked = sessionStorage.getItem('IsClicked');
-    if (IsClicked === 'true') {
-        document.getElementById('validation').disabled = true;
-    }
-};
-// Websocket to check if all players are ready
-function liveRecv(data) {
-    if (data === 'all_ready') {
-        sessionStorage.setItem('IsClicked', 'false')
-        document.forms[0].submit();
-    }
-}
-// Restore radio button values on page load
-document.addEventListener("DOMContentLoaded", function() {
-    restoreRadioStateadvisor();
-});
-
-// Save radio button values before page reload or unload
-window.addEventListener("beforeunload", function() {
-    saveRadioStateadvisor();
-});
-</script>
+<!-- popup -->
+{{ include '_static/popups/decision.html' }}
 
 {{ endblock }}

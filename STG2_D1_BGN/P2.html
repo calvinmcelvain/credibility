@@ -1,47 +1,16 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_2.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_2.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/payoff_tables.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/general.js' }}"></script>
 
 {{ block title }}
 <u><b>Stage 2 Decision 1 (Continued)</b></u>
 {{ endblock }}
 
 <!-- General Information Body Cont. -->
-<p>Investors’ payoffs are determined by the table shown below. Investors who invest will receive earnings of 300 if the Quality is High, <span style="color: red">regardless of the number of other Investors who invest. </span></p>
-<p>As before, you will receive a recommendation from the Advisor but will <span style="color: red">not</span> know the quality level of the investment opportunity when you decide to invest.</p>
-
-<!-- Investor's Payoff Table -->
-<table class="playerpayofftable">
-    <tr>
-        <td style="width: 75px;"></td>
-        <td class="header" colspan="5">Total Investors (Including You)</td>
-    </tr>
-    <tr>
-        <td style="font-style: italic; width: 75px;">Quality</td>
-        <td class="row1">1</td>
-        <td class="row1">2</td>
-        <td class="row1">3</td>
-        <td class="row1">4</td>
-        <td class="row1">5</td>
-    </tr>
-    <tr>
-        <td class="column1">Low</td>
-        {{ for n, p in pb_table.1.items() }}
-        <td>{{ p }}</td>
-        {{ endfor }}
-    </tr>
-    <tr>
-        <td class="column1">High</td>
-        {{ for n, p in pb_table.3.items() }}
-        <td>{{ p }}</td>
-        {{ endfor }}
-    </tr>
-</table>
-
-<!-- General Information Body Cont. -->
-<p>If you choose to not invest, you will receive your outside option. As explained previously, the outside option for each Investor will be randomly drawn from the numbers between 1 and 300. Investors will use the slider on their screen to select the <span style="color: red">mininum</span> outside option for which you will choose the outside option. If the randomly chosen outside option is below the number you choose with the slider, you will choose to Invest.  Otherwise, you will receive the outside option. As shown in the example we went through previously, your best choice is to set the slider <span style="color: red">equal</span> to the outside option where you would switch from choosing to invest to taking the outside option.</p>
+{{ include 'STG2_D1_BGN/instructions/decision_1_cont.html' }}
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
@@ -52,22 +21,4 @@
     <button type="button" id="validation" onclick="validating()">Continue</button>
 </div>
 
-<script>
-// Checking if button has been clicked
-window.onload = function () {
-    const IsClicked = sessionStorage.getItem('IsClicked');
-
-    if (IsClicked === 'true') {
-        document.getElementById('validation').disabled = true;
-    }
-}
-
-// Websocket to check if all players are ready
-function liveRecv(data) {
-    if (data === 'all_ready') {
-        sessionStorage.setItem('IsClicked', 'false')
-        document.forms[0].submit();
-    }
-}
-</script>
 {{ endblock }}

@@ -1,21 +1,15 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_2.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_2.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/general.js' }}"></script>
 
 {{ block title }}
 <u><b>Stage 2 Payoffs</b></u>
 {{ endblock }}
 
 <!-- General Information Body -->
-<div class="List">
-    <ol>
-        <li>The payoff tables will change for each decision in Stage 2. Be certain to look at the payoff tables and instructions before making your decisions in Stage 2, as these will <span style="color: red">not</span> be the same as Stage 1 or the other decisions in Stage 2.</li>
-        <li>The outside option is <span style="color: red">not</span> the same for every decision in Stage 2. Instead, an outside option will be randomly drawn for each decision. Later in these instructions, you will receive more information on exactly how this works and how you will make choices.</li>
-        <li>The stakes for each decision in Stage 2 are substantially higher than those in Stage 1. Also remember that you will make a total of three decisions, but only one will be randomly chosen to count towards your earnings in today’s experiment.</li>
-    </ol>
-</div>
+{{ include 'STG2_BGN/instructions/stage_2_payoffs.html' }}
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
@@ -26,22 +20,4 @@
     <button type="button" id="validation" onclick="validating()">Continue</button>
 </div>
 
-<script>
-// Checking if button has been clicked
-window.onload = function () {
-    const IsClicked = sessionStorage.getItem('IsClicked');
-
-    if (IsClicked === 'true') {
-        document.getElementById('validation').disabled = true;
-    }
-}
-
-// Websocket to check if all players are ready
-function liveRecv(data) {
-    if (data === 'all_ready') {
-        sessionStorage.setItem('IsClicked', 'false')
-        document.forms[0].submit();
-    }
-}
-</script>
 {{ endblock }}

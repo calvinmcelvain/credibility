@@ -1,54 +1,16 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_1.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_1.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/payoff_tables.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/general.js' }}"></script>
 
 {{ block title }}
 <b><u>Description of Investor Payoffs (Continued)</u></b>
 {{ endblock }}
 
 <!--Description Body-->
-<p>When you make your decision in each round, you will see the payoff table below showing your payoffs if you invest, for each possible combination of <i>Quality</i> (given by the row) and <i>Total Investors</i> (given by the column), the total number of group members that invest <i>including you.</i></p>
-
-<!--Payoff Table-->
-<table class="playerpayofftable">
-    <tr>
-        <td></td>
-        <td class="header" colspan="5">Total Investors (including you)</td>
-    </tr>
-    <tr>
-        <td><i>Quality</i></td>
-        <td class="row1">1</td>
-        <td class="row1">2</td>
-        <td class="row1">3</td>
-        <td class="row1">4</td>
-        <td class="row1">5</td>
-    </tr>
-    <tr>
-        <td class="column1">Low</td>
-        {{ for n, p in pb_table.1.items() }}
-        <td>{{ p }}</td>
-        {{ endfor }}
-    </tr>
-    <tr>
-        <td class="column1">Medium</td>
-        {{ for n, p in pb_table.2.items() }}
-        <td>{{ p }}</td>
-        {{ endfor }}
-    </tr>
-    <tr>
-        <td class="column1">High</td>
-        {{ for n, p in pb_table.3.items() }}
-        <td>{{ p }}</td>
-        {{ endfor }}
-    </tr>
-</table>
-
-<!-- Description Body Cont.-->
-<p style="margin-top: 50px">Remember that if you keep your endowment, you will earn 12 ECU regardless of the quality of the investment opportunity.</p>
-<p>Please look at an overhead screen as we go through some examples on how to read the <i>Investor</i> payoff tables.</p>
-
+{{ include 'STG1_BGN/instructions/description_of_investor_cont.html' }}
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
@@ -59,23 +21,5 @@
     <button type="button" id="validation" onclick="validating()">Continue</button>
 </div>
 
-<script>
-// Checking if button has been clicked
-window.onload = function () {
-    const IsClicked = sessionStorage.getItem('IsClicked');
-
-    if (IsClicked === 'true') {
-        document.getElementById('validation').disabled = true;
-    }
-}
-
-// Websocket to check if all players are ready
-function liveRecv(data) {
-    if (data === 'all_ready') {
-        sessionStorage.setItem('IsClicked', 'false')
-        document.forms[0].submit();
-    }
-}
-</script>
 
 {{ endblock }}

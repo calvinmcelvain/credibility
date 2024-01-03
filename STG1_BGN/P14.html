@@ -1,8 +1,11 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_1.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_1.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/payoff_tables.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/hist_table.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/feedback.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/general.js' }}"></script>
 
 <!-- Title -->
 {{ block title }}
@@ -13,77 +16,11 @@
 </div>
 {{ endblock }}
 
-<!-- Sample End of Round Results -->
-<div class="feed-div">
-    <div class="feed">
-        <h4>End of Round Results:</h4>
-        <table>
-            <tr>
-                <th>Quality Estimate:</th>
-                <td>Low</td>
-            </tr>
-            <tr>
-                <th>True Quality Drawn:</th>
-                <td>Low</td>
-            </tr>
-            <tr>
-                <th>Your Advice:</th>
-                <td>Invest</td>
-            </tr>
-            <tr>
-                <th>Total Investors:</th>
-                <td>5</td>
-            </tr>
-            <tr>
-                <th>Investor's Payoff:</th>
-                <td>4 Points</td>
-            </tr>
-            <tr class="last">
-                <th>Your Payoff:</th>
-                <td>3 Points</td>
-            </tr>
-        </table>
-    </div>
-    <div style="float: right">
-        <p class="payofftableheader">Your Payoff Table</p>
-        <table class="playerpayofftable" style="display: flex; margin: unset">
-            <tr>
-                <td style="width: 75px;"></td>
-                <td class="header" colspan="6">Total Investors</td>
-            </tr>
-            <tr>
-                <td  style="font-style: italic; width: 75px;">Quality</td>
-                <td class="row1">0</td>
-                <td class="row1">1</td>
-                <td class="row1">2</td>
-                <td class="row1">3</td>
-                <td class="row1">4</td>
-                <td class="row1">5</td>
-            </tr>
-            <tr>
-                <td class="column1">Low</td>
-                {{ for n, p in pa_table.1.items() }}
-                <td {{ if n == 5 }} style="background-color: greenyellow; font-weight: bold"{{ endif }}>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-            <tr>
-                <td class="column1">Medium</td>
-                {{ for n, p in pa_table.2.items() }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-            <tr>
-                <td class="column1">High</td>
-                {{ for n, p in pa_table.3.items() }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-        </table>
-    </div>
-</div>
+<!-- sample End of Round Results -->
+{{ include 'STG1_BGN/feedback_tables/sample_feedback/advisor.html' }}
 
-<!-- Sample Player History Table-->
-{{ include '_static/_other/sample_feedback_advisor2.html' }}
+<!-- sample Player History Table-->
+{{ include 'STG1_BGN/history_tables/sample_history/advisor2.html' }}
 
 <!-- Next Button with confirmation pop-up & Instructions Button-->
 <div class="button">
@@ -91,31 +28,6 @@
     <button id="pop-up" class="Instructions" style="float: left; background-color: red">Instructions</button>
 </div>
 
-{{ include '_static/instructions/stage_1_instructions.html' }}
-
-<script>
-// Checking if button has been clicked
-window.onload = function () {
-    const IsClicked = sessionStorage.getItem('IsClicked');
-
-    if (IsClicked === 'true') {
-        document.getElementById('validation').disabled = true;
-    }
-    // Adjusting History Width
-  const headerCells = document.querySelectorAll('.history_header th');
-  const dataCells = document.querySelectorAll('#data_table td');
-
-  headerCells.forEach((headerCell, index) => {
-      dataCells[index].style.width = headerCell.offsetWidth + 'px';
-  });
-};
-// Websocket to check if all players are ready
-function liveRecv(data) {
-    if (data === 'all_ready') {
-        sessionStorage.setItem('IsClicked', 'false')
-        document.forms[0].submit();
-    }
-}
-</script>
+{{ include '_static/instr_bttn/stage_1.html' }}
 
 {{ endblock }}
