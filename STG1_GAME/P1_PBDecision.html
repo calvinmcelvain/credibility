@@ -1,8 +1,12 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_1.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_1.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/payoff_tables.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/decision_tables.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/hist_table.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/stage_1/investor.js' }}"></script>
+<script src="{{ static 'java_scripts/general.js' }}"></script>
 
 <!-- Title -->
 {{ block title }}
@@ -14,148 +18,25 @@
 {{ endblock }}
 
 <!--Payoff Tables-->
-<div class="tables-container">
-    <div>
-        <p class="payofftableheader">Investors Payoff Table</p>
-        <table class="playerpayofftable" style="display: flex; margin: unset">
-            <tr>
-                <td style="width: 75px;"></td>
-                <td class="header" colspan="5">Total Investors (including you)</td>
-            </tr>
-            <tr>
-                <td style="font-style: italic; width: 75px;">Quality</td>
-                <td class="row1">1</td>
-                <td class="row1">2</td>
-                <td class="row1">3</td>
-                <td class="row1">4</td>
-                <td class="row1">5</td>
-            </tr>
-            <tr>
-                <td class="column1">Low</td>
-                {{ for p in pb_table.1 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-            <tr>
-                <td class="column1">Medium</td>
-                {{ for p in pb_table.2 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-            <tr>
-                <td class="column1">High</td>
-                {{ for p in pb_table.3 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-        </table>
-    </div>
-    <div style="margin: 20px"></div>
-    <div>
-        <p class="payofftableheader">Advisor's Payoff Table</p>
-        <table class="playerpayofftable" style="display: flex; margin: unset">
-            <tr>
-                <td style="width: 75px;"></td>
-                <td class="header" colspan="6">Total Investors</td>
-            </tr>
-            <tr>
-                <td  style="font-style: italic; width: 75px;">Quality</td>
-                <td class="row1">0</td>
-                <td class="row1">1</td>
-                <td class="row1">2</td>
-                <td class="row1">3</td>
-                <td class="row1">4</td>
-                <td class="row1">5</td>
-            </tr>
-            <tr>
-                <td class="column1">Low</td>
-                {{ for p in pa_table.1 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-            <tr>
-                <td class="column1">Medium</td>
-                {{ for p in pa_table.2 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-            <tr>
-                <td class="column1">High</td>
-                {{ for p in pa_table.3 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-        </table>
-    </div>
-</div>
+{{ include '_static/payoff_tables/investor_advisor.html' }}
 
 <!--Form Fields/Decisions-->
-<h4 style="margin-top: 25px; margin-bottom: 20px">Remember, If you choose not to invest, you will receive a payoff of 12 ECUs</h4>
-<table class="decisiontable">
-    <tr>
-        <td class="playera" style="width: 200px"><label><input name="pb_decision" value="Invest" type="radio"> Invest</label></td>
-        <td class="playera"><label><input name="pb_decision" value="Don't Invest" type="radio"> Keep</label></td>
-    </tr>
-    <tr>
-        <td colspan="2" class="error">{{ formfield_errors 'pb_decision' }}</td>
-    </tr>
-</table>
+{{ include '_static/decision_tables/investor.html' }}
 
 <!-- Next Button with confirmation pop-up & Instructions Button-->
 <div class="button">
-    <button onclick="ConfirmDecision(event)">Continue</button>
+    <button id="validation" onclick="DecisionForminvestor(event)">Continue</button>
     <button id="pop-up" style="float: left; background-color: red">Instructions</button>
 </div>
 
-{{ if player.round_number != 1 }}
-
 <!--Player History Table-->
-<div class="tablescroll">
-    <h4>Previous Results:</h4>
-    <div>
-        <table class="history_header">
-            <tr>
-                <th>Round</th>
-                <th>Advisor's Advice</th>
-                <th>Your Decision</th>
-                <th>Other Investors</th>
-                <th>Total Investors</th>
-                <th>True Quality</th>
-                <th>Your Payoff</th>
-                <th>Advisor's Payoff</th>
-            </tr>
-        </table>
-        <table id="data_table">
-            {{ for p in history }}
-            <tr>
-                <td>{{ p.round_number }}</td>
-                <td>{{ p.group.pa_advice }}</td>
-                <td>{{ p.pb_decision }}</td>
-                <td>{{ p.other_investors }}</td>
-                <td>{{ p.group.total_players_invest }}</td>
-                <td>{{ p.group.actual_signal }}</td>
-                <td>{{ p.payoff }}</td>
-                <td>{{ p.group.pa_payoff }}</td>
-            </tr>
-            {{ endfor }}
-        </table>
-    </div>
-</div>
-
+{{ if player.round_number != 1 }}
+{{ include '_static/history_tables/stage_1/investor.html' }}
 {{ endif }}
 
-{{ include '_static/instructions/stage_1_instructions.html' }}
+{{ include '_static/instr_bttn/stage_1.html' }}
 
-<script>
-// Adjusting History Width
-window.onload = function() {
-  const headerCells = document.querySelectorAll('.history_header th');
-  const dataCells = document.querySelectorAll('#data_table td');
-
-  headerCells.forEach((headerCell, index) => {
-      dataCells[index].style.width = headerCell.offsetWidth + 'px';
-  });
-};
-</script>
+<!-- Pop-up -->
+{{ include '_static/popups/decision.html' }}
 
 {{ endblock }}

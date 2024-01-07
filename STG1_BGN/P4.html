@@ -1,46 +1,24 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_1.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_1.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/general.js' }}"></script>
 
 {{ block title }}
-<b><u>Description of Game (Continued)</u></b>
+<b><u>Description of the Decision Tasks in Stage 1</u></b>
 {{ endblock }}
 
 <!--Instructions Body-->
-<h3>Description of the Decision Tasks in Stage 1</h3>
-<p>The five Investors in each group will begin each round with an endowment of 12 ECU. If you are a Investor, you will decide individually whether to invest your 12 ECU endowment into an investment opportunity or to keep it. You cannot split your endowment – you must either invest all 12 ECU or keep all 12 ECU. Therefore, each Investor’s only decision in each round is whether to invest or keep their endowment.</p>
-<p>Before the Investors make their decisions, the Advisor in each group will receive an estimate of the quality of the investment opportunity. We will explain the details of this estimate later in the instructions. After seeing their estimate, the Advisor will then send a message to all Investors in the group. This message will include a recommendation: either “Invest” or “Keep” </p>
-<p>All Investors will receive the same message from the Advisor. They can see the message, but not Advisor’s estimate. After receiving Advisor’s message, all Investors will make their investment decisions at the same time.  This means that Investors will not know whether the other members of their group have invested or not when making their own decisions.</p>
-
+{{ include 'STG1_BGN/instructions/description_of_tasks.html' }}
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
     <div>
         <p>Please click "Continue"</p>
-        <p style="font-size: 16px;" >*** Page will not continue until everyone has clicked continue ***</p>
+        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
     </div>
     <button type="button" id="validation" onclick="validating()">Continue</button>
 </div>
 
-<script>
-// Checking if button has been clicked
-window.onload = function () {
-    const IsClicked = sessionStorage.getItem('IsClicked');
-
-    if (IsClicked === 'true') {
-        document.getElementById('validation').disabled = true;
-    }
-}
-
-// Websocket to check if all players are ready
-function liveRecv(data) {
-    if (data === 'all_ready') {
-        sessionStorage.setItem('IsClicked', 'false')
-        document.forms[0].submit();
-    }
-}
-</script>
 
 {{ endblock }}

@@ -1,48 +1,16 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_2.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_2.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/payoff_tables.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/general.js' }}"></script>
 
 {{ block title }}
 <u><b>Stage 2 Decision 1</b></u>
 {{ endblock }}
 
 <!-- General Information Body -->
-<p><span style="color: red; font-weight: bold">Decision 1 involves different payoff tables than Stage 1 for both the Advisors and Investors. </span></p>
-<p>In Decision 1, the Advisor will receive 60 for each Investor who chooses to invest. This is shown in the payoff table below. The Advisor’s payoffs does not depend on the quality of the investment.</p>
-
-<!-- Advisor's Payoff Table -->
-<table class="playerpayofftable">
-    <tr>
-        <td style="width: 75px;"></td>
-        <td class="header" colspan="6">Total Investors</td>
-    </tr>
-    <tr>
-        <td  style="font-style: italic; width: 75px;">Quality</td>
-        <td class="row1">0</td>
-        <td class="row1">1</td>
-        <td class="row1">2</td>
-        <td class="row1">3</td>
-        <td class="row1">4</td>
-        <td class="row1">5</td>
-    </tr>
-    <tr>
-        <td class="column1">Low</td>
-        {{ for p in pa_table.1 }}
-        <td>{{ p }}</td>
-        {{ endfor }}
-    </tr>
-    <tr>
-        <td class="column1">High</td>
-        {{ for p in pa_table.3 }}
-        <td>{{ p }}</td>
-        {{ endfor }}
-    </tr>
-</table>
-
-<!-- General Information Body (Cont.) -->
-<p>As an Advisor, you will receive a signal telling you the quality of the investment. Remember, in Stage 2 that signal will always be correct. As before, you will select what advice to send the Investors for each possible signal (Low or High).</p>
+{{ include 'STG2_D1_BGN/instructions/decision_1.html' }}
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
@@ -53,22 +21,4 @@
     <button type="button" id="validation" onclick="validating()">Continue</button>
 </div>
 
-<script>
-// Checking if button has been clicked
-window.onload = function () {
-    const IsClicked = sessionStorage.getItem('IsClicked');
-
-    if (IsClicked === 'true') {
-        document.getElementById('validation').disabled = true;
-    }
-}
-
-// Websocket to check if all players are ready
-function liveRecv(data) {
-    if (data === 'all_ready') {
-        sessionStorage.setItem('IsClicked', 'false')
-        document.forms[0].submit();
-    }
-}
-</script>
 {{ endblock }}

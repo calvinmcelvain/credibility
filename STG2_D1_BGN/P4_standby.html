@@ -1,15 +1,15 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_2.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_2.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/general.js' }}"></script>
 
 <!-- Title -->
 {{ block title }}
 <u><b>Stage 2 Decision 1 will start soon</b></u>
 {{ endblock }}
 
-<h2 class="BeforeStart">You are still assigned <span class="highlight">{{ role }}</span> role</h2>
+<h2 class="BeforeStart">You are still assigned the <span class="highlight">{{ role }}</span> role</h2>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
@@ -19,23 +19,5 @@
     </div>
     <button type="button" id="validation" onclick="validating()">Continue</button>
 </div>
-
-<script>
-    // Checking if button has been clicked
-    window.onload = function () {
-        const IsClicked = sessionStorage.getItem('IsClicked');
-
-        if (IsClicked === 'true') {
-            document.getElementById('validation').disabled = true;
-        }
-    }
-    // Websocket to check if all players are ready
-    function liveRecv(data) {
-        if (data === 'all_ready') {
-            sessionStorage.setItem('IsClicked', 'false')
-            document.forms[0].submit();
-        }
-    }
-</script>
 
 {{ endblock }}

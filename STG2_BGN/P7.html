@@ -1,23 +1,15 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_2.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_2.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/general.js' }}"></script>
 
 {{ block title }}
 <u><b>Slider Training Exercise</b></u>
 {{ endblock }}
 
 <!-- General Information Body -->
-<p>As an investor, your best choice is always to set the slider exact <span style="color: red">equal</span> to the value you believe you will earn on average by choosing Invest.</p>
-<p>To help you understand why this is true, you will now complete a short training exercise.</p>
-<div class="List">
-    <ul>
-        <li>There are 10 rounds in the training exercise. You will be paid for one randomly selected round of the training exercise.</li>
-        <li>In each round, the computer will randomly select a value that you will earn by choosing Invest. You will know the randomly selected value. You will earn this value <span style="color: red">for certain</span> if you choose Invest.</li>
-    </ul>
-</div>
-<p>In each round, you will use a slider to select the <span style="color: red">minimum</span> outside option for which you will choose not to invest.</p>
+{{ include 'STG2_BGN/instructions/slider_training.html' }}
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
@@ -27,24 +19,5 @@
     </div>
     <button type="button" id="validation" onclick="validating()">Continue</button>
 </div>
-
-<script>
-// Checking if button has been clicked
-window.onload = function () {
-    const IsClicked = sessionStorage.getItem('IsClicked');
-
-    if (IsClicked === 'true') {
-        document.getElementById('validation').disabled = true;
-    }
-}
-
-// Websocket to check if all players are ready
-function liveRecv(data) {
-    if (data === 'all_ready') {
-        sessionStorage.setItem('IsClicked', 'false')
-        document.forms[0].submit();
-    }
-}
-</script>
 
 {{ endblock }}

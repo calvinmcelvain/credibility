@@ -1,0 +1,67 @@
+<div class="feed-div">
+    <div class="feed">
+        <h4>End of Round Results:</h4>
+        <table>
+            <tr>
+                <th>Quality Estimate:</th>
+                <td>Low</td>
+            </tr>
+            <tr>
+                <th>True Quality Drawn:</th>
+                <td>Low</td>
+            </tr>
+            <tr>
+                <th>Your Advice:</th>
+                <td>Invest</td>
+            </tr>
+            <tr>
+                <th>Total Investors:</th>
+                <td>5</td>
+            </tr>
+            <tr>
+                <th>Investor's Payoff:</th>
+                <td>4 Points</td>
+            </tr>
+            <tr class="last">
+                <th>Your Payoff:</th>
+                <td>3 Points</td>
+            </tr>
+        </table>
+    </div>
+    <div style="float: right">
+        <p class="payofftableheader">Your Payoff Table</p>
+        <table class="playerpayofftable" style="display: flex; margin: unset">
+            <tr>
+                <td style="width: 75px;"></td>
+                <td class="header" colspan="6">Total Investors</td>
+            </tr>
+            <tr>
+                <td  style="font-style: italic; width: 75px;">Quality</td>
+                <td class="row1">0</td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
+                <td class="row1">5</td>
+            </tr>
+            <tr>
+                <td class="column1">Low</td>
+                {{ for n, p in pa_table.1.items() }}
+                <td {{ if n == 5 }} style="background-color: greenyellow; font-weight: bold"{{ endif }}>{{ p }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td class="column1">Medium</td>
+                {{ for n, p in pa_table.2.items() }}
+                <td>{{ p }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td class="column1">High</td>
+                {{ for n, p in pa_table.3.items() }}
+                <td>{{ p }}</td>
+                {{ endfor }}
+            </tr>
+        </table>
+    </div>
+</div>

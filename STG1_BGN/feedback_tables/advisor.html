@@ -1,0 +1,69 @@
+<div class="feed-div">
+    <div class="feed">
+        <h4>End of Round Results:</h4>
+        <div>
+            <table>
+                <tr>
+                    <th>Quality Estimate:</th>
+                    <td>{{ player.group.estimated_signal }}</td>
+                </tr>
+                <tr>
+                    <th>True Quality Drawn:</th>
+                    <td>{{ player.group.actual_signal }}</td>
+                </tr>
+                <tr>
+                    <th>Your Advice:</th>
+                    <td>{{ player.group.pa_advice }}</td>
+                </tr>
+                <tr>
+                    <th>Total Investors:</th>
+                    <td>{{ player.group.total_players_invest() }}</td>
+                </tr>
+                <tr>
+                    <th>Investor's Payoff:</th>
+                    <td>{{ player.group.pb_payoff() }}</td>
+                </tr>
+                <tr class="last">
+                    <th>Your Payoff:</th>
+                    <td>{{ player.payoff }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div style="float: right">
+        <p class="payofftableheader">Your Payoff Table</p>
+        <table class="playerpayofftable" style="display: flex; margin: unset">
+            <tr>
+                <td style="width: 75px;"></td>
+                <td class="header" colspan="6">Total Investors</td>
+            </tr>
+            <tr>
+                <td  style="font-style: italic; width: 75px;">Quality</td>
+                <td class="row1">0</td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
+                <td class="row1">5</td>
+            </tr>
+            <tr>
+                <td class="column1">Low</td>
+                {{ for n, p in pa_table.1.items() }}
+                <td {{ if player.group.actual_signal == 'Low' and n == player.group.total_players_invest() }} style="background-color: greenyellow; font-weight: bold"{{ endif }}>{{ p }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td class="column1">Medium</td>
+                {{ for n, p in pa_table.2.items() }}
+                <td {{ if player.group.actual_signal == 'Medium' and n == player.group.total_players_invest() }} style="background-color: greenyellow; font-weight: bold"{{ endif }}>{{ p }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td class="column1">High</td>
+                {{ for n, p in pa_table.3.items() }}
+                <td {{ if player.group.actual_signal == 'High' and n == player.group.total_players_invest() }} style="background-color: greenyellow; font-weight: bold"{{ endif }}>{{ p }}</td>
+                {{ endfor }}
+            </tr>
+        </table>
+    </div>
+</div>

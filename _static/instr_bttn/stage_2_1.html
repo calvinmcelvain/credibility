@@ -1,0 +1,54 @@
+<!-- Bootstrap Modal -->
+<div class="modal" id="popup-window" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" style="max-width: 1400px;" role="document">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title" style="font-weight: bold; font-size: 28px; color: red">Instructions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">Close</span>
+        </button>
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
+        <h3>Stage 2</h3>
+        {{ include 'STG2_BGN/instructions/stage_2.html' }}
+          {{ include 'STG2_BGN/instructions/stage_2_cont.html' }}
+        <h3>Stage 2 Payoffs</h3>
+        {{ include 'STG2_BGN/instructions/stage_2_payoffs.html' }}
+        <h3>Stage 2 Gameplay</h3>
+        {{ include 'STG2_BGN/instructions/stage_2_gameplay.html' }}
+        <h3>Using a Slider</h3>
+        {{ include 'STG2_BGN/instructions/using_slider.html' }}
+        <h3>Decision 1</h3>
+        {{ include 'STG2_D1_BGN/instructions/decision_1.html' }}
+          {{ include 'STG2_D1_BGN/instructions/decision_1_cont.html' }}
+        <h3>Feedback</h3>
+        {{ include 'STG2_D1_BGN/instructions/feedback.html' }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Show the Bootstrap modal when the link is clicked
+document.getElementById("pop-up").addEventListener("click", function(event) {
+  event.preventDefault();
+  $('#popup-window').modal('show'); // Show Bootstrap modal using jQuery
+});
+
+// If you want to close the modal using JavaScript
+function closeBootstrapModal() {
+  $('#popup-window').modal('hide'); // Hide Bootstrap modal using jQuery
+}
+
+// Close the Bootstrap modal when the close button in modal header is clicked
+document.querySelector("#popup-window .modal-header .close").addEventListener("click", function() {
+  closeBootstrapModal();
+});
+
+// Close the Bootstrap modal when the close button in modal footer is clicked
+document.querySelector("#popup-window .modal-footer .btn-secondary").addEventListener("click", function() {
+  closeBootstrapModal();
+});
+</script>

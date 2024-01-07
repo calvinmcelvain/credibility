@@ -1,8 +1,10 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_2.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_2.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/feedback.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/hist_table.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/general.js' }}"></script>
 
 <!-- Title -->
 {{ block title }}
@@ -14,190 +16,21 @@
 <p>Thank you for participating. You will now privately receive your payment, by check.</p>
 
 <!-- Stage 2 Feedback -->
+
+<!-- Advisor Page -->
 {{ if player.role == C.pa_ROLE }}
+{{ include 'STG2_BGN/feedback_tables/advisor.html' }}
 
-<div class="tablescroll">
-    <h4>Stage 2 Decision Results:</h4>
-    <h5>*** The decision randomly chosen towards payment is <span class="highlight">Decision {{ decision_counts }}</span> ***</h5>
-    <div>
-        <table class="history_header">
-            <tr>
-                <th>Decision</th>
-                <th>True Signal</th>
-                <th>Advice Given</th>
-                <th>Total Investors</th>
-                <th>Your Payoff</th>
-                <th>Investors Payoff</th>
-            </tr>
-        </table>
-        <table id="data_table">
-            <tr {{ if decision_counts == 1 }} bgcolor="yellow"{{ endif }}>
-                <td>1</td>
-                <td>{{ history.1.signal }}</td>
-                <td>{{ history.1.advice }}</td>
-                <td>{{ history.1.investors }}</td>
-                <td>{{ history.1.payoff }}</td>
-                <td>{{ history.1.pb_payoff }}</td>
-            </tr>
-            <tr {{ if decision_counts == 2 }} bgcolor="yellow"{{ endif }}>
-                <td>2</td>
-                <td>{{ history.2.signal }}</td>
-                <td>{{ history.2.advice }}</td>
-                <td>{{ history.2.investors }}</td>
-                <td>{{ history.2.payoff }}</td>
-                <td>{{ history.2.pb_payoff }}</td>
-            </tr>
-            <tr {{ if decision_counts == 3 }} bgcolor="yellow"{{ endif }}>
-                {{ for value in history.3 }}
-                <td>3</td>
-                <td>{{ value.group.actual_signal }}</td>
-                <td>{{ value.group.pa_advice }}</td>
-                <td>{{ value.group.total_players_invest() }}</td>
-                <td>{{ value.payoff }}</td>
-                <td>{{ value.group.pb_payoff }}</td>
-                {{ endfor }}
-            </tr>
-        </table>
-    </div>
-</div>
-
+<!-- Investor Page -->
 {{ else }}
-
-<div class="tablescroll">
-    <h4>Stage 2 Decision Results:</h4>
-    <h5>*** The decision randomly chosen towards payment is <span class="highlight">Decision {{ decision_counts }}</span> ***</h5>
-    <table class="history_header">
-        <tr>
-            <th>Decision</th>
-            <th>Advice</th>
-            <th>Invest Draw</th>
-            <th>Decision</th>
-            <th>Other Investors</th>
-            <th>Total Investors</th>
-            <th>True Quality</th>
-            <th>Your Payoff</th>
-            <th>Advisor's Payoff</th>
-        </tr>
-    </table>
-    <table id="data_table">
-        <tr {{ if decision_counts == 1 }} bgcolor="yellow"{{ endif }}>
-            <td>1</td>
-            <td>{{ history.1.advice }}</td>
-            <td>{{ history.1.draw }}</td>
-            <td>{{ history.1.decision }}</td>
-            <td>{{ history.1.other_investors }}</td>
-            <td>{{ history.1.investors }}</td>
-            <td>{{ history.1.signal }}</td>
-            <td>{{ history.1.payoff }}</td>
-            <td>{{ history.1.pa_payoff }}</td>
-        </tr>
-        <tr {{ if decision_counts == 2 }} bgcolor="yellow"{{ endif }}>
-            <td>2</td>
-            <td>{{ history.2.advice }}</td>
-            <td>{{ history.2.draw }}</td>
-            <td>{{ history.2.decision }}</td>
-            <td>{{ history.2.other_investors }}</td>
-            <td>{{ history.2.investors }}</td>
-            <td>{{ history.2.signal }}</td>
-            <td>{{ history.2.payoff }}</td>
-            <td>{{ history.2.pa_payoff }}</td>
-        </tr>
-        <tr {{ if decision_counts == 3 }} bgcolor="yellow"{{ endif }}>
-            {{ for value in history.3 }}
-            <td>3</td>
-            <td>{{ value.group.pa_advice }}</td>
-            <td>{{ value.random_draw }}</td>
-            <td>{{ value.pb_decision() }}</td>
-            <td>{{ value.other_investors() }}</td>
-            <td>{{ value.group.total_players_invest }}</td>
-            <td>{{ value.group.actual_signal }}</td>
-            <td>{{ value.payoff }}</td>
-            <td>{{ value.group.pa_payoff() }}</td>
-            {{ endfor }}
-        </tr>
-    </table>
-</div>
-
+{{ include 'STG2_BGN/feedback_tables/advisor.html' }}
 {{ endif }}
 
-<!--Player History Table (ECUs) -->
-<div class="final">
-    <h4>ECUs earned in Experiment:</h4>
-    <table>
-        <tr>
-            <th>Stage 1 Total ECUs:</th>
-            <td>{{ Stage_1 }}</td>
-        </tr>
-        <tr>
-            <th>Slider Training ECUs:</th>
-            <td>{{ slider_training }}</td>
-        </tr>
-        <tr>
-            <th>Stage 2 Total ECUs:</th>
-            <td>{{ Stage_2 }}</td>
-        </tr>
-        <tr>
-            <tr class="last" style="height: 1px">
-            <th colspan="2" style="height: 1px"></th>
-        </tr>
-        <tr>
-            <th>Total ECUs:</th>
-            <td>{{ final_payoff }}</td>
-        </tr>
-    </table>
-</div>
-
-<!--Player History Table ($) -->
-<div class="final">
-    <h4>Dollars($) earned in Experiment:</h4>
-    <h5>*** $0.04 = 1 ECU ***</h5>
-    <table class="Final">
-        <tr>
-            <th>Stage 1 Total Dollars ($):</th>
-            <td>{{ real_Stage_1 }}</td>
-        </tr>
-        <tr>
-            <th>Slider Training Dollars ($):</th>
-            <td>{{ real_slider }}</td>
-        </tr>
-        <tr>
-            <th>Stage 2 Total Dollars ($):</th>
-            <td>{{ real_Stage_2 }}</td>
-        </tr>
-        <tr>
-            <tr class="last" style="height: 1px">
-            <th colspan="2" style="height: 1px"></th>
-        </tr>
-        <tr>
-            <th>Total Stage 1 & 2 Dollars ($):</th>
-            <td>{{ real_final }}</td>
-        <tr>
-            <th>Participation Fee ($):</th>
-            <td>$10</td>
-        </tr>
-        <tr class="last" style="height: 1px">
-            <th colspan="2" style="height: 1px"></th>
-        </tr>
-        <tr class="last">
-            <th>Ending Total Dollars ($)</th>
-            <td>{{ final }}</td>
-        </tr>
-    </table>
-</div>
+<!-- Total Points & Money Tables -->
+{{ include 'STG2_BGN/feedback_tables/final.html' }}
 
 <div class="button">
     <button>Continue</button>
 </div>
 
-<script>
-// Adjusting History Width
-window.onload = function() {
-  const headerCells = document.querySelectorAll('.history_header th');
-  const dataCells = document.querySelectorAll('#data_table td');
-
-  headerCells.forEach((headerCell, index) => {
-      dataCells[index].style.width = headerCell.offsetWidth + 'px';
-  });
-};
-</script>
 {{ endblock }}

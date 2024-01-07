@@ -1,8 +1,8 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_2.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_2.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/stage_2/sldr.js' }}"></script>
 
 <!-- Title -->
 {{ block title }}
@@ -13,14 +13,16 @@
 {{ endblock }}
 
 <!-- Invest Value Info. -->
-<div style="margin-bottom: 20px; text-align: center; contain: content;" class="draws">
-    <h3>Invest Value = <span style="background-color: yellow">{{ invest_value }}</span></h3>
+<div class="draws">
+    <h3>Invest Value = <span class="value">{{ invest_value }}</span></h3>
 </div>
 
 <!-- Slider & Info. -->
 <p style="text-align: center">Use the slider to pick the minimum outside option for which you will <span style="color: red">not</span> choose Invest</p>
-<label><input class="decision-slider" type="range" name="pb_outside_option" id="slider" oninput="updateInputValue(this.value)" min="0" max="300"></label>
-<label><input type="number" id="sliderInput" name="pb_outside_option" oninput="updateSliderFromInput(this.value)" size="3" min="0" max="300"></label>
+<div class="decision-slider">
+    <label><input  type="range" name="pb_outside_option" id="slider" oninput="updateInputValue(this.value)" min="0" max="300"></label>
+    <label><input type="number" id="sliderInput" name="pb_outside_option" oninput="updateSliderFromInput(this.value)" size="3" min="0" max="300"></label>
+</div>
 
 <!-- Additional Information -->
 <ul class="draws_list">

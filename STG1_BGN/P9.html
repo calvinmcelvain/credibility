@@ -1,45 +1,23 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_1.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_1.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/general.js' }}"></script>
 
 {{ block title }}
 <b><u>Advisor's Information (Continued)</u></b>
 {{ endblock }}
 
 <!--Description Body-->
-<p>If the Advisor receives an incorrect estimate, each of the two possible incorrect levels is equally likely. In other words, if the estimate is <b><i>not</i></b> equal to the true quality of the investment opportunity, there is a 1 in 2 chance (like flipping a coin) that it is equal to each of the other possible qualities.</p>
-<p>So, for example, if the <i>Quality</i> in a round is High, then there is a 83.3 percent (5 in 6) chance that the Investor will receive an estimate equal to “High”, and there is a 16.7 percent (1 in 6) that the Advisor will receive an estimate equal to one of the other possible values of <i>Quality</i> (“Low” or “Medium”). Each of the other possible estimates is equally likely. </p>
-<p>This estimate is <i>private</i> information. In other words, the Advisor can see the estimate, but the Investors will never be told what estimate their group’s Advisor received.</p>
-
+{{ include 'STG1_BGN/instructions/advisor_info_cont.html' }}
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
     <div>
         <p>Please click "Continue"</p>
-        <p style="font-size: 16px;" >*** Page will not continue until everyone has clicked continue ***</p>
+        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
     </div>
     <button type="button" id="validation" onclick="validating()">Continue</button>
 </div>
-
-<script>
-// Checking if button has been clicked
-window.onload = function () {
-    const IsClicked = sessionStorage.getItem('IsClicked');
-
-    if (IsClicked === 'true') {
-        document.getElementById('validation').disabled = true;
-    }
-}
-
-// Websocket to check if all players are ready
-function liveRecv(data) {
-    if (data === 'all_ready') {
-        sessionStorage.setItem('IsClicked', 'false')
-        document.forms[0].submit();
-    }
-}
-</script>
 
 {{ endblock }}

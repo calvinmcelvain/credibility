@@ -1,9 +1,13 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_1.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_1.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/payoff_tables.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/hist_table.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/feedback.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/general.js' }}"></script>
 
+<!-- Advisor Page -->
 {{ if player.role == C.pa_ROLE }}
 
 <!-- Title -->
@@ -13,79 +17,18 @@
 </div>
 
 <!-- End of Round Results -->
-<div class="feed">
-    <h4>End of Round Results:</h4>
-    <div>
-        <table>
-            <tr>
-                <th>Quality Estimate:</th>
-                <td>{{ player.group.estimated_signal }}</td>
-            </tr>
-            <tr>
-                <th>True Quality Drawn:</th>
-                <td>{{ player.group.actual_signal }}</td>
-            </tr>
-            <tr>
-                <th>Your Advice:</th>
-                <td>{{ player.group.pa_advice }}</td>
-            </tr>
-            <tr>
-                <th>Total Investors:</th>
-                <td>{{ player.group.total_players_invest() }}</td>
-            </tr>
-            <tr>
-                <th>Investor's Payoff:</th>
-                <td>{{ player.group.pb_payoff() }}</td>
-            </tr>
-            <tr class="last">
-                <th>Your Payoff:</th>
-                <td>{{ player.payoff }}</td>
-            </tr>
-        </table>
-    </div>
-</div>
+{{ include '_static/feedback_tables/advisor.html' }}
 
 <!--Player History Table-->
-<div class="tablescroll">
-    <h4>Previous Results:</h4>
-    <div>
-        <table class="history_header">
-            <tr>
-                <th>Round</th>
-                <th>Low Advice</th>
-                <th>Medium Advice</th>
-                <th>High Advice</th>
-                <th>Estimate Sig.</th>
-                <th>Actual Sig.</th>
-                <th>Total Investors</th>
-                <th>Your Payoff</th>
-                <th>Investors Payoff</th>
-            </tr>
-        </table>
-        <table id="data_table">
-            {{ for p in history }}
-            <tr>
-                <td>{{ p.round_number }}</td>
-                <td {{ if p.group.estimated_signal == 'Low' }} bgcolor="yellow" {{ else }}{{ endif }} >{{ p.pa_low_advice }}</td>
-                <td {{ if p.group.estimated_signal == 'Medium' }} bgcolor="yellow" {{ else }}{{ endif }} >{{ p.pa_med_advice }}</td>
-                <td {{ if p.group.estimated_signal == 'High' }} bgcolor="yellow" {{ else }}{{ endif }} >{{ p.pa_high_advice }}</td>
-                <td>{{ p.group.estimated_signal }}</td>
-                <td>{{ p.group.actual_signal }}</td>
-                <td>{{ p.group.total_players_invest }}</td>
-                <td>{{ p.payoff }}</td>
-                <td>{{ p.group.pb_payoff }}</td>
-            </tr>
-            {{ endfor }}
-        </table>
-    </div>
-</div>
+{{ include '_static/history_tables/stage_1/advisor.html' }}
 
 <!-- Next Button with confirmation pop-up & Instructions Button-->
 <div class="button">
     <button>Continue</button>
-    <button id="pop-up" class="Instructions" style="float: left; background-color: red">Instructions</button>
+    <button class="Instructions" style="float: left; background-color: red">Instructions</button>
 </div>
 
+<!-- Investor Page -->
 {{ else }}
 
 <!-- Title -->
@@ -95,91 +38,19 @@
 </div>
 
 <!-- End of Round Results -->
-<div class="feed">
-    <h4>End of Round Results:</h4>
-    <div>
-        <table>
-            <tr>
-                <th>True Investment Quality:</th>
-                <td>{{ player.group.estimated_signal }}</td>
-            </tr>
-            <tr>
-                <th>Advisor's Advice:</th>
-                <td>{{ player.group.pa_advice }}</td>
-            </tr>
-            <tr>
-                <th>Your Decision:</th>
-                <td>{{ player.pb_decision }}</td>
-            </tr>
-            <tr>
-                <th>Total Investors:</th>
-                <td>{{ player.group.total_players_invest() }}</td>
-            </tr>
-            <tr>
-                <th>Advisor's Payoff:</th>
-                <td>{{ player.group.pa_payoff() }}</td>
-            </tr>
-            <tr class="last">
-                <th>Your Payoff:</th>
-                <td>{{ player.payoff }}</td>
-            </tr>
-        </table>
-    </div>
-</div>
+{{ include '_static/feedback_tables/investor.html' }}
 
 <!--Player History Table-->
-<div class="tablescroll">
-    <h4>Previous Results:</h4>
-    <div>
-        <table class="history_header">
-            <tr>
-                <th>Round</th>
-                <th>Advisor's Advice</th>
-                <th>Your Decision</th>
-                <th>Other Investors</th>
-                <th>Total Investors</th>
-                <th>True Quality</th>
-                <th>Your Payoff</th>
-                <th>Advisor's Payoff</th>
-            </tr>
-        </table>
-        <table id="data_table">
-            {{ for p in history }}
-            <tr>
-                <td>{{ p.round_number }}</td>
-                <td>{{ p.group.pa_advice }}</td>
-                <td>{{ p.pb_decision }}</td>
-                <td>{{ p.other_investors }}</td>
-                <td>{{ p.group.total_players_invest }}</td>
-                <td>{{ p.group.actual_signal }}</td>
-                <td>{{ p.payoff }}</td>
-                <td>{{ p.group.pa_payoff }}</td>
-            </tr>
-            {{ endfor }}
-        </table>
-    </div>
-</div>
+{{ include '_static/history_tables/stage_1/investor.html' }}
 
 <!-- Next Button with confirmation pop-up & Instructions Button-->
 <div class="button">
     <button>Continue</button>
-    <button id="pop-up" class="Instructions" style="float: left; background-color: red">Instructions</button>
+    <button class="Instructions" style="float: left; background-color: red">Instructions</button>
 </div>
 
 {{ endif }}
 
-{{ include '_static/instructions/stage_1_instructions.html' }}
-
-<script>
-// Adjusting History Width
-window.onload = function() {
-  const headerCells = document.querySelectorAll('.history_header th');
-  const dataCells = document.querySelectorAll('#data_table td');
-
-  headerCells.forEach((headerCell, index) => {
-      dataCells[index].style.width = headerCell.offsetWidth + 'px';
-  });
-};
-</script>
+{{ include '_static/instr_bttn/stage_1.html' }}
 
 {{ endblock }}

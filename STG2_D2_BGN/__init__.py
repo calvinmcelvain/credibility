@@ -45,9 +45,7 @@ class P1(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
-        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
-        return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
     @staticmethod
     def live_method(player: Player, data):
@@ -63,9 +61,7 @@ class P2(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        pb_payoff_table = {key: list(value.values()) for key, value in C.pb_payoff.items()}
-        pa_payoff_table = {key: list(value.values()) for key, value in C.pa_payoff.items()}
-        return {'pa_table': pa_payoff_table, 'pb_table': pb_payoff_table}
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
     @staticmethod
     def live_method(player: Player, data):

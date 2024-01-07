@@ -1,117 +1,27 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_1.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_1.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/payoff_tables.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/decision_tables.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/hist_table.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/stage_1/inbetween_page.js' }}"></script>
 
+<!-- Advisor Page -->
 {{ if player.role == C.pa_ROLE }}
 
 <!-- Title -->
-{{ block title }}
 <div class="Title">
     <h3 style="float: left"><u>Role:</u> Advisor</h3>
     <h3 style="float: right">Round {{ player.round_number }}</h3>
 </div>
-{{ endblock }}
+
 
 <!--Payoff Tables-->
-<div class="tables-container">
-    <div>
-        <p class="payofftableheader">Advisor's Payoff Table</p>
-        <table class="playerpayofftable" style="display: flex; margin: unset">
-            <tr>
-                <td style="width: 75px;"></td>
-                <td class="header" colspan="6">Total Investors</td>
-            </tr>
-            <tr>
-                <td  style="font-style: italic; width: 75px;">Quality</td>
-                <td class="row1">0</td>
-                <td class="row1">1</td>
-                <td class="row1">2</td>
-                <td class="row1">3</td>
-                <td class="row1">4</td>
-                <td class="row1">5</td>
-            </tr>
-            <tr>
-                <td class="column1">Low</td>
-                {{ for p in pa_table.1 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-            <tr>
-                <td class="column1">Medium</td>
-                {{ for p in pa_table.2 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-            <tr>
-                <td class="column1">High</td>
-                {{ for p in pa_table.3 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-        </table>
-    </div>
-    <div style="margin: 20px"></div>
-    <div>
-        <p class="payofftableheader">Player Bs Payoff Table</p>
-        <table class="playerpayofftable" style="display: flex; margin: unset">
-            <tr>
-                <td style="width: 75px;"></td>
-                <td class="header" colspan="5">Total Investors</td>
-            </tr>
-            <tr>
-                <td style="font-style: italic; width: 75px;">Quality</td>
-                <td class="row1">1</td>
-                <td class="row1">2</td>
-                <td class="row1">3</td>
-                <td class="row1">4</td>
-                <td class="row1">5</td>
-            </tr>
-            <tr>
-                <td class="column1">Low</td>
-                {{ for p in pb_table.1 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-            <tr>
-                <td class="column1">Medium</td>
-                {{ for p in pb_table.2 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-            <tr>
-                <td class="column1">High</td>
-                {{ for p in pb_table.3 }}
-                <td>{{ p }}</td>
-                {{ endfor }}
-            </tr>
-        </table>
-    </div>
-</div>
+{{ include '_static/payoff_tables/advisor_investor.html' }}
 
 <!--Form Fields/Decisions-->
-<h4 style="margin-top: 25px">Advice Sent, waiting on Player Bs decision</h4>
-<h5>*** The estimated signal you received for this round is marked in <span class="highlight">yellow</span> ***</h5>
-<table class="decisiontable">
-    <tr>
-        <th {{ if estimated_signal == 'Low'}} bgcolor="yellow" {{ endif }}>Low</th>
-        <th {{ if estimated_signal == 'Medium' }} bgcolor="yellow" {{ endif }}>Medium</th>
-        <th {{ if estimated_signal == 'High' }} bgcolor="yellow" {{ endif }}>High</th>
-    </tr>
-    <tr style="height: 5px"></tr>
-    <tr>
-        <td><label><input type="radio" disabled {{ if low == "Invest" }} checked {{ endif }}> Invest</label></td>
-        <td><label><input type="radio" disabled {{ if med == "Invest" }} checked {{ endif }}> Invest</label></td>
-        <td><label><input type="radio" disabled {{ if high == "Invest" }} checked {{ endif }}> Invest</label></td>
-    </tr>
-    <tr style="height: 5px"></tr>
-    <tr>
-        <td><label><input type="radio" disabled {{ if low == "Keep" }} checked {{ endif }}> Keep</label></td>
-        <td><label><input type="radio" disabled {{ if med == "Keep" }} checked {{ endif }}> Keep</label></td>
-        <td><label><input type="radio" disabled {{ if high == "Keep" }} checked {{ endif }}> Keep</label></td>
-    </tr>
-</table>
+{{ include '_static/decision_tables/advisor_inbetween.html' }}
 
 <!-- Instructions pop-up & Button-->
 <div class="button">
@@ -120,42 +30,12 @@
 
 <!--Player History Table-->
 {{ if player.round_number != 1 }}
-<div class="tablescroll">
-    <h4>Previous Results:</h4>
-    <div>
-        <table class="history_header">
-            <tr>
-                <th>Round</th>
-                <th>Low Advice</th>
-                <th>Medium Advice</th>
-                <th>High Advice</th>
-                <th>Estimate Sig.</th>
-                <th>Actual Sig.</th>
-                <th>Total Investors</th>
-                <th>Your Payoff</th>
-                <th>Investors Payoff</th>
-            </tr>
-        </table>
-        <table id="data_table">
-            {{ for p in history }}
-            <tr>
-                <td>{{ p.round_number }}</td>
-                <td {{ if p.group.estimated_signal == 'Low' }} bgcolor="yellow" {{ else }}{{ endif }} >{{ p.pa_low_advice }}</td>
-                <td {{ if p.group.estimated_signal == 'Medium' }} bgcolor="yellow" {{ else }}{{ endif }} >{{ p.pa_med_advice }}</td>
-                <td {{ if p.group.estimated_signal == 'High' }} bgcolor="yellow" {{ else }}{{ endif }} >{{ p.pa_high_advice }}</td>
-                <td>{{ p.group.estimated_signal }}</td>
-                <td>{{ p.group.actual_signal }}</td>
-                <td>{{ p.group.total_players_invest }}</td>
-                <td>{{ p.payoff }}</td>
-                <td>{{ p.group.pb_payoff }}</td>
-            </tr>
-            {{ endfor }}
-        </table>
-    </div>
-</div>
+{{ include '_static/history_tables/stage_1/advisor.html' }}
 {{ endif }}
 
+<!-- Investor Page -->
 {{ else }}
+
 <!-- Title -->
 <div class="Title_decision">
     <h3 style="float: left"><u>Role:</u> Investor</h3>
@@ -176,68 +56,11 @@
 
 <!--Player History Table-->
 {{ if player.round_number != 1 }}
-<div class="tablescroll">
-    <h4>Previous Results:</h4>
-    <div>
-        <table class="history_header">
-            <tr>
-                <th>Round</th>
-                <th>Advisor's Advice</th>
-                <th>Your Decision</th>
-                <th>Other Investors</th>
-                <th>Total Investors</th>
-                <th>True Quality</th>
-                <th>Your Payoff</th>
-                <th>Advisor's Payoff</th>
-            </tr>
-        </table>
-        <table id="data_table">
-            {{ for p in history }}
-            <tr>
-                <td>{{ p.round_number }}</td>
-                <td>{{ p.group.pa_advice }}</td>
-                <td>{{ p.pb_decision }}</td>
-                <td>{{ p.other_investors }}</td>
-                <td>{{ p.group.total_players_invest }}</td>
-                <td>{{ p.group.actual_signal }}</td>
-                <td>{{ p.payoff }}</td>
-                <td>{{ p.group.pa_payoff }}</td>
-            </tr>
-            {{ endfor }}
-        </table>
-    </div>
-</div>
-{{ endif }}
+{{ include '_static/history_tables/stage_1/investor.html' }}
 {{ endif }}
 
-{{ include '_static/instructions/stage_1_instructions.html' }}
+{{ endif }}
 
-<script>
-    window.onload = function() {
-        const loaded = sessionStorage.getItem('loaded');
-
-        if (loaded !== 'true') {
-            liveSend('send');
-            sessionStorage.setItem('loaded', 'true');
-        }
-
-        // Adjusting History Width
-      const headerCells = document.querySelectorAll('.history_header th');
-      const dataCells = document.querySelectorAll('#data_table td');
-
-      headerCells.forEach((headerCell, index) => {
-          dataCells[index].style.width = headerCell.offsetWidth + 'px';
-      });
-    }
-
-    // Websocket to check if all players are ready
-    function liveRecv(data) {
-        if (data === 'all_ready') {
-            sessionStorage.setItem('loaded', 'false');
-            document.forms[0].submit();
-        }
-    }
-
-</script>
+{{ include '_static/instr_bttn/stage_1.html' }}
 
 {{ endblock }}

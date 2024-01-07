@@ -1,0 +1,17 @@
+/* Instructions Quiz Styling */
+div.quiz {
+    margin-top: 40px;
+}
+.quiz p {
+    font-size: 19px;
+    margin-bottom: unset;
+    margin-top: 23px;
+}
+.quiz span {
+    color: red;
+}
+.quiz .tf {
+    font-size: 19px;
+    margin-bottom: unset;
+    margin-top: 10px;
+}

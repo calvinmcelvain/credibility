@@ -1,25 +1,26 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_1.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_1.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/stage_1/id.js' }}"></script>
 
 {{ block title }}
 <b><u>ID Screen</u></b>
 {{ endblock }}
 
 <!-- Instructions Body -->
-<h1>Please turn off cell phones</h1>
-<p>Before starting the experiment, we would like to randomly assign everyone a participant ID number. You will find your ID number on an index card in the right-hand corner of your desk. This number is your participant number for the experiment. Your participant number will be the same for the entire experiment. This number is private and should not be shared with anyone.</p>
-<p>Before proceeding, please enter your participant number in the box below. Please enter the number exactly as it appears on your card. Once you have entered it and clicked "Continue" you will be asked to confirm your choice. Please check to make sure you entered the number correctly before clicking again to proceed.</p>
+{{ include 'STG1_BGN/instructions/id.html' }}
 
 <!-- Formfields-->
-<p style="margin-bottom: unset">Please enter your unique ID number:</p>
-{{ formfields 'player_id' }}
+<label class="id">Please enter your unique ID number: <input class="id" maxlength="2" max="99" name="player_id" id="player_id" type="number"></label>
+<span id="errorMessage" style="color: red; display: none;"></span>
 
 <!-- Next Button with confirmation pop-up-->
 <div class="button">
-    <button onclick="confirmID(event)">Continue</button>
+    <button onclick="validateForm(event)">Continue</button>
 </div>
+
+<!-- Pop-up -->
+{{ include '_static/popups/id.html' }}
 
 {{ endblock }}

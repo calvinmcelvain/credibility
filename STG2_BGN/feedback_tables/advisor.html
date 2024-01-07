@@ -1,0 +1,46 @@
+<div class="tablescroll">
+    <h4>Stage 2 Decision Results:</h4>
+    <h5>*** The decision randomly chosen towards payment is <span class="highlight">Decision {{ decision_counts }}</span> ***</h5>
+    <div>
+        <table class="history_header">
+            <tr>
+                <th>Decision</th>
+                <th>True Signal</th>
+                <th>Advice Given</th>
+                <th>Total Investors</th>
+                <th>Your Payoff</th>
+                <th>Investors Payoff</th>
+            </tr>
+        </table>
+        <div class="scroll">
+            <table id="data_table">
+                <tr {{ if decision_counts == 1 }} bgcolor="yellow"{{ endif }}>
+                    <td>1</td>
+                    <td>{{ history.1.signal }}</td>
+                    <td>{{ history.1.advice }}</td>
+                    <td>{{ history.1.investors }}</td>
+                    <td>{{ history.1.payoff }}</td>
+                    <td>{{ history.1.pb_payoff }}</td>
+                </tr>
+                <tr {{ if decision_counts == 2 }} bgcolor="yellow"{{ endif }}>
+                    <td>2</td>
+                    <td>{{ history.2.signal }}</td>
+                    <td>{{ history.2.advice }}</td>
+                    <td>{{ history.2.investors }}</td>
+                    <td>{{ history.2.payoff }}</td>
+                    <td>{{ history.2.pb_payoff }}</td>
+                </tr>
+                <tr {{ if decision_counts == 3 }} bgcolor="yellow"{{ endif }}>
+                    {{ for value in history.3 }}
+                    <td>3</td>
+                    <td>{{ value.group.actual_signal }}</td>
+                    <td>{{ value.group.pa_advice }}</td>
+                    <td>{{ value.group.total_players_invest() }}</td>
+                    <td>{{ value.payoff }}</td>
+                    <td>{{ value.group.pb_payoff }}</td>
+                    {{ endfor }}
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

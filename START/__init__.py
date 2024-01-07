@@ -8,7 +8,7 @@ Experiment Wait-room: Sets group matrix and assigns player roles
 
 class C(BaseConstants):
     NAME_IN_URL = 'START'
-    PLAYERS_PER_GROUP = 2
+    PLAYERS_PER_GROUP = 3
     NUM_ROUNDS = 1
 
 
@@ -32,7 +32,10 @@ def creating_session(subsession):
     # Creating and storing player roles and setting stage 1 payoff to 0
     for player in subsession.get_players():
         player.participant.vars['PlayerID'] = 00
-        player.participant.vars['Stage1_payoff'] = cu(0)
+        player.participant.vars['STG1_payoff'] = cu(0)
+        player.participant.vars['SLDR_payoff'] = cu(0)
+        player.participant.vars['D1'] = cu(0)
+        player.participant.vars['D2'] = cu(0)
         if player.id_in_group == 1:
             player.participant.vars['role'] = 'Advisor'
         else:

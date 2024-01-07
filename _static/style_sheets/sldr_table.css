@@ -1,0 +1,48 @@
+/* Draws Table */
+table.draws_table {
+    font-size: 17px;
+    text-align: center;
+    width: 1500px;
+}
+.draws_table th {
+    border-bottom: 1px solid black;
+    width: 200px;
+    vertical-align: bottom;
+}
+.draws_table td {
+    height: 20px;
+}
+div.draws_key {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.draws_key table {
+    margin: auto;
+}
+.draws_key td {
+    width: 50px;
+}
+div.draws {
+    text-align: center;
+    contain: content;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.draws h3 {
+    font-size: 21px;
+    font-style: italic;
+}
+.draws span.value {
+    font-weight: bold;
+    color: red;
+    border: 1px solid black;
+    margin: 10px;
+    padding: 5px;
+    font-size: 24px;
+}
+p.draws {
+    font-size: 21px;
+    text-align: center;
+    margin-top: unset;
+}

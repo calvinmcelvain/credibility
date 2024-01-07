@@ -1,22 +1,15 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_2.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_2.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/general.js' }}"></script>
 
 {{ block title }}
 <u><b>Stage 2 Gameplay</b></u>
 {{ endblock }}
 
 <!-- General Information Body -->
-<div class="List">
-    <ol>
-        <li>In Stage 2, there now will only be two possible quality levels, “Low” and “High”. Each possible quality level is equally likely, like the flip of a coin.</li>
-        <li>In Stage 2, rather than receiving an estimate, the Advisor will directly observe the true quality level. In other words, the Advisor will know the actual quality level (rather than an estimate) when they choose a message.</li>
-        <li>Unlike Stage 1, you will not see feedback after each decision.  In other words, you will make all three decisions without seeing any results before advancing to the next decision. At the end of Stage 2, you will see the results from all three decisions and will learn which decision has been randomly chosen to count towards your payment. You will also see your total earnings from Stage 1, and your total earnings from today’s session.</li>
-        <li>Rather than choosing “Invest” or “Keep” directly, in Stage 2, Investors will choose threshold levels of the outside option that will determine their investment decision.  We will explain this in detail now.</li>
-    </ol>
-</div>
+{{ include 'STG2_BGN/instructions/stage_2_gameplay.html' }}
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
@@ -27,22 +20,4 @@
     <button type="button" id="validation" onclick="validating()">Continue</button>
 </div>
 
-<script>
-// Checking if button has been clicked
-window.onload = function () {
-    const IsClicked = sessionStorage.getItem('IsClicked');
-
-    if (IsClicked === 'true') {
-        document.getElementById('validation').disabled = true;
-    }
-}
-
-// Websocket to check if all players are ready
-function liveRecv(data) {
-    if (data === 'all_ready') {
-        sessionStorage.setItem('IsClicked', 'false')
-        document.forms[0].submit();
-    }
-}
-</script>
 {{ endblock }}

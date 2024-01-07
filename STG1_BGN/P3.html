@@ -1,47 +1,25 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_1.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_1.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/general.js' }}"></script>
 
 {{ block title }}
-<b><u>Description of Game</u></b>
+<b><u>Description of Stages, Rounds, and Groups</u></b>
 {{ endblock }}
 
 <!--Instructions Body-->
-<h3>Description of Stages, Rounds, and Groups</h3>
-<p>This experiment will consist of two stages. Right now we will only go through the instructions for Stage 1. You will receive instructions for Stage 2 after Stage 1 concludes. </p>
-<p>Stage 1 will last for 30 rounds. In each round, you will be in a six-person group with five other participants. The participants you are grouped with will be the same for all rounds of Stage 1. </p>
-<p>Your group will consist of participants in two roles. Five of the participants will participate in the experiment in the role of <i>Advisor</i>. The remaining participants in each group will be in the role of <i>Investor</i>. </p>
-<p>You will be informed of your role (<i>Advisor</i> or <i>Investor</i>) prior to the beginning of Stage 1.</p>
+{{ include 'STG1_BGN/instructions/description_of_srg.html' }}
 
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
     <div>
         <p>Please click "Continue"</p>
-        <p style="font-size: 16px;" >*** Page will not continue until everyone has clicked continue ***</p>
+        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
     </div>
     <button type="button" id="validation" onclick="validating()">Continue</button>
 </div>
 
-<script>
-// Checking if button has been clicked
-window.onload = function () {
-    const IsClicked = sessionStorage.getItem('IsClicked');
-
-    if (IsClicked === 'true') {
-        document.getElementById('validation').disabled = true;
-    }
-}
-
-// Websocket to check if all players are ready
-function liveRecv(data) {
-    if (data === 'all_ready') {
-        sessionStorage.setItem('IsClicked', 'false')
-        document.forms[0].submit();
-    }
-}
-</script>
 
 {{ endblock }}

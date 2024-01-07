@@ -1,12 +1,12 @@
 {{ load static }}
 {{ block content }}
 <!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/stage_2.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_2.js' }}"></script>
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/sldr_table.css' }}" type="text/css">
 
 <!-- Title -->
 {{ block title }}
-<div style="margin-bottom: 10px; margin-top: 10px; text-align: center; contain: content">
+<div class="Title_decision">
     <h3 style="float: left"><u>Slider Training:</u> Feedback</h3>
     <h3 style="float: right">Round {{ player.round_number }}</h3>
 </div>
