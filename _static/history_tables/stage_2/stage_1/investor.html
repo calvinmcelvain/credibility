@@ -1,0 +1,37 @@
+<div class="tablescroll" style="height: 600px">
+    <h4></h4>
+    <div>
+        <table class="history_header">
+            <tr>
+                <th>Round</th>
+                <th>Advisor's Advice</th>
+                <th>Your Decision</th>
+                <th>Other Investors</th>
+                <th>Total Investors</th>
+                <th>True Quality</th>
+                <th>Your Payoff</th>
+                <th>Advisor's Payoff</th>
+            </tr>
+        </table>
+        <div class="scroll" style="height: 550px; max-height: 600px;">
+            <table id="data_table">
+                {{ if history == 'N/A' }}
+                <tr><td colspan="9">N/A</td></tr>
+                {{ else }}
+                {{ for p in history }}
+                <tr>
+                    <td>{{ p.round_number }}</td>
+                    <td>{{ p.pa_advice }}</td>
+                    <td>{{ p.pb_decision }}</td>
+                    <td>{{ p.other_investors }}</td>
+                    <td>{{ p.total_players_invest }}</td>
+                    <td>{{ p.actual_signal }}</td>
+                    <td>{{ p.payoff }}</td>
+                    <td>{{ p.pa_payoff }}</td>
+                </tr>
+                {{ endfor }}
+                {{ endif }}
+            </table>
+        </div>
+    </div>
+</div>

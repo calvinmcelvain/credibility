@@ -20,7 +20,7 @@ window.onload = function() {
 // Websocket to check if all players are ready
 function liveRecv(data) {
     if (data === 'all_ready') {
-        sessionStorage.setItem('IsClicked', 'false')
+        sessionStorage.setItem('loaded', 'false')
         document.forms[0].submit();
     }
 }

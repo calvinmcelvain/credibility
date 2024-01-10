@@ -3,15 +3,15 @@
         <h4>End of Round Results:</h4>
         <table>
             <tr>
-                <th>True Investment Quality:</th>
+                <th>Quality Estimate:</th>
                 <td>Low</td>
             </tr>
             <tr>
-                <th>Advisor's Advice:</th>
-                <td>Invest</td>
+                <th>True Quality Drawn:</th>
+                <td>Low</td>
             </tr>
             <tr>
-                <th>Your Decision:</th>
+                <th>Your Advice:</th>
                 <td>Invest</td>
             </tr>
             <tr>
@@ -19,24 +19,25 @@
                 <td>5</td>
             </tr>
             <tr>
-                <th>Advisor's Payoff:</th>
-                <td>3 Points</td>
+                <th>Investor's Payoff:</th>
+                <td>4 ECUs</td>
             </tr>
             <tr class="last">
                 <th>Your Payoff:</th>
-                <td>4 Points</td>
+                <td>3 ECUs</td>
             </tr>
         </table>
     </div>
-    <div style="float: right;">
-        <p class="payofftableheader">Investors Payoff Table</p>
+    <div style="float: right">
+        <p class="payofftableheader">Your Payoff Table</p>
         <table class="playerpayofftable" style="display: flex; margin: unset">
             <tr>
                 <td style="width: 75px;"></td>
-                <td class="header" colspan="5">Total Investors (including you)</td>
+                <td class="header" colspan="6">Total Investors</td>
             </tr>
             <tr>
-                <td style="font-style: italic; width: 75px;">Quality</td>
+                <td  style="font-style: italic; width: 75px;">Quality</td>
+                <td class="row1">0</td>
                 <td class="row1">1</td>
                 <td class="row1">2</td>
                 <td class="row1">3</td>
@@ -45,23 +46,22 @@
             </tr>
             <tr>
                 <td class="column1">Low</td>
-                {{ for n, p in pb_table.1.items() }}
+                {{ for n, p in pa_table.1.items() }}
                 <td {{ if n == 5 }} style="background-color: greenyellow; font-weight: bold"{{ endif }}>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
                 <td class="column1">Medium</td>
-                {{ for n, p in pb_table.2.items() }}
+                {{ for n, p in pa_table.2.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
                 <td class="column1">High</td>
-                {{ for n, p in pb_table.3.items() }}
+                {{ for n, p in pa_table.3.items() }}
                 <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
         </table>
-        <p class="reminder">Remember, If you chose not to invest, you received a payoff of <span style="text-decoration: underline">12 ECUs</span></p>
     </div>
 </div>

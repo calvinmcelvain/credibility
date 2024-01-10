@@ -47,11 +47,11 @@ def creating_session(subsession):
 # Custom data export for this game
 def custom_export(players):
     # header rows
-    yield ['session', 'participant_code', 'player_id', 'role', 'round_number', 'invest_signal', 'max_outside_option']
+    yield ['session', 'participant_code', 'player_id', 'role', 'round_number', 'payoff', 'invest_value', 'max_outside_option']
     for p in players:
         participant = p.participant
         session = p.session
-        yield [session.code, participant.code, participant.PlayerID, participant.role, p.round_number, p.selected_draw,p.pb_outside_option]
+        yield [session.code, participant.code, participant.PlayerID, participant.role, p.round_number, p.payoff, p.selected_draw, p.pb_outside_option]
 
 
 
@@ -162,9 +162,10 @@ class P3_Feedback(Page):
     @staticmethod
     def vars_for_template(player):
         random_draw = player.in_round(player.in_round(1).round_towards_payment).selected_draw
+        invest_value = player.in_round(player.in_round(1).round_towards_payment).invest_value
         outside_option = player.in_round(player.in_round(1).round_towards_payment).pb_outside_option
         payoff = player.in_round(player.in_round(1).round_towards_payment).payoff
-        return {'random_draw': random_draw, 'outside_option': outside_option, 'payoff': payoff}
+        return {'random_draw': random_draw, 'outside_option': outside_option, 'payoff': payoff, 'invest_value': invest_value}
 
 
 page_sequence = [P1_Decision, P2_Feedback, P3_Feedback]

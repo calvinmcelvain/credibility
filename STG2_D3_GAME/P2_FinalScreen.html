@@ -19,15 +19,15 @@
 
 <!-- Advisor Page -->
 {{ if player.role == C.pa_ROLE }}
-{{ include 'STG2_BGN/feedback_tables/advisor.html' }}
+{{ include '_static/history_tables/stage_2/advisor.html' }}
 
 <!-- Investor Page -->
 {{ else }}
-{{ include 'STG2_BGN/feedback_tables/advisor.html' }}
+{{ include '_static/history_tables/stage_2/investor.html' }}
 {{ endif }}
 
 <!-- Total Points & Money Tables -->
-{{ include 'STG2_BGN/feedback_tables/final.html' }}
+{{ include '_static/history_tables/stage_2/final.html' }}
 
 <div class="button">
     <button>Continue</button>

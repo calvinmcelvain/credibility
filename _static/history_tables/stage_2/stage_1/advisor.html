@@ -1,0 +1,38 @@
+<div class="tablescroll" style="height: 600px">
+    <div>
+        <table class="history_header">
+            <tr>
+                <th>Round</th>
+                <th>Low Advice</th>
+                <th>Medium Advice</th>
+                <th>High Advice</th>
+                <th>Estimate Signal</th>
+                <th>Actual Signal</th>
+                <th>Total Investors</th>
+                <th>Your Payoff</th>
+                <th>Investors Payoff</th>
+            </tr>
+        </table>
+        <div class="scroll" style="height: 550px; max-height: 600px">
+            <table id="data_table">
+                {{ if history == 'N/A' }}
+                <tr><td colspan="9">N/A</td></tr>
+                {{ else }}
+                {{ for p in history }}
+                <tr>
+                    <td>{{ p.round_number }}</td>
+                    <td {{ if p.estimated_signal == 'Low' }} bgcolor="yellow" {{ else }}{{ endif }} >{{ p.pa_low_advice }}</td>
+                    <td {{ if p.estimated_signal == 'Medium' }} bgcolor="yellow" {{ else }}{{ endif }} >{{ p.pa_med_advice }}</td>
+                    <td {{ if p.estimated_signal == 'High' }} bgcolor="yellow" {{ else }}{{ endif }} >{{ p.pa_high_advice }}</td>
+                    <td>{{ p.estimated_signal }}</td>
+                    <td>{{ p.actual_signal }}</td>
+                    <td>{{ p.total_players_invest }}</td>
+                    <td>{{ p.payoff }}</td>
+                    <td>{{ p.pb_payoff }}</td>
+                </tr>
+                {{ endfor }}
+                {{ endif }}
+            </table>
+        </div>
+    </div>
+</div>
