@@ -15,6 +15,9 @@ class C(BaseConstants):
     instructions_time = None
     standby_time = None
 
+    # Defining "Advisor" role
+    pa_ROLE = 'Advisor'
+
     # Decision Payoff dictionaries
     pb_payoff = {
         1: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0},
@@ -45,7 +48,7 @@ class P1(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
+        return {'history': player.participant.vars['STG1_history']}
 
     @staticmethod
     def live_method(player: Player, data):
@@ -54,6 +57,7 @@ class P1(Page):
         if player.group.all_players_ready == players_in_session:
             player.group.all_players_ready = 0
             return {0: 'all_ready'}
+
 
 
 class P2(Page):
@@ -88,7 +92,23 @@ class P3(Page):
             return {0: 'all_ready'}
 
 
-class P4_standby(Page):
+class P4(Page):
+    timeout_seconds = C.instructions_time
+
+    @staticmethod
+    def vars_for_template(player: Player):
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
+
+    @staticmethod
+    def live_method(player: Player, data):
+        player.group.all_players_ready += 1
+        players_in_session = len(player.subsession.get_players())
+        if player.group.all_players_ready == players_in_session:
+            player.group.all_players_ready = 0
+            return {0: 'all_ready'}
+
+
+class P5_standby(Page):
     timeout_seconds = C.standby_time
 
     @staticmethod
@@ -107,4 +127,4 @@ class P4_standby(Page):
             return {0: 'all_ready'}
 
 
-page_sequence = [P1, P2, P3, P4_standby]
+page_sequence = [P1, P2, P3, P4, P5_standby]

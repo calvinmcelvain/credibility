@@ -2,7 +2,8 @@
 table.draws_table {
     font-size: 17px;
     text-align: center;
-    width: 1500px;
+    max-width: 1475px;
+    width: 100%;
 }
 .draws_table th {
     border-bottom: 1px solid black;
@@ -35,10 +36,7 @@ div.draws {
 }
 .draws span.value {
     font-weight: bold;
-    color: red;
-    border: 1px solid black;
     margin: 10px;
-    padding: 5px;
     font-size: 24px;
 }
 p.draws {

@@ -9,10 +9,10 @@ Stage STG1_GAME Game
 class C(BaseConstants):
     NAME_IN_URL = 'STG1_GAME'
     PLAYERS_PER_GROUP = 3
-    NUM_ROUNDS = 30
+    NUM_ROUNDS = 10
 
     # Timeout seconds
-    decision_time = 20
+    decision_time = None
     feedback_time = None
 
     # Defining Role "Advisor"
@@ -199,12 +199,12 @@ class P2_BetweenWaitPage(Page):
         player.group.all_players_ready += 1
         players = len(player.group.get_players())
         if player.group.all_players_ready == players:
+            player.group.all_players_ready = 0
             return {0: 'all_ready'}
 
     @staticmethod
     def vars_for_template(player: Player):
         if player.role == C.pa_ROLE:
-            # Returning the estimate for the Advisor and creating a seamless transision
             treatment_signal = C.treatment_signal
             round_number = player.round_number
             treatment = player.group.treatment
@@ -264,12 +264,27 @@ class P3_Feedback(Page):
     def vars_for_template(player: Player):
         return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff, 'history': reversed(player.in_all_rounds())}
 
-    # Storing stage 1 payoffs in participant field
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
-        if player.round_number == C.NUM_ROUNDS:
-            stg1_payoff = player.participant.payoff
-            player.participant.vars['STG1_payoff'] = stg1_payoff
+        player.participant.vars['STG1_payoff'] += player.payoff
+        if player.role == C.pa_ROLE:
+            history_data = [
+                {'round_number': p.round_number, 'pa_low_advice': p.pa_low_advice, 'pa_med_advice': p.pa_med_advice,
+                 'pa_high_advice': p.pa_high_advice, 'estimated_signal': p.group.estimated_signal, 'actual_signal': p.group.actual_signal,
+                 'total_players_invest': p.group.total_players_invest(), 'payoff': p.payoff, 'pb_payoff': p.group.pb_payoff()}
+                for p in player.in_all_rounds()
+            ]
+            # Store the formatted history in advisor participant vars
+            player.participant.vars['STG1_history'] = history_data
+        else:
+            history_data = [
+                {'round_number': p.round_number, 'pa_advice': p.group.pa_advice, 'pb_decision': p.pb_decision,
+                 'other_investors': p.other_investors(), 'total_players_invest': p.group.total_players_invest(),
+                 'actual_signal': p.group.actual_signal, 'payoff': p.payoff, 'pa_payoff': p.group.pa_payoff()}
+                for p in player.in_all_rounds()
+            ]
+            # Store the formatted history in investor participant vars
+            player.participant.vars['STG1_history'] = history_data
 
 
 class BeforeNextRound(WaitPage):

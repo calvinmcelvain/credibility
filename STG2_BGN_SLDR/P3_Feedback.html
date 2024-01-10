@@ -3,7 +3,7 @@
 <!--External CSS & js-->
 <link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
 <link rel="stylesheet" href="{{ static 'style_sheets/feedback.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_2.js' }}"></script>
+<script src="{{ static 'java_scripts/general.js' }}"></script>
 
 <!-- Title -->
 {{ block title }}
@@ -13,27 +13,33 @@
 {{ endblock }}
 
 <!-- End of Round Results -->
-<div class="feed">
-    <h4>End of training Results:</h4>
-    <div>
-        <table>
-            <tr>
-                <th>Round Counted:</th>
-                <td>{{ player.round_towards_payment }}</td>
-            </tr>
-            <tr>
-                <th>Minimum Outside Option Chosen:</th>
-                <td>{{ outside_option }}</td>
-            </tr>
-            <tr>
-                <th>Random Draw:</th>
-                <td>{{ random_draw }}</td>
-            </tr>
-            <tr class="last">
-                <th>Your Payoff:</th>
-                <td>{{ payoff }}</td>
-            </tr>
-        </table>
+<div class="feed-div">
+    <div class="feed">
+        <h4>End of training Results:</h4>
+        <div>
+            <table>
+                <tr>
+                    <th>Round Counted:</th>
+                    <td>{{ player.round_towards_payment }}</td>
+                </tr>
+                <tr>
+                    <th>Invest Value:</th>
+                    <td>{{ invest_value }}</td>
+                </tr>
+                <tr>
+                    <th>Your Minimum Outside Option:</th>
+                    <td>{{ outside_option }}</td>
+                </tr>
+                <tr>
+                    <th>Random Draw:</th>
+                    <td>{{ random_draw }}</td>
+                </tr>
+                <tr class="last">
+                    <th>Your Payoff:</th>
+                    <td>{{ payoff }}</td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -45,26 +51,5 @@
     </div>
     <button type="button" id="validation" onclick="validating()">Continue</button>
 </div>
-
-
-<script>
-// Checking if button has been clicked
-window.onload = function () {
-    const IsClicked = sessionStorage.getItem('IsClicked');
-
-    if (IsClicked === 'true') {
-        document.getElementById('validation').disabled = true;
-    }
-}
-
-// Websocket to check if all players are ready
-function liveRecv(data) {
-    if (data === 'all_ready') {
-        sessionStorage.setItem('IsClicked', 'false')
-        document.forms[0].submit();
-    }
-}
-
-</script>
 
 {{ endblock }}

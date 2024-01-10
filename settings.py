@@ -108,6 +108,12 @@ SESSION_CONFIGS = [
         app_sequence=['START', 'STG1_BGN', 'STG1_GAME', 'STG2_BGN', 'STG2_BGN_SLDR', 'STG2_D1_BGN', 'STG2_D1_GAME', 'STG2_D2_BGN', 'STG2_D2_GAME', 'STG2_D3_BGN', 'STG2_D3_GAME'],
         num_demo_participants=demo_final,
     ),
+    dict(
+        name='test',
+        display_name='test',
+        app_sequence=['START', 'STG1_GAME', 'STG2_D1_GAME', 'STG2_D2_GAME', 'STG2_D3_GAME'],
+        num_demo_participants=demo_final,
+    ),
 ]
 
 ROOMS = [
@@ -125,7 +131,7 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 POINTS_CUSTOM_NAME = 'ECUs'
 
-PARTICIPANT_FIELDS = ['role', 'STG1_payoff', 'SLDR_payoff', 'D1', 'D2', 'PlayerID']
+PARTICIPANT_FIELDS = ['role', 'STG1_payoff', 'STG1_history', 'SLDR_payoff', 'D1', 'D2', 'PlayerID']
 SESSION_FIELDS = ['group_matrix']
 
 # ISO-639 code

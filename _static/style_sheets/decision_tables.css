@@ -38,6 +38,7 @@ tr.decision_header th {
 div.decision-div {
     margin-top: 100px;
     margin-bottom: 150px;
+    align-items: center;
 }
 
 /* Decision Slider Design */
@@ -45,7 +46,13 @@ div.decision-slider {
     margin-top: 50px;
     margin-bottom: 50px;
     font-size: 21px;
+}
+.decision-slider table {
+    border: 2px solid black;
     text-align: center;
+    padding: 20px;
+    height: 100px;
+    width: 300px;
 }
 #sliderInput {
     width: 3em;

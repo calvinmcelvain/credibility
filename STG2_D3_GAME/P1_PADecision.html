@@ -12,15 +12,15 @@
 <div class="Title_decision">
     <h3 style="float: left"><u>Role:</u> Advisor</h3>
     <span>True Signal: <b style="color: red">{{ signal }}</b></span>
-    <h3 style="float: right">Stage 2 Decision 3</h3>
+    <h3 style="float: right">Stage 2: Decision 3</h3>
 </div>
 {{ endblock }}
 
 <!-- Payoff Tables -->
-{{ include 'STG2_BGN/payoff_tables/advisor_investor.html' }}
+{{ include '_static/payoff_tables/stage_2/advisor_investor.html' }}
 
 <!--Form Fields/Decisions-->
-{{ include 'STG2_BGN/decision_tables/advisor.html' }}
+{{ include '_static/decision_tables/stage_2/advisor.html' }}
 
 <!-- Next Button with confirmation pop-up & Instructions Button -->
 <div class="button">

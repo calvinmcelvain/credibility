@@ -33,6 +33,7 @@ def creating_session(subsession):
     for player in subsession.get_players():
         player.participant.vars['PlayerID'] = 00
         player.participant.vars['STG1_payoff'] = cu(0)
+        player.participant.vars['STG1_history'] = {}
         player.participant.vars['SLDR_payoff'] = cu(0)
         player.participant.vars['D1'] = cu(0)
         player.participant.vars['D2'] = cu(0)
