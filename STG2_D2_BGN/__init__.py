@@ -72,23 +72,4 @@ class P2(Page):
             return {0: 'all_ready'}
 
 
-class P3_standby(Page):
-    timeout_seconds = C.standby_time
-
-    @staticmethod
-    def vars_for_template(player: Player):
-        if player.participant.vars['role'] == 'Advisor':
-            return {'role': 'Advisor'}
-        else:
-            return {'role': 'Investor'}
-
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
-
-
-page_sequence = [P1, P2, P3_standby]
+page_sequence = [P1, P2]

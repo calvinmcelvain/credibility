@@ -99,12 +99,6 @@ class P2_Feedback(Page):
         payoff_diff = []
         sign = []
         min_worse = 0
-        if player.pb_outside_option > player.invest_value:
-            choice_over_alt = 'above'
-        elif player.pb_outside_option == player.invest_value:
-            choice_over_alt = 'at'
-        else:
-            choice_over_alt = 'below'
         for i in random_draws:
             if player.pb_outside_option > i:
                 payoffs.append(player.invest_value)
@@ -135,7 +129,7 @@ class P2_Feedback(Page):
             for i in range(len(draw_numbers))
         }
 
-        return {'draw_dict': draw_dict, 'worse': min_worse, 'choice': choice_over_alt, 'invest_value': player.invest_value}
+        return {'draw_dict': draw_dict, 'invest_value': player.invest_value}
 
     @staticmethod
     def live_method(player: Player, data):
@@ -162,10 +156,11 @@ class P3_Feedback(Page):
     @staticmethod
     def vars_for_template(player):
         random_draw = player.in_round(player.in_round(1).round_towards_payment).selected_draw
+        selected_draw_number = player.in_round(player.in_round(1).round_towards_payment).selected_draw_number
         invest_value = player.in_round(player.in_round(1).round_towards_payment).invest_value
         outside_option = player.in_round(player.in_round(1).round_towards_payment).pb_outside_option
         payoff = player.in_round(player.in_round(1).round_towards_payment).payoff
-        return {'random_draw': random_draw, 'outside_option': outside_option, 'payoff': payoff, 'invest_value': invest_value}
+        return {'random_draw': random_draw, 'outside_option': outside_option, 'payoff': payoff, 'invest_value': invest_value, 'selected_draw': selected_draw_number}
 
 
 page_sequence = [P1_Decision, P2_Feedback, P3_Feedback]

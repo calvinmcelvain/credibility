@@ -1,4 +1,6 @@
-<div class="decisiontable">
+<h4 style="margin-top: 25px">Waiting for other Investors</h4>
+<h5>*** Feedback page soon ***</h5>
+<div class="decisiontable" style="margin-top: 20px">
     <div class="guide">
         <span>Advisor's Advice: <b style="color: red">{{ advice }}</b></span>
     </div>
@@ -9,8 +11,8 @@
             <th style="width: 20px" rowspan="2"></th>
         </tr>
         <tr>
-            <td class="playera"><label><input name="pb_decision" value="Invest" type="radio"> Invest</label></td>
-            <td class="playera"><label><input name="pb_decision" value="Keep" type="radio"> Keep</label></td>
+            <td class="playera"><label><input name="pb_decision" value="Invest" type="radio" disabled {{ if decision == "Invest" }} checked {{ endif }}> Invest</label></td>
+            <td class="playera"><label><input name="pb_decision" value="Keep" type="radio" disabled {{ if decision == "Keep" }} checked {{ endif }}> Keep</label></td>
         </tr>
         <tr class="error">
             <td colspan="4"><span id="error" style="color: red; display: none;"></span></td>

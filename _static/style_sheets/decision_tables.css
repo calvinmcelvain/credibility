@@ -1,12 +1,28 @@
 /* Player Decision Tables */
-table.decisiontable {
-    margin-left: auto;
-    margin-right: auto;
+div.decisiontable {
+    margin-top: 75px;
     margin-bottom: 150px;
-    margin-top: 100px;
+    contain: content;
+    text-align: center;
+}
+.decisiontable table {
     font-family: "Times New Roman", serif;
     font-size: 26px;
     border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    contain: content;
+    margin-top: 20px;
+}
+.decisiontable div.guide {
+    margin-top: 10px;
+}
+.decisiontable .guide span{
+    font-size: 24px;
+    font-family: Arial, serif;
+    border: 2px solid black;
+    font-style: normal;
+    padding: 10px;
 }
 .decisiontable th.qlty_header {
     height: 60px;
@@ -36,16 +52,15 @@ tr.decision_header th {
     text-align: center;
 }
 div.decision-div {
-    margin-top: 100px;
-    margin-bottom: 150px;
+    margin: 100px initial 150px;
     align-items: center;
 }
 
 /* Decision Slider Design */
 div.decision-slider {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin: 50px 0;
     font-size: 21px;
+    text-align: center;
 }
 .decision-slider table {
     border: 2px solid black;

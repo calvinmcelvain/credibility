@@ -7,10 +7,10 @@ function checkAnswers() {
       Q2a: document.querySelector('input[name="Q2a"]').value.trim(),
       Q2b: document.querySelector('input[name="Q2b"]').value.trim(),
       Q2c: document.querySelector('input[name="Q2c"]').value.trim(),
-      Q3a: document.querySelector('input[name="Q3a"]:checked') ? document.querySelector('input[name="Q3a"]:checked').value : null,
-      Q3b: document.querySelector('input[name="Q3b"]:checked') ? document.querySelector('input[name="Q3b"]:checked').value : null,
-      Q3c: document.querySelector('input[name="Q3c"]:checked') ? document.querySelector('input[name="Q3c"]:checked').value : null,
-      Q4: document.querySelector('input[name="Q4"]:checked') ? document.querySelector('input[name="Q4"]:checked').value : null,
+      Q3a: document.querySelector('select[name="Q3a"]').value.trim(),
+      Q3b: document.querySelector('select[name="Q3b"]').value.trim(),
+      Q3c: document.querySelector('select[name="Q3c"]').value.trim(),
+      Q4: document.querySelector('select[name="Q4"]').value.trim(),
     };
 
     var correctAnswers = {

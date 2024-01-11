@@ -43,11 +43,11 @@
     <h3 style="float: right">Round {{ player.round_number }}</h3>
 </div>
 
-<!-- Investor Waitpage Body -->
-<div style="margin: 150px">
-    <h4>Waiting for other Investors</h4>
-    <h5>*** Feedback page soon ***</h5>
-</div>
+<!--Payoff Tables-->
+{{ include '_static/payoff_tables/stage_1/investor_advisor.html' }}
+
+<!--Form Fields/Decisions-->
+{{ include '_static/decision_tables/stage_1/investor_inbetween.html' }}
 
 <!-- Instructions pop-up & Button-->
 <div class="button">

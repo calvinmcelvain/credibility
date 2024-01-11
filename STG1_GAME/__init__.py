@@ -224,7 +224,8 @@ class P2_BetweenWaitPage(Page):
                            'Medium': player.group.get_player_by_role(C.pa_ROLE).pa_med_advice,
                            'High': player.group.get_player_by_role(C.pa_ROLE).pa_high_advice}
             advice = advice_dict[estimated_signal]
-            return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff, 'advice': advice, 'history': reversed(player.in_previous_rounds())}
+            decision = player.pb_decision
+            return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff, 'advice': advice, 'decision': decision, 'history': reversed(player.in_previous_rounds())}
 
 
 class PayoffWaitPage(WaitPage):
