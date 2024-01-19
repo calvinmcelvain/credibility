@@ -19,21 +19,18 @@
     <h3 style="float: right"><u>Your Minimum Outside Option:</u> {{ player.pb_outside_option }}</h3>
 </div>
 
-<!-- Result of minimum choice -->
-<p class="draws"><u>Note:</u> You did worse setting your minimum <b>{{ choice }}</b> the invest value [<b>{{ worse }}</b>] times and did better [<b>0</b>] times</p>
-
 <!-- Table of draws -->
 <table class="draws_table">
     <tr>
         <th>Draw:</th>
         <th>Outside Option:</th>
         <th>Your Payoff:</th>
-        <th>Alternate Payoff:</th>
+        <th>Our Advice Payoff:</th>
         <th>Payoff Difference:</th>
     </tr>
     {{ for key, values in draw_dict.items() }}
-    <tr {{ if values.1 == player.selected_draw_number }} style="font-weight: bold" {{ endif }}>
-        <td {{ if values.1 == player.selected_draw_number }} style="background-color: yellow" {{ endif }}>{{ values.1 }}</td>
+    <tr>
+        <td>{{ values.1 }}</td>
         <td>{{ values.2 }}</td>
         <td>{{ values.3 }}</td>
         <td>{{ values.4 }}</td>
@@ -46,17 +43,12 @@
 <!-- Highlighting Key -->
 <div class="draws_key">
     <table>
-        <th>Selected Outside Option:</th>
-        <th style="width: 20px"></th>
-        <td style="border: 1px solid black; background-color: yellow"></td>
-    </table>
-    <table>
-        <th>Alternative Earned Less:</th>
+        <th>You earned <i>more</i> than Our Advice:</th>
         <th style="width: 20px"></th>
         <td style="border: 1px solid black; background-color: greenyellow"></td>
     </table>
     <table>
-        <th>Alternative Earned More:</th>
+        <th>You earned <i>less</i> than Our Advice:</th>
         <th style="width: 20px"></th>
         <td style="border: 1px solid black; background-color: red"></td>
     </table>

@@ -129,8 +129,6 @@ class P1_PADecision(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        possible_signals = ['Low', 'High']
-        player.group.actual_signal = r.choice(possible_signals)
         signal = player.group.actual_signal
         return {'signal': signal, 'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 

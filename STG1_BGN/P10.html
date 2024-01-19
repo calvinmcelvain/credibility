@@ -2,22 +2,41 @@
 {{ block content }}
 <!--External CSS & js-->
 <link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/payoff_tables.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/decision_tables.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/hist_table.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/sample/advisor.js' }}"></script>
 <script src="{{ static 'java_scripts/general.js' }}"></script>
 
+<!-- Title -->
 {{ block title }}
-<b><u>Making Decisions in Each Round</u></b>
+<span class="sample" >**Sample**</span>
+<div class="Title">
+    <h3 style="float: left"><u>Role:</u> Advisor</h3>
+    <h3 style="float: right">Round 7</h3>
+</div>
 {{ endblock }}
 
-<!--Description Body-->
-{{ include 'STG1_BGN/instructions/making_decisions.html' }}
 
-<!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
+<!--Payoff Tables-->
+{{ include '_static/payoff_tables/stage_1/advisor_investor.html' }}
+
+<!--Form Fields/Decisions-->
+{{ include '_static/decision_tables/stage_1/advisor.html' }}
+
+<!-- Next Button with confirmation pop-up & Instructions Button-->
 <div class="button">
-    <div>
-        <p>Please click "Continue"</p>
-        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
-    </div>
-    <button type="button" id="validation" onclick="validating()">Continue</button>
+    <button id="validation" onclick="DecisionFormsampleadvisor(event)">Continue</button>
+    <button id="pop-up" style="float: left; background-color: red">Instructions</button>
 </div>
+
+<!-- sample Player History Table-->
+{{ include '_static/history_tables/stage_1/sample_history/advisor.html' }}
+
+<!-- Instructions -->
+{{ include '_static/instr_bttn/stage_1.html' }}
+
+<!-- popup -->
+{{ include '_static/popups/decision.html' }}
 
 {{ endblock }}

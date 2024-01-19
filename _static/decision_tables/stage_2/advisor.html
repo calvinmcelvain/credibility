@@ -1,34 +1,35 @@
-<table class="decisiontable">
-    <tr style="height: 10px"></tr>
-    <tr>
-        <th style="width: 30px"></th>
-        <th colspan="5" class="qlty_header">Investment Quality Estimate</th>
-        <th style="width: 30px"></th>
-    </tr>
-    <tr class="decision_header">
-        <th style="width: 30px"></th>
-        <th>Low</th>
-        <th style="width: 30px" rowspan="4"></th>
-        <th>High</th>
-        <th style="width: 30px"></th>
-    </tr>
-    <tr class="advice">
-        <th style="width: 30px"></th>
-        <td><label><input name="pa_low_advice" value="Invest" type="radio"> Invest</label></td>
-        <td><label><input name="pa_high_advice" value="Invest" type="radio"> Invest</label></td>
-        <th style="width: 30px"></th>
-    </tr>
-    <tr>
-        <th style="width: 30px"></th>
-        <td class="column1"><label><input name="pa_low_advice" value="Keep" type="radio"> Keep</label></td>
-        <td><label><input name="pa_high_advice" value="Keep" type="radio"> Keep</label></td>
-        <th style="width: 30px"></th>
-    </tr>
-    <tr class="error">
-        <th style="width: 30px"></th>
-        <td><span id="low_error" style="color: red; display: none;"></span></td>
-        <td><span id="high_error" style="color: red; display: none;"></span></td>
-        <th style="width: 30px"></th>
-    </tr>
-    <tr style="height: 30px"></tr>
-</table>
+<div  class="decisiontable">
+    <div class="guide">
+        <span>True Signal: <b style="color: red">{{ signal }}</b></span>
+    </div>
+    <table>
+        <tr>
+            <th colspan="2"></th>
+            <th colspan="5" class="qlty_header">Investment Quality Estimate</th>
+            <th colspan="2"></th>
+        </tr>
+        <tr class="decision_header">
+            <th></th>
+            <th style="width: 20px" rowspan="4"></th>
+            <th>Low</th>
+            <th style="width: 20px" rowspan="4"></th>
+            <th>High</th>
+            <th style="width: 20px" colspan="2" rowspan="4"></th>
+        </tr>
+        <tr class="advice">
+            <th style="width: 115px" rowspan="2">Advice to <br>Group</th>
+            <td><label><input name="pa_low_advice" value="Invest" type="radio"> Invest</label></td>
+            <td><label><input name="pa_high_advice" value="Invest" type="radio"> Invest</label></td>
+        </tr>
+        <tr>
+            <td class="column1"><label><input name="pa_low_advice" value="Keep" type="radio"> Keep</label></td>
+            <td><label><input name="pa_high_advice" value="Keep" type="radio"> Keep</label></td>
+        </tr>
+        <tr class="error">
+            <th></th>
+            <td><span id="low_error" style="color: red; display: none;"></span></td>
+            <td><span id="high_error" style="color: red; display: none;"></span></td>
+        </tr>
+        <tr style="height: 20px"></tr>
+    </table>
+</div>
