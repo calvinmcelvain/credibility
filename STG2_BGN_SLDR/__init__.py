@@ -26,14 +26,14 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     round_towards_payment = models.IntegerField()
-    pb_outside_option = models.IntegerField(blank=False, min=0, max=300)
+    pb_outside_option = models.IntegerField(blank=False, min=0, max=50)
     random_draws = models.LongStringField()
-    selected_draw = models.IntegerField(initial=301)
+    selected_draw = models.IntegerField(initial=51)
     selected_draw_number = models.IntegerField()
-    invest_value = models.IntegerField(initial=301)
+    invest_value = models.IntegerField(initial=51)
 
     def get_random_draws(self):
-        list_of_draws = [r.randint(0, 300) for _ in range(20)]  # Generate 20 random draws
+        list_of_draws = [r.randint(0, 50) for _ in range(20)]  # Generate 20 random draws
         return f'{list_of_draws}'
 
 
@@ -63,8 +63,8 @@ class P1_Decision(Page):
 
     @staticmethod
     def vars_for_template(player):
-        if player.invest_value == 301:
-            player.invest_value = r.randint(0, 300)
+        if player.invest_value > 50:
+            player.invest_value = r.randint(0, 50)
             invest_value = player.invest_value
         else:
             invest_value = player.invest_value

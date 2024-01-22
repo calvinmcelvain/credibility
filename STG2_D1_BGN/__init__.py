@@ -47,6 +47,18 @@ class P1(Page):
     timeout_seconds = C.instructions_time
 
     @staticmethod
+    def live_method(player: Player, data):
+        player.group.all_players_ready += 1
+        players_in_session = len(player.subsession.get_players())
+        if player.group.all_players_ready == players_in_session:
+            player.group.all_players_ready = 0
+            return {0: 'all_ready'}
+
+
+class P2(Page):
+    timeout_seconds = C.instructions_time
+
+    @staticmethod
     def vars_for_template(player: Player):
         return {'history': player.participant.vars['STG1_history']}
 
@@ -58,22 +70,6 @@ class P1(Page):
             player.group.all_players_ready = 0
             return {0: 'all_ready'}
 
-
-
-class P2(Page):
-    timeout_seconds = C.instructions_time
-
-    @staticmethod
-    def vars_for_template(player: Player):
-        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
-
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
 
 
 class P3(Page):
@@ -92,4 +88,20 @@ class P3(Page):
             return {0: 'all_ready'}
 
 
-page_sequence = [P1, P2, P3]
+class P4(Page):
+    timeout_seconds = C.instructions_time
+
+    @staticmethod
+    def vars_for_template(player: Player):
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
+
+    @staticmethod
+    def live_method(player: Player, data):
+        player.group.all_players_ready += 1
+        players_in_session = len(player.subsession.get_players())
+        if player.group.all_players_ready == players_in_session:
+            player.group.all_players_ready = 0
+            return {0: 'all_ready'}
+
+
+page_sequence = [P1, P2, P3, P4]

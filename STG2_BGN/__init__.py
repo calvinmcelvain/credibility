@@ -90,6 +90,10 @@ class P4(Page):
 class P5(Page):
     timeout_seconds = C.instructions_time
 
+
+class P6(Page):
+    timeout_seconds = C.instructions_time
+
     @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
@@ -97,10 +101,6 @@ class P5(Page):
         if player.group.all_players_ready == players_in_session:
             player.group.all_players_ready = 0
             return {0: 'all_ready'}
-
-
-class P6(Page):
-    timeout_seconds = C.instructions_time
 
 
 class P7(Page):
@@ -115,16 +115,4 @@ class P7(Page):
             return {0: 'all_ready'}
 
 
-class P8(Page):
-    timeout_seconds = C.instructions_time
-
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
-
-
-page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8]
+page_sequence = [P1, P2, P3, P4, P5, P6, P7]

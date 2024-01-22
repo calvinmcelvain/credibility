@@ -25,9 +25,9 @@ window.onload = function() {
 
     // Define target values
     var targetValues = {
-      slider1: 210,
-      slider2: 97,
-      slider3: 170
+      slider1: 30,
+      slider2: 27,
+      slider3: 45
     };
 
     // Check if all sliders match the target values
