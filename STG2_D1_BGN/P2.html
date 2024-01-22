@@ -2,15 +2,15 @@
 {{ block content }}
 <!--External CSS & js-->
 <link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
-<link rel="stylesheet" href="{{ static 'style_sheets/payoff_tables.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/hist_table.css' }}" type="text/css">
 <script src="{{ static 'java_scripts/general.js' }}"></script>
 
 {{ block title }}
-<u><b>Stage 2: Decision 1</b></u>
+<b><u>Stage 1 Recap</u></b>
 {{ endblock }}
 
-<!-- General Information Body -->
-{{ include 'STG2_D1_BGN/instructions/decision_1.html' }}
+<!-- Stage 1 History Table & Text Body -->
+{{ include 'STG2_D1_BGN/instructions/recap.html' }}
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
