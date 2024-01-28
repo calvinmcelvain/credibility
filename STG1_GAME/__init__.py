@@ -8,7 +8,7 @@ Stage STG1_GAME Game
 
 class C(BaseConstants):
     NAME_IN_URL = 'STG1_GAME'
-    PLAYERS_PER_GROUP = 3
+    PLAYERS_PER_GROUP = 6
     NUM_ROUNDS = 10
 
     # Timeout seconds

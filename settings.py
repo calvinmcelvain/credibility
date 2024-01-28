@@ -1,8 +1,8 @@
 from os import environ
 
-demo_instructions = 3
-demo_game = 3
-demo_final = 3
+demo_instructions = 6
+demo_game = 6
+demo_final = 6
 
 SESSION_CONFIGS = [
     dict(
@@ -118,10 +118,10 @@ SESSION_CONFIGS = [
 
 ROOMS = [
     dict(
-        name='LabTest_122623',
-        display_name='Lab Test 12/26/2023',
+        name='lab_test',
+        display_name='lab_test',
         participant_label_file='_rooms/labtest',
-        use_secure_urls=True
+        use_secure_urls=False
     ),
 ]
 
@@ -129,7 +129,7 @@ SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=0.04, participation_fee=10.00, doc=""
 )
 
-POINTS_CUSTOM_NAME = 'ECUs'
+POINTS_CUSTOM_NAME = 'ECU'
 
 PARTICIPANT_FIELDS = ['role', 'STG1_payoff', 'STG1_history', 'SLDR_payoff', 'D1', 'D2', 'PlayerID']
 SESSION_FIELDS = ['group_matrix']
@@ -144,7 +144,7 @@ USE_POINTS = True
 
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
-ADMIN_PASSWORD = environ.get('Crd2')
+ADMIN_PASSWORD = environ.get('ADMIN_PASSWORD')
 
 DEMO_PAGE_INTRO_HTML = """ """
 
