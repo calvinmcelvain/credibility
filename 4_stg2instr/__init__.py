@@ -2,7 +2,7 @@ from otree.api import *
 
 
 doc = """
-Stage 2 Instructions PT 1
+Stage 2 Instructions
 """
 
 

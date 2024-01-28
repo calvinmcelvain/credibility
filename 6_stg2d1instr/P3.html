@@ -2,24 +2,15 @@
 {{ block content }}
 <!--External CSS & js-->
 <link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
-<link rel="stylesheet" href="{{ static 'style_sheets/hist_table.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/payoff_tables.css' }}" type="text/css">
 <script src="{{ static 'java_scripts/general.js' }}"></script>
 
 {{ block title }}
-<b><u>Stage 1 Recap</u></b>
+<u><b>Stage 2 Decision 1</b></u>
 {{ endblock }}
 
-<!-- Stage 1 History Table & Text Body -->
-<p>Before beginning Stage 2, let's review Stage 1's results</p>
-
-<!-- Advisor Page -->
-{{ if player.role == C.pa_ROLE }}
-{{ include '_static/history_tables/stage_2/stage_1/advisor.html' }}
-
-<!-- Investor Page -->
-{{ else }}
-{{ include '_static/history_tables/stage_2/stage_1/investor.html' }}
-{{ endif }}
+<!-- General Information Body -->
+{{ include 'STG2_D1_BGN/instructions/decision_1.html' }}
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">

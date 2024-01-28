@@ -1,3 +1,16 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/payoff_tables.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/quiz.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/stage_1/quiz.js' }}"></script>
+
+{{ block title }}
+<b><u>Instructions Quiz</u></b>
+{{ endblock }}
+
+<!--Instruction Quiz -->
 <p>To make sure that everyone understands the instructions for Stage I, please take a moment to answer the following questions. Once everyone has responded correctly, we will proceed to the first round of Stage 1.</p>
 {{ include '_static/payoff_tables/stage_1/investor_advisor.html' }}
 <div class="quiz">
@@ -59,3 +72,10 @@
         </li>
     </ol>
 </div>
+
+<!--Next Button-->
+<div class="button">
+    <button type="button" onclick="checkAnswers()">Continue</button>
+</div>
+
+{{ endblock }}

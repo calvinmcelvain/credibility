@@ -7,13 +7,13 @@ demo_final = 6
 SESSION_CONFIGS = [
     dict(
         name='Stage_1_Instructions_Only',
-        display_name="Stage 1 Instructions (Only)",
+        display_name="Stage 1: Instructions",
         app_sequence=['1_start', '2_stg1instr'],
         num_demo_participants=demo_instructions,
     ),
     dict(
         name='Stage_1_Game_Only',
-        display_name='Stage 1 Game (Only)',
+        display_name='Stage 1: Game',
         app_sequence=['1_start', '3_stg1game'],
         num_demo_participants=demo_game,
     ),
@@ -24,20 +24,14 @@ SESSION_CONFIGS = [
         num_demo_participants=demo_final,
     ),
     dict(
-        name='Stage_2_Instructions_Only',
-        display_name='Stage 2 Instructions (Only)',
-        app_sequence=['1_start', '4_stg2instr', '5_stg2sldr', '6_stg2d1instr', '8_stg2d2instr', '10_stg2d3instr'],
-        num_demo_participants=demo_instructions,
-    ),
-    dict(
         name='Decision_1_Instructions_Only',
-        display_name='Stage 2: Decision 1 Instructions (Only)',
+        display_name='Stage 2: Decision 1 Instructions',
         app_sequence=['1_start', '6_stg2d1instr'],
         num_demo_participants=demo_instructions,
     ),
     dict(
         name='Stage_2_Decision_1_Game_Only',
-        display_name='Stage 2: Decision 1 Game (Only)',
+        display_name='Stage 2: Decision 1 Game',
         app_sequence=['1_start', '7_stg2d1game'],
         num_demo_participants=demo_game,
     ),
@@ -49,19 +43,14 @@ SESSION_CONFIGS = [
     ),
     dict(
         name='Stage_2_Decision_2_Instructions_Only',
-        display_name='Stage 2: Decision 2 Instructions (Only)',
+        display_name='Stage 2: Decision 2 Instructions',
         app_sequence=['1_start', '8_stg2d2instr'],
         num_demo_participants=demo_instructions,
     ),
-    dict(
-        name='Stage_2_Decision_2_Slider',
-        display_name='Stage 2: Slider Training',
-        app_sequence=['1_start', '5_stg2sldr'],
-        num_demo_participants=demo_instructions,
-    ),
+
     dict(
         name='Stage_2_Decision_2_Game_Only',
-        display_name='Stage 2: Decision 2 Game (Only)',
+        display_name='Stage 2: Decision 2 Game',
         app_sequence=['1_start', '9_stg2d2game'],
         num_demo_participants=demo_game,
     ),
@@ -73,13 +62,13 @@ SESSION_CONFIGS = [
     ),
     dict(
         name='Stage_2_Decision_3_Instructions_Only',
-        display_name='Stage 2: Decision 3 Instructions (Only)',
+        display_name='Stage 2: Decision 3 Instructions',
         app_sequence=['1_start', '10_stg2d3instr'],
         num_demo_participants=demo_instructions,
     ),
     dict(
         name='Stage_2_Decision_3_Game_Only',
-        display_name='Stage 2: Decision 3 Game (Only)',
+        display_name='Stage 2: Decision 3 Game',
         app_sequence=['1_start', '11_stg2d3game'],
         num_demo_participants=demo_game,
     ),
@@ -90,8 +79,20 @@ SESSION_CONFIGS = [
         num_demo_participants=demo_final,
     ),
     dict(
+        name='Stage_2_Instructions_Only',
+        display_name='Stage 2: Instructions',
+        app_sequence=['1_start', '4_stg2instr', '5_stg2sldr', '6_stg2d1instr', '8_stg2d2instr', '10_stg2d3instr'],
+        num_demo_participants=demo_instructions,
+    ),
+    dict(
+        name='Stage_2_Decision_2_Slider',
+        display_name='Stage 2: Slider Training',
+        app_sequence=['1_start', '5_stg2sldr'],
+        num_demo_participants=demo_instructions,
+    ),
+    dict(
         name='Stage_2_Games',
-        display_name='Stage 2 Games (Only)',
+        display_name='Stage 2: All Decisions',
         app_sequence=['1_start', '7_stg2d1game', '9_stg2d2game',
                       '11_stg2d3game'],
         num_demo_participants=demo_final,
@@ -104,14 +105,8 @@ SESSION_CONFIGS = [
     ),
     dict(
         name='Stage_1_Stage_2',
-        display_name='Lab Ready (Stage 1 & 2)',
+        display_name='Full Experiment',
         app_sequence=['1_start', '2_stg1instr', '3_stg1game', '4_stg2instr', '5_stg2sldr', '6_stg2d1instr', '7_stg2d1game', '8_stg2d2instr', '9_stg2d2game', '10_stg2d3instr', '11_stg2d3game'],
-        num_demo_participants=demo_final,
-    ),
-    dict(
-        name='test',
-        display_name='test',
-        app_sequence=['1_start', '3_stg1game', '7_stg2d1game', '9_stg2d2game', '11_stg2d3game'],
         num_demo_participants=demo_final,
     ),
 ]
