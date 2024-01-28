@@ -1,0 +1,278 @@
+/* Player Decision Tables */
+div.decisiontable {
+    margin-top: 75px;
+    margin-bottom: 150px;
+    contain: content;
+    text-align: center;
+}
+.decisiontable table {
+    font-family: "Times New Roman", serif;
+    font-size: 26px;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    contain: content;
+    margin-top: 20px;
+}
+.decisiontable div.guide {
+    margin-top: 10px;
+}
+.decisiontable .guide span{
+    font-size: 24px;
+    font-family: Arial, serif;
+    border: 2px solid black;
+    font-style: normal;
+    padding: 10px;
+}
+.decisiontable th.qlty_header {
+    height: 60px;
+    font-weight: unset;
+    font-style: italic;
+    text-align: center;
+}
+.decisiontable tr.advice td {
+    border-top: 2px solid black;
+}
+tr.decision_header th {
+    text-align: center;
+    height: 40px;
+}
+.decisiontable td {
+    text-align: center;
+    width: 175px;
+}
+.decisiontable tr.advice th {
+    font-weight: unset;
+    font-style: italic;
+    text-align: center;
+    width: 150px;
+}
+.decisiontable tr.error td {
+    font-size: 19px;
+    text-align: center;
+}
+div.decision-div {
+    margin: 100px initial 150px;
+    align-items: center;
+}
+
+/* Decision Slider Design */
+div.decision-slider {
+    margin: 50px 0;
+    font-size: 21px;
+    text-align: center;
+}
+.decision-slider table {
+    border: 2px solid black;
+    text-align: center;
+    padding: 20px;
+    height: 100px;
+    width: 300px;
+}
+#sliderInput {
+    width: 3em;
+}
+
+/* Feedback table */
+div.feed-div {
+    contain: content;
+}
+div.feed {
+    margin-top: 20px;
+    float: left;
+}
+.feed h4 {
+    font-style: unset;
+    font-weight: bold;
+    text-align: unset;
+}
+.feed table{
+    font-size: 19px;
+}
+.feed th {
+    font-weight: unset;
+    height: 50px;
+    width: 400px;
+}
+.feed tr.last th{
+    text-decoration: unset;
+    border-top: 1px solid black;
+    font-weight: bold;
+}
+.last td {
+    border-top: 1px solid black;
+    font-weight: bold;
+}
+.feed td {
+    height: auto;
+}
+
+/* Final Feedback Page */
+div.final {
+    margin-top: 50px;
+    contain: content;
+    font-size: 21px;
+}
+.final table {
+    margin-left: 20px;
+}
+.final h4 {
+    font-style: unset;
+    font-weight: bold;
+    text-align: unset;
+}
+.final h5 {
+    text-align: unset;
+    font-size: 19px;
+}
+.final th {
+    text-decoration: underline;
+    font-weight: unset;
+    height: 50px;
+    width: 400px;
+}
+.final tr.last th{
+    text-decoration: unset;
+    border-top: 1px solid black;
+    font-weight: bold;
+}
+.last td {
+    border-top: 1px solid black;
+    font-weight: bold;
+}
+.final td {
+    height: auto;
+}
+
+/* Draws Table */
+table.draws_table {
+    font-size: 17px;
+    text-align: center;
+    max-width: 1475px;
+    width: 100%;
+}
+.draws_table th {
+    border-bottom: 1px solid black;
+    width: 200px;
+    vertical-align: bottom;
+}
+.draws_table td {
+    height: 20px;
+}
+div.draws_key {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.draws_key table {
+    margin: auto;
+}
+.draws_key td {
+    width: 50px;
+}
+div.draws {
+    text-align: center;
+    contain: content;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.draws h3 {
+    font-size: 21px;
+    font-style: italic;
+}
+.draws span.value {
+    font-weight: bold;
+    margin: 10px;
+    font-size: 24px;
+}
+p.draws {
+    font-size: 21px;
+    text-align: center;
+    margin-top: unset;
+}
+
+/* Scrollable History Table */
+div.tablescroll {
+    contain: content;
+    margin-top: 40px;
+}
+.tablescroll div {
+    height: 150px;
+    text-align: center;
+}
+.tablescroll h4 {
+    font-style: unset;
+    font-weight: bold;
+    position: sticky;
+    border-collapse: collapse;
+}
+.tablescroll table.history_header {
+    border-collapse: collapse;
+    position: sticky;
+    border: unset;
+    top: 0;
+    max-width: 1475px;
+    width: 100%;
+}
+div.scroll {
+    max-width: 1475px;
+    contain: content;
+    overflow-y: scroll;
+    border: 1px solid black;
+    max-height: 110px;
+}
+.tablescroll table {
+    border-top: none;
+    font-size: 19px;
+    text-align: center;
+    max-width: 1475px;
+    width: 100%;
+}
+.tablescroll th {
+    background-color: #f5f5f5;
+    font-size: 19px;
+    border: 1px solid black;
+}
+
+/* Player Payoff Table */
+table.playerpayofftable {
+    margin: auto;
+    align-self: center;
+    font-size: 21px;
+}
+.playerpayofftable td {
+    height: 30px;
+    text-align: center;
+    font-family: "Times New Roman", serif;
+}
+.playerpayofftable .header {
+    text-align: center;
+    height: 40px;
+    font-style: italic;
+    font-weight: normal;
+    font-family: "Times New Roman", serif;
+}
+.playerpayofftable .column1 {
+    width: 100px;
+    text-align: center;
+    border-right: 2px solid black;
+    font-family: "Times New Roman", serif;
+}
+.playerpayofftable .row1 {
+    width: 100px;
+    text-align: center;
+    border-bottom: 2px solid black;
+    font-family: "Times New Roman", serif;
+}
+.payofftableheader {
+    font-family: "Times New Roman", serif;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+}
+.tables-container {
+    display: flex;
+    margin-left: unset;
+    margin-right: unset;
+    margin-top: 20px;
+}
