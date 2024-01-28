@@ -7,7 +7,7 @@ Slider Training
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'STG2_BGN_SLDR'
+    NAME_IN_URL = '5_stg2sldr'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 5
 

@@ -2,12 +2,12 @@ from otree.api import *
 
 
 doc = """
-Stage 2 Decision 3 Instructions
+Stage 2 Decision 2 Instructions
 """
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'STG2_D3_BGN'
+    NAME_IN_URL = '8_stg2d2instr'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
 
@@ -17,8 +17,8 @@ class C(BaseConstants):
 
     # Decision Payoff dictionaries
     pb_payoff = {
-        1: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0},
-        3: {1: 0, 2: 0, 3: 300, 4: 300, 5: 300}
+        1: {1: 0, 2: 0, 3: 300, 4: 300, 5: 300},
+        3: {1: 0, 2: 0, 3: 300, 4: 300, 5: 300},
     }
     pa_payoff = {
         1: {0: 0, 1: 60, 2: 120, 3: 180, 4: 240, 5: 300},

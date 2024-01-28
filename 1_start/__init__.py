@@ -7,7 +7,7 @@ Experiment Wait-room: Sets group matrix and assigns player roles
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'START'
+    NAME_IN_URL = '1_start'
     PLAYERS_PER_GROUP = 6
     NUM_ROUNDS = 1
 
@@ -45,7 +45,7 @@ def creating_session(subsession):
 
 # PAGES
 class ExperimentWaitRoom(WaitPage):
-    title_text = 'Experiment will start soon'
+    title_text = 'Experiment will 1_start soon'
     body_text = 'Please wait patiently'
     wait_for_all_groups = True
 

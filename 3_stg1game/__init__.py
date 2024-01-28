@@ -2,12 +2,12 @@ from otree.api import *
 import random as r
 
 doc = """
-Stage STG1_GAME Game
+Stage 3_stg1game Game
 """
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'STG1_GAME'
+    NAME_IN_URL = '3_stg1game'
     PLAYERS_PER_GROUP = 6
     NUM_ROUNDS = 10
 

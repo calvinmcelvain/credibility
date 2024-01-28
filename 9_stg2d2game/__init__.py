@@ -3,16 +3,16 @@ import random as r
 
 
 doc = """
-Stage 2 Decision 1 Game
+Stage 2 Decision 2 Game
 """
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'STG2_D1_GAME'
+    NAME_IN_URL = '9_stg2d2game'
     PLAYERS_PER_GROUP = 6
     NUM_ROUNDS = 1
 
-    # Timeout seconds for decision page
+    # Timeout seconds
     decision_time = None
     feedback_time = None
 
@@ -24,8 +24,8 @@ class C(BaseConstants):
 
     # Decision Payoff dictionaries
     pb_payoff = {
-        1: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0},
-        3: {1: 300, 2: 300, 3: 300, 4: 300, 5: 300},
+        1: {1: 0, 2: 0, 3: 300, 4: 300, 5: 300},
+        3: {1: 0, 2: 0, 3: 300, 4: 300, 5: 300},
     }
     pa_payoff = {
         1: {0: 0, 1: 60, 2: 120, 3: 180, 4: 240, 5: 300},
@@ -89,11 +89,13 @@ class Player(BasePlayer):
 def creating_session(subsession):
     # Retrieving group matrix from Stage 1
     subsession.set_group_matrix(subsession.session.vars['group_matrix'])
+
     # Assigning Treatments
     groups = subsession.get_groups()
     treatments = ['LCLE', 'LCHE', 'HCLE', 'HCHE']
     for i, group in enumerate(groups):
         group.treatment = treatments[i % len(treatments)]
+
         # Assigning a Signal
         possible_signals = ['Low', 'High']
         group.actual_signal = r.choice(possible_signals)
@@ -111,11 +113,11 @@ def is_displayed_pb(player: Player):
 
 def custom_export(players):
     # header rows
-    yield ['session', 'participant_code', 'player_id', 'role', 'decision_number', 'actual_signal', 'payoff', 'low_advice', 'high_advice', 'invest_signal', 'max_outside_option']
+    yield ['session', 'participant_code', 'player_id', 'role', 'treatment', 'decision_number', 'actual_signal', 'payoff', 'low_advice', 'high_advice', 'random_draw', 'max_outside_option']
     for p in players:
         participant = p.participant
         session = p.session
-        yield [session.code, participant.code, participant.PlayerID, participant.role, 1, p.group.actual_signal, p.payoff, p.pa_low_advice, p.pa_high_advice, p.random_draw, p.pb_outside_option]
+        yield [session.code, participant.code, participant.PlayerID, participant.role, p.group.treatment, 2, p.group.actual_signal, p.payoff, p.pa_low_advice, p.pa_high_advice, p.random_draw, p.pb_outside_option]
 
 
 # PAGES
@@ -196,12 +198,14 @@ class BeforeNextDecision(WaitPage):
         for player in subsession.get_players():
             signal = player.group.actual_signal
             if player.role != C.pa_ROLE:
-                player.participant.vars['D1'] = {'payoff': player.payoff, 'signal': signal,
-                                                     'advice': player.group.pa_advice, 'draw': player.random_draw, 'decision': player.pb_decision(),
-                                                     'other_investors': player.other_investors(),
-                                                     'investors': player.group.total_players_invest(), 'pa_payoff': player.group.pa_payoff()}
+                player.participant.vars['D2'] = {'payoff': player.payoff, 'signal': signal,
+                                                 'advice': player.group.pa_advice, 'draw': player.random_draw,
+                                                 'decision': player.pb_decision(),
+                                                 'other_investors': player.other_investors(),
+                                                 'investors': player.group.total_players_invest(),
+                                                 'pa_payoff': player.group.pa_payoff()}
             else:
-                player.participant.vars['D1'] = {'payoff': player.payoff, 'signal': signal, 'advice': player.group.pa_advice,
+                player.participant.vars['D2'] = {'payoff': player.payoff, 'signal': signal, 'advice': player.group.pa_advice,
                                                  'investors': player.group.total_players_invest(),
                                                  'pb_payoff': player.group.pb_payoff()}
 

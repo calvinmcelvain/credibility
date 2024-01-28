@@ -2,17 +2,21 @@ from otree.api import *
 
 
 doc = """
-Stage 2 Instructions PT 1
+Stage 2 Decision 1 Instructions
 """
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'STG2_BGN'
+    NAME_IN_URL = '6_stg2d1instr'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
 
     # Timeout seconds
     instructions_time = None
+    standby_time = None
+
+    # Defining "Advisor" role
+    pa_ROLE = 'Advisor'
 
     # Decision Payoff dictionaries
     pb_payoff = {
@@ -55,6 +59,10 @@ class P2(Page):
     timeout_seconds = C.instructions_time
 
     @staticmethod
+    def vars_for_template(player: Player):
+        return {'history': player.participant.vars['STG1_history']}
+
+    @staticmethod
     def live_method(player: Player, data):
         player.group.all_players_ready += 1
         players_in_session = len(player.subsession.get_players())
@@ -63,8 +71,13 @@ class P2(Page):
             return {0: 'all_ready'}
 
 
+
 class P3(Page):
     timeout_seconds = C.instructions_time
+
+    @staticmethod
+    def vars_for_template(player: Player):
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
     @staticmethod
     def live_method(player: Player, data):
@@ -79,20 +92,8 @@ class P4(Page):
     timeout_seconds = C.instructions_time
 
     @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
-
-
-class P5(Page):
-    timeout_seconds = C.instructions_time
-
-
-class P6(Page):
-    timeout_seconds = C.instructions_time
+    def vars_for_template(player: Player):
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
     @staticmethod
     def live_method(player: Player, data):
@@ -103,16 +104,4 @@ class P6(Page):
             return {0: 'all_ready'}
 
 
-class P7(Page):
-    timeout_seconds = C.instructions_time
-
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
-
-
-page_sequence = [P1, P2, P3, P4, P5, P6, P7]
+page_sequence = [P1, P2, P3, P4]
