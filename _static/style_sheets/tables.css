@@ -70,7 +70,7 @@ div.decision-slider {
     width: 300px;
 }
 #sliderInput {
-    width: 3em;
+    width: 2em;
 }
 
 /* Feedback table */
@@ -126,7 +126,6 @@ div.final {
     font-size: 19px;
 }
 .final th {
-    text-decoration: underline;
     font-weight: unset;
     height: 50px;
     width: 400px;

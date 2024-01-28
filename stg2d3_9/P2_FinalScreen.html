@@ -1,0 +1,35 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/tables.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+<u><b>End of Experiment</b></u>
+{{ endblock }}
+
+<!-- Information Body -->
+<p>The experiment has now ended. Below you will see a summary of the experiment. You will also see the ECU you earned from the experiment, and your total earnings in dollars, including your $10 show-up fee. </p>
+<p>Thank you for participating. You will now privately receive your payment, by check.</p>
+
+<!-- Stage 2 Feedback -->
+
+<!-- Advisor Page -->
+{{ if player.role == C.pa_ROLE }}
+{{ include '_static/tables/history_tables/stage_2/advisor.html' }}
+
+<!-- Investor Page -->
+{{ else }}
+{{ include '_static/tables/history_tables/stage_2/investor.html' }}
+{{ endif }}
+
+<!-- Total Points & Money Tables -->
+{{ include '_static/tables/feedback_tables/final.html' }}
+
+<div class="button">
+    <button>Continue</button>
+</div>
+
+{{ endblock }}
