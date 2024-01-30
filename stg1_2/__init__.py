@@ -1,5 +1,6 @@
 from otree.api import *
 import random as r
+from settings import grouping
 
 doc = """
 Stage stg1_2 Game
@@ -8,7 +9,7 @@ Stage stg1_2 Game
 
 class C(BaseConstants):
     NAME_IN_URL = 'stg1_2'
-    PLAYERS_PER_GROUP = 2
+    PLAYERS_PER_GROUP = grouping
     NUM_ROUNDS = 10
 
     # Timeout seconds

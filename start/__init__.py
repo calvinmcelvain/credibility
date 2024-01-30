@@ -1,5 +1,5 @@
 from otree.api import *
-
+from settings import grouping
 
 doc = """
 Experiment Wait-room: Sets group matrix and assigns player roles
@@ -8,7 +8,7 @@ Experiment Wait-room: Sets group matrix and assigns player roles
 
 class C(BaseConstants):
     NAME_IN_URL = 'start'
-    PLAYERS_PER_GROUP = 2
+    PLAYERS_PER_GROUP = grouping
     NUM_ROUNDS = 1
 
 

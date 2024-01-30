@@ -1,6 +1,6 @@
 from otree.api import *
 import random as r
-
+from settings import grouping
 
 doc = """
 Stage 2 Decision 3 Game & Final Payoff screen
@@ -9,7 +9,7 @@ Stage 2 Decision 3 Game & Final Payoff screen
 
 class C(BaseConstants):
     NAME_IN_URL = 'stg2d3_9'
-    PLAYERS_PER_GROUP = 2
+    PLAYERS_PER_GROUP = grouping
     NUM_ROUNDS = 1
 
     # Timeout seconds
