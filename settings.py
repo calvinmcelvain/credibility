@@ -1,7 +1,7 @@
 from os import environ
 
-participants = 2
 grouping = 2
+participants = 2
 
 SESSION_CONFIGS = [
     dict(

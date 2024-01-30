@@ -55,6 +55,10 @@ class BaseReadyPage(Page):
             player.group.all_players_ready = 0
             return {0: 'all_ready'}
 
+    @staticmethod
+    def vars_for_template(player: Player):
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
+
 
 class P1(BaseReadyPage):
     pass
@@ -66,19 +70,12 @@ class P2(BaseReadyPage):
         return {'history': player.participant.vars['STG1_history']}
 
 
-class BaseTemplatePage(Page):
-    timeout_seconds = C.instructions_time
 
-    @staticmethod
-    def vars_for_template(player: Player):
-        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
-
-
-class P3(BaseTemplatePage):
+class P3(BaseReadyPage):
     pass
 
 
-class P4(BaseTemplatePage):
+class P4(BaseReadyPage):
     pass
 
 
