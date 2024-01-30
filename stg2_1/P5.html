@@ -14,7 +14,11 @@
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
-    <button type="submit">Continue</button>
+    <div>
+        <p>Please click "Continue"</p>
+        <p style="font-size: 16px;" >*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" onclick="checkAndSubmit(event)">Continue</button>
 </div>
 
 {{ endblock }}

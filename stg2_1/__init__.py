@@ -68,8 +68,8 @@ class P4(BaseReadyPage):
     pass
 
 
-class P5(Page):
-    timeout_seconds = C.instructions_time
+class P5(BaseReadyPage):
+    pass
 
 
 class P6(BaseReadyPage):
