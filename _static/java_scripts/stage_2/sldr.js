@@ -4,8 +4,6 @@ window.onload = function() {
     if (IsClicked === 'true') {
         document.getElementById('validation').disabled = true;
     }
-    document.getElementById("slider").value = 0;
-    document.getElementById("sliderInput").value = 0;
 };
 
 // Websocket to check if all players are ready

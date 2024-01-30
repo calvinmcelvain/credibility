@@ -102,7 +102,7 @@ class P2_Feedback(Page):
         for i in random_draws:
             if player.pb_outside_option > i:
                 payoffs.append(player.invest_value)
-                if player.invest_value > i:
+                if player.invest_value >= i:
                     alt_payoffs.append(player.invest_value)
                     payoff_diff.append(0)
                     sign.append(2)
@@ -130,14 +130,6 @@ class P2_Feedback(Page):
         }
 
         return {'draw_dict': draw_dict, 'invest_value': player.invest_value}
-
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
 
 
 class P3_Feedback(Page):
