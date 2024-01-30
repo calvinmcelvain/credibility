@@ -39,7 +39,8 @@ class Player(BasePlayer):
 
 
 # PAGES
-class P1(Page):
+# Conditional base page
+class BaseReadyPage(Page):
     timeout_seconds = C.instructions_time
 
     @staticmethod
@@ -51,68 +52,32 @@ class P1(Page):
             return {0: 'all_ready'}
 
 
-class P2(Page):
-    timeout_seconds = C.instructions_time
-
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
+class P1(BaseReadyPage):
+    pass
 
 
-class P3(Page):
-    timeout_seconds = C.instructions_time
-
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
+class P2(BaseReadyPage):
+    pass
 
 
-class P4(Page):
-    timeout_seconds = C.instructions_time
+class P3(BaseReadyPage):
+    pass
 
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
+
+class P4(BaseReadyPage):
+    pass
 
 
 class P5(Page):
     timeout_seconds = C.instructions_time
 
 
-class P6(Page):
-    timeout_seconds = C.instructions_time
-
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
+class P6(BaseReadyPage):
+    pass
 
 
-class P7(Page):
-    timeout_seconds = C.instructions_time
-
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
+class P7(BaseReadyPage):
+    pass
 
 
 page_sequence = [P1, P2, P3, P4, P5, P6, P7]

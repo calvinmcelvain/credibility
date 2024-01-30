@@ -52,10 +52,22 @@ class Player(BasePlayer):
 
 
 # PAGES
+# Conditional Page
+class BaseReadyPage(Page):
+    timeout_seconds = C.instructions_time
+
+    @staticmethod
+    def live_method(player: Player, data):
+        player.group.all_players_ready += 1
+        players_in_session = len(player.subsession.get_players())
+        if player.group.all_players_ready == players_in_session:
+            player.group.all_players_ready = 0
+            return {0: 'all_ready'}
+
+
 class P1(Page):
     form_model = 'player'
     form_fields = ['player_id']
-    timeout_seconds = C.instructions_time
 
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -64,135 +76,55 @@ class P1(Page):
         player.participant.vars['PlayerID'] = id
 
 
-class P2(Page):
-    timeout_seconds = C.instructions_time
-
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
+class P2(BaseReadyPage):
+    pass
 
 
-class P3(Page):
-    timeout_seconds = C.instructions_time
-
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
+class P3(BaseReadyPage):
+    pass
 
 
-class P4(Page):
-    timeout_seconds = C.instructions_time
-
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
+class P4(BaseReadyPage):
+    pass
 
 
-class P5(Page):
-    timeout_seconds = C.instructions_time
-
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
+class P5(BaseReadyPage):
+    pass
 
 
-class P6(Page):
-    timeout_seconds = C.instructions_time
-
+class P6(BaseReadyPage):
     @staticmethod
     def vars_for_template(player: Player):
         # Passing the player payoffs
         return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
 
-
-class P7(Page):
-    timeout_seconds = C.instructions_time
-
+class P7(BaseReadyPage):
     @staticmethod
     def vars_for_template(player: Player):
         return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
+
+class P8(BaseReadyPage):
+    pass
 
 
-class P8(Page):
-    timeout_seconds = C.instructions_time
-
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
-
-
-class P9(Page):
-    timeout_seconds = C.instructions_time
-
+class P9(BaseReadyPage):
     @staticmethod
     def vars_for_template(player: Player):
         return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
 
-
-class P10(Page):
+class P10(BaseReadyPage):
     form_model = 'player'
     form_fields = ['pa_low_advice', 'pa_med_advice', 'pa_high_advice']
-    timeout_seconds = C.instructions_time
 
     @staticmethod
     def vars_for_template(player: Player):
         return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
 
-
-class P11(Page):
-    timeout_seconds = C.instructions_time
+class P11(BaseReadyPage):
     form_model = 'player'
     form_fields = ['pb_decision']
 
@@ -201,48 +133,20 @@ class P11(Page):
         advice = 'Invest'
         return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff, 'advice': advice}
 
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
 
-
-class P12(Page):
-    timeout_seconds = C.instructions_time
-
+class P12(BaseReadyPage):
     @staticmethod
     def vars_for_template(player: Player):
         return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
 
-
-class P13(Page):
-    timeout_seconds = C.instructions_time
-
+class P13(BaseReadyPage):
     @staticmethod
     def vars_for_template(player: Player):
         return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
 
-
-class P14(Page):
+class P14(BaseReadyPage):
     timeout_seconds = C.quiz_time
 
     @staticmethod
@@ -250,23 +154,13 @@ class P14(Page):
         return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
 
-class P15(Page):
+class P15(BaseReadyPage):
     timeout_seconds = C.standby_time
 
     @staticmethod
     def vars_for_template(player: Player):
-        if player.participant.vars['role'] == 'Advisor':
-            return {'role': 'Advisor'}
-        else:
-            return {'role': 'Investor'}
-
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
+        role = 'Advisor' if player.participant.vars['role'] == 'Advisor' else 'Investor'
+        return {'role': role}
 
 
 page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14, P15]

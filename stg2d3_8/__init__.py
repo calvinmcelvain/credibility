@@ -40,7 +40,8 @@ class Player(BasePlayer):
 
 
 # PAGES
-class P1(Page):
+# Conditional Base Page
+class BaseReadyPage(Page):
     timeout_seconds = C.instructions_time
 
     @staticmethod
@@ -56,20 +57,12 @@ class P1(Page):
             return {0: 'all_ready'}
 
 
-class P2(Page):
-    timeout_seconds = C.instructions_time
+class P1(BaseReadyPage):
+    pass
 
-    @staticmethod
-    def vars_for_template(player: Player):
-        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
+class P2(BaseReadyPage):
+    pass
 
 
 page_sequence = [P1, P2]
