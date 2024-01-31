@@ -76,6 +76,7 @@ div.decision-slider {
 /* Feedback table */
 div.feed-div {
     contain: content;
+    margin-bottom: 100px;
 }
 div.feed {
     margin-top: 20px;
@@ -196,7 +197,6 @@ div.tablescroll {
     margin-top: 40px;
 }
 .tablescroll div {
-    height: 150px;
     text-align: center;
 }
 .tablescroll h4 {
