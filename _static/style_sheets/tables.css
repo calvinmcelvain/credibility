@@ -1,7 +1,7 @@
 /* Player Decision Tables */
 div.decisiontable {
-    margin-top: 75px;
-    margin-bottom: 150px;
+    margin-top: 50px;
+    margin-bottom: 125px;
     contain: content;
     text-align: center;
 }
@@ -238,6 +238,7 @@ table.playerpayofftable {
     margin: auto;
     align-self: center;
     font-size: 21px;
+    width: 700px;
 }
 .playerpayofftable td {
     height: 30px;
@@ -258,7 +259,7 @@ table.playerpayofftable {
     font-family: "Times New Roman", serif;
 }
 .playerpayofftable .row1 {
-    width: 100px;
+    min-width: 100px;
     text-align: center;
     border-bottom: 2px solid black;
     font-family: "Times New Roman", serif;
@@ -274,4 +275,10 @@ table.playerpayofftable {
     margin-left: unset;
     margin-right: unset;
     margin-top: 20px;
+}
+div.between-margin {
+    margin: 40px;
+}
+p.reminder {
+    text-align: center;
 }
