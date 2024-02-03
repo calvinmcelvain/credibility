@@ -1,8 +1,8 @@
 from os import environ
 
-# Session Player Configs
 grouping = 2
 participants = 2
+
 
 # Timeout Seconds
 DECISION_TIME = 30000   # In milliseconds (a javascript timeout)
