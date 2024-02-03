@@ -3,6 +3,12 @@ from os import environ
 grouping = 2
 participants = 2
 
+
+# Timeout Seconds
+DECISION_TIME = 30000   # In milliseconds (a javascript timeout)
+FEEDBACK_TIME = None  # In seconds
+INSTRUCTIONS_TIME = None
+
 SESSION_CONFIGS = [
     dict(
         name='Stage_1_Instructions_Only',
