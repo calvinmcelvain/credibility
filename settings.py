@@ -1,12 +1,7 @@
 from os import environ
 
-# Session Player Configs
 grouping = 2
 participants = 2
-
-# Timeout Seconds
-decision_time = 30000   # In milliseconds (a javascript timeout)
-feedback_time = 20  # In seconds
 
 SESSION_CONFIGS = [
     dict(

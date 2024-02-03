@@ -1,6 +1,6 @@
 from otree.api import *
 import random as r
-from settings import grouping, decision_time, feedback_time
+from settings import grouping
 
 doc = """
 Stage 2 Decision 1 Game
@@ -13,8 +13,8 @@ class C(BaseConstants):
     NUM_ROUNDS = 1
 
     # Timeout seconds for decision page
-    decision_time = decision_time
-    feedback_time = feedback_time
+    decision_time = None
+    feedback_time = None
 
     # Defining "Advisor" role
     pa_ROLE = 'Advisor'
@@ -135,6 +135,12 @@ class P1_PADecision(Page):
         signal = player.group.actual_signal
         return {'signal': signal, 'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        if timeout_happened:
+            player.pa_low_advice = r.choice(['Invest', 'Keep'])
+            player.pa_high_advice = r.choice(['Invest', 'Keep'])
+
 
 class PlayerBWaitPage(WaitPage):
     body_text = 'Waiting for Player A to give investment advice'
@@ -165,6 +171,11 @@ class P1_PBDecision(Page):
         else:
             player.group.pa_advice = player.group.get_player_by_role(C.pa_ROLE).pa_low_advice
         return {'advice': player.group.pa_advice, 'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
+
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        if timeout_happened:
+            player.pb_outside_option = r.randint(0,300)
 
 
 class PayoffWaitPage(WaitPage):

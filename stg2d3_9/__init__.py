@@ -1,6 +1,6 @@
 from otree.api import *
 import random as r
-from settings import grouping, decision_time, feedback_time
+from settings import grouping
 
 doc = """
 Stage 2 Decision 3 Game & Final Payoff screen
@@ -13,8 +13,8 @@ class C(BaseConstants):
     NUM_ROUNDS = 1
 
     # Timeout seconds
-    decision_time = decision_time
-    feedback_time = feedback_time
+    decision_time = None
+    feedback_time = None
 
     # Defining "Advisor" role
     pa_ROLE = 'Advisor'
@@ -128,18 +128,19 @@ def custom_export(players):
 class P1_PADecision(Page):
     form_model = 'player'
     form_fields = ['pa_low_advice', 'pa_high_advice']
+    timeout_seconds = C.decision_time
     is_displayed = is_displayed_pa
-
-    @staticmethod
-    def js_vars(player):
-        return dict(
-            timeout=C.decision_time,
-        )
 
     @staticmethod
     def vars_for_template(player: Player):
         signal = player.group.actual_signal
         return {'signal': signal, 'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
+
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        if timeout_happened:
+            player.pa_low_advice = r.choice(['Invest', 'Keep'])
+            player.pa_high_advice = r.choice(['Invest', 'Keep'])
 
 
 class PlayerBWaitPage(WaitPage):
@@ -157,12 +158,7 @@ class P1_PBDecision(Page):
     form_model = 'player'
     form_fields = ['pb_outside_option']
     is_displayed = is_displayed_pb
-
-    @staticmethod
-    def js_vars(player):
-        return dict(
-            timeout=C.decision_time,
-        )
+    timeout_seconds = C.decision_time
 
     @staticmethod
     def vars_for_template(player: Player):
@@ -172,6 +168,11 @@ class P1_PBDecision(Page):
             player.group.pa_advice = player.group.get_player_by_role(C.pa_ROLE).pa_low_advice
 
         return {'advice': player.group.pa_advice, 'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
+
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        if timeout_happened:
+            player.pb_outside_option = r.randint(0.300)
 
 
 class PayoffWaitPage(WaitPage):
