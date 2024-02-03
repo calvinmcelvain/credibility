@@ -1,6 +1,6 @@
 from otree.api import *
 import random as r
-from settings import grouping
+from settings import grouping, decision_time, feedback_time
 
 doc = """
 Stage stg1_2 Game
@@ -13,8 +13,8 @@ class C(BaseConstants):
     NUM_ROUNDS = 10
 
     # Timeout seconds
-    decision_time = None
-    feedback_time = None
+    decision_time = decision_time
+    feedback_time = feedback_time
 
     # Defining Role "Advisor"
     pa_ROLE = 'Advisor'
@@ -150,7 +150,12 @@ class P1_PADecision(Page):
     form_model = 'player'
     form_fields = ['pa_low_advice', 'pa_med_advice', 'pa_high_advice']
     is_displayed = is_displayed_pa
-    timeout_seconds = C.decision_time
+
+    @staticmethod
+    def js_vars(player):
+        return dict(
+            timeout=C.decision_time,
+        )
 
     @staticmethod
     def vars_for_template(player: Player):
@@ -174,7 +179,12 @@ class P1_PBDecision(Page):
     form_model = 'player'
     form_fields = ['pb_decision']
     is_displayed = is_displayed_pb
-    timeout_seconds = C.decision_time
+
+    @staticmethod
+    def js_vars(player):
+        return dict(
+            timeout=C.decision_time,
+        )
 
     @staticmethod
     def vars_for_template(player: Player):

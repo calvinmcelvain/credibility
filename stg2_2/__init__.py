@@ -1,5 +1,6 @@
 from otree.api import *
 import random as r
+from settings import decision_time, feedback_time
 
 doc = """
 Slider Training
@@ -11,8 +12,8 @@ class C(BaseConstants):
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 5
 
-    decision_time = None    # Timeout seconds for decision page
-    feedback_time = None    # Timeout seconds for feedback page
+    decision_time = decision_time    # Timeout seconds for decision page
+    feedback_time = feedback_time    # Timeout seconds for feedback page
 
 
 class Subsession(BaseSubsession):
@@ -59,7 +60,12 @@ def custom_export(players):
 class P1_Decision(Page):
     form_model = 'player'
     form_fields = ['pb_outside_option']
-    timeout_seconds = C.decision_time
+
+    @staticmethod
+    def js_vars(player):
+        return dict(
+            timeout=C.decision_time,
+        )
 
     @staticmethod
     def vars_for_template(player):

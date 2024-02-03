@@ -152,3 +152,14 @@ div.quiz {
     margin-left: 20px;
     border: 1px solid black;
 }
+
+/* Custom styles for flashing red background */
+@keyframes flashRed {
+  0% { background-color: red; }
+  50% { background-color: #fff; }
+  100% { background-color: red; }
+}
+
+.flashing-red {
+  animation: flashRed 2s infinite; /* Adjust the duration as needed */
+}

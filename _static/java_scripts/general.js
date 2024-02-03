@@ -13,13 +13,11 @@ window.onload = function () {
 }
 
 
-/// Otree Timer
-document.addEventListener("DOMContentLoaded", function (event) {
-    $('.otree-timer__time-left').on('update.countdown', function (event) {
-        if (event.offset.totalSeconds <= 10) {
-            $('.otree-timer').show();
-        }
-    });
+/// Otree Timeout
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+        $('#timeout').modal('show');
+    }, js_vars.timeout);
 });
 
 

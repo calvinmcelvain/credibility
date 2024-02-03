@@ -1,0 +1,28 @@
+<!-- Modal -->
+<div class="modal fade" id="timeout" tabindex="-1" role="dialog" aria-labelledby="decisionModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 1400px; width: 100%;">
+    <div class="modal-content flashing-red">
+      <div class="modal-header">
+        <h5 class="modal-title"></h5>
+        <button type="button" class="close flashing-red" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">Close</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center; display: flex; flex-direction: column; justify-content: center; height: 400px;">
+        <p style="font-weight: bold; font-size: 28px;">Please make your decision</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // If you want to close the modal using JavaScript
+  function closeBootstrapModal() {
+    $('#timeout').modal('hide'); // Hide Bootstrap modal using jQuery
+  }
+
+  // Close the Bootstrap modal when the close button in modal header is clicked
+  document.querySelector("#timeout .modal-header .close").addEventListener("click", function() {
+    closeBootstrapModal();
+  });
+</script>
