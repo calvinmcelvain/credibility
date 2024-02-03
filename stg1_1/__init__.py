@@ -1,4 +1,5 @@
 from otree.api import *
+from settings import INSTRUCTIONS_TIME
 
 
 doc = """
@@ -11,10 +12,8 @@ class C(BaseConstants):
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
 
-    # Timeout seconds
-    instructions_time = None
-    quiz_time = None
-    standby_time = None
+    # Timeout Seconds
+    instructions_time = INSTRUCTIONS_TIME
 
     # Stage 1 Payoff dictionaries & Investor endowment
     pb_payoff = {
@@ -147,16 +146,12 @@ class P13(BaseReadyPage):
 
 
 class P14(BaseReadyPage):
-    timeout_seconds = C.quiz_time
-
     @staticmethod
     def vars_for_template(player: Player):
         return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
 
 class P15(BaseReadyPage):
-    timeout_seconds = C.standby_time
-
     @staticmethod
     def vars_for_template(player: Player):
         role = 'Advisor' if player.participant.vars['role'] == 'Advisor' else 'Investor'

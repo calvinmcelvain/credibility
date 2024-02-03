@@ -5,8 +5,9 @@ grouping = 2
 participants = 2
 
 # Timeout Seconds
-decision_time = 30000   # In milliseconds (a javascript timeout)
-feedback_time = 20  # In seconds
+DECISION_TIME = 30000   # In milliseconds (a javascript timeout)
+FEEDBACK_TIME = None  # In seconds
+INSTRUCTIONS_TIME = None
 
 SESSION_CONFIGS = [
     dict(

@@ -1,5 +1,5 @@
 from otree.api import *
-
+from settings import INSTRUCTIONS_TIME
 
 doc = """
 Stage 2 Decision 1 Instructions
@@ -12,8 +12,7 @@ class C(BaseConstants):
     NUM_ROUNDS = 1
 
     # Timeout seconds
-    instructions_time = None
-    standby_time = None
+    instructions_time = INSTRUCTIONS_TIME
 
     # Defining "Advisor" role
     pa_ROLE = 'Advisor'
@@ -68,7 +67,6 @@ class P2(BaseReadyPage):
     @staticmethod
     def vars_for_template(player: Player):
         return {'history': player.participant.vars['STG1_history']}
-
 
 
 class P3(BaseReadyPage):

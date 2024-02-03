@@ -1,6 +1,6 @@
 from otree.api import *
 import random as r
-from settings import grouping, decision_time, feedback_time
+from settings import grouping, DECISION_TIME, FEEDBACK_TIME
 
 doc = """
 Stage 2 Decision 3 Game & Final Payoff screen
@@ -13,8 +13,8 @@ class C(BaseConstants):
     NUM_ROUNDS = 1
 
     # Timeout seconds
-    decision_time = decision_time
-    feedback_time = feedback_time
+    decision_time = DECISION_TIME
+    feedback_time = FEEDBACK_TIME
 
     # Defining "Advisor" role
     pa_ROLE = 'Advisor'
@@ -195,8 +195,6 @@ class PayoffWaitPage(WaitPage):
 
 
 class P2_FinalScreen(Page):
-    timeout_seconds = C.feedback_time
-
     @staticmethod
     def vars_for_template(player: Player):
         stage1_payoff = player.participant.vars['STG1_payoff']

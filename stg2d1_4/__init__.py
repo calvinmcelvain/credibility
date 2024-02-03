@@ -1,6 +1,6 @@
 from otree.api import *
 import random as r
-from settings import grouping, decision_time, feedback_time
+from settings import grouping, DECISION_TIME, FEEDBACK_TIME
 
 doc = """
 Stage 2 Decision 1 Game
@@ -13,8 +13,8 @@ class C(BaseConstants):
     NUM_ROUNDS = 1
 
     # Timeout seconds for decision page
-    decision_time = decision_time
-    feedback_time = feedback_time
+    decision_time = DECISION_TIME
+    feedback_time = FEEDBACK_TIME
 
     # Defining "Advisor" role
     pa_ROLE = 'Advisor'

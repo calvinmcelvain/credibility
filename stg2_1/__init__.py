@@ -1,5 +1,5 @@
 from otree.api import *
-
+from settings import INSTRUCTIONS_TIME
 
 doc = """
 Stage 2 Instructions
@@ -12,7 +12,7 @@ class C(BaseConstants):
     NUM_ROUNDS = 1
 
     # Timeout seconds
-    instructions_time = None
+    instructions_time = INSTRUCTIONS_TIME
 
     # Decision Payoff dictionaries
     pb_payoff = {
