@@ -141,12 +141,6 @@ class P1_PADecision(Page):
         signal = player.group.actual_signal
         return {'signal': signal, 'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        if timeout_happened:
-            player.pa_low_advice = r.choice(['Invest', 'Keep'])
-            player.pa_high_advice = r.choice(['Invest', 'Keep'])
-
 
 class PlayerBWaitPage(WaitPage):
     body_text = 'Waiting for Player A to give investment advice'
@@ -178,11 +172,6 @@ class P1_PBDecision(Page):
             player.group.pa_advice = player.group.get_player_by_role(C.pa_ROLE).pa_low_advice
 
         return {'advice': player.group.pa_advice, 'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
-
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        if timeout_happened:
-            player.pb_outside_option = r.randint(0.300)
 
 
 class PayoffWaitPage(WaitPage):

@@ -162,13 +162,6 @@ class P1_PADecision(Page):
         # Passing the player payoffs
         return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff, 'history': reversed(player.in_previous_rounds())}
 
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        if timeout_happened:
-            player.pa_low_advice = r.choice(['Invest', 'Keep'])
-            player.pa_med_advice = r.choice(['Invest', 'Keep'])
-            player.pa_high_advice = r.choice(['Invest', 'Keep'])
-
 
 class PlayerBWaitPage(WaitPage):
     body_text = 'Waiting for Advisor to give investment advice'
@@ -197,11 +190,6 @@ class P1_PBDecision(Page):
         advice_dict = {'Low': player.group.get_player_by_role(C.pa_ROLE).pa_low_advice, 'Medium': player.group.get_player_by_role(C.pa_ROLE).pa_med_advice, 'High': player.group.get_player_by_role(C.pa_ROLE).pa_high_advice}
         advice = advice_dict[estimated_signal]
         return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff, 'advice': advice, 'history': reversed(player.in_previous_rounds())}
-
-    @staticmethod
-    def before_next_page(player: Player, timeout_happened):
-        if timeout_happened:
-            player.pb_decision = r.choice(['Invest', 'Keep'])
 
 
 class P2_BetweenWaitPage(Page):
