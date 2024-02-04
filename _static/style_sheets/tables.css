@@ -77,9 +77,9 @@ div.decision-slider {
 div.feed-div {
     contain: content;
     margin-bottom: 100px;
+    margin-top: 50px;
 }
 div.feed {
-    margin-top: 20px;
     float: left;
 }
 .feed h4 {
@@ -219,6 +219,7 @@ div.scroll {
     overflow-y: scroll;
     border: 1px solid black;
     max-height: 110px;
+    height: 110px;
 }
 .tablescroll table {
     border-top: none;
