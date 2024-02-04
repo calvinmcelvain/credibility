@@ -9,7 +9,7 @@
         </button>
       </div>
       <div class="modal-body" style="text-align: center; display: flex; flex-direction: column; justify-content: center; height: 400px;">
-        <p style="font-weight: bold; font-size: 28px;">Please make your decision</p>
+        <p style="font-weight: bold; font-size: 64px;">!! Please make your decision !!</p>
       </div>
     </div>
   </div>
@@ -17,12 +17,12 @@
 
 <script>
   // If you want to close the modal using JavaScript
-  function closeBootstrapModal() {
+  function closetimeout() {
     $('#timeout').modal('hide'); // Hide Bootstrap modal using jQuery
   }
 
   // Close the Bootstrap modal when the close button in modal header is clicked
   document.querySelector("#timeout .modal-header .close").addEventListener("click", function() {
-    closeBootstrapModal();
+    closetimeout();
   });
 </script>
