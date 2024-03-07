@@ -133,19 +133,7 @@ class P1_PADecision(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        signal = player.group.actual_signal
-        return {'signal': signal, 'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
-
-
-class PlayerBWaitPage(WaitPage):
-    body_text = 'Waiting for Player A to give investment advice'
-    is_displayed = is_displayed_pb
-
-    @staticmethod
-    def after_all_players_arrive(group: Group):
-        for player in group.get_players():
-            if player.role != C.pa_ROLE:
-                player.random_draw = r.randint(1, 300)
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
 
 class P1_PBDecision(Page):
@@ -161,16 +149,21 @@ class P1_PBDecision(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        if player.group.actual_signal == 'High':
-            player.group.pa_advice = player.group.get_player_by_role(C.pa_ROLE).pa_high_advice
-        else:
-            player.group.pa_advice = player.group.get_player_by_role(C.pa_ROLE).pa_low_advice
-        return {'advice': player.group.pa_advice, 'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
 
 class PayoffWaitPage(WaitPage):
     @staticmethod
     def after_all_players_arrive(group: Group):
+        if group.actual_signal == 'High':
+            group.pa_advice = group.get_player_by_role(C.pa_ROLE).pa_high_advice
+        else:
+            group.pa_advice = group.get_player_by_role(C.pa_ROLE).pa_low_advice
+
+        for player in group.get_players():
+            if player.role != C.pa_ROLE:
+                player.random_draw = r.randint(1, 300)
+
         # Payoff Dictionaries
         pb_payoff = C.pb_payoff
         pa_payoff = C.pa_payoff
@@ -206,4 +199,4 @@ class BeforeNextDecision(WaitPage):
                                                  'pb_payoff': player.group.pb_payoff()}
 
 
-page_sequence = [P1_PADecision, PlayerBWaitPage, P1_PBDecision, PayoffWaitPage, BeforeNextDecision]
+page_sequence = [P1_PADecision, P1_PBDecision, PayoffWaitPage, BeforeNextDecision]

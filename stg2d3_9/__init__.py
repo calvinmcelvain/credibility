@@ -130,45 +130,47 @@ def custom_export(players):
 class P1_PADecision(Page):
     form_model = 'player'
     form_fields = ['pa_low_advice', 'pa_high_advice']
-    timeout_seconds = C.decision_time
     is_displayed = is_displayed_pa
 
     @staticmethod
-    def vars_for_template(player: Player):
-        signal = player.group.actual_signal
-        return {'signal': signal, 'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
-
-
-class PlayerBWaitPage(WaitPage):
-    body_text = 'Waiting for Player A to give investment advice'
-    is_displayed = is_displayed_pb
+    def js_vars(player):
+        return dict(
+            timeout=C.decision_time,
+        )
 
     @staticmethod
-    def after_all_players_arrive(group: Group):
-        for player in group.get_players():
-            if player.role != C.pa_ROLE:
-                player.random_draw = r.randint(1, 300)
+    def vars_for_template(player: Player):
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
 
 class P1_PBDecision(Page):
     form_model = 'player'
     form_fields = ['pb_outside_option']
     is_displayed = is_displayed_pb
-    timeout_seconds = C.decision_time
+
+    @staticmethod
+    def js_vars(player):
+        return dict(
+            timeout=C.decision_time,
+        )
 
     @staticmethod
     def vars_for_template(player: Player):
-        if player.group.actual_signal == 'High':
-            player.group.pa_advice = player.group.get_player_by_role(C.pa_ROLE).pa_high_advice
-        else:
-            player.group.pa_advice = player.group.get_player_by_role(C.pa_ROLE).pa_low_advice
-
-        return {'advice': player.group.pa_advice, 'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
 
 class PayoffWaitPage(WaitPage):
     @staticmethod
     def after_all_players_arrive(group: Group):
+        if group.actual_signal == 'High':
+            group.pa_advice = group.get_player_by_role(C.pa_ROLE).pa_high_advice
+        else:
+            group.pa_advice = group.get_player_by_role(C.pa_ROLE).pa_low_advice
+
+        for player in group.get_players():
+            if player.role != C.pa_ROLE:
+                player.random_draw = r.randint(1, 300)
+
         # Payoff Dictionaries
         pb_payoff = C.pb_payoff
         pa_payoff = C.pa_payoff
@@ -226,4 +228,4 @@ class P2_FinalScreen(Page):
         return player.round_number == C.NUM_ROUNDS
 
 
-page_sequence = [P1_PADecision, PlayerBWaitPage, P1_PBDecision, PayoffWaitPage, P2_FinalScreen]
+page_sequence = [P1_PADecision, P1_PBDecision, PayoffWaitPage, P2_FinalScreen]
