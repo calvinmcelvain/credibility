@@ -15,8 +15,10 @@ window.onload = function () {
 
 /// Otree Timeout
 document.addEventListener("DOMContentLoaded", function () {
+    const timeout_id = document.getElementById("timeout_id");
     setTimeout(function () {
-        $('#timeout').modal('show');
+        timeout_id.textContent = "Please Make Your Decision";
+        timeout_id.classList.add("flashing-red");
     }, js_vars.timeout);
 });
 

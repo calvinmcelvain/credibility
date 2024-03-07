@@ -5,10 +5,13 @@
         <div style="margin-top: unset" class="decision-slider" align="center">
             <table>
                 <tr>
-                    <td>
+                    <td style="height: 75px">
                         <label><input type="range" name="pb_outside_option" id="slider" oninput="updateInputValue(this.value)" min="1" max="300"></label>
                         <label><input type="number" id="sliderInput" name="pb_outside_option" oninput="updateSliderFromInput(this.value)" size="3" min="1" max="300"></label>
                     </td>
+                </tr>
+                <tr>
+                    <td id="timeout_id"></td>
                 </tr>
             </table>
         </div>

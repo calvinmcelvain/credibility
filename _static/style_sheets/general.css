@@ -160,6 +160,6 @@ div.quiz {
   100% { background-color: red; }
 }
 
-.flashing-red {
+td.flashing-red {
   animation: flashRed 2s infinite; /* Adjust the duration as needed */
 }

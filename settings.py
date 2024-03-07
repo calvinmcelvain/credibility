@@ -5,7 +5,7 @@ participants = 2
 
 
 # Timeout Seconds
-DECISION_TIME = 300   # In milliseconds (a javascript timeout)
+DECISION_TIME = 3000   # In milliseconds (a javascript timeout)
 FEEDBACK_TIME = None  # In seconds
 INSTRUCTIONS_TIME = None
 

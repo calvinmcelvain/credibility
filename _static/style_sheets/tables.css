@@ -66,7 +66,7 @@ div.decision-slider {
     border: 2px solid black;
     text-align: center;
     padding: 20px;
-    height: 100px;
+    max-height: 150px;
     width: 300px;
 }
 #sliderInput {
