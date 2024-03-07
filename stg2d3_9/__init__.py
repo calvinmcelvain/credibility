@@ -62,7 +62,7 @@ class Group(BaseGroup):
                 return p.payoff
 
     def total_players_invest(self):
-        return sum(1 for player in self.get_players() if player.role != C.pa_ROLE and player.pb_outside_option > player.random_draw)
+        return sum(1 for player in self.get_players() if player.role != C.pa_ROLE and player.pb_outside_option > player.random_draw and player.group.pa_advice == 'Invest')
 
 
 class Player(BasePlayer):
@@ -180,8 +180,11 @@ class PayoffWaitPage(WaitPage):
         decoder = C.decoder
         for player in group.get_players():
             if player.role != C.pa_ROLE:
-                if player.pb_outside_option > player.random_draw:
-                    player.payoff = pb_payoff[decoder[signal]][group.total_players_invest()]
+                if player.group.pa_advice == 'Invest':
+                    if player.pb_outside_option > player.random_draw:
+                        player.payoff = pb_payoff[decoder[signal]][group.total_players_invest()]
+                    else:
+                        player.payoff = player.random_draw
                 else:
                     player.payoff = player.random_draw
             else:
