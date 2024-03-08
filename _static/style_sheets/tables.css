@@ -59,6 +59,7 @@ div.decision-div {
 /* Decision Slider Design */
 div.decision-slider {
     margin: 50px 0;
+    font-family: "Times New Roman", serif;
     font-size: 21px;
     text-align: center;
 }
@@ -196,6 +197,7 @@ p.draws {
 div.tablescroll {
     contain: content;
     margin-top: 40px;
+    border-bottom: 1px solid black;
 }
 .tablescroll div {
     text-align: center;
