@@ -114,6 +114,12 @@ SESSION_CONFIGS = [
         app_sequence=['start', 'stg1_1', 'stg1_2', 'stg2_1', 'stg2_2', 'stg2d1_3', 'stg2d1_4', 'stg2d2_6', 'stg2d2_7', 'stg2d3_8', 'stg2d3_9'],
         num_demo_participants=participants,
     ),
+    dict(
+        name='Slider_page',
+        display_name='Slider Page',
+        app_sequence=['__slider_page'],
+        num_demo_participants=1,
+    ),
 ]
 
 ROOMS = [

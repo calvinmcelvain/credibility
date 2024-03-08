@@ -1,6 +1,14 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/tables.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/general.js' }}"></script>
+<script src="{{ static 'java_scripts/stage_2/sldr.js' }}"></script>
+<script src="{{ static 'java_scripts/stage_2/investor.js' }}"></script>
+
 <!-- Slider & Info. -->
 <div class="decisiontable">
-    <h4 style="margin-top: 20px">Please use the slider to select the <span style="color: red">maximum</span> outside option for which you will choose Invest.</h4>
     <div class="decision-div">
         <div style="margin-top: unset" class="decision-slider" align="center">
             <table>
@@ -11,9 +19,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td id="timeout_id"></td>
                 </tr>
             </table>
         </div>
     </div>
 </div>
+
+{{ endblock }}
