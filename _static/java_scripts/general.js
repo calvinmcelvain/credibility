@@ -37,7 +37,7 @@ function validating() {
   document.getElementById('validation').disabled = true;
   document.querySelectorAll('input[type=radio]').forEach(function (radioButton) {
     radioButton.disabled = true
-  });
+    });
   sessionStorage.setItem('IsClicked', 'true');
   liveSend('send');
 }

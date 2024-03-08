@@ -41,6 +41,9 @@ function DecisionFormsampleadvisor(event) {
             document.getElementById('validation').disabled = true;
             sessionStorage.setItem('IsClicked', 'true');
             liveSend('send');
+            document.querySelectorAll('input[type=radio]').forEach(function (radioButton) {
+            radioButton.hidden = true
+            });
         };
     }
 }
