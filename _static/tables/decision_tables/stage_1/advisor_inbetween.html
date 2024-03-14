@@ -1,4 +1,4 @@
-<h4 style="margin-top: 2vh">Advice Sent, waiting on Investors decision</h4>
+<h4>Advice Sent, waiting on Investors decision</h4>
 <h5>*** The estimated signal you received for this round is marked in <span class="highlight">yellow</span> ***</h5>
 <div class="decisiontable">
     <table>
@@ -9,16 +9,16 @@
         </tr>
         <tr class="decision_header">
             <th></th>
-            <th style="width: 20px" rowspan="4"></th>
+            <th style="width: 2vw" rowspan="4"></th>
             <th {{ if estimated_signal == 'Low'}} bgcolor="yellow" {{ endif }}>Low</th>
-            <th style="width: 20px" rowspan="4"></th>
+            <th style="width: 2vw" rowspan="4"></th>
             <th {{ if estimated_signal == 'Medium' }} bgcolor="yellow" {{ endif }}>Medium</th>
-            <th style="width: 20px" rowspan="4"></th>
+            <th style="width: 2vw" rowspan="4"></th>
             <th {{ if estimated_signal == 'High' }} bgcolor="yellow" {{ endif }}>High</th>
-            <th style="width: 20px" colspan="2" rowspan="4"></th>
+            <th style="width: 2vw" colspan="2" rowspan="4"></th>
         </tr>
         <tr class="advice">
-            <th style="width: 60px; transform: rotate(180deg); writing-mode: vertical-rl;" rowspan="2">Advice</th>
+            <th style="transform: rotate(180deg); writing-mode: vertical-rl;" rowspan="2">Advice</th>
             <td><label><input type="radio" disabled {{ if low == "Invest" }} checked {{ endif }}> Invest</label></td>
             <td><label><input type="radio" disabled {{ if med == "Invest" }} checked {{ endif }}> Invest</label></td>
             <td><label><input type="radio" disabled {{ if high == "Invest" }} checked {{ endif }}> Invest</label></td>
@@ -34,6 +34,6 @@
             <td><span id="med_error" style="color: red; display: none;"></span></td>
             <td><span id="high_error" style="color: red; display: none;"></span></td>
         </tr>
-        <tr style="height: 2vh"></tr>
+        <tr></tr>
     </table>
 </div>

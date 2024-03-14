@@ -31,7 +31,7 @@ h3 {
     font-weight: bold;
 }
 h4 {
-    font-size: 1.4vmax;
+    font-size: 1.3vmax;
     text-align: center;
     font-style: italic;
     text-decoration: underline;
@@ -125,7 +125,7 @@ div.quiz {
 p.quiz {
     font-size: 1.2vmax;
     margin-bottom: unset;
-    margin-top: 2vh;
+    margin-top: 1vh;
 }
 .quiz span {
     color: red;
