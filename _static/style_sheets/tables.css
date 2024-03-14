@@ -1,31 +1,30 @@
 /* Player Decision Tables */
 div.decisiontable {
-    margin-top: 50px;
-    margin-bottom: 125px;
+    margin-top: 1vh;
+    margin-bottom: 6vh;
     contain: content;
     text-align: center;
 }
 .decisiontable table {
     font-family: "Times New Roman", serif;
-    font-size: 26px;
+    font-size: 1.3vmax;
     border: 1px solid black;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 1vh auto 1.2px;
     contain: content;
-    margin-top: 20px;
+    table-layout: fixed;
 }
 .decisiontable div.guide {
-    margin-top: 10px;
+    margin-top: 1vh;
 }
 .decisiontable .guide span{
-    font-size: 24px;
+    font-size: 1.2vmax;
     font-family: Arial, serif;
     border: 2px solid black;
     font-style: normal;
-    padding: 10px;
+    padding: 1vh;
 }
 .decisiontable th.qlty_header {
-    height: 60px;
+    height: 6vh;
     font-weight: unset;
     font-style: italic;
     text-align: center;
@@ -35,20 +34,20 @@ div.decisiontable {
 }
 tr.decision_header th {
     text-align: center;
-    height: 40px;
+    height: 2vh;
 }
 .decisiontable td {
     text-align: center;
-    width: 175px;
+    width: 10vw;
 }
 .decisiontable tr.advice th {
     font-weight: unset;
     font-style: italic;
     text-align: center;
-    width: 150px;
+    width: 3vw;
 }
 .decisiontable tr.error td {
-    font-size: 19px;
+    font-size: 1vmax;
     text-align: center;
 }
 div.decision-div {
@@ -58,9 +57,9 @@ div.decision-div {
 
 /* Decision Slider Design */
 div.decision-slider {
-    margin: 50px 0;
+    margin: 5vh 0;
     font-family: "Times New Roman", serif;
-    font-size: 21px;
+    font-size: 1.3vmax;
     text-align: center;
 }
 .decision-slider table {
@@ -77,11 +76,11 @@ div.decision-slider {
 /* Feedback table */
 div.feed-div {
     contain: content;
-    margin-top: 40px;
-    margin-bottom: 125px;
+    margin-top: 4vh;
+    margin-bottom: 8vh;
 }
 div.feed {
-    margin-top: 20px;
+    margin-top: 2vh;
     float: left;
 }
 .feed h4 {
@@ -90,12 +89,12 @@ div.feed {
     text-align: unset;
 }
 .feed table{
-    font-size: 19px;
+    font-size: 1.2vmax;
 }
 .feed th {
     font-weight: unset;
-    height: 50px;
-    width: 400px;
+    height: 6vh;
+    width: 23vw;
 }
 .feed tr.last th{
     text-decoration: unset;
@@ -112,12 +111,11 @@ div.feed {
 
 /* Final Feedback Page */
 div.final {
-    margin-top: 50px;
     contain: content;
-    font-size: 21px;
+    font-size: 1.3vmax;
 }
 .final table {
-    margin-left: 20px;
+    margin-left: 2vw;
 }
 .final h4 {
     font-style: unset;
@@ -126,12 +124,12 @@ div.final {
 }
 .final h5 {
     text-align: unset;
-    font-size: 19px;
+    font-size: 1.2vmax;
 }
 .final th {
     font-weight: unset;
-    height: 50px;
-    width: 400px;
+    height: 6vh;
+    width: 25vw;
 }
 .final tr.last th{
     text-decoration: unset;
@@ -148,47 +146,48 @@ div.final {
 
 /* Draws Table */
 table.draws_table {
-    font-size: 17px;
+    font-size: 1vmax;
     text-align: center;
-    max-width: 1475px;
+    max-width: 100%;
     width: 100%;
 }
 .draws_table th {
     border-bottom: 1px solid black;
-    width: 200px;
+    width: 10vw;
     vertical-align: bottom;
+    font-size: 1.1vmax;
 }
 .draws_table td {
-    height: 20px;
+    height: 2vh;
 }
 div.draws_key {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 1vh;
 }
 .draws_key table {
     margin: auto;
 }
 .draws_key td {
-    width: 50px;
+    width: 5vw;
 }
 div.draws {
     text-align: center;
     contain: content;
-    margin-bottom: 10px;
-    padding: 10px;
+    margin-bottom: 1vh;
+    padding: 1vh;
 }
 .draws h3 {
-    font-size: 21px;
+    font-size: 1.3vmax;
     font-style: italic;
 }
 .draws span.value {
     font-weight: bold;
-    margin: 10px;
-    font-size: 24px;
+    margin: 1vh;
+    font-size: 1.3vmax;
 }
 p.draws {
-    font-size: 21px;
+    font-size: 1.3vmax;
     text-align: center;
     margin-top: unset;
 }
@@ -196,11 +195,13 @@ p.draws {
 /* Scrollable History Table */
 div.tablescroll {
     contain: content;
-    margin-top: 40px;
+    margin-top: 4vh;
     border-bottom: 1px solid black;
+    calc(100% - 100px);
 }
 .tablescroll div {
     text-align: center;
+    width: 100%;
 }
 .tablescroll h4 {
     font-style: unset;
@@ -213,26 +214,24 @@ div.tablescroll {
     position: sticky;
     border: unset;
     top: 0;
-    max-width: 1475px;
-    width: 100%;
+    width: 100%
 }
 div.scroll {
-    max-width: 1475px;
+    width: 100%;
     contain: content;
     overflow-y: scroll;
     border: 1px solid black;
-    max-height: 110px;
+    max-height: 10vh;
 }
 .tablescroll table {
     border-top: none;
-    font-size: 19px;
+    font-size: 1vmax;
     text-align: center;
-    max-width: 1475px;
-    width: 100%;
+    width: 100%
 }
 .tablescroll th {
     background-color: #f5f5f5;
-    font-size: 19px;
+    font-size: 1vmax;
     border: 1px solid black;
 }
 
@@ -240,17 +239,20 @@ div.scroll {
 table.playerpayofftable {
     margin: auto;
     align-self: center;
-    font-size: 21px;
-    width: 700px;
+    font-size: 1.2vmax;
+    max-width: 40vw;
+    width: 100%;
+    table-layout: fixed;
 }
 .playerpayofftable td {
-    height: 30px;
+    height: 4vh;
     text-align: center;
     font-family: "Times New Roman", serif;
 }
 .playerpayofftable .header {
     text-align: center;
-    height: 40px;
+    font-size: 1.3vmax;
+    height: 5vh;
     font-style: italic;
     font-weight: normal;
     font-family: "Times New Roman", serif;
@@ -262,26 +264,30 @@ table.playerpayofftable {
     font-family: "Times New Roman", serif;
 }
 .playerpayofftable .row1 {
-    min-width: 100px;
     text-align: center;
     border-bottom: 2px solid black;
     font-family: "Times New Roman", serif;
 }
 .payofftableheader {
     font-family: "Times New Roman", serif;
+    font-size: 1.3vmax;
     font-weight: bold;
     text-align: center;
     margin: 0;
 }
 .tables-container {
     display: flex;
-    margin-left: unset;
-    margin-right: unset;
-    margin-top: 20px;
+    justify-content: center;
+    margin-top: 2vh;
+}
+.tables-container > div {
+    flex: 1;
 }
 div.between-margin {
-    margin: 40px;
+    margin: 4vw;
+    flex-grow: 0;
 }
 p.reminder {
     text-align: center;
+    font-size: 1.2vw;
 }

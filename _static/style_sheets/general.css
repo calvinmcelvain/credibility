@@ -5,13 +5,13 @@
 
 /* Otree body */
 div.otree-body.container {
-    max-width: 1500px;
+  max-width: calc(100vw - 100px);
 }
 
 /* General Formatting */
 p {
-    font-size: 21px;
-    margin-top: 20px;
+    font-size: 1.3vmax;
+    margin-top: 2.3vh;
 }
 h1 {
     font-size: 21px;
@@ -26,12 +26,12 @@ h2 {
     text-decoration: underline;
 }
 h3 {
-    font-size: 32px;
+    font-size: 1.8vmax;
     font-family: Arial, serif;
     font-weight: bold;
 }
 h4 {
-    font-size: 21px;
+    font-size: 1.4vmax;
     text-align: center;
     font-style: italic;
     text-decoration: underline;
@@ -39,16 +39,15 @@ h4 {
 h5 {
     font-size: 16px;
     text-align: center;
-    margin-bottom: 20px;
 }
 ul {
-    font-size: 21px;
+    font-size: 1.3vmax;
 }
 ol {
-    font-size: 21px;
+    font-size: 1.3vmax;
 }
 ol li {
-    margin-top: 20px;
+    margin-top: 2vh;
 }
 
 /* Title */
@@ -58,20 +57,20 @@ div.Title {
 div.Title_decision {
     text-align: center;
     contain: content;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
 }
 .page-header {
     margin: unset;
     text-decoration: unset;
     font-weight: unset;
-    padding-bottom: 10px;
+    padding-bottom: 1vh;
 }
 
 /* Button Styling */
 div.button {
-    margin-top: 40px;
-    margin-bottom: 20px;
+    margin-top: 5vh;
+    margin-bottom: 2vh;
     contain: content;
 }
 .button div {
@@ -91,7 +90,7 @@ div.button {
 
 /* sample Page Header Styling */
 span.sample {
-    font-size: 21px;
+    font-size: 1.3vw;
     font-family: Arial, serif;
     color: red;
 }
@@ -100,7 +99,7 @@ span.sample {
 h2.BeforeStart {
     text-decoration: unset;
     text-align: center;
-    margin: 200px;
+    margin: 20vh;
 }
 
 /* Highlighting Styling */
@@ -111,7 +110,7 @@ span.highlight {
 /* id input styling */
 label.id {
     font-size: 21px;
-    margin-top: 30px;
+    margin-top: 3vh;
 }
 input.id {
     max-width: 50px;
@@ -121,35 +120,36 @@ input.id {
 
 /* Instructions Quiz Styling */
 div.quiz {
-    margin-top: 20px;
+    margin-top: 2vh;
 }
-.quiz p {
-    font-size: 19px;
+p.quiz {
+    font-size: 1.2vmax;
     margin-bottom: unset;
-    margin-top: 23px;
+    margin-top: 2vh;
 }
 .quiz span {
     color: red;
-    margin-left: 10px;
+    margin-left: 1vw;
 }
 .quiz .tf {
-    font-size: 19px;
+    font-size: 1.2vmax;
     margin-bottom: unset;
-    margin-top: 10px;
+    margin-top: 1vh;
 }
 .quiz ol {
-    margin-bottom: 10px;
+    margin-bottom: 1vh;
+    font-size: 1.2vmax;
 }
 .quiz-input-num input {
     width: 3em;
-    margin-left: 20px;
+    margin-left: 2vw;
     border: 1px solid black;
 }
 .quiz-input-bol select {
     width: 4em;
-    height: 35px;
-    font-size: 21px;
-    margin-left: 20px;
+    height: 1.5em;
+    font-size: 1.3vmax;
+    margin-left: 2vw;
     border: 1px solid black;
 }
 

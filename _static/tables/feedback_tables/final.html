@@ -1,64 +1,64 @@
 <!--Player History Table (ECUs) -->
-<div class="final">
-    <h4>ECUs earned in Experiment:</h4>
-    <table>
-        <tr>
-            <th>Stage 1 Total ECUs:</th>
-            <td>{{ Stage_1 }}</td>
-        </tr>
-        <tr>
-            <th>Slider Training ECUs:</th>
-            <td>{{ slider_training }}</td>
-        </tr>
-        <tr>
-            <th>Stage 2 Total ECUs:</th>
-            <td>{{ Stage_2 }}</td>
-        </tr>
-        <tr>
+<div style="margin-top: 5vh; contain: content">
+    <div class="final" style="float: right">
+        <h4>ECUs earned in Experiment:</h4>
+        <table>
+            <tr>
+                <th>Stage 1 Total ECUs:</th>
+                <td>{{ Stage_1 }}</td>
+            </tr>
+            <tr>
+                <th>Slider Training ECUs:</th>
+                <td>{{ slider_training }}</td>
+            </tr>
+            <tr>
+                <th>Stage 2 Total ECUs:</th>
+                <td>{{ Stage_2 }}</td>
+            </tr>
+            <tr>
+                <tr class="last" style="height: 1px">
+                <th colspan="2" style="height: 1px"></th>
+            </tr>
+            <tr>
+                <th>Total ECUs:</th>
+                <td>{{ final_payoff }}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="final" style="float: left">
+        <h4>Dollars($) earned in Experiment:</h4>
+        <h5>*** $0.04 = 1 ECU ***</h5>
+        <table class="Final">
+            <tr>
+                <th>Stage 1 Total Dollars ($):</th>
+                <td>{{ real_Stage_1 }}</td>
+            </tr>
+            <tr>
+                <th>Slider Training Dollars ($):</th>
+                <td>{{ real_slider }}</td>
+            </tr>
+            <tr>
+                <th>Stage 2 Total Dollars ($):</th>
+                <td>{{ real_Stage_2 }}</td>
+            </tr>
+            <tr>
+                <tr class="last" style="height: 1px">
+                <th colspan="2" style="height: 1px"></th>
+            </tr>
+            <tr>
+                <th>Total Stage 1 & 2 Dollars ($):</th>
+                <td>{{ real_final }}</td>
+            <tr>
+                <th>Participation Fee ($):</th>
+                <td>$10</td>
+            </tr>
             <tr class="last" style="height: 1px">
-            <th colspan="2" style="height: 1px"></th>
-        </tr>
-        <tr>
-            <th>Total ECUs:</th>
-            <td>{{ final_payoff }}</td>
-        </tr>
-    </table>
-</div>
-
-<!--Player History Table ($) -->
-<div class="final">
-    <h4>Dollars($) earned in Experiment:</h4>
-    <h5>*** $0.04 = 1 ECU ***</h5>
-    <table class="Final">
-        <tr>
-            <th>Stage 1 Total Dollars ($):</th>
-            <td>{{ real_Stage_1 }}</td>
-        </tr>
-        <tr>
-            <th>Slider Training Dollars ($):</th>
-            <td>{{ real_slider }}</td>
-        </tr>
-        <tr>
-            <th>Stage 2 Total Dollars ($):</th>
-            <td>{{ real_Stage_2 }}</td>
-        </tr>
-        <tr>
-            <tr class="last" style="height: 1px">
-            <th colspan="2" style="height: 1px"></th>
-        </tr>
-        <tr>
-            <th>Total Stage 1 & 2 Dollars ($):</th>
-            <td>{{ real_final }}</td>
-        <tr>
-            <th>Participation Fee ($):</th>
-            <td>$10</td>
-        </tr>
-        <tr class="last" style="height: 1px">
-            <th colspan="2" style="height: 1px"></th>
-        </tr>
-        <tr class="last">
-            <th>Ending Total Dollars ($)</th>
-            <td>{{ final }}</td>
-        </tr>
-    </table>
+                <th colspan="2" style="height: 1px"></th>
+            </tr>
+            <tr class="last">
+                <th>Ending Total Dollars ($)</th>
+                <td>{{ final }}</td>
+            </tr>
+        </table>
+    </div>
 </div>
