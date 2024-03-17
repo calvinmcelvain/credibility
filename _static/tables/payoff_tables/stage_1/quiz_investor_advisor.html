@@ -1,0 +1,75 @@
+<div class="tables-container" style="margin-top: 1vh">
+    <div>
+        <p class="payofftableheader" style="font-size: 1.1vmax">Investors Payoff Table</p>
+        <table class="playerpayofftable" style="font-size: 1vmax">
+            <tr>
+                <td></td>
+                <td class="header" style="font-size: 1.1vmax; height: 2vh" colspan="5">Total Investors (including you)</td>
+            </tr>
+            <tr>
+                <td style="height: 1.5vh"><i>Quality</i></td>
+                <td style="height: 1.5vh" class="row1">1</td>
+                <td style="height: 1.5vh" class="row1">2</td>
+                <td style="height: 1.5vh" class="row1">3</td>
+                <td style="height: 1.5vh" class="row1">4</td>
+                <td style="height: 1.5vh" class="row1">5</td>
+            </tr>
+            <tr>
+                <td style="height: 1.5vh" class="column1">Low</td>
+                {{ for n, p in pb_table.1.items() }}
+                <td style="height: 1.5vh">{{ p }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td style="height: 1.5vh" class="column1">Medium</td>
+                {{ for n, p in pb_table.2.items() }}
+                <td style="height: 1.5vh">{{ p }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td style="height: 1.5vh" class="column1">High</td>
+                {{ for n, p in pb_table.3.items() }}
+                <td style="height: 1.5vh">{{ p }}</td>
+                {{ endfor }}
+            </tr>
+        </table>
+        <p class="reminder" style="font-size: 1.1vmax">Remember, If you choose to keep, you will receive a payoff of <span style="text-decoration: underline">12 ECU</span></p>
+    </div>
+    <div class="between-margin"></div>
+    <div>
+        <p class="payofftableheader" style="font-size: 1.1vmax">Advisor's Payoff Table</p>
+        <table class="playerpayofftable" style="font-size: 1vmax">
+            <tr>
+                <td></td>
+                <td class="header" colspan="6" style="font-size: 1.1vmax; height: 2vh">Total Investors</td>
+            </tr>
+            <tr>
+                <td><i>Quality</i></td>
+                <td style="height: 1.5vh" class="row1">0</td>
+                <td style="height: 1.5vh" class="row1">1</td>
+                <td style="height: 1.5vh" class="row1">2</td>
+                <td style="height: 1.5vh" class="row1">3</td>
+                <td style="height: 1.5vh" class="row1">4</td>
+                <td style="height: 1.5vh" class="row1">5</td>
+            </tr>
+            <tr>
+                <td style="height: 1.5vh" class="column1">Low</td>
+                {{ for n, p in pa_table.1.items() }}
+                <td style="height: 1.5vh">{{ p }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td style="height: 1.5vh" class="column1">Medium</td>
+                {{ for n, p in pa_table.2.items() }}
+                <td style="height: 1.5vh">{{ p }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td style="height: 1.5vh" class="column1">High</td>
+                {{ for n, p in pa_table.3.items() }}
+                <td style="height: 1.5vh">{{ p }}</td>
+                {{ endfor }}
+            </tr>
+        </table>
+    </div>
+</div>

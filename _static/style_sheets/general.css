@@ -7,6 +7,9 @@
 div.otree-body.container {
   max-width: calc(100vw - 100px);
 }
+.page-header {
+    padding-top: 1vh;
+}
 
 /* General Formatting */
 p {
@@ -120,12 +123,12 @@ input.id {
 
 /* Instructions Quiz Styling */
 div.quiz {
-    margin-top: 2vh;
+    margin-top: 1vh;
 }
 p.quiz {
-    font-size: 1.2vmax;
+    font-size: 1.1vmax;
     margin-bottom: unset;
-    margin-top: 1vh;
+    margin-top: 0.5vh;
 }
 .quiz span {
     color: red;
@@ -137,8 +140,8 @@ p.quiz {
     margin-top: 1vh;
 }
 .quiz ol {
-    margin-bottom: 1vh;
-    font-size: 1.2vmax;
+    margin-bottom: 0.5vh;
+    font-size: 1.1vmax;
 }
 .quiz-input-num input {
     width: 3em;
@@ -148,7 +151,7 @@ p.quiz {
 .quiz-input-bol select {
     width: 4em;
     height: 1.5em;
-    font-size: 1.3vmax;
+    font-size: 1.1vmax;
     margin-left: 2vw;
     border: 1px solid black;
 }

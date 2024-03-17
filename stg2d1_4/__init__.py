@@ -72,7 +72,7 @@ class Player(BasePlayer):
 
     # Player history functions meant to be passed to template in feedback page
     def other_investors(self):
-        if self.role != C.pa_ROLE and self.pb_outside_option > self.random_draw:
+        if self.role != C.pa_ROLE and self.pb_outside_option > self.random_draw and self.group.pa_advice != 'Keep':
             others = (self.group.total_players_invest() - 1)
             return others
         else:
