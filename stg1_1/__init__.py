@@ -124,6 +124,12 @@ class P10(BaseReadyPage):
 
 
 class P11(BaseReadyPage):
+    @staticmethod
+    def vars_for_template(player: Player):
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
+
+
+class P12(BaseReadyPage):
     form_model = 'player'
     form_fields = ['pb_decision']
 
@@ -131,12 +137,6 @@ class P11(BaseReadyPage):
     def vars_for_template(player: Player):
         advice = 'Invest'
         return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff, 'advice': advice}
-
-
-class P12(BaseReadyPage):
-    @staticmethod
-    def vars_for_template(player: Player):
-        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
 
 class P13(BaseReadyPage):
@@ -154,8 +154,14 @@ class P14(BaseReadyPage):
 class P15(BaseReadyPage):
     @staticmethod
     def vars_for_template(player: Player):
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
+
+
+class P16(BaseReadyPage):
+    @staticmethod
+    def vars_for_template(player: Player):
         role = 'Advisor' if player.participant.vars['role'] == 'Advisor' else 'Investor'
         return {'role': role}
 
 
-page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14, P15]
+page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14, P15, P16]

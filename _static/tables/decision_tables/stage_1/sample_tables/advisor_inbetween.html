@@ -10,23 +10,23 @@
         <tr class="decision_header">
             <th></th>
             <th style="width: 2vw" rowspan="4"></th>
-            <th {{ if estimated_signal == 'Low'}} bgcolor="yellow" {{ endif }}>Low</th>
+            <th bgcolor="yellow"}>Low</th>
             <th style="width: 2vw" rowspan="4"></th>
-            <th {{ if estimated_signal == 'Medium' }} bgcolor="yellow" {{ endif }}>Medium</th>
+            <th>Medium</th>
             <th style="width: 2vw" rowspan="4"></th>
-            <th {{ if estimated_signal == 'High' }} bgcolor="yellow" {{ endif }}>High</th>
+            <th>High</th>
             <th style="width: 2vw" colspan="2" rowspan="4"></th>
         </tr>
         <tr class="advice">
             <th style="transform: rotate(180deg); writing-mode: vertical-rl;" rowspan="2">Advice</th>
-            <td><label><input type="radio" disabled {{ if low == "Invest" }} checked {{ endif }}> Invest</label></td>
-            <td><label><input type="radio" disabled {{ if med == "Invest" }} checked {{ endif }}> Invest</label></td>
-            <td><label><input type="radio" disabled {{ if high == "Invest" }} checked {{ endif }}> Invest</label></td>
+            <td><label><input type="radio" disabled checked> Invest</label></td>
+            <td><label><input type="radio" disabled> Invest</label></td>
+            <td><label><input type="radio" disabled> Invest</label></td>
         </tr>
         <tr>
-            <td class="column1"><label><input type="radio" disabled {{ if low == "Keep" }} checked {{ endif }}> Keep</label></td>
-            <td><label><input type="radio" disabled {{ if med == "Keep" }} checked {{ endif }}> Keep</label></td>
-            <td><label><input type="radio" disabled {{ if high == "Keep" }} checked {{ endif }}> Keep</label></td>
+            <td class="column1"><label><input type="radio" disabled > Keep</label></td>
+            <td><label><input type="radio" disabled checked> Keep</label></td>
+            <td><label><input type="radio" disabled checked> Keep</label></td>
         </tr>
         <tr class="error">
             <th></th>
