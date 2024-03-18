@@ -7,7 +7,6 @@ div.decisiontable {
 }
 .decisiontable table {
     font-family: "Times New Roman", serif;
-    font-size: 1.3vmax;
     border: 1px solid black;
     margin: 1vh auto 1.2px;
     contain: content;
@@ -17,7 +16,7 @@ div.decisiontable {
     margin-top: 1vh;
 }
 .decisiontable .guide span{
-    font-size: 1.2vmax;
+    font-size: 1vmax;
     font-family: Arial, serif;
     border: 2px solid black;
     font-style: normal;
@@ -59,7 +58,6 @@ div.decision-div {
 div.decision-slider {
     margin: 5vh 0;
     font-family: "Times New Roman", serif;
-    font-size: 1.3vmax;
     text-align: center;
 }
 .decision-slider table {
@@ -89,7 +87,7 @@ div.feed {
     text-align: unset;
 }
 .feed table{
-    font-size: 1.2vmax;
+    font-size: 1vmax;
 }
 .feed th {
     font-weight: unset;
@@ -112,7 +110,6 @@ div.feed {
 /* Final Feedback Page */
 div.final {
     contain: content;
-    font-size: 1.3vmax;
 }
 .final table {
     margin-left: 2vw;
@@ -124,7 +121,7 @@ div.final {
 }
 .final h5 {
     text-align: unset;
-    font-size: 1.2vmax;
+    font-size: 1vmax;
 }
 .final th {
     font-weight: unset;
@@ -146,7 +143,7 @@ div.final {
 
 /* Draws Table */
 table.draws_table {
-    font-size: 1vmax;
+    font-size: 0.9vmax;
     text-align: center;
     max-width: 100%;
     width: 100%;
@@ -155,7 +152,7 @@ table.draws_table {
     border-bottom: 1px solid black;
     width: 10vw;
     vertical-align: bottom;
-    font-size: 1.1vmax;
+    font-size: 1vmax;
 }
 .draws_table td {
     height: 2vh;
@@ -178,16 +175,13 @@ div.draws {
     padding: 1vh;
 }
 .draws h3 {
-    font-size: 1.3vmax;
     font-style: italic;
 }
 .draws span.value {
     font-weight: bold;
     margin: 1vh;
-    font-size: 1.3vmax;
 }
 p.draws {
-    font-size: 1.3vmax;
     text-align: center;
     margin-top: unset;
 }
@@ -239,7 +233,6 @@ div.scroll {
 table.playerpayofftable {
     margin: auto;
     align-self: center;
-    font-size: 1.2vmax;
     max-width: 40vw;
     width: 100%;
     table-layout: fixed;
@@ -251,7 +244,7 @@ table.playerpayofftable {
 }
 .playerpayofftable .header {
     text-align: center;
-    font-size: 1.3vmax;
+    font-size: 1.2vmax;
     height: 5vh;
     font-style: italic;
     font-weight: normal;
@@ -270,7 +263,6 @@ table.playerpayofftable {
 }
 .payofftableheader {
     font-family: "Times New Roman", serif;
-    font-size: 1.3vmax;
     font-weight: bold;
     text-align: center;
     margin: 0;
@@ -289,5 +281,5 @@ div.between-margin {
 }
 p.reminder {
     text-align: center;
-    font-size: 1.2vw;
+    font-size: 1vw;
 }

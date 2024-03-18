@@ -116,8 +116,14 @@ SESSION_CONFIGS = [
     ),
     dict(
         name='Slider_page',
-        display_name='Slider Page',
-        app_sequence=['__slider_page'],
+        display_name='ADMIN: Slider Page',
+        app_sequence=['__admin_slider'],
+        num_demo_participants=1,
+    ),
+    dict(
+        name='experimenter_page',
+        display_name='ADMIN: Instructions Page',
+        app_sequence=['__admin_exp'],
         num_demo_participants=1,
     ),
 ]

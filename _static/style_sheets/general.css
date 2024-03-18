@@ -4,32 +4,48 @@
 }
 
 /* Otree body */
-div.otree-body.container {
-  max-width: calc(100vw - 100px);
+@media screen and (max-width: 1200px) {
+    div.otree-body.container {
+        max-width: calc(100vw - 100px);
+    }
+}
+@media screen and (max-width: 2000px) {
+    div.otree-body.container {
+        max-width: calc(100vw - 200px);
+    }
+}
+@media screen and (max-width: 3500px) {
+    div.otree-body.container {
+        max-width: calc(100vw - 300px);
+    }
 }
 .page-header {
     padding-top: 1vh;
 }
 
 /* General Formatting */
+.dfont {
+    font-size: 1.1vmax;
+}
+
 p {
-    font-size: 1.3vmax;
+    font-size: 1.1vmax;
     margin-top: 2.3vh;
 }
 h1 {
-    font-size: 21px;
+    font-size: 1.2vmax;
     text-align: center;
     text-decoration: underline;
     font-style: italic;
 }
 h2 {
-    font-size: 38px;
+    font-size: 1.5vmax;
     font-weight: bold;
     font-family: Arial, serif;
     text-decoration: underline;
 }
 h3 {
-    font-size: 1.8vmax;
+    font-size: 1.5vmax;
     font-family: Arial, serif;
     font-weight: bold;
 }
@@ -40,7 +56,7 @@ h4 {
     text-decoration: underline;
 }
 h5 {
-    font-size: 16px;
+    font-size: 0.9vmax;
     text-align: center;
 }
 ul {
@@ -82,18 +98,18 @@ div.button {
 .button button {
     margin: unset;
     float: right;
-    font-size: 19px;
+    font-size: 0.9vmax;
 }
 .button p {
     margin: unset;
 }
 .button p.bttm-sent {
-    font-size: 18px;
+    font-size: 0.8vmax;
 }
 
 /* sample Page Header Styling */
 span.sample {
-    font-size: 1.3vw;
+    font-size: 1.2vw;
     font-family: Arial, serif;
     color: red;
 }
@@ -112,12 +128,10 @@ span.highlight {
 
 /* id input styling */
 label.id {
-    font-size: 21px;
     margin-top: 3vh;
 }
 input.id {
     max-width: 50px;
-    font-size: 19px;
     border: 1px solid black;
 }
 
@@ -126,7 +140,6 @@ div.quiz {
     margin-top: 1vh;
 }
 p.quiz {
-    font-size: 1.1vmax;
     margin-bottom: unset;
     margin-top: 0.5vh;
 }
