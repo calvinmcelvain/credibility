@@ -71,6 +71,7 @@ class Player(BasePlayer):
     pa_high_advice = models.StringField(blank=False)
     pb_outside_option = models.IntegerField(blank=False, min=0, max=300)
     random_draw = models.IntegerField(min=0, max=300)
+    total = models.FloatField()
 
     # Player history functions meant to be passed to template in feedback page
     def other_investors(self):
@@ -119,11 +120,11 @@ def is_displayed_pb(player: Player):
 
 def custom_export(players):
     # header rows
-    yield ['session', 'participant_code', 'player_id', 'role', 'treatment', 'decision_number', 'actual_signal', 'payoff', 'payoff_counts', 'low_advice', 'high_advice', 'random_draw', 'max_outside_option']
+    yield ['session', 'participant_code', 'player_id', 'role', 'treatment', 'decision_number', 'actual_signal', 'payoff', 'payoff_counts', 'low_advice', 'high_advice', 'random_draw', 'max_outside_option', 'total$']
     for p in players:
         participant = p.participant
         session = p.session
-        yield [session.code, participant.code, participant.PlayerID, participant.role, p.group.treatment, 1, p.group.actual_signal, p.payoff, p.group.decision_towards_payment, p.pa_low_advice, p.pa_high_advice, p.random_draw, p.pb_outside_option]
+        yield [session.code, participant.code, participant.PlayerID, participant.role, p.group.treatment, 1, p.group.actual_signal, p.payoff, p.group.decision_towards_payment, p.pa_low_advice, p.pa_high_advice, p.random_draw, p.pb_outside_option, p.total]
 
 
 # PAGES
@@ -216,12 +217,14 @@ class P2_FinalScreen(Page):
         real_stg2 = stage2_payoff.to_real_world_currency(player.session)
         real_final = final_payoff.to_real_world_currency(player.session)
         final = real_final + 10
+        player.total = final
         decision_counts = player.group.in_round(1).decision_towards_payment
         history = {
             1: player.participant.vars['D1'],
             2: player.participant.vars['D2'],
             3: player.in_all_rounds()
         }
+
         return {'final_payoff': final_payoff, 'Stage_1': stage1_payoff, 'Stage_2': stage2_payoff, 'slider_training': SLDR_payoff
                 , 'real_final': real_final, 'real_Stage_1': real_stg1, 'real_slider': real_sldr, 'real_Stage_2': real_stg2,
                 'final': final, 'decision_counts': decision_counts, 'history': history}
