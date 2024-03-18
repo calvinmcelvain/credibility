@@ -7,7 +7,7 @@ Your app description
 
 
 class C(BaseConstants):
-    NAME_IN_URL = '__slider_page'
+    NAME_IN_URL = '__admin_slider'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
 

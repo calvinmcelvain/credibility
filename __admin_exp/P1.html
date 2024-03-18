@@ -1,0 +1,26 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/general.js' }}"></script>
+
+{{ block title }}
+<b><u>ID Screen</u></b>
+{{ endblock }}
+
+<!-- Instructions Body -->
+{{ include '_static/instructions/stage_1/1_id.html' }}
+
+<!-- Formfields-->
+<label class="id dfont">Please enter your unique ID number: <input class="id dfont" maxlength="2" max="99" name="player_id" id="player_id" type="number"></label>
+<span id="errorMessage" style="color: red; display: none;"></span>
+
+<!-- Next Button with confirmation pop-up-->
+<div class="button">
+    <button onclick="validateForm(event)">Continue</button>
+</div>
+
+<!-- Pop-up -->
+{{ include '_static/popups/id.html' }}
+
+{{ endblock }}
