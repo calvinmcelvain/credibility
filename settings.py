@@ -5,7 +5,7 @@ participants = 2
 
 
 # Timeout Seconds
-DECISION_TIME = 3000   # In milliseconds (a javascript timeout)
+DECISION_TIME = 20000   # In milliseconds (a javascript timeout)
 FEEDBACK_TIME = None  # In seconds
 INSTRUCTIONS_TIME = None
 
@@ -21,6 +21,7 @@ SESSION_CONFIGS = [
         display_name='Stage 1: Game',
         app_sequence=['start', 'stg1_2'],
         num_demo_participants=participants,
+        use_browser_bots=True
     ),
     dict(
         name='Stage_1',
@@ -138,7 +139,7 @@ ROOMS = [
 ]
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=0.04, participation_fee=10.00, doc=""
+    real_world_currency_per_point=0.04, participation_fee=5.00, doc=""
 )
 
 POINTS_CUSTOM_NAME = 'ECU'
