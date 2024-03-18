@@ -4,19 +4,14 @@
 }
 
 /* Otree body */
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 2000px) {
     div.otree-body.container {
         max-width: calc(100vw - 100px);
     }
 }
-@media screen and (max-width: 2000px) {
-    div.otree-body.container {
-        max-width: calc(100vw - 200px);
-    }
-}
 @media screen and (max-width: 3500px) {
     div.otree-body.container {
-        max-width: calc(100vw - 300px);
+        max-width: calc(100vw - 200px);
     }
 }
 .page-header {
@@ -27,7 +22,6 @@
 .dfont {
     font-size: 1.1vmax;
 }
-
 p {
     font-size: 1.1vmax;
     margin-top: 2.3vh;
@@ -58,12 +52,6 @@ h4 {
 h5 {
     font-size: 0.9vmax;
     text-align: center;
-}
-ul {
-    font-size: 1.3vmax;
-}
-ol {
-    font-size: 1.3vmax;
 }
 ol li {
     margin-top: 2vh;
@@ -138,10 +126,11 @@ input.id {
 /* Instructions Quiz Styling */
 div.quiz {
     margin-top: 1vh;
+    margin-bottom: unset;
 }
 p.quiz {
     margin-bottom: unset;
-    margin-top: 0.5vh;
+    margin-top: 0.3vh;
 }
 .quiz span {
     color: red;
@@ -150,14 +139,16 @@ p.quiz {
 .quiz .tf {
     font-size: 1.2vmax;
     margin-bottom: unset;
-    margin-top: 1vh;
 }
 .quiz ol {
-    margin-bottom: 0.5vh;
     font-size: 1.1vmax;
+}
+.quiz li {
+    margin-top: 1vh;
 }
 .quiz-input-num input {
     width: 3em;
+    height: 1.5em;
     margin-left: 2vw;
     border: 1px solid black;
 }
