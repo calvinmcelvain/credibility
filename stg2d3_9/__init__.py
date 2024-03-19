@@ -216,7 +216,7 @@ class P2_FinalScreen(Page):
         real_sldr = SLDR_payoff.to_real_world_currency(player.session)
         real_stg2 = stage2_payoff.to_real_world_currency(player.session)
         real_final = final_payoff.to_real_world_currency(player.session)
-        final = real_final + 10
+        final = real_final + 5
         player.total = final
         decision_counts = player.group.in_round(1).decision_towards_payment
         history = {

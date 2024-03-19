@@ -21,7 +21,6 @@ SESSION_CONFIGS = [
         display_name='Stage 1: Game',
         app_sequence=['start', 'stg1_2'],
         num_demo_participants=participants,
-        use_browser_bots=True
     ),
     dict(
         name='Stage_1',
