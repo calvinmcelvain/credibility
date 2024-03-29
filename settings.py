@@ -1,7 +1,7 @@
 from os import environ
 
 grouping = 6
-participants = 24
+participants = 12
 
 
 # Timeout Seconds
@@ -132,8 +132,6 @@ ROOMS = [
     dict(
         name='lab',
         display_name='lab',
-        participant_label_file='_rooms/lab',
-        use_secure_urls=False
     ),
 ]
 

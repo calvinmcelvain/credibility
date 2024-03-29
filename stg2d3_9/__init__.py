@@ -73,6 +73,11 @@ class Player(BasePlayer):
     random_draw = models.IntegerField(min=0, max=300)
     total = models.CurrencyField()
 
+    # Demographics Fields
+    gender = models.StringField(blank=False)
+    age = models.IntegerField(blank=False)
+    ethnicity = models.StringField(blank=False)
+
     # Player history functions meant to be passed to template in feedback page
     def other_investors(self):
         if self.role != C.pa_ROLE and self.pb_outside_option > self.random_draw and self.group.pa_advice != 'Keep':
@@ -232,6 +237,15 @@ class P2_FinalScreen(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == C.NUM_ROUNDS
+
+
+class P3_Demographics(Page):
+    form_model = 'player'
+    form_fields = ['gender', 'age', 'ethnicity']
+
+
+class P4_End(Page):
+    pass
 
 
 page_sequence = [P1_PADecision, P1_PBDecision, PayoffWaitPage, P2_FinalScreen]

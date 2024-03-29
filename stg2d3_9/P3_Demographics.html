@@ -1,0 +1,51 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/tables.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/stage_1/quiz.js' }}"></script>
+
+{{ block title }}
+<b><u>Survey</u></b>
+{{ endblock }}
+
+<!--Instruction Quiz -->
+<p>This is a simple Demographic survey. All personally identifiable information contained in this survey is considered privileged and confidential information.</p>
+<ol>
+    <li>Please enter your age: <label class="quiz-input-num"><input size="2" name="age" type="number"></label>{{ formfield_errors 'age' }}</li>
+    <li>Please enter your gender:
+        <label class="quiz-input-bol">
+                <select name="gender" style="width: 12em">
+                    <option></option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Transgender">Transgender</option>
+                    <option value="Nonbinary">Nonbinary</option>
+                    <option value="Other">Other</option>
+                    <option value="PNA">Prefer not to answer</option>
+                </select>
+            </label>
+    {{ formfield_errors 'gender' }}</li>
+    <li>Please enter your ethnicity
+        <label class="quiz-input-bol">
+                <select name="ethnicity" style="width: 12em">
+                    <option></option>
+                    <option value="White">White/Caucasian</option>
+                    <option value="Asian">Asian</option>
+                    <option value="Native Hawaiian or Pacific Islander">Native Hawaiian or Pacific Islander</option>
+                    <option value="Hispanic or Latino">Hispanic or Latino</option>
+                    <option value="African-American">African-American</option>
+                    <option value="Native American">Native American</option>
+                    <option value="Other">Other</option>
+                    <option value="PNA">Prefer not to answer</option>
+                </select>
+            </label>
+    {{ formfield_errors 'ethnicity' }}</li>
+</ol>
+
+<!--Next Button-->
+<div class="button" style="margin-top: 0.1vh">
+    <button>Continue</button>
+</div>
+
+{{ endblock }}
