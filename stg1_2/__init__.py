@@ -1,5 +1,4 @@
 from otree.api import *
-import random as r
 from settings import grouping, DECISION_TIME, FEEDBACK_TIME
 
 doc = """
