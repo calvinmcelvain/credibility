@@ -70,6 +70,9 @@ div.decision-slider {
 #sliderInput {
     width: 2em;
 }
+.decision-slider label{
+    font-size: 1.1vmax;
+}
 
 /* Feedback table */
 div.feed-div {
@@ -110,9 +113,6 @@ div.feed {
 /* Final Feedback Page */
 div.final {
     contain: content;
-}
-.final table {
-    margin-left: 2vw;
 }
 .final h4 {
     font-style: unset;
@@ -164,6 +164,7 @@ div.draws_key {
 }
 .draws_key table {
     margin: auto;
+    font-size: 0.9vmax;
 }
 .draws_key td {
     width: 5vw;
@@ -240,6 +241,7 @@ table.playerpayofftable {
 .playerpayofftable td {
     height: 4vh;
     text-align: center;
+    font-size: 1.1vmax;
     font-family: "Times New Roman", serif;
 }
 .playerpayofftable .header {

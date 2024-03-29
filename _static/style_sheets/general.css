@@ -55,6 +55,10 @@ h5 {
 }
 ol li {
     margin-top: 2vh;
+    font-size: 1.1vmax;
+}
+ul li {
+    font-size: 1.1vmax;
 }
 
 /* Title */

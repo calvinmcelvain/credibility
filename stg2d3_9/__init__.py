@@ -71,7 +71,7 @@ class Player(BasePlayer):
     pa_high_advice = models.StringField(blank=False)
     pb_outside_option = models.IntegerField(blank=False, min=0, max=300)
     random_draw = models.IntegerField(min=0, max=300)
-    total = models.FloatField()
+    total = models.CurrencyField()
 
     # Player history functions meant to be passed to template in feedback page
     def other_investors(self):
@@ -216,7 +216,7 @@ class P2_FinalScreen(Page):
         real_sldr = SLDR_payoff.to_real_world_currency(player.session)
         real_stg2 = stage2_payoff.to_real_world_currency(player.session)
         real_final = final_payoff.to_real_world_currency(player.session)
-        final = real_final + 5
+        final = real_final + player.session.config['participation_fee']
         player.total = final
         decision_counts = player.group.in_round(1).decision_towards_payment
         history = {
@@ -227,7 +227,7 @@ class P2_FinalScreen(Page):
 
         return {'final_payoff': final_payoff, 'Stage_1': stage1_payoff, 'Stage_2': stage2_payoff, 'slider_training': SLDR_payoff
                 , 'real_final': real_final, 'real_Stage_1': real_stg1, 'real_slider': real_sldr, 'real_Stage_2': real_stg2,
-                'final': final, 'decision_counts': decision_counts, 'history': history}
+                'final': final, 'decision_counts': decision_counts, 'history': history, 'fee': player.session.config['participation_fee']}
 
     @staticmethod
     def is_displayed(player: Player):
