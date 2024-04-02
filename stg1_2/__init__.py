@@ -287,6 +287,7 @@ class P3_Feedback(Page):
 
 
 class BeforeNextRound(WaitPage):
+    wait_for_all_groups = True
     title_text = 'Next Round Will Start Soon'
     body_text = 'Waiting for other participants'
 
