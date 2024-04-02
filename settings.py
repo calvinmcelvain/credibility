@@ -1,7 +1,7 @@
 from os import environ
 
-grouping = 6
-participants = 12
+grouping = 2
+participants = 2
 
 
 # Timeout Seconds
