@@ -47,7 +47,7 @@
                 <td class="row1">5</td>
             </tr>
             <tr>
-                <td class="column1">Low</td>
+                <td class="column1" style="background-color: yellow; font-weight: bold">Low</td>
                 {{ for n, p in pa_table.1.items() }}
                 <td {{ if n == 5 }} style="background-color: greenyellow; font-weight: bold"{{ endif }}>{{ p }}</td>
                 {{ endfor }}
