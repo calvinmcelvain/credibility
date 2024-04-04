@@ -248,4 +248,4 @@ class P4_End(Page):
     pass
 
 
-page_sequence = [P1_PADecision, P1_PBDecision, PayoffWaitPage, P2_FinalScreen]
+page_sequence = [P1_PADecision, P1_PBDecision, PayoffWaitPage, P2_FinalScreen, P3_Demographics, P4_End]
