@@ -153,14 +153,14 @@ p.quiz {
     font-size: 1vmax;
 }
 .quiz-input-num input {
-    width: 2em;
+    width: 3em;
     height: 1.5em;
     margin-left: 2vw;
     font-size: 1vmax;
     border: 2px solid black;
 }
 .quiz-input-bol select {
-    width: 3em;
+    width: 4em;
     height: 1.5em;
     font-size: 1vmax;
     margin-left: 2vw;
