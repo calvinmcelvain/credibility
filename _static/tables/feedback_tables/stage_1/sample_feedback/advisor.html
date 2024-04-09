@@ -9,7 +9,7 @@
                 </tr>
                 <tr>
                     <th>True Quality Drawn:</th>
-                    <td>Low</td>
+                    <td>Medium</td>
                 </tr>
                 <tr>
                     <th>Your Advice:</th>
@@ -21,11 +21,11 @@
                 </tr>
                 <tr>
                     <th>Investor's Payoff:</th>
-                    <td>4 ECU</td>
+                    <td>9 ECU</td>
                 </tr>
                 <tr class="last">
                     <th>Your Payoff:</th>
-                    <td>3 ECU</td>
+                    <td>12 ECU</td>
                 </tr>
             </table>
         </div>
@@ -49,13 +49,13 @@
             <tr>
                 <td class="column1">Low</td>
                 {{ for n, p in pa_table.1.items() }}
-                <td {{ if n == 5 }} style="background-color: greenyellow; font-weight: bold"{{ endif }}>{{ p }}</td>
+                <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
-                <td class="column1">Medium</td>
+                <td class="column1" style="font-weight: bold">Medium</td>
                 {{ for n, p in pa_table.2.items() }}
-                <td>{{ p }}</td>
+                <td {{ if n == 5 }} style="background-color: greenyellow; font-weight: bold"{{ endif }}>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
@@ -65,5 +65,6 @@
                 {{ endfor }}
             </tr>
         </table>
+        <p class="reminder">Remember, Investors who choose to keep will receive a payoff of <span style="text-decoration: underline">12 ECU</span></p>
     </div>
 </div>

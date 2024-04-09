@@ -4,7 +4,7 @@
         <table>
             <tr>
                 <th>True Investment Quality:</th>
-                <td>Low</td>
+                <td>Medium</td>
             </tr>
             <tr>
                 <th>Advisor's Advice:</th>
@@ -20,11 +20,11 @@
             </tr>
             <tr>
                 <th>Advisor's Payoff:</th>
-                <td>3 ECU</td>
+                <td>12 ECU</td>
             </tr>
             <tr class="last">
                 <th>Your Payoff:</th>
-                <td>4 ECU</td>
+                <td>9 ECU</td>
             </tr>
         </table>
     </div>
@@ -46,13 +46,13 @@
             <tr>
                 <td class="column1">Low</td>
                 {{ for n, p in pb_table.1.items() }}
-                <td {{ if n == 5 }} style="background-color: greenyellow; font-weight: bold"{{ endif }}>{{ p }}</td>
+                <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
-                <td class="column1">Medium</td>
+                <td class="column1" style="font-weight: bold">Medium</td>
                 {{ for n, p in pb_table.2.items() }}
-                <td>{{ p }}</td>
+                <td {{ if n == 5 }} style="background-color: greenyellow; font-weight: bold"{{ endif }}>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>

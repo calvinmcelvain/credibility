@@ -9,7 +9,7 @@ Stage stg1_2 Game
 class C(BaseConstants):
     NAME_IN_URL = 'stg1_2'
     PLAYERS_PER_GROUP = grouping
-    NUM_ROUNDS = 30
+    NUM_ROUNDS = 5
 
     # Timeout seconds
     decision_time = DECISION_TIME
@@ -287,6 +287,7 @@ class P3_Feedback(Page):
 
 
 class BeforeNextRound(WaitPage):
+    wait_for_all_groups = True
     title_text = 'Next Round Will Start Soon'
     body_text = 'Waiting for other participants'
 

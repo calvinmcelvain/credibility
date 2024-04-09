@@ -44,19 +44,19 @@
                 <td class="row1">5</td>
             </tr>
             <tr>
-                <td class="column1">Low</td>
+                <td class="column1" {{ if player.group.actual_signal == 'Low' }} style="font-weight: bold"{{ endif }}>Low</td>
                 {{ for n, p in pb_table.1.items() }}
                 <td {{ if player.pb_decision == 'Invest' and player.group.actual_signal == 'Low' and n == player.group.total_players_invest() }} style="background-color: greenyellow; font-weight: bold"{{ endif }}>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
-                <td class="column1">Medium</td>
+                <td class="column1" {{ if player.group.actual_signal == 'Medium' }} style="font-weight: bold"{{ endif }}>Medium</td>
                 {{ for n, p in pb_table.2.items() }}
                 <td {{ if player.pb_decision == 'Invest' and player.group.actual_signal == 'Medium' and n == player.group.total_players_invest() }} style="background-color: greenyellow; font-weight: bold"{{ endif }}>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
-                <td class="column1">High</td>
+                <td class="column1" {{ if player.group.actual_signal == 'High' }} style="font-weight: bold"{{ endif }}>High</td>
                 {{ for n, p in pb_table.3.items() }}
                 <td {{ if player.pb_decision == 'Invest' and player.group.actual_signal == 'High' and n == player.group.total_players_invest() }} style="background-color: greenyellow; font-weight: bold"{{ endif }}>{{ p }}</td>
                 {{ endfor }}

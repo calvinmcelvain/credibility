@@ -69,6 +69,7 @@ div.decision-slider {
 }
 #sliderInput {
     width: 2em;
+    font-size: 1.2vmax;
 }
 .decision-slider label{
     font-size: 1.1vmax;

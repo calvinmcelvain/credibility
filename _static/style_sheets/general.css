@@ -134,34 +134,37 @@ div.quiz {
 }
 p.quiz {
     margin-bottom: unset;
-    margin-top: 0.3vh;
+    margin-top: 0;
+    font-size: 1vmax;
 }
 .quiz span {
     color: red;
     margin-left: 1vw;
 }
 .quiz .tf {
-    font-size: 1.2vmax;
+    font-size: 1vmax;
     margin-bottom: unset;
 }
 .quiz ol {
-    font-size: 1.1vmax;
+    font-size: 1vmax;
 }
 .quiz li {
     margin-top: 1vh;
+    font-size: 1vmax;
 }
 .quiz-input-num input {
     width: 3em;
     height: 1.5em;
     margin-left: 2vw;
-    border: 1px solid black;
+    font-size: 1vmax;
+    border: 2px solid black;
 }
 .quiz-input-bol select {
     width: 4em;
     height: 1.5em;
-    font-size: 1.1vmax;
+    font-size: 1vmax;
     margin-left: 2vw;
-    border: 1px solid black;
+    border: 2px solid black;
 }
 
 /* Custom styles for flashing red background */
