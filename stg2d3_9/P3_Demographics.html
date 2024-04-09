@@ -12,7 +12,7 @@
 <!--Instruction Quiz -->
 <p>This is a simple Demographic survey. All personally identifiable information contained in this survey is considered privileged and confidential information.</p>
 <ol>
-    <li>Please enter your age: <label class="quiz-input-num"><input size="2" name="age" type="number"></label>{{ formfield_errors 'age' }}</li>
+    <li>Please enter your age: <label class="quiz-input-num"><input size="2" max="99" min="1" name="age" type="number"></label>{{ formfield_errors 'age' }}</li>
     <li>Please enter your gender:
         <label class="quiz-input-bol">
                 <select name="gender" style="width: 12em">
