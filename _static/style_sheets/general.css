@@ -22,6 +22,9 @@
 .dfont {
     font-size: 1.1vmax;
 }
+.nomargin {
+    margin: unset;
+}
 p {
     font-size: 1.1vmax;
     margin-top: 2.3vh;
