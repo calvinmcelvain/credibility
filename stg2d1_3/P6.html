@@ -1,15 +1,16 @@
 {{ load static }}
 {{ block content }}
+<!--External CSS & js-->
 <link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
-<link rel="stylesheet" href="{{ static 'style_sheets/tables.css' }}" type="text/css">
 <script src="{{ static 'java_scripts/general.js' }}"></script>
 
+<!-- Title -->
 {{ block title }}
-<u><b>Stage 2: Decision 2</b></u>
+<b><u>Decision 1 will start soon, Please click continue</u></b>
 {{ endblock }}
 
-<!-- General Information Body -->
-{{ include '_static/instructions/stage_2/13_decision_2.html' }}
+<!-- Biddle Body -->
+<h2 class="BeforeStart">You are about to make your choice for Decision 3. <br>This is a paid round. <br>Notice that the payoffs are much higher than in Stage 1.</h2>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">

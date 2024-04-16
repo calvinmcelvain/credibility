@@ -64,4 +64,8 @@ class P2(BaseReadyPage):
     pass
 
 
-page_sequence = [P1, P2]
+class P3(BaseReadyPage):
+    pass
+
+
+page_sequence = [P1, P2, P3]

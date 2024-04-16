@@ -80,4 +80,8 @@ class P7(BaseReadyPage):
     pass
 
 
-page_sequence = [P1, P2, P3, P4, P5, P6, P7]
+class P8(BaseReadyPage):
+    pass
+
+
+page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8]
