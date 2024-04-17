@@ -26,7 +26,6 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    round_towards_payment = models.IntegerField()
     pb_outside_option = models.IntegerField(blank=False, min=0, max=50)
     random_draws = models.LongStringField()
     selected_draw = models.IntegerField(initial=51)
@@ -36,13 +35,6 @@ class Player(BasePlayer):
     def get_random_draws(self):
         list_of_draws = [r.randint(0, 50) for _ in range(20)]  # Generate 20 random draws
         return f'{list_of_draws}'
-
-
-# Functions
-def creating_session(subsession):
-    players = subsession.get_players()
-    for player in players:
-        player.round_towards_payment = r.randint(1, 5)
 
 
 # Custom data export for this game
@@ -79,17 +71,15 @@ class P1_Decision(Page):
         random_draws = [int(x) for x in cleaned_random_draws.split(',')]
         player.selected_draw = r.choice(random_draws)
         player.selected_draw_number = random_draws.index(player.selected_draw) + 1
-        return {'invest_value': invest_value}
+        return {'invest_value': invest_value, 'round_number': player.round_number}
 
     @staticmethod
     def before_next_page(player, timeout_happened):
-        if player.round_number == player.in_round(1).round_towards_payment:
+        if player.round_number > 2:
             if player.pb_outside_option > player.selected_draw:
                 player.payoff = player.invest_value
-                player.participant.vars['SLDR_payoff'] = player.invest_value
             else:
                 player.payoff = player.selected_draw
-                player.participant.vars['SLDR_payoff'] = player.selected_draw
 
 
 class P2_Feedback(Page):
@@ -153,12 +143,12 @@ class P3_Feedback(Page):
 
     @staticmethod
     def vars_for_template(player):
-        random_draw = player.in_round(player.in_round(1).round_towards_payment).selected_draw
-        selected_draw_number = player.in_round(player.in_round(1).round_towards_payment).selected_draw_number
-        invest_value = player.in_round(player.in_round(1).round_towards_payment).invest_value
-        outside_option = player.in_round(player.in_round(1).round_towards_payment).pb_outside_option
-        payoff = player.in_round(player.in_round(1).round_towards_payment).payoff
-        return {'random_draw': random_draw, 'outside_option': outside_option, 'payoff': payoff, 'invest_value': invest_value, 'selected_draw': selected_draw_number}
+        r3 = player.in_round(3).payoff
+        r4 = player.in_round(4).payoff
+        r5 = player.in_round(5).payoff
+        average = (r3 + r4 + r5)/3
+        player.participant.vars['SLDR_payoff'] = average
+        return {'r3': r3, 'r4': r4, 'r5': r5, 'average': average}
 
 
 page_sequence = [P1_Decision, P2_Feedback, P3_Feedback]
