@@ -2,7 +2,7 @@ from otree.api import *
 from settings import INSTRUCTIONS_TIME
 
 doc = """
-Stage 2 Decision 1 Instructions
+Stage 2 Scenario 1 Instructions
 """
 
 

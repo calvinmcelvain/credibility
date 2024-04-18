@@ -4,7 +4,7 @@ import random as r
 from settings import grouping, DECISION_TIME, FEEDBACK_TIME
 
 doc = """
-Stage 2 Decision 3 Game & Final Payoff screen
+Stage 2 Scenario 3 Game & Final Payoff screen
 """
 
 
