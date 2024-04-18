@@ -125,7 +125,7 @@ class P2_Feedback(Page):
             for i in range(len(draw_numbers))
         }
 
-        return {'draw_dict': draw_dict, 'invest_value': player.invest_value}
+        return {'draw_dict': draw_dict, 'invest_value': player.invest_value, 'round_number': player.round_number}
 
 
 class P3_Feedback(Page):
