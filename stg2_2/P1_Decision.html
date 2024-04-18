@@ -7,6 +7,7 @@
 
 <!-- Title -->
 {{ block title }}
+{{ if round_number < 3}}<span class="sample" >**Practice Round**</span>{{ endif }}
 <div class="Title">
     <h3 style="float: left"><u>Slider Training:</u> Decision Screen</h3>
     <h3 style="float: right">Round {{ player.round_number }}</h3>

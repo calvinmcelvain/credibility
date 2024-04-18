@@ -2,7 +2,7 @@ from otree.api import *
 from settings import INSTRUCTIONS_TIME
 
 doc = """
-Stage 2 Decision 1 Instructions
+Stage 2 Scenario 1 Instructions
 """
 
 
@@ -64,17 +64,25 @@ class P1(BaseReadyPage):
 
 
 class P2(BaseReadyPage):
-    @staticmethod
-    def vars_for_template(player: Player):
-        return {'history': player.participant.vars['STG1_history']}
+    pass
 
 
 class P3(BaseReadyPage):
-    pass
+    @staticmethod
+    def vars_for_template(player: Player):
+        return {'history': player.participant.vars['STG1_history']}
 
 
 class P4(BaseReadyPage):
     pass
 
 
-page_sequence = [P1, P2, P3, P4]
+class P5(BaseReadyPage):
+    pass
+
+
+class P6(BaseReadyPage):
+    pass
+
+
+page_sequence = [P1, P2, P3, P4, P5, P6]

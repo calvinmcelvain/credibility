@@ -22,6 +22,9 @@
 .dfont {
     font-size: 1.1vmax;
 }
+.nomargin {
+    margin: unset;
+}
 p {
     font-size: 1.1vmax;
     margin-top: 2.3vh;
@@ -123,7 +126,7 @@ label.id {
     margin-top: 3vh;
 }
 input.id {
-    max-width: 50px;
+    max-width: 3em;
     border: 1px solid black;
 }
 
