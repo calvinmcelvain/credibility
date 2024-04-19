@@ -1,2 +1,5 @@
 # Ignoring oTree databases #
 *.sqlite3
+*.pyc
+*.pyo
+__pycache__/
