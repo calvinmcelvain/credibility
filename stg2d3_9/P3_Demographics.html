@@ -13,7 +13,7 @@
 <p>This is a simple Demographic survey. All personally identifiable information contained in this survey is considered privileged and confidential information.</p>
 <ol>
     <li>Please enter your age: <label class="quiz-input-num"><input size="2" max="99" min="1" name="age" type="number"></label>{{ formfield_errors 'age' }}</li>
-    <li>Please enter your gender:
+    <li>With which gender do you most closely identify?
         <label class="quiz-input-bol">
                 <select name="gender" style="width: 12em">
                     <option></option>
@@ -26,7 +26,7 @@
                 </select>
             </label>
     {{ formfield_errors 'gender' }}</li>
-    <li>Please enter your ethnicity
+    <li>What ethnicity best describes you?
         <label class="quiz-input-bol">
                 <select name="ethnicity" style="width: 12em">
                     <option></option>
@@ -41,6 +41,15 @@
                 </select>
             </label>
     {{ formfield_errors 'ethnicity' }}</li>
+    <li>Are you Hispanic or Latino?
+        <label class="quiz-input-bol">
+                <select name="hol" style="width: 4em">
+                    <option></option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </label>
+    {{ formfield_errors 'hol' }}</li>
 </ol>
 
 <!--Next Button-->
