@@ -34,6 +34,7 @@ ROOMS = [
     dict(
         name='lab',
         display_name='lab',
+        participant_label_file='_rooms/lab'
     ),
 ]
 
