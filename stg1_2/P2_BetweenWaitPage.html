@@ -5,15 +5,23 @@
 <link rel="stylesheet" href="{{ static 'style_sheets/tables.css' }}" type="text/css">
 <script src="{{ static 'java_scripts/stage_1/inbetween_page.js' }}"></script>
 
-<!-- Advisor Page -->
+{{ block title }}
 {{ if player.role == C.pa_ROLE }}
-
 <!-- Title -->
 <div class="Title">
     <h3 style="float: left"><u>Role:</u> Advisor</h3>
     <h3 style="float: right">Round {{ player.round_number }}</h3>
 </div>
+{{ else }}
+<div class="Title_decision">
+    <h3 style="float: left"><u>Role:</u> Investor</h3>
+    <h3 style="float: right">Round {{ player.round_number }}</h3>
+</div>
+{{ endif }}
+{{ endblock }}
 
+<!-- Advisor Page -->
+{{ if player.role == C.pa_ROLE }}
 
 <!--Payoff Tables-->
 {{ include '_static/tables/payoff_tables/stage_1/advisor_investor.html' }}
@@ -33,12 +41,6 @@
 
 <!-- Investor Page -->
 {{ else }}
-
-<!-- Title -->
-<div class="Title_decision">
-    <h3 style="float: left"><u>Role:</u> Investor</h3>
-    <h3 style="float: right">Round {{ player.round_number }}</h3>
-</div>
 
 <!--Payoff Tables-->
 {{ include '_static/tables/payoff_tables/stage_1/investor_advisor.html' }}
