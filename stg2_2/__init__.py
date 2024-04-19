@@ -49,6 +49,18 @@ def custom_export(players):
 
 
 # PAGES
+class P0_PracticeReminder(Page):
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.round_number == 1
+    
+    
+class P0_PaidReminder(Page):
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.round_number == 3
+
+
 class P1_Decision(Page):
     form_model = 'player'
     form_fields = ['pb_outside_option']
@@ -151,4 +163,4 @@ class P3_Feedback(Page):
         return {'r3': r3, 'r4': r4, 'r5': r5, 'average': average}
 
 
-page_sequence = [P1_Decision, P2_Feedback, P3_Feedback]
+page_sequence = [P0_PracticeReminder, P0_PaidReminder, P1_Decision, P2_Feedback, P3_Feedback]

@@ -1,0 +1,20 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+<b><u>Slider Training: Paid Rounds</u></b>
+{{ endblock }}
+
+<!-- Biddle Body -->
+<h2 class="BeforeStart dfont">The next <u>three rounds</u> are paid. You will be paid your average payoff from these three rounds. Our advice is that you should always set the slider exactly equal to the value of investing</h2>
+
+<!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
+<div class="button">
+    <button>Continue</button>
+</div>
+
+{{ endblock }}
