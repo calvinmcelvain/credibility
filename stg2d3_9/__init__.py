@@ -77,6 +77,7 @@ class Player(BasePlayer):
     gender = models.StringField(blank=False)
     age = models.IntegerField(blank=False)
     ethnicity = models.StringField(blank=False)
+    hol = models.StringField(blank=False)
 
     # Player history functions meant to be passed to template in feedback page
     def other_investors(self):
@@ -241,7 +242,7 @@ class P2_FinalScreen(Page):
 
 class P3_Demographics(Page):
     form_model = 'player'
-    form_fields = ['gender', 'age', 'ethnicity']
+    form_fields = ['gender', 'age', 'ethnicity', 'hol']
 
 
 class P4_End(Page):
