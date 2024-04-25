@@ -71,7 +71,7 @@ class Player(BasePlayer):
     pa_high_advice = models.StringField(blank=False)
     pb_outside_option = models.IntegerField(blank=False, min=0, max=300)
     random_draw = models.IntegerField(min=0, max=300)
-    total = models.CurrencyField()
+    total = models.FloatField()
 
     # Demographics Fields
     gender = models.StringField(blank=False)
@@ -223,7 +223,7 @@ class P2_FinalScreen(Page):
         real_stg2 = stage2_payoff.to_real_world_currency(player.session)
         real_final = final_payoff.to_real_world_currency(player.session)
         final = real_final + player.session.config['participation_fee']
-        player.total = final
+        player.total = float(final)
         decision_counts = player.group.in_round(1).decision_towards_payment
         history = {
             1: player.participant.vars['D1'],
