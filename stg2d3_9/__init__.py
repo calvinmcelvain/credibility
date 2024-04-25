@@ -71,7 +71,7 @@ class Player(BasePlayer):
     pa_high_advice = models.StringField(blank=False)
     pb_outside_option = models.IntegerField(blank=False, min=0, max=300)
     random_draw = models.IntegerField(min=0, max=300)
-    total = models.CurrencyField()
+    total = models.FloatField()
 
     # Demographics Fields
     gender = models.StringField(blank=False)
