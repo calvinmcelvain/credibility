@@ -1,19 +1,38 @@
 from otree.api import *
-import random as r
-from settings import DECISION_TIME, FEEDBACK_TIME
+from settings import INSTRUCTIONS_TIME
 
 doc = """
-Slider Training
+Stage 2 Instructions
 """
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'stg2_2'
+    NAME_IN_URL = 'stg2_1'
     PLAYERS_PER_GROUP = None
-    NUM_ROUNDS = 5
+    NUM_ROUNDS = 1
 
-    decision_time = DECISION_TIME    # Timeout seconds for decision page
-    feedback_time = FEEDBACK_TIME    # Timeout seconds for feedback page
+    # Timeout seconds
+    instructions_time = INSTRUCTIONS_TIME
+
+    # Decision Payoff dictionaries
+    pb_payoff = {
+        1: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0},
+        3: {1: 300, 2: 300, 3: 300, 4: 300, 5: 300},
+    }
+    pa_payoff = {
+        1: {0: 0, 1: 60, 2: 120, 3: 180, 4: 240, 5: 300},
+        3: {0: 0, 1: 60, 2: 120, 3: 180, 4: 240, 5: 300}
+    }
+    
+    # Sample Decision Payoff dictionaries
+    pb_payoff_sample = {
+        1: {1: 400, 2: 0, 3: 400, 4: 0, 5: 400},
+        3: {1: 0, 2: 400, 3: 0, 4: 400, 5: 0},
+    }
+    pa_payoff_sample = {
+        1: {0: 0, 1: 80, 2: 160, 3: 240, 4: 320, 5: 400},
+        3: {0: 0, 1: 80, 2: 160, 3: 240, 4: 320, 5: 400}
+    }
 
 
 class Subsession(BaseSubsession):
@@ -26,7 +45,11 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    pb_outside_option = models.IntegerField(blank=False, min=0, max=50)
+    # Sample Decision fields for Player A and B
+    pa_low_advice = models.StringField(blank=False)
+    pa_high_advice = models.StringField(blank=False)
+    pb_outside_option = models.IntegerField(blank=False, min=0, max=300)
+    
     random_draws = models.LongStringField()
     selected_draw = models.IntegerField(initial=51)
     selected_draw_number = models.IntegerField()
@@ -37,40 +60,62 @@ class Player(BasePlayer):
         return f'{list_of_draws}'
 
 
-# Custom data export for this game
-def custom_export(players):
-    # header rows
-    yield ['session', 'participant_code', 'player_id', 'role', 'round_number', 'payoff', 'invest_value', 'max_outside_option']
-    for p in players:
-        participant = p.participant
-        session = p.session
-        yield [session.code, participant.code, participant.PlayerID, participant.role, p.round_number, p.payoff, p.selected_draw, p.pb_outside_option]
-
-
-
 # PAGES
-class P0_PracticeReminder(Page):
+# Conditional base page
+class BaseReadyPage(Page):
+    timeout_seconds = C.instructions_time
+
     @staticmethod
-    def is_displayed(player: Player):
-        return player.round_number == 1
+    def live_method(player: Player, data):
+        player.group.all_players_ready += 1
+        players_in_session = len(player.subsession.get_players())
+        if player.group.all_players_ready == players_in_session:
+            player.group.all_players_ready = 0
+            return {0: 'all_ready'}
+
     
-    
-class P0_PaidReminder(Page):
-    @staticmethod
-    def is_displayed(player: Player):
-        return player.round_number == 3
+
+class P1(BaseReadyPage):
+    pass
 
 
-class P1_Decision(Page):
+class P2(BaseReadyPage):
+    pass
+
+
+class P3(BaseReadyPage):
+    pass
+
+
+class P4(BaseReadyPage):
+    pass
+
+
+class P5(BaseReadyPage):
+    pass
+
+
+class P6(BaseReadyPage):
+    pass
+
+
+class P7(BaseReadyPage):
+    pass
+
+
+class P8(BaseReadyPage):
+    form_model = 'player'
+    form_fields = ['pa_low_advice', 'pa_high_advice']
+    
+    @staticmethod
+    def vars_for_template(player: Player):
+        return {'pa_table': C.pa_payoff_sample, 'pb_table': C.pb_payoff_sample}
+    
+
+class P9(BaseReadyPage):
     form_model = 'player'
     form_fields = ['pb_outside_option']
-
-    @staticmethod
-    def js_vars(player):
-        return dict(
-            timeout=C.decision_time,
-        )
-
+    
     @staticmethod
     def vars_for_template(player):
         if player.invest_value > 50:
@@ -83,8 +128,9 @@ class P1_Decision(Page):
         random_draws = [int(x) for x in cleaned_random_draws.split(',')]
         player.selected_draw = r.choice(random_draws)
         player.selected_draw_number = random_draws.index(player.selected_draw) + 1
-        return {'invest_value': invest_value, 'round_number': player.round_number}
-
+        return {'invest_value': invest_value, 'round_number': player.round_number, 'pa_table': C.pa_payoff_sample, 'pb_table': C.pb_payoff_sample}
+    
+    
     @staticmethod
     def before_next_page(player, timeout_happened):
         if player.round_number > 2:
@@ -92,11 +138,10 @@ class P1_Decision(Page):
                 player.payoff = player.invest_value
             else:
                 player.payoff = player.selected_draw
+    
+    
 
-
-class P2_Feedback(Page):
-    timeout_seconds = C.feedback_time
-
+class P10(BaseReadyPage):
     @staticmethod
     def vars_for_template(player):
         cleaned_random_draws = player.random_draws.replace('[', '').replace(']', '')
@@ -138,29 +183,24 @@ class P2_Feedback(Page):
         }
 
         return {'draw_dict': draw_dict, 'invest_value': player.invest_value, 'round_number': player.round_number}
-
-
-class P3_Feedback(Page):
+    
+    
+class P11(BaseReadyPage):
     @staticmethod
-    def is_displayed(player):
-        return player.round_number == 5
-
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
-
-    @staticmethod
-    def vars_for_template(player):
-        r3 = player.in_round(3).payoff
-        r4 = player.in_round(4).payoff
-        r5 = player.in_round(5).payoff
-        average = (r3 + r4 + r5)/3
-        player.participant.vars['SLDR_payoff'] = average
-        return {'r3': r3, 'r4': r4, 'r5': r5, 'average': average}
+    def vars_for_template(player: Player):
+        return {'history': player.participant.vars['STG1_history']}
 
 
-page_sequence = [P0_PracticeReminder, P0_PaidReminder, P1_Decision, P2_Feedback, P3_Feedback]
+class P12(BaseReadyPage):
+    pass
+
+
+class P13(BaseReadyPage):
+    pass
+
+
+class P14(BaseReadyPage):
+    pass
+
+
+page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14]

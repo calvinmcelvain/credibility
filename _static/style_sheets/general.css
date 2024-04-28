@@ -153,7 +153,6 @@ p.quiz {
 }
 .quiz li {
     margin-top: 1vh;
-    font-size: 1vmax;
 }
 .quiz-input-num input {
     width: 3em;

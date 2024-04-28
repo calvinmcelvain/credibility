@@ -29,89 +29,46 @@ SESSION_CONFIGS = [
         num_demo_participants=participants,
     ),
     dict(
-        name='Decision_1_Instructions_Only',
-        display_name='Stage 2: Decision 1 Instructions',
-        app_sequence=['start', 'stg2d1_3'],
+        name='Stage_2_Scenario_1',
+        display_name='Stage 2: Scenario 1',
+        app_sequence=['start', 'stg2_3', 'stg2_4'],
         num_demo_participants=participants,
     ),
     dict(
-        name='Stage_2_Decision_1_Game_Only',
-        display_name='Stage 2: Decision 1 Game',
-        app_sequence=['start', 'stg2d1_4'],
+        name='Stage_2_Scenario_2',
+        display_name='Stage 2: Scenario 2',
+        app_sequence=['start', 'stg2_5', 'stg2_6'],
         num_demo_participants=participants,
     ),
     dict(
-        name='Stage_2_Decision_1',
-        display_name='Stage 2: Decision 1',
-        app_sequence=['start', 'stg2d1_3', 'stg2d1_4'],
-        num_demo_participants=participants,
-    ),
-    dict(
-        name='Stage_2_Decision_2_Instructions_Only',
-        display_name='Stage 2: Decision 2 Instructions',
-        app_sequence=['start', 'stg2d2_6'],
-        num_demo_participants=participants,
-    ),
-
-    dict(
-        name='Stage_2_Decision_2_Game_Only',
-        display_name='Stage 2: Decision 2 Game',
-        app_sequence=['start', 'stg2d2_7'],
-        num_demo_participants=participants,
-    ),
-    dict(
-        name='Stage_2_Decision_2',
-        display_name='Stage 2: Decision 2',
-        app_sequence=['start', 'stg2d2_6', 'stg2d2_7'],
-        num_demo_participants=participants,
-    ),
-    dict(
-        name='Stage_2_Decision_3_Instructions_Only',
-        display_name='Stage 2: Decision 3 Instructions',
-        app_sequence=['start', 'stg2d3_8'],
-        num_demo_participants=participants,
-    ),
-    dict(
-        name='Stage_2_Decision_3_Game_Only',
-        display_name='Stage 2: Decision 3 Game',
-        app_sequence=['start', 'stg2d3_9'],
-        num_demo_participants=participants,
-    ),
-    dict(
-        name='Stage_2_Decision_3',
-        display_name='Stage 2: Decision 3',
-        app_sequence=['start', 'stg2d3_8', 'stg2d3_9'],
+        name='Stage_2_Scenario_3',
+        display_name='Stage 2: Scenario 3',
+        app_sequence=['start', 'stg2_7', 'stg2_8'],
         num_demo_participants=participants,
     ),
     dict(
         name='Stage_2_Instructions_Only',
         display_name='Stage 2: Instructions',
-        app_sequence=['start', 'stg2_1', 'stg2_2', 'stg2d1_3', 'stg2d2_6', 'stg2d3_8'],
-        num_demo_participants=participants,
-    ),
-    dict(
-        name='Stage_2_Decision_2_Slider',
-        display_name='Stage 2: Slider Training',
-        app_sequence=['start', 'stg2_2'],
+        app_sequence=['start', 'stg2_3', 'stg2_5', 'stg2_7'],
         num_demo_participants=participants,
     ),
     dict(
         name='Stage_2_Games',
-        display_name='Stage 2: All Decisions',
-        app_sequence=['start', 'stg2d1_4', 'stg2d2_7',
-                      'stg2d3_9'],
+        display_name='Stage 2: All Scenarios',
+        app_sequence=['start', 'stg2_4', 'stg2_6',
+                      'stg2_8'],
         num_demo_participants=participants,
     ),
     dict(
         name='Stage_2',
         display_name='Stage 2',
-        app_sequence=['start', 'stg2_1', 'stg2_2', 'stg2d1_3', 'stg2d1_4', 'stg2d2_6', 'stg2d2_7', 'stg2d3_8', 'stg2d3_9'],
+        app_sequence=['start', 'stg2_3', 'stg2_4', 'stg2_5', 'stg2_6', 'stg2_7', 'stg2_8'],
         num_demo_participants=participants,
     ),
     dict(
         name='Stage_1_Stage_2',
         display_name='Full Experiment',
-        app_sequence=['start', 'stg1_1', 'stg1_2', 'stg2_1', 'stg2_2', 'stg2d1_3', 'stg2d1_4', 'stg2d2_6', 'stg2d2_7', 'stg2d3_8', 'stg2d3_9'],
+        app_sequence=['start', 'stg1_1', 'stg1_2', 'stg2_3', 'stg2_4', 'stg2_5', 'stg2_6', 'stg2_7', 'stg2_8'],
         num_demo_participants=participants,
     ),
     dict(
@@ -132,7 +89,6 @@ ROOMS = [
     dict(
         name='lab',
         display_name='lab',
-        participant_label_file='_rooms/lab'
     ),
 ]
 

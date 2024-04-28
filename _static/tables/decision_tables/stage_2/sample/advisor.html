@@ -1,0 +1,32 @@
+<div  class="decisiontable dfont">
+    <table>
+        <tr>
+            <th></th>
+            <th colspan="4" class="qlty_header">Investment Quality Estimate</th>
+            <th colspan="2"></th>
+        </tr>
+        <tr class="decision_header">
+            <th></th>
+            <th>Low</th>
+            <th style="width: 2vw" rowspan="4"></th>
+            <th>High</th>
+            <th style="width: 2vw" colspan="2" rowspan="4"></th>
+        </tr>
+        <tr class="advice">
+            <th style="transform: rotate(180deg); writing-mode: vertical-rl;" rowspan="2">Advice</th>
+            <td><label><input name="pa_low_advice" value="Invest" type="radio"> Invest</label></td>
+            <td><label><input name="pa_high_advice" value="Invest" type="radio"> Invest</label></td>
+        </tr>
+        <tr>
+            <td class="column1"><label><input name="pa_low_advice" value="Keep" type="radio"> Keep</label></td>
+            <td><label><input name="pa_high_advice" value="Keep" type="radio"> Keep</label></td>
+        </tr>
+        <tr class="error">
+            <th></th>
+            <td><span id="low_error" style="color: red; display: none;"></span></td>
+            <td><span id="high_error" style="color: red; display: none;"></span></td>
+        </tr>
+        <tr style="height: 2vh">
+        </tr>
+    </table>
+</div>
