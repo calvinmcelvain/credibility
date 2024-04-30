@@ -1,5 +1,6 @@
 from otree.api import *
 from settings import INSTRUCTIONS_TIME
+import random as r
 
 doc = """
 Stage 2 Instructions
@@ -13,6 +14,12 @@ class C(BaseConstants):
 
     # Timeout seconds
     instructions_time = INSTRUCTIONS_TIME
+    
+    # Defining "Advisor" role
+    pa_ROLE = 'Advisor'
+    
+    # Signal decoder
+    decoder = {1: 'Low', 3: 'High', 'Low': 1, 'High': 3}
 
     # Decision Payoff dictionaries
     pb_payoff = {
@@ -42,6 +49,7 @@ class Subsession(BaseSubsession):
 class Group(BaseGroup):
     # Page continue validation field
     all_players_ready = models.IntegerField(initial=0)
+    treatment = models.StringField()
 
 
 class Player(BasePlayer):
@@ -49,15 +57,30 @@ class Player(BasePlayer):
     pa_low_advice = models.StringField(blank=False)
     pa_high_advice = models.StringField(blank=False)
     pb_outside_option = models.IntegerField(blank=False, min=0, max=300)
-    
     random_draws = models.LongStringField()
-    selected_draw = models.IntegerField(initial=51)
-    selected_draw_number = models.IntegerField()
-    invest_value = models.IntegerField(initial=51)
+    random_investors = models.LongStringField()
 
     def get_random_draws(self):
-        list_of_draws = [r.randint(0, 50) for _ in range(20)]  # Generate 20 random draws
+        list_of_draws = [r.randint(0, 400) for _ in range(20)]  # Generate 20 random draws
         return f'{list_of_draws}'
+    
+    
+    def get_random_investors(self):
+        list_of_investors = [r.randint(1, 4) for _ in range(20)]  # Generate 20 random investor counts
+        return f'{list_of_investors}'
+
+
+
+# Functions
+def creating_session(subsession):
+    # Retrieving group matrix from Stage 1
+    subsession.set_group_matrix(subsession.session.vars['group_matrix'])
+    # Assigning Treatments
+    groups = subsession.get_groups()
+    treatments = ['LCLE', 'LCHE', 'HCLE', 'HCHE']
+    for i, group in enumerate(groups):
+        group.treatment = treatments[i % len(treatments)]
+
 
 
 # PAGES
@@ -118,26 +141,13 @@ class P9(BaseReadyPage):
     
     @staticmethod
     def vars_for_template(player):
-        if player.invest_value > 50:
-            player.invest_value = r.randint(0, 50)
-            invest_value = player.invest_value
-        else:
-            invest_value = player.invest_value
-        player.random_draws = player.get_random_draws()
-        cleaned_random_draws = player.random_draws.replace('[', '').replace(']', '')
-        random_draws = [int(x) for x in cleaned_random_draws.split(',')]
-        player.selected_draw = r.choice(random_draws)
-        player.selected_draw_number = random_draws.index(player.selected_draw) + 1
-        return {'invest_value': invest_value, 'round_number': player.round_number, 'pa_table': C.pa_payoff_sample, 'pb_table': C.pb_payoff_sample}
+        return {'pa_table': C.pa_payoff_sample, 'pb_table': C.pb_payoff_sample}
     
     
     @staticmethod
     def before_next_page(player, timeout_happened):
-        if player.round_number > 2:
-            if player.pb_outside_option > player.selected_draw:
-                player.payoff = player.invest_value
-            else:
-                player.payoff = player.selected_draw
+        player.random_draws = player.get_random_draws()
+        player.random_investors = player.get_random_investors()
     
     
 
@@ -146,43 +156,34 @@ class P10(BaseReadyPage):
     def vars_for_template(player):
         cleaned_random_draws = player.random_draws.replace('[', '').replace(']', '')
         random_draws = list(int(x) for x in cleaned_random_draws.split(','))
-        draw_numbers = list(range(1, 21))
-        payoffs = []
-        alt_payoffs = []
-        payoff_diff = []
-        sign = []
-        min_worse = 0
+        cleaned_random_investors = player.random_investors.replace('[', '').replace(']', '')
+        investors_rand = list(int(x) for x in cleaned_random_investors.split(','))
+        invest_payoff = []
+        keep_payoff = []
+        investors = []
+        advisor_payoff = []
         for i in random_draws:
-            if player.pb_outside_option > i:
-                payoffs.append(player.invest_value)
-                if player.invest_value >= i:
-                    alt_payoffs.append(player.invest_value)
-                    payoff_diff.append(0)
-                    sign.append(2)
+            if 300 > i:
+                investors.append(investors_rand[len(investors)])
+                invest_payoff.append(C.pb_payoff_sample[C.decoder['Low']][investors_rand[len(investors)-1] + 1])
+                advisor_payoff.append(C.pa_payoff_sample[C.decoder['Low']][investors_rand[len(investors)-1] + 1])
+                if 200 > i:
+                    keep_payoff.append(C.pb_payoff_sample[C.decoder['Low']][investors_rand[len(investors)-1] + 1])
                 else:
-                    alt_payoffs.append(i)
-                    payoff_diff.append(abs(i - player.invest_value))
-                    sign.append(0)
-                    min_worse += 1
+                    keep_payoff.append(i)
             else:
-                payoffs.append(i)
-                if player.invest_value > i:
-                    alt_payoffs.append(player.invest_value)
-                    payoff_diff.append(abs(i - player.invest_value))
-                    sign.append(0)
-                    min_worse += 1
-                else:
-                    alt_payoffs.append(i)
-                    payoff_diff.append(0)
-                    sign.append(2)
+                investors.append(investors_rand[len(investors)])
+                advisor_payoff.append(C.pa_payoff_sample[C.decoder['Low']][investors_rand[len(investors)-1]])
+                invest_payoff.append(i)
+                keep_payoff.append(i)
 
         # Creating a dictionary where draw numbers are keys and a list of corresponding values
         draw_dict = {
-            draw_numbers[i]: {1: draw_numbers[i], 2: random_draws[i], 3: payoffs[i], 4: alt_payoffs[i], 5: payoff_diff[i], 6: sign[i]}
-            for i in range(len(draw_numbers))
+            i: {1: random_draws[i], 2: invest_payoff[i], 3: keep_payoff[i], 4: investors[i], 5: advisor_payoff[i]}
+            for i in range(20)
         }
 
-        return {'draw_dict': draw_dict, 'invest_value': player.invest_value, 'round_number': player.round_number}
+        return {'draw_dict': draw_dict, 'invest_value': 250, 'quality': 'Low', 'advice': 'Invest', 'endowment': 300}
     
     
 class P11(BaseReadyPage):
@@ -192,11 +193,15 @@ class P11(BaseReadyPage):
 
 
 class P12(BaseReadyPage):
-    pass
+    @staticmethod
+    def vars_for_template(player):
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
 
 class P13(BaseReadyPage):
-    pass
+    @staticmethod
+    def vars_for_template(player):
+        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
 
 
 class P14(BaseReadyPage):
