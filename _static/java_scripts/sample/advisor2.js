@@ -2,10 +2,10 @@
 function DecisionFormsampleadvisor(event) {
     event.preventDefault(); // Prevents the form from submitting by default
     const lowError = document.getElementById("low_error");
-    const medError = document.getElementById("med_error");
+    const highError = document.getElementById("high_error");
 
     const lowChecked = document.querySelector('input[name="pa_low_advice"]:checked');
-    const medChecked = document.querySelector('input[name="pa_med_advice"]:checked');
+    const highChecked = document.querySelector('input[name="pa_high_advice"]:checked');
 
     if (!lowChecked) {
         lowError.textContent = "Field must be selected";
@@ -14,15 +14,15 @@ function DecisionFormsampleadvisor(event) {
         lowError.style.display = "none";
     }
 
-    if (!medChecked) {
-        medError.textContent = "Field must be selected";
-        medError.style.display = "block";
+    if (!highChecked) {
+        highError.textContent = "Field must be selected";
+        highError.style.display = "block";
     } else {
-        medError.style.display = "none";
+        highError.style.display = "none";
     }
 
     // Check if all three are checked before submitting the form
-    if (lowChecked && medChecked) {
+    if (lowChecked && highChecked) {
         var confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
         confirmationModal.show();
 
@@ -43,13 +43,13 @@ function DecisionFormsampleadvisor(event) {
 // Function to save radio button values to sessionStorage
 function saveRadioStateadvisor() {
     const lowChecked = document.querySelector('input[name="pa_low_advice"]:checked');
-    const medChecked = document.querySelector('input[name="pa_med_advice"]:checked');
+    const medChecked = document.querySelector('input[name="pa_high_advice"]:checked');
 
     if (lowChecked) {
         sessionStorage.setItem('pa_low_advice', lowChecked.value);
     }
     if (medChecked) {
-        sessionStorage.setItem('pa_med_advice', medChecked.value);
+        sessionStorage.setItem('pa_high_advice', medChecked.value);
     }
 }
 
@@ -57,13 +57,13 @@ function saveRadioStateadvisor() {
 // Function to restore radio button values from sessionStorage
 function restoreRadioStateadvisor() {
     const lowValue = sessionStorage.getItem('pa_low_advice');
-    const medValue = sessionStorage.getItem('pa_med_advice');
+    const medValue = sessionStorage.getItem('pa_high_advice');
 
     if (lowValue) {
         document.querySelector('input[name="pa_low_advice"][value="' + lowValue + '"]').checked = true;
     }
     if (medValue) {
-        document.querySelector('input[name="pa_med_advice"][value="' + medValue + '"]').checked = true;
+        document.querySelector('input[name="pa_high_advice"][value="' + medValue + '"]').checked = true;
     }
 }
 
