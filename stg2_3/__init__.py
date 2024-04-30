@@ -56,7 +56,7 @@ class Player(BasePlayer):
     # Sample Decision fields for Player A and B
     pa_low_advice = models.StringField(blank=False)
     pa_high_advice = models.StringField(blank=False)
-    pb_outside_option = models.IntegerField(blank=False, min=0, max=300)
+    pb_outside_option = models.IntegerField(blank=False, min=0, max=400)
     random_draws = models.LongStringField()
     random_investors = models.LongStringField()
 
