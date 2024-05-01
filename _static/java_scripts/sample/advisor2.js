@@ -4,8 +4,8 @@ function DecisionFormsampleadvisor(event) {
     const lowError = document.getElementById("low_error");
     const highError = document.getElementById("high_error");
 
-    const lowChecked = document.querySelector('input[name="pa_low_advice"]:checked');
-    const highChecked = document.querySelector('input[name="pa_high_advice"]:checked');
+    const lowChecked = document.querySelector('input[name="pa_low_advice2"]:checked');
+    const highChecked = document.querySelector('input[name="pa_high_advice2"]:checked');
 
     if (!lowChecked) {
         lowError.textContent = "Field must be selected";
@@ -42,28 +42,28 @@ function DecisionFormsampleadvisor(event) {
 
 // Function to save radio button values to sessionStorage
 function saveRadioStateadvisor() {
-    const lowChecked = document.querySelector('input[name="pa_low_advice"]:checked');
-    const medChecked = document.querySelector('input[name="pa_high_advice"]:checked');
+    const lowChecked = document.querySelector('input[name="pa_low_advice2"]:checked');
+    const medChecked = document.querySelector('input[name="pa_high_advice2"]:checked');
 
     if (lowChecked) {
-        sessionStorage.setItem('pa_low_advice', lowChecked.value);
+        sessionStorage.setItem('pa_low_advice2', lowChecked.value);
     }
     if (medChecked) {
-        sessionStorage.setItem('pa_high_advice', medChecked.value);
+        sessionStorage.setItem('pa_high_advice2', medChecked.value);
     }
 }
 
 
 // Function to restore radio button values from sessionStorage
 function restoreRadioStateadvisor() {
-    const lowValue = sessionStorage.getItem('pa_low_advice');
-    const medValue = sessionStorage.getItem('pa_high_advice');
+    const lowValue = sessionStorage.getItem('pa_low_advice2');
+    const medValue = sessionStorage.getItem('pa_high_advice2');
 
     if (lowValue) {
-        document.querySelector('input[name="pa_low_advice"][value="' + lowValue + '"]').checked = true;
+        document.querySelector('input[name="pa_low_advice2"][value="' + lowValue + '"]').checked = true;
     }
     if (medValue) {
-        document.querySelector('input[name="pa_high_advice"][value="' + medValue + '"]').checked = true;
+        document.querySelector('input[name="pa_high_advice2"][value="' + medValue + '"]').checked = true;
     }
 }
 

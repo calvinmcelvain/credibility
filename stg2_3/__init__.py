@@ -54,8 +54,8 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     # Sample Decision fields for Player A and B
-    pa_low_advice = models.StringField(blank=False)
-    pa_high_advice = models.StringField(blank=False)
+    pa_low_advice2 = models.StringField(blank=False)
+    pa_high_advice2 = models.StringField(blank=False)
     pb_outside_option = models.IntegerField(blank=False, min=0, max=400)
     draws = models.LongStringField()
     random_investors = models.LongStringField()
@@ -124,7 +124,7 @@ class P7(BaseReadyPage):
 
 class P8(BaseReadyPage):
     form_model = 'player'
-    form_fields = ['pa_low_advice', 'pa_high_advice']
+    form_fields = ['pa_low_advice2', 'pa_high_advice2']
     
     @staticmethod
     def vars_for_template(player: Player):
