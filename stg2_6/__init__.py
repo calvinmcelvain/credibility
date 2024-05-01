@@ -24,12 +24,12 @@ class C(BaseConstants):
 
     # Decision Payoff dictionaries
     pb_payoff = {
-        1: {1: 0, 2: 0, 3: 300, 4: 300, 5: 300},
-        3: {1: 0, 2: 0, 3: 300, 4: 300, 5: 300},
+        1: {1: 0, 2: 0, 3: 400, 4: 400, 5: 400},
+        3: {1: 0, 2: 0, 3: 400, 4: 400, 5: 400},
     }
     pa_payoff = {
-        1: {0: 0, 1: 60, 2: 120, 3: 180, 4: 240, 5: 300},
-        3: {0: 0, 1: 60, 2: 120, 3: 180, 4: 240, 5: 300}
+        1: {0: 0, 1: 80, 2: 160, 3: 240, 4: 320, 5: 400},
+        3: {0: 0, 1: 80, 2: 160, 3: 240, 4: 320, 5: 400}
     }
 
 
@@ -66,8 +66,8 @@ class Player(BasePlayer):
     # Decision fields for Player A and B
     pa_low_advice = models.StringField(blank=False)
     pa_high_advice = models.StringField(blank=False)
-    pb_outside_option = models.IntegerField(blank=False, min=0, max=300)
-    random_draw = models.IntegerField(min=0, max=300)
+    pb_outside_option = models.IntegerField(blank=False, min=0, max=400)
+    random_draw = models.IntegerField(min=0, max=400)
 
     # Player history functions meant to be passed to template in feedback page
     def other_investors(self):
@@ -163,7 +163,7 @@ class PayoffWaitPage(WaitPage):
 
         for player in group.get_players():
             if player.role != C.pa_ROLE:
-                player.random_draw = r.randint(1, 300)
+                player.random_draw = r.randint(1, 400)
 
         # Payoff Dictionaries
         pb_payoff = C.pb_payoff
