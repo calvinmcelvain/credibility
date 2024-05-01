@@ -57,17 +57,13 @@ class Player(BasePlayer):
     pa_low_advice = models.StringField(blank=False)
     pa_high_advice = models.StringField(blank=False)
     pb_outside_option = models.IntegerField(blank=False, min=0, max=400)
-    random_draws = models.LongStringField()
+    draws = models.LongStringField()
     random_investors = models.LongStringField()
-
-    def get_random_draws(self):
-        list_of_draws = [r.randint(0, 400) for _ in range(20)]  # Generate 20 random draws
-        return f'{list_of_draws}'
-    
     
     def get_random_investors(self):
-        list_of_investors = [r.randint(1, 4) for _ in range(20)]  # Generate 20 random investor counts
-        return f'{list_of_investors}'
+        investors = [1, 2, 3, 4] * 5
+        r.shuffle(investors) 
+        return investors
 
 
 
@@ -144,25 +140,17 @@ class P9(BaseReadyPage):
         return {'pa_table': C.pa_payoff_sample, 'pb_table': C.pb_payoff_sample}
     
     
-    @staticmethod
-    def before_next_page(player, timeout_happened):
-        player.random_draws = player.get_random_draws()
-        player.random_investors = player.get_random_investors()
-    
-    
 
 class P10(BaseReadyPage):
     @staticmethod
     def vars_for_template(player):
-        cleaned_random_draws = player.random_draws.replace('[', '').replace(']', '')
-        random_draws = list(int(x) for x in cleaned_random_draws.split(','))
-        cleaned_random_investors = player.random_investors.replace('[', '').replace(']', '')
-        investors_rand = list(int(x) for x in cleaned_random_investors.split(','))
+        draws = [250] * 20
+        investors_rand = player.get_random_investors()
         invest_payoff = []
         keep_payoff = []
         investors = []
         advisor_payoff = []
-        for i in random_draws:
+        for i in draws:
             if 300 > i:
                 investors.append(investors_rand[len(investors)])
                 invest_payoff.append(C.pb_payoff_sample[C.decoder['Low']][investors_rand[len(investors)-1] + 1])
@@ -179,7 +167,7 @@ class P10(BaseReadyPage):
 
         # Creating a dictionary where draw numbers are keys and a list of corresponding values
         draw_dict = {
-            i: {1: random_draws[i], 2: invest_payoff[i], 3: keep_payoff[i], 4: investors[i], 5: advisor_payoff[i]}
+            i: {1: draws[i], 2: invest_payoff[i], 3: keep_payoff[i], 4: investors[i], 5: advisor_payoff[i]}
             for i in range(20)
         }
 
