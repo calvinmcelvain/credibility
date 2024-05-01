@@ -6,19 +6,15 @@
 <script src="{{ static 'java_scripts/general.js' }}"></script>
 
 {{ block title }}
-<u><b>Stage 2: Decision 3</b></u>
+<u><b>Stage 2: Scenario 3</b></u>
 {{ endblock }}
 
 <!-- General Information Body Cont. -->
-{{ include '_static/instructions/stage_2/13_decision_3.html' }}
+{{ include '_static/instructions/stage_2/12_scenario_3.html' }}
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
-    <div>
-        <p>Please click "Continue"</p>
-        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
-    </div>
-    <button type="button" id="validation" onclick="validating()">Continue</button>
+    <button>Continue</button>
 </div>
 
 {{ endblock }}

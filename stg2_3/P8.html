@@ -1,0 +1,36 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/tables.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/sample/advisor2.js' }}"></script>
+<script src="{{ static 'java_scripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+<span class="sample" >**Sample**</span>
+<div class="Title_decision">
+    <h3 style="float: left"><u>Role:</u> Advisor</h3>
+    <h3 style="float: right">Stage 2</h3>
+</div>
+{{ endblock }}
+
+<!-- Payoff Tables -->
+{{ include '_static/tables/payoff_tables/stage_2/advisor_investor.html' }}
+
+<!--Form Fields/Decisions-->
+{{ include '_static/tables/decision_tables/stage_2/sample/advisor.html' }}
+
+<!-- Next Button with confirmation pop-up & Instructions Button -->
+<div class="button">
+    <button onclick="DecisionFormsampleadvisor(event)" id="validation" class="Instructions">Continue</button>
+    <button id="pop-up" class="Instructions" style="float: left; background-color: red">Instructions</button>
+</div>
+
+<!-- Instructions -->
+{{ include '_static/instructions/instr_bttn/stage_2_0.html' }}
+
+<!-- Pop-ups -->
+{{ include '_static/popups/decision.html' }}
+
+{{ endblock }}

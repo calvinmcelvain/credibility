@@ -102,6 +102,13 @@ div.button {
     font-size: 0.8vmax;
 }
 
+/* ID error message */
+span.errormessage {
+    color: red;
+    display: none;
+    font-size: 1vmax;
+}
+
 /* sample Page Header Styling */
 span.sample {
     font-size: 1.2vw;
@@ -152,8 +159,7 @@ p.quiz {
     font-size: 1vmax;
 }
 .quiz li {
-    margin-top: 1vh;
-    font-size: 1vmax;
+    margin-top: 0.5vh;
 }
 .quiz-input-num input {
     width: 3em;

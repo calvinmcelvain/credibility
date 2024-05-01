@@ -1,0 +1,18 @@
+<!-- Slider & Info. -->
+<div class="decisiontable">
+    <h4 style="margin-top: 20px" class="dfont">Please use the slider to select the <span style="color: red">maximum</span> outside option for which you will choose Invest.</h4>
+    <div class="decision-div">
+        <div style="margin-top: unset" class="decision-slider dfont" align="center">
+            <table>
+                <tr>
+                    <td style="height: 8vh">
+                        <label><input type="range" name="pb_outside_option" id="slider" oninput="updateInputValue(this.value)" min="1" max="400" step="1"></label>
+                        <label><input type="number" id="sliderInput" name="pb_outside_option" oninput="updateSliderFromInput(this.value)" size="3" min="1" max="400"></label>
+                    </td>
+                </tr>
+                <tr>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

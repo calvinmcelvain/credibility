@@ -13,7 +13,7 @@ SESSION_CONFIGS = [
     dict(
         name='full_experiment',
         display_name='Full Experiment',
-        app_sequence=['start', 'stg1_1', 'stg1_2', 'stg2_1', 'stg2_2', 'stg2d1_3', 'stg2d1_4', 'stg2d2_6', 'stg2d2_7', 'stg2d3_8', 'stg2d3_9'],
+        app_sequence=['start', 'stg1_1', 'stg1_2', 'stg2_3', 'stg2_4', 'stg2_5', 'stg2_6', 'stg2_7', 'stg2_8'],
         num_demo_participants=participants,
     ),
     dict(
@@ -34,7 +34,6 @@ ROOMS = [
     dict(
         name='lab',
         display_name='lab',
-        participant_label_file='_rooms/lab'
     ),
 ]
 
@@ -44,7 +43,7 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 POINTS_CUSTOM_NAME = 'ECU'
 
-PARTICIPANT_FIELDS = ['role', 'STG1_payoff', 'STG1_history', 'SLDR_payoff', 'D1', 'D2', 'PlayerID']
+PARTICIPANT_FIELDS = ['role', 'STG1_payoff', 'STG1_history', 'D1', 'D2', 'PlayerID']
 SESSION_FIELDS = ['group_matrix']
 
 # ISO-639 code

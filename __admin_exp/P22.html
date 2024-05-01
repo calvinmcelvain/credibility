@@ -2,22 +2,35 @@
 {{ block content }}
 <!--External CSS & js-->
 <link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/tables.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/sample/advisor2.js' }}"></script>
 <script src="{{ static 'java_scripts/general.js' }}"></script>
 
+<!-- Title -->
 {{ block title }}
-<u><b>Slider Training Exercise</b></u>
+<span class="sample" >**Sample**</span>
+<div class="Title_decision">
+    <h3 style="float: left"><u>Role:</u> Advisor</h3>
+    <h3 style="float: right">Stage 2</h3>
+</div>
 {{ endblock }}
 
-<!-- General Information Body -->
-{{ include '_static/instructions/stage_2/6_slider_training.html' }}
+<!-- Payoff Tables -->
+{{ include '_static/tables/payoff_tables/stage_2/advisor_investor.html' }}
 
-<!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
+<!--Form Fields/Decisions-->
+{{ include '_static/tables/decision_tables/stage_2/sample/advisor.html' }}
+
+<!-- Next Button with confirmation pop-up & Instructions Button -->
 <div class="button">
-    <div>
-        <p>Please click "Continue"</p>
-        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
-    </div>
-    <button type="button" id="validation" onclick="validating()">Continue</button>
+    <button>Continue</button>
+    <button id="pop-up" class="Instructions" style="float: left; background-color: red">Instructions</button>
 </div>
+
+<!-- Instructions -->
+{{ include '_static/instructions/instr_bttn/stage_2_0.html' }}
+
+<!-- Pop-ups -->
+{{ include '_static/popups/decision.html' }}
 
 {{ endblock }}

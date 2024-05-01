@@ -5,19 +5,14 @@
 <script src="{{ static 'java_scripts/general.js' }}"></script>
 
 {{ block title }}
-<u><b>Using a Slider</b></u>
+<u><b>How to Choose with the Slider</b></u>
 {{ endblock }}
 
 <!-- General Information Body -->
-{{ include '_static/instructions/stage_2/4_using_slider.html' }}
+{{ include '_static/instructions/stage_2/6_choose_slider.html' }}
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
-    <div>
-        <p>Please click "Continue"</p>
-        <p style="font-size: 16px;" >*** Page will not continue until everyone has clicked continue ***</p>
-    </div>
-    <button type="button" id="validation" onclick="validating()">Continue</button>
+    <button>Continue</button>
 </div>
-
 {{ endblock }}
