@@ -2,23 +2,18 @@
 {{ block content }}
 <!--External CSS & js-->
 <link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
-<link rel="stylesheet" href="{{ static 'style_sheets/tables.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/stage_2/sldr.js' }}"></script>
+<script src="{{ static 'java_scripts/general.js' }}"></script>
 
 {{ block title }}
-<u><b>Using a Slider (Continued)</b></u>
+<u><b>Stage 2 Gameplay</b></u>
 {{ endblock }}
 
-<!-- Instructions Body & Slider Manipulation -->
-{{ include '_static/instructions/stage_2/5_using_slider_cont.html' }}
+<!-- General Information Body -->
+{{ include '_static/instructions/stage_2/7_gameplay.html' }}
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">
-    <div>
-        <p>Please click "Continue"</p>
-        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
-    </div>
-    <button type="button" id="validation" onclick="checkAndSubmit(event)">Continue</button>
+    <button>Continue</button>
 </div>
 
 {{ endblock }}
