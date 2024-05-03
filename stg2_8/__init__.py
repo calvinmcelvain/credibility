@@ -9,7 +9,7 @@ Stage 2 Scenario 3 Game & Final Payoff screen
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'stg2d3_9'
+    NAME_IN_URL = 'stg2_8'
     PLAYERS_PER_GROUP = grouping
     NUM_ROUNDS = 1
 

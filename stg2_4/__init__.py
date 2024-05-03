@@ -9,7 +9,7 @@ Stage 2 Scenario 1 Game
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'stg2d1_4'
+    NAME_IN_URL = 'stg2_4'
     PLAYERS_PER_GROUP = grouping
     NUM_ROUNDS = 1
 

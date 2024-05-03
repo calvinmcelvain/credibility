@@ -7,7 +7,7 @@ Stage 2 Scenario 3 Instructions
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'stg2d3_8'
+    NAME_IN_URL = 'stg2_7'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
 
