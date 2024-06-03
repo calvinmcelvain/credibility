@@ -72,12 +72,6 @@ SESSION_CONFIGS = [
         num_demo_participants=participants,
     ),
     dict(
-        name='Slider_page',
-        display_name='ADMIN: Slider Page',
-        app_sequence=['__admin_slider'],
-        num_demo_participants=1,
-    ),
-    dict(
         name='experimenter_page',
         display_name='ADMIN: Instructions Page',
         app_sequence=['__admin_exp'],
