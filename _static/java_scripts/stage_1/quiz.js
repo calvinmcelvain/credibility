@@ -14,10 +14,10 @@ function checkAnswers() {
     };
 
     var correctAnswers = {
-      Q1a: '1',
+      Q1a: '0',
       Q1b: '12',
       Q1c: '3',
-      Q2a: '14',
+      Q2a: '24',
       Q2b: '12',
       Q2c: '0',
       Q3a: 'True',
