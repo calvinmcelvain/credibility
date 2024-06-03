@@ -6,7 +6,7 @@ participants = 2
 
 # Timeout Seconds
 DECISION_TIME = 20000   # In milliseconds (a javascript timeout)
-FEEDBACK_TIME = None  # In seconds
+FEEDBACK_TIME = 30  # In seconds
 INSTRUCTIONS_TIME = None
 
 SESSION_CONFIGS = [
