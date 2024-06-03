@@ -4,32 +4,31 @@
         <table class="playerpayofftable">
             <tr>
                 <td></td>
-                <td class="header" style="font-size: 1vmax; height: 2vh" colspan="5">Total Investors (including you)</td>
+                <td class="header" style="font-size: 1vmax; height: 2vh" colspan="4">Total Investors (including you)</td>
+            </tr>
+            <tr style="height: 1.5vh">
+                <td><i>Quality</i></td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
             </tr>
             <tr>
-                <td style="height: 1.5vh"><i>Quality</i></td>
-                <td style="height: 1.5vh" class="row1">1</td>
-                <td style="height: 1.5vh" class="row1">2</td>
-                <td style="height: 1.5vh" class="row1">3</td>
-                <td style="height: 1.5vh" class="row1">4</td>
-                <td style="height: 1.5vh" class="row1">5</td>
-            </tr>
-            <tr>
-                <td style="height: 1.5vh" class="column1">Low</td>
+                <td  style="height: 1.5vh" class="column1">Low</td>
                 {{ for n, p in pb_table.1.items() }}
-                <td style="height: 1.5vh">{{ p }}</td>
+                <td  style="height: 1.5vh">{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
-                <td style="height: 1.5vh" class="column1">Medium</td>
+                <td  style="height: 1.5vh" class="column1">Medium</td>
                 {{ for n, p in pb_table.2.items() }}
-                <td style="height: 1.5vh">{{ p }}</td>
+                <td  style="height: 1.5vh">{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>
-                <td style="height: 1.5vh" class="column1">High</td>
+                <td  style="height: 1.5vh" class="column1">High</td>
                 {{ for n, p in pb_table.3.items() }}
-                <td style="height: 1.5vh">{{ p }}</td>
+                <td  style="height: 1.5vh">{{ p }}</td>
                 {{ endfor }}
             </tr>
         </table>
@@ -41,16 +40,15 @@
         <table class="playerpayofftable">
             <tr>
                 <td></td>
-                <td class="header" colspan="6" style="font-size: 1vmax; height: 2vh">Total Investors</td>
+                <td class="header" colspan="4" style="font-size: 1vmax; height: 2vh">Total Investors</td>
             </tr>
-            <tr style="font-size: 1vmax">
+            <tr style="height: 1.5vh">
                 <td><i>Quality</i></td>
-                <td style="height: 1.5vh" class="row1">0</td>
-                <td style="height: 1.5vh" class="row1">1</td>
-                <td style="height: 1.5vh" class="row1">2</td>
-                <td style="height: 1.5vh" class="row1">3</td>
-                <td style="height: 1.5vh" class="row1">4</td>
-                <td style="height: 1.5vh" class="row1">5</td>
+                <td class="row1">0</td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
             </tr>
             <tr style="font-size: 1vmax">
                 <td style="height: 1.5vh;" class="column1">Low</td>
@@ -58,16 +56,16 @@
                 <td style="height: 1.5vh">{{ p }}</td>
                 {{ endfor }}
             </tr>
-            <tr style="font-size: 1vmax">
-                <td style="height: 1.5vh" class="column1">Medium</td>
+            <tr style="height: 1.5vh">
+                <td class="column1">Medium</td>
                 {{ for n, p in pa_table.2.items() }}
-                <td style="height: 1.5vh">{{ p }}</td>
+                <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
-            <tr style="font-size: 1vmax">
-                <td style="height: 1.5vh" class="column1">High</td>
+            <tr style="height: 1.5vh">
+                <td class="column1">High</td>
                 {{ for n, p in pa_table.3.items() }}
-                <td style="height: 1.5vh">{{ p }}</td>
+                <td>{{ p }}</td>
                 {{ endfor }}
             </tr>
         </table>
