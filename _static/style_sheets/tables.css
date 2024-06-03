@@ -193,7 +193,7 @@ div.tablescroll {
     contain: content;
     margin-top: 4vh;
     border-bottom: 1px solid black;
-    calc(100% - 100px);
+    width: calc(100% - 100px);
 }
 .tablescroll div {
     text-align: center;
