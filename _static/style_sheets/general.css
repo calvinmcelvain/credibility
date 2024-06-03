@@ -182,7 +182,20 @@ p.quiz {
   50% { background-color: #fff; }
   100% { background-color: red; }
 }
-
 td.flashing-red {
   animation: flashRed 2s infinite; /* Adjust the duration as needed */
+}
+
+/* Modal customization */
+.modal-content {
+    width: 22vw;
+}
+.modal-title {
+    font-size: 1.3vmax;
+}
+.modal-body {
+    font-size: 1.2vmax;
+}
+.modal-footer > button {
+    font-size: 1vmax;
 }
