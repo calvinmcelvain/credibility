@@ -61,7 +61,7 @@ class Player(BasePlayer):
     random_investors = models.LongStringField()
     
     def get_random_investors(self):
-        investors = [1, 2, 3, 4] * 5
+        investors = [r.randint(1,3) for x in range(20)]
         r.shuffle(investors) 
         return investors
 
