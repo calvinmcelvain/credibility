@@ -114,7 +114,7 @@ span.errormessage {
 }
 
 /* sample Page Header Styling */
-span.sample {
+h3.sample {
     font-size: 1.2vw;
     font-family: Arial, serif;
     color: red;
