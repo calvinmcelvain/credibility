@@ -43,7 +43,7 @@ function validating() {
 }
 
 /// ID screen
-function validateForm(event) {
+function idconfirmation(event) {
     event.preventDefault();
     var playerId = document.getElementById("player_id").value;
     var errorMessage = document.getElementById("errorMessage");
