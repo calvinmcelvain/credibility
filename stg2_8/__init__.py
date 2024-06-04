@@ -26,12 +26,12 @@ class C(BaseConstants):
 
     # Decision Payoff dictionaries
     pb_payoff = {
-        1: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0},
-        3: {1: 0, 2: 0, 3: 400, 4: 400, 5: 400}
+        1: {1: 0, 2: 0, 3: 0, 4: 0},
+        3: {1: 0, 2: 0, 3: 400, 4: 400},
     }
     pa_payoff = {
-        1: {0: 0, 1: 80, 2: 160, 3: 240, 4: 320, 5: 400},
-        3: {0: 0, 1: 80, 2: 160, 3: 240, 4: 320, 5: 400}
+        1: {0: 0, 1: 100, 2: 200, 3: 300, 4: 400},
+        3: {0: 0, 1: 100, 2: 200, 3: 300, 4: 400}
     }
 
 
@@ -198,52 +198,23 @@ class PayoffWaitPage(WaitPage):
                 player.payoff = pa_payoff[decoder[signal]][group.total_players_invest()]
 
 
-class P2_FinalScreen(Page):
-    @staticmethod
-    def vars_for_template(player: Player):
-        stage1_payoff = player.participant.vars['STG1_payoff']
-        D1 = player.participant.vars['D1']['payoff']
-        D2 = player.participant.vars['D2']['payoff']
-        stage2_payoff_dict = {
-            1: D1,
-            2: D2,
-            3: player.payoff
-        }
-        stage2_payoff = stage2_payoff_dict[player.group.decision_towards_payment]
-
-        # Calculating Participant payoff (Based on chosen decision)
-        remainder = (player.participant.payoff - stage1_payoff - stage2_payoff)
-        player.participant.payoff = (player.participant.payoff - remainder)
-
-        final_payoff = stage1_payoff + stage2_payoff
-        real_stg1 = stage1_payoff.to_real_world_currency(player.session)
-        real_stg2 = stage2_payoff.to_real_world_currency(player.session)
-        real_final = final_payoff.to_real_world_currency(player.session)
-        final = real_final + player.session.config['participation_fee']
-        player.total = float(final)
-        decision_counts = player.group.in_round(1).decision_towards_payment
-        history = {
-            1: player.participant.vars['D1'],
-            2: player.participant.vars['D2'],
-            3: player.in_all_rounds()
-        }
-
-        return {'final_payoff': final_payoff, 'Stage_1': stage1_payoff, 'Stage_2': stage2_payoff,
-                'real_final': real_final, 'real_Stage_1': real_stg1, 'real_Stage_2': real_stg2,
-                'final': final, 'decision_counts': decision_counts, 'history': history, 'fee': player.session.config['participation_fee']}
+class BeforeNextDecision(WaitPage):
+    wait_for_all_groups = True
 
     @staticmethod
-    def is_displayed(player: Player):
-        return player.round_number == C.NUM_ROUNDS
+    def after_all_players_arrive(subsession: Subsession):
+        for player in subsession.get_players():
+            signal = player.group.actual_signal
+            if player.role != C.pa_ROLE:
+                player.participant.vars['D3'] = {'payoff': player.payoff, 'signal': signal,
+                                                     'advice': player.group.pa_advice, 'draw': player.random_draw, 'decision': player.pb_decision(),
+                                                     'other_investors': player.other_investors(),
+                                                     'investors': player.group.total_players_invest(), 'pa_payoff': player.group.pa_payoff()}
+            else:
+                player.participant.vars['D3'] = {'payoff': player.payoff, 'signal': signal, 'advice': player.group.pa_advice,
+                                                 'investors': player.group.total_players_invest(),
+                                                 'pb_payoff': player.group.pb_payoff()}
 
 
-class P3_Demographics(Page):
-    form_model = 'player'
-    form_fields = ['gender', 'age', 'ethnicity', 'hol']
 
-
-class P4_End(Page):
-    pass
-
-
-page_sequence = [P1_PADecision, P1_PBDecision, PayoffWaitPage, P2_FinalScreen, P3_Demographics, P4_End]
+page_sequence = [P1_PADecision, P1_PBDecision, PayoffWaitPage]
