@@ -16,15 +16,15 @@
             </tr>
             <tr>
                 <th>Total Investors:</th>
-                <td>5</td>
+                <td>4</td>
             </tr>
             <tr>
                 <th>Advisor's Payoff:</th>
-                <td>12 ECU</td>
+                <td>6 ECU</td>
             </tr>
             <tr class="last">
                 <th>Your Payoff:</th>
-                <td>9 ECU</td>
+                <td>12 ECU</td>
             </tr>
         </table>
     </div>
@@ -33,7 +33,7 @@
         <table class="playerpayofftable">
             <tr>
                 <td></td>
-                <td class="header" colspan="5">Total Investors (including you)</td>
+                <td class="header" colspan="4">Total Investors (including you)</td>
             </tr>
             <tr>
                 <td style="font-style: italic;">Quality</td>
@@ -41,7 +41,6 @@
                 <td class="row1">2</td>
                 <td class="row1">3</td>
                 <td class="row1">4</td>
-                <td class="row1">5</td>
             </tr>
             <tr>
                 <td class="column1">Low</td>
@@ -52,7 +51,7 @@
             <tr>
                 <td class="column1" style="font-weight: bold">Medium</td>
                 {{ for n, p in pb_table.2.items() }}
-                <td {{ if n == 5 }} style="background-color: greenyellow; font-weight: bold"{{ endif }}>{{ p }}</td>
+                <td {{ if n == 4 }} style="background-color: greenyellow; font-weight: bold"{{ endif }}>{{ p }}</td>
                 {{ endfor }}
             </tr>
             <tr>

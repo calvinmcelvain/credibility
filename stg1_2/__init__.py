@@ -45,14 +45,14 @@ class C(BaseConstants):
 
     # Stage 1 Payoff dictionaries & Investor endowment
     pb_payoff = {
-        1: {1: 0, 2: 1, 3: 2, 4: 3, 5: 4},
-        2: {1: 1, 2: 3, 3: 5, 4: 7, 5: 9},
-        3: {1: 2, 2: 4, 3: 8, 4: 14, 5: 22}
+        1: {1: 0, 2: 0, 3: 1, 4: 1},
+        2: {1: 0, 2: 0, 3: 6, 4: 6},
+        3: {1: 0, 2: 0, 3: 24, 4: 24}
     }
     pa_payoff = {
-        1: {0: 12, 1: 3, 2: 3, 3: 3, 4: 3, 5: 3},
-        2: {0: 6, 1: 6, 2: 6, 3: 6, 4: 6, 5: 12},
-        3: {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 30}
+        1: {0: 18, 1: 3, 2: 3, 3: 0, 4: 0},
+        2: {0: 5, 1: 5, 2: 12, 3: 12, 4: 12},
+        3: {0: 0, 1: 0, 2: 0, 3: 10, 4: 34}
     }
     pb_endowment = 12
 
@@ -132,16 +132,6 @@ def is_displayed_pa(player: Player):
 def is_displayed_pb(player: Player):
     # Is displayed function for role Advisor
     return player.role != C.pa_ROLE
-
-
-# Custom data export for this game
-def custom_export(players):
-    # header rows
-    yield ['session', 'participant_code', 'player_id', 'role', 'treatment', 'round_number', 'estimated_signal', 'actual_signal', 'payoff', 'low_advice', 'med_advice', 'high_advice', 'invest_decision']
-    for p in players:
-        participant = p.participant
-        session = p.session
-        yield [session.code, participant.code, participant.PlayerID, participant.role, p.group.treatment, p.round_number, p.group.estimated_signal, p.group.actual_signal, p.payoff, p.pa_low_advice, p.pa_med_advice, p.pa_high_advice, p.pb_decision]
 
 
 # PAGES

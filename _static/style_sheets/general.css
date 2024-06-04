@@ -64,7 +64,18 @@ ul li {
     font-size: 1.1vmax;
 }
 
+/* Centering for Scenario 1 Instructions Recaps */
+p.sc4-sc1sum {
+    font-size: 1.2vmax;
+    text-align: center;
+    text-decoration: underline;
+}
+
 /* Title */
+h2.otree-title {
+    font-weight: bold;
+    text-decoration: underline;
+}
 div.Title {
     contain: content;
 }
@@ -110,7 +121,7 @@ span.errormessage {
 }
 
 /* sample Page Header Styling */
-span.sample {
+h3.sample {
     font-size: 1.2vw;
     font-family: Arial, serif;
     color: red;
@@ -182,7 +193,32 @@ p.quiz {
   50% { background-color: #fff; }
   100% { background-color: red; }
 }
-
 td.flashing-red {
   animation: flashRed 2s infinite; /* Adjust the duration as needed */
+}
+
+/* Modal customization */
+.modal-content {
+    width: 22vw;
+}
+.modal-content-instr {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: .3rem;
+    outline: 0;
+}
+.modal-title {
+    font-size: 1.3vmax;
+}
+.modal-body {
+    font-size: 1.2vmax;
+}
+.modal-footer > button {
+    font-size: 1vmax;
 }

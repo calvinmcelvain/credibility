@@ -8,7 +8,7 @@ Stage 2 Instructions
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'stg2_1'
+    NAME_IN_URL = 'stg2_3'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
 
@@ -23,22 +23,22 @@ class C(BaseConstants):
 
     # Decision Payoff dictionaries
     pb_payoff = {
-        1: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0},
-        3: {1: 400, 2: 400, 3: 400, 4: 400, 5: 400},
+        1: {1: 0, 2: 0, 3: 0, 4: 0},
+        3: {1: 400, 2: 400, 3: 400, 4: 400},
     }
     pa_payoff = {
-        1: {0: 0, 1: 80, 2: 160, 3: 240, 4: 320, 5: 400},
-        3: {0: 0, 1: 80, 2: 160, 3: 240, 4: 320, 5: 400}
+        1: {0: 0, 1: 100, 2: 200, 3: 300, 4: 400},
+        3: {0: 0, 1: 100, 2: 200, 3: 300, 4: 400}
     }
     
     # Sample Decision Payoff dictionaries
     pb_payoff_sample = {
-        1: {1: 400, 2: 0, 3: 400, 4: 0, 5: 400},
-        3: {1: 0, 2: 400, 3: 0, 4: 400, 5: 0},
+        1: {1: 400, 2: 0, 3: 400, 4: 0},
+        3: {1: 0, 2: 400, 3: 0, 4: 400},
     }
     pa_payoff_sample = {
-        1: {0: 0, 1: 80, 2: 160, 3: 240, 4: 320, 5: 400},
-        3: {0: 0, 1: 80, 2: 160, 3: 240, 4: 320, 5: 400}
+        1: {0: 0, 1: 100, 2: 200, 3: 300, 4: 400},
+        3: {0: 0, 1: 100, 2: 200, 3: 300, 4: 400}
     }
 
 
@@ -61,7 +61,7 @@ class Player(BasePlayer):
     random_investors = models.LongStringField()
     
     def get_random_investors(self):
-        investors = [1, 2, 3, 4] * 5
+        investors = [r.randint(1,3) for x in range(20)]
         r.shuffle(investors) 
         return investors
 

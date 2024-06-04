@@ -35,8 +35,8 @@ function checkAndSubmit(event) {
     // Define target values
     var targetValues = {
         slider1: 30,
-        slider2: 27,
-        slider3: 45
+        slider2: 270,
+        slider3: 301
     };
 
     var isValid = true;

@@ -1,4 +1,4 @@
-<div class="tablescroll">
+<div class="tablescroll" style="height: 100%;">
     <h4>Stage 2 Scenario Results:</h4>
     <h5>*** The Scenario randomly chosen towards payment is <span class="highlight">Scenario {{ decision_counts }}</span> ***</h5>
     <div>
@@ -12,7 +12,7 @@
                 <th>Investors Payoff</th>
             </tr>
         </table>
-        <div class="scroll">
+        <div class="scroll" style="max-height: 65vh;">
             <table id="data_table">
                 <tr {{ if decision_counts == 1 }} bgcolor="yellow"{{ endif }}>
                     <td>1</td>
@@ -31,10 +31,18 @@
                     <td>{{ history.2.pb_payoff }}</td>
                 </tr>
                 <tr {{ if decision_counts == 3 }} bgcolor="yellow"{{ endif }}>
-                    {{ for value in history.3 }}
                     <td>3</td>
+                    <td>{{ history.3.signal }}</td>
+                    <td>{{ history.3.advice }}</td>
+                    <td>{{ history.3.investors }}</td>
+                    <td>{{ history.3.payoff }}</td>
+                    <td>{{ history.3.pb_payoff }}</td>
+                </tr>
+                <tr {{ if decision_counts == 4 }} bgcolor="yellow"{{ endif }}>
+                    <td>4</td>
+                    {{ for value in history.4 }}
                     <td>{{ value.group.actual_signal }}</td>
-                    <td>{{ value.group.pa_advice }}</td>
+                    <td>-</td>
                     <td>{{ value.group.total_players_invest() }}</td>
                     <td>{{ value.payoff }}</td>
                     <td>{{ value.group.pb_payoff }}</td>

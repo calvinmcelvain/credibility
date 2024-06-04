@@ -1,12 +1,12 @@
 from os import environ
 
-grouping = 6
-participants = 6
+grouping = 5
+participants = 5
 
 
 # Timeout Seconds
 DECISION_TIME = 20000   # In milliseconds (a javascript timeout)
-FEEDBACK_TIME = None  # In seconds
+FEEDBACK_TIME = 30  # In seconds
 INSTRUCTIONS_TIME = None
 
 SESSION_CONFIGS = [
@@ -15,12 +15,6 @@ SESSION_CONFIGS = [
         display_name='Full Experiment',
         app_sequence=['start', 'stg1_1', 'stg1_2', 'stg2_3', 'stg2_4', 'stg2_5', 'stg2_6', 'stg2_7', 'stg2_8'],
         num_demo_participants=participants,
-    ),
-    dict(
-        name='Slider_page',
-        display_name='ADMIN: Slider Page',
-        app_sequence=['__admin_slider'],
-        num_demo_participants=1,
     ),
     dict(
         name='experimenter_page',
@@ -43,7 +37,7 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 POINTS_CUSTOM_NAME = 'ECU'
 
-PARTICIPANT_FIELDS = ['role', 'STG1_payoff', 'STG1_history', 'D1', 'D2', 'PlayerID']
+PARTICIPANT_FIELDS = ['role', 'STG1_payoff', 'STG1_history', 'D1', 'D2', 'D3', 'PlayerID']
 SESSION_FIELDS = ['group_matrix']
 
 # ISO-639 code

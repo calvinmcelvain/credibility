@@ -7,7 +7,7 @@ Stage 2 Scenario 2 Instructions
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'stg2d2_6'
+    NAME_IN_URL = 'stg2_5'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
 
@@ -16,12 +16,12 @@ class C(BaseConstants):
 
     # Decision Payoff dictionaries
     pb_payoff = {
-        1: {1: 0, 2: 0, 3: 400, 4: 400, 5: 400},
-        3: {1: 0, 2: 0, 3: 400, 4: 400, 5: 400},
+        1: {1: 0, 2: 0, 3: 400, 4: 400},
+        3: {1: 0, 2: 0, 3: 400, 4: 400},
     }
     pa_payoff = {
-        1: {0: 0, 1: 80, 2: 160, 3: 240, 4: 320, 5: 400},
-        3: {0: 0, 1: 80, 2: 160, 3: 240, 4: 320, 5: 400}
+        1: {0: 0, 1: 100, 2: 200, 3: 300, 4: 400},
+        3: {0: 0, 1: 100, 2: 200, 3: 300, 4: 400}
     }
 
 
