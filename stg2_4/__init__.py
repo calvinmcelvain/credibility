@@ -61,7 +61,11 @@ class Group(BaseGroup):
 
     def total_players_invest(self):
         return sum(1 for player in self.get_players() if player.role != C.pa_ROLE and player.pb_outside_option > player.random_draw and player.group.pa_advice == 'Invest')
-
+    
+    
+    def total_players_invest_d4(self):
+        return sum(1 for player in self.get_players() if player.role != C.pa_ROLE and player.pb_outside_option > player.random_draw)
+    
 
 class Player(BasePlayer):
     # Decision fields for Player A and B
@@ -77,6 +81,15 @@ class Player(BasePlayer):
             return others
         else:
             return self.group.total_players_invest()
+        
+    
+    def other_investors_d4(self):
+        if self.role != C.pa_ROLE and self.pb_outside_option > self.random_draw:
+            others = (self.group.total_players_invest_d4() - 1)
+            return others
+        else:
+            return self.group.total_players_invest_d4()
+    
 
     def pb_decision(self):
         if self.role != C.pa_ROLE:
@@ -108,15 +121,6 @@ def is_displayed_pa(player: Player):
 def is_displayed_pb(player: Player):
     # Is displayed function for role Player B
     return player.role != C.pa_ROLE
-
-
-def custom_export(players):
-    # header rows
-    yield ['session', 'participant_code', 'player_id', 'role', 'decision_number', 'actual_signal', 'payoff', 'low_advice', 'high_advice', 'invest_signal', 'max_outside_option']
-    for p in players:
-        participant = p.participant
-        session = p.session
-        yield [session.code, participant.code, participant.PlayerID, participant.role, 1, p.group.actual_signal, p.payoff, p.pa_low_advice, p.pa_high_advice, p.random_draw, p.pb_outside_option]
 
 
 # PAGES
@@ -194,7 +198,7 @@ class BeforeNextDecision(WaitPage):
             if player.role != C.pa_ROLE:
                 player.participant.vars['D1'] = {'payoff': player.payoff, 'signal': signal,
                                                      'advice': player.group.pa_advice, 'draw': player.random_draw, 'decision': player.pb_decision(),
-                                                     'other_investors': player.other_investors(),
+                                                     'other_investors': player.other_investors(), 'other_investors_d4': player.other_investors_d4(),
                                                      'investors': player.group.total_players_invest(), 'pa_payoff': player.group.pa_payoff()}
             else:
                 player.participant.vars['D1'] = {'payoff': player.payoff, 'signal': signal, 'advice': player.group.pa_advice,

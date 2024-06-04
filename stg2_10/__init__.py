@@ -4,12 +4,12 @@ import random as r
 from settings import grouping, DECISION_TIME, FEEDBACK_TIME
 
 doc = """
-Stage 2 Scenario 3 Game & Final Payoff screen
+Stage 2 Scenario 4 Game & Final Payoff screen
 """
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'stg2_8'
+    NAME_IN_URL = 'stg2_10'
     PLAYERS_PER_GROUP = grouping
     NUM_ROUNDS = 1
 
@@ -26,12 +26,12 @@ class C(BaseConstants):
 
     # Decision Payoff dictionaries
     pb_payoff = {
-        1: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0},
-        3: {1: 0, 2: 0, 3: 400, 4: 400, 5: 400}
+        1: {1: 0, 2: 0, 3: 400, 4: 400},
+        3: {1: 0, 2: 0, 3: 400, 4: 400},
     }
     pa_payoff = {
-        1: {0: 0, 1: 80, 2: 160, 3: 240, 4: 320, 5: 400},
-        3: {0: 0, 1: 80, 2: 160, 3: 240, 4: 320, 5: 400}
+        1: {0: 0, 1: 100, 2: 200, 3: 300, 4: 400},
+        3: {0: 0, 1: 100, 2: 200, 3: 300, 4: 400}
     }
 
 
@@ -44,9 +44,8 @@ class Group(BaseGroup):
     treatment = models.StringField()
 
     # Randomly drawn fields
-    actual_signal = models.StringField()
-    pa_advice = models.StringField()
     decision_towards_payment = models.IntegerField()
+    actual_signal = models.StringField()
 
     # Player history functions meant to be passed to template in feedback page
     def pb_payoff(self):
@@ -62,13 +61,11 @@ class Group(BaseGroup):
                 return p.payoff
 
     def total_players_invest(self):
-        return sum(1 for player in self.get_players() if player.role != C.pa_ROLE and player.pb_outside_option > player.random_draw and player.group.pa_advice == 'Invest')
+        return sum(1 for player in self.get_players() if player.role != C.pa_ROLE and player.pb_outside_option > player.random_draw)
 
 
 class Player(BasePlayer):
     # Decision fields for Player A and B
-    pa_low_advice = models.StringField(blank=False)
-    pa_high_advice = models.StringField(blank=False)
     pb_outside_option = models.IntegerField(blank=False, min=0, max=400)
     random_draw = models.IntegerField(min=0, max=400)
     total = models.FloatField()
@@ -81,7 +78,7 @@ class Player(BasePlayer):
 
     # Player history functions meant to be passed to template in feedback page
     def other_investors(self):
-        if self.role != C.pa_ROLE and self.pb_outside_option > self.random_draw and self.group.pa_advice != 'Keep':
+        if self.role != C.pa_ROLE and self.pb_outside_option > self.random_draw:
             others = (self.group.total_players_invest() - 1)
             return others
         else:
@@ -111,7 +108,8 @@ def creating_session(subsession):
 
     # Randomly choosing decision to count
     for group in subsession.get_groups():
-        group.decision_towards_payment = r.randint(1, 3)
+        group.decision_towards_payment = r.randint(1, 4)
+        
 
 
 def is_displayed_pa(player: Player):
@@ -124,32 +122,7 @@ def is_displayed_pb(player: Player):
     return player.role != C.pa_ROLE
 
 
-def custom_export(players):
-    # header rows
-    yield ['session', 'participant_code', 'player_id', 'role', 'treatment', 'decision_number', 'actual_signal', 'payoff', 'payoff_counts', 'low_advice', 'high_advice', 'random_draw', 'max_outside_option', 'total$']
-    for p in players:
-        participant = p.participant
-        session = p.session
-        yield [session.code, participant.code, participant.PlayerID, participant.role, p.group.treatment, 1, p.group.actual_signal, p.payoff, p.group.decision_towards_payment, p.pa_low_advice, p.pa_high_advice, p.random_draw, p.pb_outside_option, p.total]
-
-
 # PAGES
-class P1_PADecision(Page):
-    form_model = 'player'
-    form_fields = ['pa_low_advice', 'pa_high_advice']
-    is_displayed = is_displayed_pa
-
-    @staticmethod
-    def js_vars(player):
-        return dict(
-            timeout=C.decision_time,
-        )
-
-    @staticmethod
-    def vars_for_template(player: Player):
-        return {'pa_table': C.pa_payoff, 'pb_table': C.pb_payoff}
-
-
 class P1_PBDecision(Page):
     form_model = 'player'
     form_fields = ['pb_outside_option']
@@ -169,11 +142,6 @@ class P1_PBDecision(Page):
 class PayoffWaitPage(WaitPage):
     @staticmethod
     def after_all_players_arrive(group: Group):
-        if group.actual_signal == 'High':
-            group.pa_advice = group.get_player_by_role(C.pa_ROLE).pa_high_advice
-        else:
-            group.pa_advice = group.get_player_by_role(C.pa_ROLE).pa_low_advice
-
         for player in group.get_players():
             if player.role != C.pa_ROLE:
                 player.random_draw = r.randint(1, 400)
@@ -187,11 +155,10 @@ class PayoffWaitPage(WaitPage):
         decoder = C.decoder
         for player in group.get_players():
             if player.role != C.pa_ROLE:
-                if player.group.pa_advice == 'Invest':
-                    if player.pb_outside_option > player.random_draw:
-                        player.payoff = pb_payoff[decoder[signal]][group.total_players_invest()]
-                    else:
-                        player.payoff = player.random_draw
+                other_investors = player.participant.vars['D1']['other_investors_d4']
+                if player.pb_outside_option > player.random_draw:
+                    total_investors = other_investors + 1
+                    player.payoff = pb_payoff[decoder[signal]][total_investors]
                 else:
                     player.payoff = player.random_draw
             else:
@@ -204,10 +171,12 @@ class P2_FinalScreen(Page):
         stage1_payoff = player.participant.vars['STG1_payoff']
         D1 = player.participant.vars['D1']['payoff']
         D2 = player.participant.vars['D2']['payoff']
+        D3 = player.participant.vars['D3']['payoff']
         stage2_payoff_dict = {
             1: D1,
             2: D2,
-            3: player.payoff
+            3: D3,
+            4: player.payoff
         }
         stage2_payoff = stage2_payoff_dict[player.group.decision_towards_payment]
 
@@ -225,7 +194,8 @@ class P2_FinalScreen(Page):
         history = {
             1: player.participant.vars['D1'],
             2: player.participant.vars['D2'],
-            3: player.in_all_rounds()
+            3: player.participant.vars['D3'],
+            4: player.in_all_rounds()
         }
 
         return {'final_payoff': final_payoff, 'Stage_1': stage1_payoff, 'Stage_2': stage2_payoff,
@@ -246,4 +216,4 @@ class P4_End(Page):
     pass
 
 
-page_sequence = [P1_PADecision, P1_PBDecision, PayoffWaitPage, P2_FinalScreen, P3_Demographics, P4_End]
+page_sequence = [P1_PBDecision, PayoffWaitPage, P2_FinalScreen, P3_Demographics, P4_End]

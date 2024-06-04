@@ -36,6 +36,7 @@ def creating_session(subsession):
         player.participant.vars['STG1_history'] = {}
         player.participant.vars['D1'] = cu(0)
         player.participant.vars['D2'] = cu(0)
+        player.participant.vars['D3'] = cu(0)
         if player.id_in_group == 1:
             player.participant.vars['role'] = 'Advisor'
         else:

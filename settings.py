@@ -47,28 +47,34 @@ SESSION_CONFIGS = [
         num_demo_participants=participants,
     ),
     dict(
+        name='Stage_2_Scenario_4',
+        display_name='Stage 2: Scenario 4',
+        app_sequence=['start', 'stg2_9', 'stg2_10'],
+        num_demo_participants=participants,
+    ),
+    dict(
         name='Stage_2_Instructions_Only',
         display_name='Stage 2: Instructions',
-        app_sequence=['start', 'stg2_3', 'stg2_5', 'stg2_7'],
+        app_sequence=['start', 'stg2_3', 'stg2_5', 'stg2_7', 'stg2_9'],
         num_demo_participants=participants,
     ),
     dict(
         name='Stage_2_Games',
         display_name='Stage 2: All Scenarios',
         app_sequence=['start', 'stg2_4', 'stg2_6',
-                      'stg2_8'],
+                      'stg2_8', 'stg2_10'],
         num_demo_participants=participants,
     ),
     dict(
         name='Stage_2',
         display_name='Stage 2',
-        app_sequence=['start', 'stg2_3', 'stg2_4', 'stg2_5', 'stg2_6', 'stg2_7', 'stg2_8'],
+        app_sequence=['start', 'stg2_3', 'stg2_4', 'stg2_5', 'stg2_6', 'stg2_7', 'stg2_8', 'stg2_9', 'stg2_10'],
         num_demo_participants=participants,
     ),
     dict(
         name='Stage_1_Stage_2',
         display_name='Full Experiment',
-        app_sequence=['start', 'stg1_1', 'stg1_2', 'stg2_3', 'stg2_4', 'stg2_5', 'stg2_6', 'stg2_7', 'stg2_8'],
+        app_sequence=['start', 'stg1_1', 'stg1_2', 'stg2_3', 'stg2_4', 'stg2_5', 'stg2_6', 'stg2_7', 'stg2_8', 'stg2_9', 'stg2_10'],
         num_demo_participants=participants,
     ),
     dict(

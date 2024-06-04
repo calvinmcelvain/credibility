@@ -64,6 +64,13 @@ ul li {
     font-size: 1.1vmax;
 }
 
+/* Centering for Scenario 1 Instructions Recaps */
+p.sc4-sc1sum {
+    font-size: 1.2vmax;
+    text-align: center;
+    text-decoration: underline;
+}
+
 /* Title */
 h2.otree-title {
     font-weight: bold;

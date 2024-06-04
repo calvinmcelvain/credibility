@@ -4,7 +4,7 @@ import random as r
 from settings import grouping, DECISION_TIME, FEEDBACK_TIME
 
 doc = """
-Stage 2 Scenario 3 Game & Final Payoff screen
+Stage 2 Scenario 3 Game
 """
 
 
@@ -46,7 +46,6 @@ class Group(BaseGroup):
     # Randomly drawn fields
     actual_signal = models.StringField()
     pa_advice = models.StringField()
-    decision_towards_payment = models.IntegerField()
 
     # Player history functions meant to be passed to template in feedback page
     def pb_payoff(self):
@@ -69,15 +68,8 @@ class Player(BasePlayer):
     # Decision fields for Player A and B
     pa_low_advice = models.StringField(blank=False)
     pa_high_advice = models.StringField(blank=False)
-    pb_outside_option = models.IntegerField(blank=False, min=0, max=400)
     random_draw = models.IntegerField(min=0, max=400)
-    total = models.FloatField()
-
-    # Demographics Fields
-    gender = models.StringField(blank=False)
-    age = models.IntegerField(blank=False)
-    ethnicity = models.StringField(blank=False)
-    hol = models.StringField(blank=False)
+    pb_outside_option = models.IntegerField(blank=False, min=0, max=400)
 
     # Player history functions meant to be passed to template in feedback page
     def other_investors(self):
@@ -109,10 +101,6 @@ def creating_session(subsession):
         possible_signals = ['Low', 'High']
         group.actual_signal = r.choice(possible_signals)
 
-    # Randomly choosing decision to count
-    for group in subsession.get_groups():
-        group.decision_towards_payment = r.randint(1, 3)
-
 
 def is_displayed_pa(player: Player):
     # Is displayed function for role Player A
@@ -122,15 +110,6 @@ def is_displayed_pa(player: Player):
 def is_displayed_pb(player: Player):
     # Is displayed function for role Player B
     return player.role != C.pa_ROLE
-
-
-def custom_export(players):
-    # header rows
-    yield ['session', 'participant_code', 'player_id', 'role', 'treatment', 'decision_number', 'actual_signal', 'payoff', 'payoff_counts', 'low_advice', 'high_advice', 'random_draw', 'max_outside_option', 'total$']
-    for p in players:
-        participant = p.participant
-        session = p.session
-        yield [session.code, participant.code, participant.PlayerID, participant.role, p.group.treatment, 1, p.group.actual_signal, p.payoff, p.group.decision_towards_payment, p.pa_low_advice, p.pa_high_advice, p.random_draw, p.pb_outside_option, p.total]
 
 
 # PAGES
@@ -217,4 +196,4 @@ class BeforeNextDecision(WaitPage):
 
 
 
-page_sequence = [P1_PADecision, P1_PBDecision, PayoffWaitPage]
+page_sequence = [P1_PADecision, P1_PBDecision, PayoffWaitPage, BeforeNextDecision]

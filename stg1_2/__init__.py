@@ -134,16 +134,6 @@ def is_displayed_pb(player: Player):
     return player.role != C.pa_ROLE
 
 
-# Custom data export for this game
-def custom_export(players):
-    # header rows
-    yield ['session', 'participant_code', 'player_id', 'role', 'treatment', 'round_number', 'estimated_signal', 'actual_signal', 'payoff', 'low_advice', 'med_advice', 'high_advice', 'invest_decision']
-    for p in players:
-        participant = p.participant
-        session = p.session
-        yield [session.code, participant.code, participant.PlayerID, participant.role, p.group.treatment, p.round_number, p.group.estimated_signal, p.group.actual_signal, p.payoff, p.pa_low_advice, p.pa_med_advice, p.pa_high_advice, p.pb_decision]
-
-
 # PAGES
 class P1_PADecision(Page):
     form_model = 'player'

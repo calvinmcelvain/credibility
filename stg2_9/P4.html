@@ -2,15 +2,15 @@
 {{ block content }}
 <!--External CSS & js-->
 <link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
-<link rel="stylesheet" href="{{ static 'style_sheets/tables.css' }}" type="text/css">
 <script src="{{ static 'java_scripts/general.js' }}"></script>
 
+<!-- Title -->
 {{ block title }}
-Stage 2: Scenario 4
+Scenario 4 will start soon, Please click continue
 {{ endblock }}
 
-<!-- General Information Body Cont. -->
-{{ include '_static/instructions/stage_2/14_scenario_4.html' }}
+<!-- Biddle Body -->
+<h2 class="BeforeStart" style="font-size: 1.2vmax;">Scenario 4 is a paid round. <br>Notice that the payoffs are much higher than in Stage 1.</h2>
 
 <!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
 <div class="button">

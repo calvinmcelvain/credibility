@@ -2,12 +2,12 @@ from otree.api import *
 from settings import INSTRUCTIONS_TIME
 
 doc = """
-Stage 2 Scenario 3 Instructions
+Stage 2 Scenario 4 Instructions
 """
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'stg2_7'
+    NAME_IN_URL = 'stg2_9'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
 
@@ -15,13 +15,17 @@ class C(BaseConstants):
     instructions_time = INSTRUCTIONS_TIME
 
     # Decision Payoff dictionaries
+    pb_payoff_scenario1 = {
+        1: {1: 400, 2: 400, 3: 400, 4: 400},
+        3: {1: 0, 2: 0, 3: 0, 4: 0},
+    }
     pb_payoff = {
-        1: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0},
-        3: {1: 0, 2: 0, 3: 400, 4: 400, 5: 400}
+        1: {1: 0, 2: 0, 3: 400, 4: 400},
+        3: {1: 0, 2: 0, 3: 400, 4: 400},
     }
     pa_payoff = {
-        1: {0: 0, 1: 80, 2: 160, 3: 240, 4: 320, 5: 400},
-        3: {0: 0, 1: 80, 2: 160, 3: 240, 4: 320, 5: 400}
+        1: {0: 0, 1: 100, 2: 200, 3: 300, 4: 400},
+        3: {0: 0, 1: 100, 2: 200, 3: 300, 4: 400}
     }
 
 
@@ -56,8 +60,18 @@ class BaseReadyPage(Page):
             return {0: 'all_ready'}
 
 
-class P1(BaseReadyPage):
-    pass
+class P1(Page):
+    @staticmethod
+    def vars_for_template(player: Player):
+        return {'pb_table': C.pb_payoff_scenario1}
+
+    @staticmethod
+    def live_method(player: Player, data):
+        player.group.all_players_ready += 1
+        players_in_session = len(player.subsession.get_players())
+        if player.group.all_players_ready == players_in_session:
+            player.group.all_players_ready = 0
+            return {0: 'all_ready'}
 
 
 class P2(BaseReadyPage):
@@ -68,4 +82,8 @@ class P3(BaseReadyPage):
     pass
 
 
-page_sequence = [P1, P2, P3]
+class P4(BaseReadyPage):
+    pass
+
+
+page_sequence = [P1, P2, P3, P4]
