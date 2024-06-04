@@ -16,8 +16,8 @@ class C(BaseConstants):
 
     # Decision Payoff dictionaries
     pb_payoff_scenario1 = {
-        1: {1: 400, 2: 400, 3: 400, 4: 400},
-        3: {1: 0, 2: 0, 3: 0, 4: 0},
+        1: {1: 0, 2: 0, 3: 0, 4: 0},
+        3: {1: 400, 2: 400, 3: 400, 4: 400},
     }
     pb_payoff = {
         1: {1: 0, 2: 0, 3: 400, 4: 400},
