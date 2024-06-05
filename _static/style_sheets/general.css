@@ -195,6 +195,7 @@ p.quiz {
 }
 td.flashing-red {
   animation: flashRed 2s infinite; /* Adjust the duration as needed */
+  font-size: 1vmax;
 }
 
 /* Modal customization */
