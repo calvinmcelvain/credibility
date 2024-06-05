@@ -13,7 +13,7 @@ SESSION_CONFIGS = [
     dict(
         name='full_experiment',
         display_name='Full Experiment',
-        app_sequence=['start', 'stg1_1', 'stg1_2', 'stg2_3', 'stg2_4', 'stg2_5', 'stg2_6', 'stg2_7', 'stg2_8'],
+        app_sequence=['start', 'stg1_1', 'stg1_2', 'stg2_3', 'stg2_4', 'stg2_5', 'stg2_6', 'stg2_7', 'stg2_8', 'stg2_9', 'stg2_10'],
         num_demo_participants=participants,
     ),
     dict(
