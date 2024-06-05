@@ -109,12 +109,6 @@ def creating_session(subsession):
     # Randomly choosing decision to count
     for group in subsession.get_groups():
         group.decision_towards_payment = r.randint(1, 4)
-        
-
-
-def is_displayed_pa(player: Player):
-    # Is displayed function for role Player A
-    return player.role == C.pa_ROLE
 
 
 def is_displayed_pb(player: Player):
