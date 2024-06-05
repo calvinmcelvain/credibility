@@ -1,0 +1,53 @@
+<!-- Bootstrap Modal -->
+<div class="modal" id="popup-window" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" style="max-width: 70vw;" role="document">
+      <div class="modal-content-instr">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h3 class="modal-title" style="font-weight: bold; color: red">Instructions</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">Close</span>
+          </button>
+        </div>
+        <!-- Modal Body -->
+        <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
+          <h3>Stage 2</h3>
+          {{ include '_static/instructions/stage_2/1_stage_2.html' }}
+          {{ include '_static/instructions/stage_2/2_stage_2_cont.html' }}
+          <hr>
+          <h3>Stage 2 Payoffs</h3>
+          {{ include '_static/instructions/stage_2/3_stage_2_payoffs.html' }}
+          <hr>
+          <h3>Using a Slider</h3>
+          {{ include '_static/instructions/stage_2/4_using_slider.html' }}
+          {{ include '_static/instructions/stage_2/6_choose_slider.html' }}
+          <hr>
+          <h3>Stage 2 Gameplay</h3>
+          {{ include '_static/instructions/stage_2/7_gameplay.html' }}
+          <hr>
+          <h3>Scenario 4</h3>
+          {{ include '_static/instructions/stage_2/14_scenario_3.html' }}
+          {{ include '_static/instructions/stage_2/15_scenario_3_cont.html' }}
+          {{ include '_static/instructions/stage_2/16_scenario_3_cont.html' }}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+  // Show the Bootstrap modal when the link is clicked
+  document.getElementById("pop-up").addEventListener("click", function(event) {
+    event.preventDefault();
+    $('#popup-window').modal('show'); // Show Bootstrap modal using jQuery
+  });
+  
+  // If you want to close the modal using JavaScript
+  function closestage2d3instructions() {
+    $('#popup-window').modal('hide'); // Hide Bootstrap modal using jQuery
+  }
+  
+  // Close the Bootstrap modal when the close button in modal header is clicked
+  document.querySelector("#popup-window .modal-header .close").addEventListener("click", function() {
+    closestage2d3instructions();
+  });
+  </script>
