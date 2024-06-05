@@ -49,7 +49,7 @@ SESSION_CONFIGS = [
     dict(
         name='Stage_2_Scenario_4',
         display_name='Stage 2: Scenario 4',
-        app_sequence=['start', 'stg2_9', 'stg2_10'],
+        app_sequence=['start', 'stg2_4', 'stg2_9', 'stg2_10'],
         num_demo_participants=participants,
     ),
     dict(
