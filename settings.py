@@ -1,7 +1,7 @@
 from os import environ
 
-grouping = 2
-participants = 2
+grouping = 5
+participants = 20
 
 
 # Timeout Seconds
@@ -15,6 +15,7 @@ SESSION_CONFIGS = [
         display_name="Stage 1: Instructions",
         app_sequence=['start', 'stg1_1'],
         num_demo_participants=participants,
+        use_browser_bots=True
     ),
     dict(
         name='Stage_1_Game_Only',
