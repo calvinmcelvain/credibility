@@ -64,6 +64,11 @@ ul li {
     font-size: 1.1vmax;
 }
 
+/* Instructions Button */
+.instr-btn {
+    float: left;
+}
+
 /* Centering for Scenario 1 Instructions Recaps */
 p.sc4-sc1sum {
     font-size: 1.2vmax;
