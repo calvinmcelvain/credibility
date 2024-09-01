@@ -1,5 +1,5 @@
 from otree.api import *
-from settings import grouping, DECISION_TIME, FEEDBACK_TIME
+from settings import GROUPING, DECISION_TIME, FEEDBACK_TIME, STAGE_1_ROUNDS
 
 doc = """
 Stage 1 app
@@ -8,8 +8,8 @@ Stage 1 app
 
 class C(BaseConstants):
     NAME_IN_URL = 'stg1_2'
-    PLAYERS_PER_GROUP = grouping
-    NUM_ROUNDS = 5
+    PLAYERS_PER_GROUP = GROUPING
+    NUM_ROUNDS = STAGE_1_ROUNDS
 
     # Timeout seconds
     decision_time = DECISION_TIME

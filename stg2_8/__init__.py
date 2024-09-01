@@ -1,6 +1,6 @@
 from otree.api import *
 import random as r
-from settings import grouping, DECISION_TIME, FEEDBACK_TIME
+from settings import GROUPING, DECISION_TIME, FEEDBACK_TIME
 
 doc = """
 Stage 2 scenario 4 app
@@ -9,7 +9,7 @@ Stage 2 scenario 4 app
 
 class C(BaseConstants):
     NAME_IN_URL = 'stg2_8'
-    PLAYERS_PER_GROUP = grouping
+    PLAYERS_PER_GROUP = GROUPING
     NUM_ROUNDS = 1
 
     # Timeout seconds for decision page

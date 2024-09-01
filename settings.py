@@ -1,15 +1,14 @@
 from os import environ
 
-# Game groupings
-grouping = 2
-
-# Demo participants
-participants = 2
-
-# Timeout Seconds
+# Session settings (time, groups, rounds)
+GROUPING = 2
+STAGE_1_ROUNDS = 5
 DECISION_TIME = 20000   # In milliseconds (a javascript timeout)
 FEEDBACK_TIME = None  # In seconds
 INSTRUCTIONS_TIME = None
+
+# Demo participants
+participants = 2
 
 SESSION_CONFIGS = [
     dict(
