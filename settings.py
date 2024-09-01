@@ -1,10 +1,10 @@
 from os import environ
 
 # Session settings (time, groups, rounds)
-GROUPING = 5
-STAGE_1_ROUNDS = 30
+GROUPING = 2
+STAGE_1_ROUNDS = 5
 DECISION_TIME = 20000   # In milliseconds (a javascript timeout)
-FEEDBACK_TIME = 20  # In seconds
+FEEDBACK_TIME = None  # In seconds
 INSTRUCTIONS_TIME = None
 
 # Demo participants
