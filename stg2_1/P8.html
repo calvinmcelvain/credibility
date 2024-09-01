@@ -1,0 +1,133 @@
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/sldrtraining-onload.js' }}"></script>
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+Setting a Minimum Endowment
+{{ endblock }}
+
+<!-- Instructions body -->
+<p><b>Instructions:</b> You will now practice setting the minimum endowment for which you will choose Keep using the slider, the minimum endowment text box, and the probability text box. For the following problems, set the minimum endowment to the value in <span style="color: red">red</span> above each problem.</p>
+
+<!-- Slider practice -->
+<p  style="text-align: center; margin-top: 4vh"><u>Using the slider</u>, set the <i>Minimum Endowment</i> value to <span style="color: red">30</span></p>
+<div class="decision-slider">
+    <table class="no-border">
+        <tr>
+            <td rowspan="2">
+                <label><input type="range" id="slider1" oninput="updateInputValues1(this.value)" min="0" max="400"></label>
+            </td>
+            <td>
+                <label><input disabled type="number" class="input_boxes" id="numberInput1" oninput="updateSliderFromNumber1(this.value)" size="5" min="0" max="400"></label>
+            </td>
+            <th><i> Minimum Endowment</i></th>
+        </tr>
+        <tr>
+            <td>
+                <label><input disabled type="text" class="input_boxes" id="probInput1" oninput="updateSliderFromProbability1(this.value)" size="5"></label>
+            </td>
+            <th><i> Probability of Winning</i></th>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <span id="error1" class="errormessage"></span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p  style="text-align: center;"><u>Using the Minimum Endowment box</u>, set the <i>Minimum Endowment</i> value to <span style="color: red">270</span></p>
+<div class="decision-slider ">
+    <table class="no-border">
+        <tr>
+            <td rowspan="2">
+                <label><input disabled type="range" id="slider2" oninput="updateInputValues2(this.value)" min="0" max="400"></label>
+            </td>
+            <td>
+                <label><input type="number" class="input_boxes" id="numberInput2" oninput="updateSliderFromNumber2(this.value)" size="5" min="0" max="400"></label>
+            </td>
+            <th><i> Minimum Endowment</i></th>
+        </tr>
+        <tr>
+            <td>
+                <label><input disabled type="text" class="input_boxes" id="probInput2" oninput="updateSliderFromProbability2(this.value)" size="5"></label>
+            </td>
+            <th><i> Probability of Winning</i></th>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <span id="error2" class="errormessage"></span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p  style="text-align: center;"><u>Using the Probability of Winning box</u>, set the <i>Probability of Winning</i> value to <span style="color: red">75%</span></p>
+<div class="decision-slider">
+    <table class="no-border">
+        <tr>
+            <td rowspan="2">
+                <label><input disabled type="range" id="slider3" oninput="updateInputValues3(this.value)" min="0" max="400"></label>
+            </td>
+            <td>
+                <label><input disabled type="number" class="input_boxes" id="numberInput3" oninput="updateSliderFromNumber3(this.value)" size="5" min="0" max="400"></label>
+            </td>
+            <th><i> Minimum Endowment</i></th>
+        </tr>
+        <tr>
+            <td>
+                <label><input type="text" class="input_boxes" id="probInput3" oninput="updateSliderFromProbability3(this.value)" size="5"></label>
+            </td>
+            <th><i> Probability of Winning</i></th>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <span id="error3" class="errormessage"></span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p  style="text-align: center;"><u>Using the any of the tools</u>, set the <i>Minimum Endowment</i> value to <span style="color: red">240</span></p>
+<div class="decision-slider">
+    <table class="no-border">
+        <tr>
+            <td rowspan="2">
+                <label><input type="range" id="slider4" oninput="updateInputValues4(this.value)" min="0" max="400"></label>
+            </td>
+            <td>
+                <label><input type="number" class="input_boxes" id="numberInput4" oninput="updateSliderFromNumber4(this.value)" size="5" min="0" max="400"></label>
+            </td>
+            <th><i> Minimum Endowment</i></th>
+        </tr>
+        <tr>
+            <td>
+                <label><input type="text" class="input_boxes" id="probInput4" oninput="updateSliderFromProbability4(this.value)" size="5"></label>
+            </td>
+            <th><i> Probability of Winning</i></th>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <span id="error4" class="errormessage"></span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!-- Next Button: Only allows players to continue if sliders are set to amount and all players in session are ready/clicked continue -->
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" onclick="SliderCheckAndSubmit(event)">Continue</button>
+</div>
+
+{{ endblock }}

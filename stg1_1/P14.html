@@ -1,0 +1,125 @@
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/general-onload.js' }}"></script>
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+<h3 class="sample">**Sample**</h3>
+<div class="Title">
+    <h3 style="float: left"><u>Role:</u> Advisor</h3>
+    <h3 style="float: right">End of Round 7</h3>
+</div>
+{{ endblock }}
+
+<!-- Sample feedback table -->
+<div class="feed-div">
+    <div class="feed">
+        <h4>End of Round Results:</h4>
+        <div>
+            <table>
+                <tr>
+                    <th>Quality Estimate:</th>
+                    <td>Low</td>
+                </tr>
+                <tr>
+                    <th>True Quality Drawn:</th>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <th>Your Advice:</th>
+                    <td>Invest</td>
+                </tr>
+                <tr>
+                    <th>Total Investors:</th>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <th>Investor's Payoff:</th>
+                    <td>6 ECU</td>
+                </tr>
+                <tr class="last">
+                    <th>Your Payoff:</th>
+                    <td>12 ECU</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div style="float: right">
+        <p class="payofftableheader">Your Payoff Table</p>
+        <table class="playerpayofftable">
+            <tr>
+                <td></td>
+                <td class="header" colspan="5">Total Investors</td>
+            </tr>
+            <tr>
+                <td  style="font-style: italic; width: 75px;">Quality</td>
+                <td class="row1">0</td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
+            </tr>
+            {{ for quality, payoffs in advisor_table.items() }}
+            <tr>
+                <td class="column1">{{ quality }}</td>
+                {{ for total_investors, payoff in payoffs.items() }}
+                <td {{ if quality == 'Medium' and total_investors == 4 }} style="background-color: greenyellow; font-weight: bold"{{ endif }}>{{ payoff }}</td>
+                {{ endfor }}
+            </tr>
+            {{ endfor }}
+        </table>
+        <p class="reminder">Remember, Investors who choose to keep will receive a payoff of <u>12 ECU</u></p>
+    </div>
+</div>
+
+<!-- Sample history table -->
+<div class="tablescroll">
+    <div>
+        <table class="history_header">
+            <tr>
+                <th>Prior Round</th>
+                <th>Low Advice</th>
+                <th>Medium Advice</th>
+                <th>High Advice</th>
+                <th>Estimate Signal</th>
+                <th>Actual Signal</th>
+                <th>Total Investors</th>
+                <th>Your Payoff</th>
+                <th>Investors Payoff</th>
+            </tr>
+        </table>
+        <div class="scroll">
+            <table id="data_table">
+                {{ for p in history }}
+                <tr>
+                    <td>{{ p.round_number }}</td>
+                    <td {{ if p.group.estimated_signal == 'Low' }} bgcolor="yellow" {{ else }}{{ endif }}>{{ p.advisor_low_advice }}</td>
+                    <td {{ if p.group.estimated_signal == 'Medium' }} bgcolor="yellow" {{ else }}{{ endif }}>{{ p.advisor_med_advice }}</td>
+                    <td {{ if p.group.estimated_signal == 'High' }} bgcolor="yellow" {{ else }}{{ endif }}>{{ p.advisor_high_advice }}</td>
+                    <td>{{ p.group.estimated_signal }}</td>
+                    <td>{{ p.group.actual_signal }}</td>
+                    <td>{{ p.group.total_players_invest }}</td>
+                    <td>{{ p.payoff }}</td>
+                    <td>{{ p.group.investor_payoff }}</td>
+                </tr>
+                {{ endfor }}
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Next Button with confirmation pop-up & Instructions Button-->
+<div class="button">
+    <button type="button" id="validation" onclick="validating()">Continue</button>
+    <button id="pop-up" class="instr-btn" style="float: left;">Instructions</button>
+</div>
+
+{{ include '_static/instr_bttns/stage_1.html' }}
+
+{{ endblock }}

@@ -1,0 +1,28 @@
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/general-onload.js' }}"></script>
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+Scenario 3 will start soon, Please click continue
+{{ endblock }}
+
+<!-- Body -->
+<h2 class="BeforeStart">Scenario 3 is a paid round. <br>Notice that the payoffs are much higher than in Stage 1.</h2>
+
+<!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
+</div>
+
+{{ endblock }}

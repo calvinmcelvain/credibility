@@ -1,0 +1,29 @@
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/general-onload.js' }}"></script>
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+Stage 2: Scenario 3
+{{ endblock }}
+
+<!-- Instructions body -->
+<p>Like Scenarios 1 and 2, the Advisor will receive 100 for each Investor who chooses to invest. This is shown in the payoff table below. The Advisor’s payoff does not depend on the quality of the investment opportunity.</p>
+{{ include '_static/payoff_tables/advisor.html' }}
+
+<!-- Next Button: Only allows players to continue if all players in session are ready/clicked continue -->
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
+</div>
+
+{{ endblock }}

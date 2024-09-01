@@ -1,0 +1,92 @@
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/general-onload.js' }}"></script>
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+<h3 class="sample">**Sample**</h3>
+<div class="Title_decision">
+    <h3 style="float: left"><u>Role:</u> Investor</h3>
+    <h3 style="float: right">Round 7</h3>
+</div>
+{{ endblock }}
+
+<!-- Payoff tables -->
+{{ include '_static/payoff_tables/investor_advisor.html' }}
+
+<!-- Formfields -->
+<div class="decisiontable dfont">
+    <div class="guide">
+        <span>Advisor's Advice: <b class="advisor_advice">{{ advice }}</b></span>
+    </div>
+    <table>
+        <tr>
+            <th colspan="4" class="qlty_header">Your Investment Decision</th>
+        </tr>
+        <tr>
+            <td class="playera"><label><input name="investor_decision" value="Invest" type="radio"> Invest</label></td>
+            <td class="playera"><label><input name="investor_decision" value="Keep" type="radio"> Keep</label></td>
+        </tr>
+        <tr class="error">
+            <td colspan="4"><span id="error" class="errormessage"></span></td>
+        </tr>
+        <tr class="timeout">
+            <td colspan="6"></td>
+        </tr>
+    </table>
+</div>
+
+<!-- Next button with confirmation pop-up & Instructions button-->
+<div class="button">
+    <button id="validation" onclick="ConfirmationInvestorStg1(event)">Continue</button>
+    <button id="pop-up" style="float: left;" class="instr-btn">Instructions</button>
+</div>
+
+<!-- Sample player history table-->
+<div class="tablescroll">
+    <h4></h4>
+    <div>
+        <table class="history_header">
+            <tr>
+                <th>Prior Round</th>
+                <th>Advisor's Advice</th>
+                <th>Your Decision</th>
+                <th>Other Investors</th>
+                <th>Total Investors</th>
+                <th>True Quality</th>
+                <th>Your Payoff</th>
+                <th>Advisor's Payoff</th>
+            </tr>
+        </table>
+        <div class="scroll">
+            <table id="data_table">
+                {{ for p in history }}
+                <tr>
+                    <td>{{ p.round_number }}</td>
+                    <td>{{ p.group.advisor_advice }}</td>
+                    <td>{{ p.investor_decision }}</td>
+                    <td>{{ p.other_investors }}</td>
+                    <td>{{ p.group.total_players_invest }}</td>
+                    <td>{{ p.group.actual_signal }}</td>
+                    <td>{{ p.payoff }}</td>
+                    <td>{{ p.group.advisor_payoff }}</td>
+                </tr>
+                {{ endfor }}
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Instructions pop-up -->
+{{ include '_static/instr_bttns/stage_1.html' }}
+
+<!-- Decision confirmation pop-up -->
+{{ include '_static/popups/decision.html' }}
+
+{{ endblock }}

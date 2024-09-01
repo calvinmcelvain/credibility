@@ -1,0 +1,35 @@
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/general-onload.js' }}"></script>
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+Practice Round
+{{ endblock }}
+
+<!-- Instructions body -->
+<p>We will now go through a practice round. This is designed to help you understand...</p>
+<div class="List">
+    <ul>
+        <li>The rules for Stage 2</li>
+        <li>How entering a minimum endowment works</li>
+        <li>Why you should follow our advice: <b><i>Your best choice as an Investor is always to set your minimum endowment exactly equal to the average amount you believe you will earn by choosing Invest. The average value of investing is equal to the probability that you win the prize multiplied by 400.</i></b> </li>
+    </ul>
+</div>
+
+<!-- Next Button: Only allows players to continue if all players in session are ready/clicked continue -->
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
+</div>
+
+{{ endblock }}

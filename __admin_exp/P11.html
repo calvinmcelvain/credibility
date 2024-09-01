@@ -1,0 +1,37 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/tables.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/sample/advisor.js' }}"></script>
+<script src="{{ static 'java_scripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+<span class="sample" >**Sample**</span>
+<div class="Title">
+    <h3 style="float: left"><u>Role:</u> Advisor</h3>
+    <h3 style="float: right">Round 7</h3>
+</div>
+{{ endblock }}
+
+
+<!--Payoff Tables-->
+{{ include '_static/tables/payoff_tables/stage_1/advisor_investor.html' }}
+
+<!--Form Fields/Decisions-->
+{{ include '_static/tables/decision_tables/stage_1/sample_tables/advisor_inbetween.html' }}
+
+<!-- Instructions pop-up & Button-->
+<div class="button">
+    <button id="pop-up" style="float: left; background-color: red">Instructions</button>
+    <button>Continue</button>
+</div>
+
+<!-- sample Player History Table-->
+{{ include '_static/tables/history_tables/stage_1/sample_history/advisor.html' }}
+
+<!-- Instructions -->
+{{ include '_static/instructions/instr_bttn/stage_1.html' }}
+
+{{ endblock }}

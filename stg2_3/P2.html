@@ -1,0 +1,30 @@
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/general-onload.js' }}"></script>
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+Stage 2: Scenario 2 (Continued)
+{{ endblock }}
+
+<!-- Instructions body -->
+<p>Investors who choose Invest will win the 400 ECU prize if the majority of Investors in their group (two or more) choose Invest, regardless of <i>Quality</i>. This is shown in the table below. As before, you will not know the quality of the investment opportunity when you decide to invest. Notice that <i>Quality</i> does <b>not</b> matter for the payoff of either the Advisor or Investors.</p>
+{{ include '_static/payoff_tables/investor.html' }}
+<p>As in Scenario 1, each Investor’s endowment will be randomly drawn from the numbers between 1 and 400. There is a separate draw for each Investor, so knowing your endowment does not tell you anything about the endowments of other Investors. As an Investor, you will use a slider to select the minimum endowment for which you will choose Keep <i>if the Advisor’s advice is Invest</i>. Your best choice as an Investor is always to set the slider exactly <i><b>equal</b></i> to the average amount you believe you will earn by choosing Invest. The average amount you will earn as an Investor if you choose Invest is the probability that you will win the prize multiplied by 400. As before, the probability of winning the prize is your perceived probability that the majority of other Investors in your group choose Invest, regardless of <i>Quality</i>.
+
+<!-- Next Button: Only allows players to continue if all players in session are ready/clicked continue -->
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
+</div>
+
+{{ endblock }}

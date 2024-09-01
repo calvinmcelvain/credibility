@@ -1,0 +1,31 @@
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/general-onload.js' }}"></script>
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+Description of Investor Payoffs (Continued)
+{{ endblock }}
+
+<!-- Instructions body -->
+<p>When you make your decision in each round, you will see the payoff table below showing your payoffs if you invest, for each possible combination of <i>Quality</i> (given by the row) and <i>Total Investors</i> (given by the column), the total number of group members that invest <i>including you.</i></p>
+{{ include '_static/payoff_tables/investor.html' }}
+<p>Remember that if you keep your endowment, you will earn 12 ECU regardless of the quality of the investment opportunity. If you choose to invest your endowment, you will give up your 12 ECU initial endowment and will be paid based on the payoff table.</p>
+<p>Please look at an overhead screen as we go through some examples on how to read the <i>Investor</i> payoff tables.</p>
+
+<!-- Next Button: Only allows players to continue if all players in session are ready/clicked continue -->
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
+</div>
+
+{{ endblock }}

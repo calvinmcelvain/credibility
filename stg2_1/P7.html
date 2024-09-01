@@ -1,0 +1,29 @@
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/general-onload.js' }}"></script>
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+What Minimum Endowment Should You Choose?
+{{ endblock }}
+
+<!-- Instructions body -->
+<p><b><i>Your best choice as an Investor is always to set your minimum endowment exactly equal to the average amount you believe you will earn by choosing Invest. The average value of investing is equal to the probability that you win the prize multiplied by 400.</i></b></p>
+<p>You do <b><i>not</i></b> control the probability that you win the prize. When you change the number in the probability box, what you are entering is your <b><i>best guess</i></b> about how likely it is that you will win the prize.</p>
+
+<!-- Next Button: Only allows players to continue if all players in session are ready/clicked continue -->
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
+</div>
+
+{{ endblock }}

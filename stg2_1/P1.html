@@ -1,0 +1,30 @@
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/general-onload.js' }}"></script>
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+Stage 2
+{{ endblock }}
+
+<!-- Instructions body -->
+<p>We have now concluded Stage 1 of the experiment. In Stage 2, you will make decisions for three scenarios.</p>
+<p>Your group in Stage 2 is the same five participants as in Stage 1 and your role (Advisor or Investor) is the same as well.</p>
+
+<!-- Next Button: Only allows players to continue if all players in session are ready/clicked continue -->
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
+</div>
+
+
+{{ endblock }}

@@ -1,0 +1,34 @@
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/general-onload.js' }}"></script>
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+Stage 2: Payoffs
+{{ endblock }}
+
+<!-- Instructions body -->
+<p>There are a number of differences between Stage 1 and Stage 2.</p>
+<div class="List">
+    <ol>
+        <li>The payoff tables will change for each scenario in Stage 2. Be certain to look at the payoff tables and instructions before making choices in Stage 2, as these will <b><i>not</i></b> be the same as Stage 1 or the other scenarios in Stage 2.</li>
+        <li>In every round of Stage 1, the investors’ initial endowments were always 12 ECU. This is not true in Stage 2. Instead, for each scenario, an endowment will be randomly drawn for each Investor. The next few screens explain exactly how this works and how Investors will choose between “Invest” and “Keep”.</li>
+    </ol>
+</div>
+
+<!-- Next Button: Only allows players to continue if all players in session are ready/clicked continue -->
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
+</div>
+
+{{ endblock }}

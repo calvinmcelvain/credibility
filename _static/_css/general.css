@@ -1,0 +1,553 @@
+/* Otree Timer */
+.otree-timer {
+    display: none;
+}
+
+/* Otree body */
+@media screen and (max-width: 2000px) {
+    div.otree-body.container {
+        max-width: calc(100vw - 100px);
+    }
+}
+@media screen and (max-width: 3500px) {
+    div.otree-body.container {
+        max-width: calc(100vw - 200px);
+    }
+}
+.page-header {
+    padding-top: 1vh;
+}
+
+/* General Formatting */
+.dfont {
+    font-size: 1.1vmax;
+}
+.nomargin {
+    margin: unset;
+}
+p {
+    font-size: 1.1vmax;
+    margin-top: 2.3vh;
+}
+h1 {
+    font-size: 1.2vmax;
+    text-align: center;
+    text-decoration: underline;
+    font-style: italic;
+}
+h2 {
+    font-size: 1.5vmax;
+    font-weight: bold;
+    font-family: Arial, serif;
+    text-decoration: underline;
+}
+h3 {
+    font-size: 1.5vmax;
+    font-family: Arial, serif;
+    font-weight: bold;
+}
+h4 {
+    font-size: 1.3vmax;
+    text-align: center;
+    font-style: italic;
+    text-decoration: underline;
+}
+h5 {
+    font-size: 0.9vmax;
+    text-align: center;
+}
+ol li {
+    margin-top: 2vh;
+    font-size: 1.1vmax;
+}
+ul li {
+    font-size: 1.1vmax;
+}
+
+/* Instructions Button */
+.instr-btn {
+    float: left;
+    background-color: red;
+}
+
+/* Centering for Scenario 1 Instructions Recaps */
+p.sc4-sc1sum {
+    font-size: 1.2vmax;
+    text-align: center;
+    text-decoration: underline;
+}
+
+/* Red and bold class */
+span.red-bold {
+    color: red;
+    font-weight: bold;
+}
+
+/* Title */
+h2.otree-title {
+    font-weight: bold;
+    text-decoration: underline;
+}
+div.Title {
+    contain: content;
+}
+.page-header {
+    margin: unset;
+    text-decoration: unset;
+    font-weight: unset;
+    padding-bottom: 1vh;
+}
+
+/* Button Styling */
+div.button {
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+    contain: content;
+}
+.button div {
+    float: left;
+}
+.button button {
+    margin: unset;
+    float: right;
+    font-size: 0.9vmax;
+}
+.button p {
+    margin: unset;
+}
+.button p.bttm-sent {
+    font-size: 0.8vmax;
+}
+
+/* Error message */
+span.errormessage {
+    color: red;
+    display: none;
+    font-size: 1vmax;
+}
+
+/* Sample page header */
+h3.sample {
+    font-size: 1.2vw;
+    font-family: Arial, serif;
+    color: red;
+}
+
+/* Standby Page Styling */
+h2.BeforeStart {
+    font-size: 1.4vmax;
+    text-decoration: unset;
+    text-align: center;
+    margin: 20vh;
+}
+
+/* Highlighting Styling */
+span.highlight {
+    background-color: yellow;
+}
+
+/* id input styling */
+label.id {
+    margin-top: 3vh;
+    
+}
+input.id {
+    max-width: 3em;
+    border: 1px solid black;
+}
+
+/* Instructions Quiz Styling */
+div.quiz {
+    margin-top: 1vh;
+    margin-bottom: unset;
+}
+p.quiz {
+    margin-bottom: unset;
+    margin-top: 0;
+    font-size: 1vmax;
+}
+.quiz span {
+    color: red;
+    margin-left: 1vw;
+}
+.quiz .tf {
+    font-size: 1vmax;
+    margin-bottom: unset;
+}
+.quiz ol {
+    font-size: 1vmax;
+}
+.quiz li {
+    margin-top: 0.5vh;
+}
+.quiz-input-num input {
+    width: 3em;
+    height: 1.5em;
+    margin-left: 2vw;
+    font-size: 1vmax;
+    border: 2px solid black;
+}
+.quiz-input-bol select {
+    width: 4em;
+    height: 1.5em;
+    font-size: 1vmax;
+    margin-left: 2vw;
+    border: 2px solid black;
+}
+
+/* Timeout */
+@keyframes flashRed {
+  0% { background-color: red; }
+  50% { background-color: #fff; }
+  100% { background-color: red; }
+}
+td.flashing-red {
+  animation: flashRed 2s infinite; /* Adjust the duration as needed */
+  font-size: 1vmax;
+}
+tr.timeout {
+    height: 2vh;
+}
+
+/* Modal customization */
+.modal-content-instr {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: .3rem;
+    outline: 0;
+}
+.modal-title {
+    font-size: 1.3vmax;
+}
+.modal-body p {
+    font-size: 1.2vmax;
+}
+.modal-footer > button {
+    font-size: 1vmax;
+}
+h3.instructions {
+    font-weight: bold; 
+    color: red
+}
+div.instructions {
+    max-height: 70vh; 
+    overflow-y: auto;
+}
+
+/* Player Decision Tables */
+div.decisiontable {
+    margin-top: 1vh;
+    margin-bottom: 6vh;
+    contain: content;
+    text-align: center;
+}
+.decisiontable table {
+    font-family: "Times New Roman", serif;
+    border: 1px solid black;
+    margin: 1vh auto 1.2px;
+    contain: content;
+    table-layout: fixed;
+}
+.decisiontable div.guide {
+    margin-top: 1vh;
+}
+.decisiontable .guide span{
+    font-size: 1vmax;
+    font-family: Arial, serif;
+    border: 2px solid black;
+    font-style: normal;
+    padding: 1vh;
+}
+.decisiontable th.qlty_header {
+    height: 6vh;
+    font-weight: unset;
+    font-style: italic;
+    text-align: center;
+}
+.decisiontable tr.advice td {
+    border-top: 2px solid black;
+}
+tr.decision_header th {
+    text-align: center;
+    height: 2vh;
+}
+.decision_header .emptycol {
+    width: 2vw;
+}
+.decisiontable td {
+    text-align: center;
+    width: 10vw;
+}
+.decisiontable tr.advice th {
+    font-weight: unset;
+    font-style: italic;
+    text-align: center;
+    width: 3vw;
+}
+.decisiontable .advice_header {
+    transform: rotate(180deg); 
+    writing-mode: vertical-rl;
+}
+.decisiontable tr.error td {
+    font-size: 1vmax;
+    text-align: center;
+}
+b.advisor_advice {
+    color: red;
+}
+
+div.decision-div {
+    margin: 100px initial 150px;
+    align-items: center;
+}
+
+/* Decision Slider Design */
+div.decision-slider {
+    margin: 1vh 0;
+    font-family: "Times New Roman", serif;
+    text-align: center;
+}
+.decision-slider table {
+    margin: auto;
+    text-align: center;
+    font-size: 0.9vmax;
+    width: auto;
+    border: 1px solid black; 
+    border-collapse: collapse;
+}
+.decision-slider table.no-border {
+    margin: auto;
+    text-align: center;
+    font-size: 0.9vmax;
+    width: auto;
+    border: unset;
+    border-collapse: unset;
+}
+.decision-slider .padding {
+    padding: 1vmax;
+}
+.decision-slider input.input_boxes {
+    width: 4em;
+    font-size: 1.1vmax;
+    text-align: right;
+}
+
+
+/* Feedback table */
+div.feed-div {
+    contain: content;
+    margin-top: 4vh;
+    margin-bottom: 8vh;
+}
+div.feed {
+    margin-top: 2vh;
+    float: left;
+}
+.feed h4 {
+    font-style: unset;
+    font-weight: bold;
+    text-align: unset;
+}
+.feed table{
+    font-size: 1vmax;
+}
+.feed th {
+    font-weight: unset;
+    height: 6vh;
+    width: 23vw;
+}
+.feed tr.last th{
+    text-decoration: unset;
+    border-top: 1px solid black;
+    font-weight: bold;
+}
+.last td {
+    border-top: 1px solid black;
+    font-weight: bold;
+}
+.feed td {
+    height: auto;
+}
+
+/* Final Feedback Page */
+div.final {
+    contain: content;
+}
+.final h4 {
+    font-style: unset;
+    font-weight: bold;
+    text-align: unset;
+}
+.final h5 {
+    text-align: unset;
+    font-size: 1vmax;
+}
+.final th {
+    font-weight: unset;
+    height: 6vh;
+    width: 25vw;
+}
+.final tr.last th{
+    text-decoration: unset;
+    border-top: 1px solid black;
+    font-weight: bold;
+}
+.last td {
+    border-top: 1px solid black;
+    font-weight: bold;
+}
+.final td {
+    height: auto;
+}
+
+/* Draws Table */
+table.draws_table {
+    font-size: 0.9vmax;
+    text-align: center;
+    max-width: 100%;
+    width: 100%;
+}
+.draws_table th {
+    border-bottom: 1px solid black;
+    width: 10vw;
+    vertical-align: bottom;
+    font-size: 1vmax;
+}
+.draws_table td {
+    height: 2vh;
+}
+div.draws_key {
+    display: flex;
+    align-items: center;
+    margin-top: 1vh;
+}
+.draws_key table {
+    margin: auto;
+    font-size: 0.9vmax;
+}
+.draws_key td {
+    width: 5vw;
+}
+div.draws {
+    text-align: center;
+    contain: content;
+    margin-bottom: 1vh;
+    padding: 1vh;
+}
+.draws h3 {
+    font-style: italic;
+}
+.draws span.value {
+    font-weight: bold;
+    margin: 1vh;
+}
+p.draws {
+    text-align: center;
+    margin-top: unset;
+}
+
+/* Scrollable History Table */
+div.tablescroll {
+    contain: content;
+    margin-top: 4vh;
+    border-bottom: 1px solid black;
+    width: 100%;
+}
+.tablescroll div {
+    text-align: center;
+    width: 100%;
+}
+.tablescroll h4 {
+    font-style: unset;
+    font-weight: bold;
+    position: sticky;
+    border-collapse: collapse;
+}
+.tablescroll table.history_header {
+    border-collapse: collapse;
+    position: sticky;
+    border: unset;
+    top: 0;
+    width: 100%
+}
+div.scroll {
+    width: 100%;
+    contain: content;
+    overflow-y: scroll;
+    border: 1px solid black;
+    max-height: 10vh;
+}
+.tablescroll table {
+    border-top: none;
+    font-size: 1vmax;
+    text-align: center;
+    width: 100%
+}
+.tablescroll th {
+    background-color: #f5f5f5;
+    font-size: 1vmax;
+    border: 1px solid black;
+}
+
+/* Player Payoff Table */
+table.playerpayofftable {
+    margin: auto;
+    align-self: center;
+    max-width: 40vw;
+    width: 100%;
+    table-layout: fixed;
+}
+.playerpayofftable td {
+    height: 4vh;
+    text-align: center;
+    font-size: 1.1vmax;
+    font-family: "Times New Roman", serif;
+}
+.playerpayofftable .header {
+    text-align: center;
+    font-size: 1.2vmax;
+    height: 5vh;
+    font-style: italic;
+    font-weight: normal;
+    font-family: "Times New Roman", serif;
+}
+.playerpayofftable .column1 {
+    width: 100px;
+    text-align: center;
+    border-right: 2px solid black;
+    font-family: "Times New Roman", serif;
+}
+.playerpayofftable .row1 {
+    text-align: center;
+    border-bottom: 2px solid black;
+    font-family: "Times New Roman", serif;
+}
+.payofftableheader {
+    font-family: "Times New Roman", serif;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+}
+.tables-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2vh;
+}
+.tables-container > div {
+    flex: 1;
+}
+div.between-margin {
+    margin: 4vw;
+    flex-grow: 0;
+}
+p.reminder {
+    text-align: center;
+    font-size: 1vw;
+    margin-bottom: unset;
+}

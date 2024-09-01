@@ -1,0 +1,58 @@
+{{ load static }}
+{{ block content }}
+<!--External CSS & js-->
+<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
+<link rel="stylesheet" href="{{ static 'style_sheets/tables.css' }}" type="text/css">
+<script src="{{ static 'java_scripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+<span class="sample" >**Sample**</span>
+<div class="Title_decision">
+    <h3 style="float: left">Feedback</h3>
+    <h3 style="float: right">Stage 2</h3>
+</div>
+{{ endblock }}
+
+<!-- Invest Value and your selection info. -->
+<table class="draws_table" style="margin-bottom: 2vh;">
+    <tr style="font-size: 1.1vmax;">
+        <td><u><i>Investment Quality:</i></u> {{ quality }}</td>
+        <td><u><i>Advisor's Advice:</i></u> {{ advice }}</td>
+        <td><u><i>Random Endowment:</i></u> {{ invest_value }}ECU</td>
+        <td><u><i>Endowment Chosen:</i></u> {{ endowment }}ECU</td>
+    </tr>
+</table>
+
+<!-- Table of draws -->
+<table class="draws_table">
+    <tr>
+        <th>Random Endowment:</th>
+        <th>Investors:</th>
+        <th>Advisor Payoff:</th>
+        <th>Keep Payoff (Our Advice):</th>
+        <th>Your Payoff (Invest):</th>
+    </tr>
+    {{ for key, values in draw_dict.items() }}
+    <tr>
+        <td>{{ values.1 }}</td>
+        <td>{{ values.4 }}</td>
+        <td>{{ values.5 }}</td>
+        <td>{{ values.3 }}</td>
+        <td>{{ values.2 }}</td>
+    </tr>
+    {{ endfor }}
+    <tr style="border-top: 2px solid black"></tr>
+    <tr>
+        <td colspan="2"></td>
+        <td style="text-align: right;">Average Payoff:</td>
+        <td><b>250</b></td>
+        <td><b>200</b></td>
+    </tr>
+</table>
+
+<!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
+<div class="button">
+    <button>Continue</button>
+</div>
+{{ endblock }}

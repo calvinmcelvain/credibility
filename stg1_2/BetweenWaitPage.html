@@ -1,0 +1,188 @@
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/inbetween-onload.js' }}"></script>
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+{{ block title }}
+{{ if player.role == C.advisor_ROLE }}
+<!-- Title -->
+<div class="Title">
+    <h3 style="float: left"><u>Role:</u> Advisor</h3>
+    <h3 style="float: right">Round {{ player.round_number }}</h3>
+</div>
+{{ else }}
+<div class="Title">
+    <h3 style="float: left"><u>Role:</u> Investor</h3>
+    <h3 style="float: right">Round {{ player.round_number }}</h3>
+</div>
+{{ endif }}
+{{ endblock }}
+
+<!-- Advisor page -->
+{{ if player.role == C.advisor_ROLE }}
+
+<!-- Payoff tables -->
+{{ include '_static/payoff_tables/advisor_investor.html' }}
+
+<!-- Decision table -->
+<h4 style="margin: unset" class="dfont">Advice Sent, waiting on Investors decision</h4>
+<h5 style="margin: unset">*** The estimated signal you received for this round is marked in <span class="highlight">yellow</span> ***</h5>
+<div class="decisiontable dfont" style="margin-top: unset">
+    <table>
+        <tr>
+            <th></th>
+            <th colspan="5" class="qlty_header">Investment Quality Estimate</th>
+            <th colspan="2"></th>
+        </tr>
+        <tr class="decision_header">
+            <th></th>
+            <th {{ if estimated_signal == 'Low'}} bgcolor="yellow" {{ endif }}>Low</th>
+            <th style="width: 2vw" rowspan="4"></th>
+            <th {{ if estimated_signal == 'Medium' }} bgcolor="yellow" {{ endif }}>Medium</th>
+            <th style="width: 2vw" rowspan="4"></th>
+            <th {{ if estimated_signal == 'High' }} bgcolor="yellow" {{ endif }}>High</th>
+            <th style="width: 2vw" colspan="2" rowspan="4"></th>
+        </tr>
+        <tr class="advice">
+            <th style="transform: rotate(180deg); writing-mode: vertical-rl;" rowspan="2">Advice</th>
+            <td><label><input type="radio" disabled {{ if low == "Invest" }} checked {{ endif }}> Invest</label></td>
+            <td><label><input type="radio" disabled {{ if med == "Invest" }} checked {{ endif }}> Invest</label></td>
+            <td><label><input type="radio" disabled {{ if high == "Invest" }} checked {{ endif }}> Invest</label></td>
+        </tr>
+        <tr>
+            <td class="column1"><label><input type="radio" disabled {{ if low == "Keep" }} checked {{ endif }}> Keep</label></td>
+            <td><label><input type="radio" disabled {{ if med == "Keep" }} checked {{ endif }}> Keep</label></td>
+            <td><label><input type="radio" disabled {{ if high == "Keep" }} checked {{ endif }}> Keep</label></td>
+        </tr>
+        <tr class="error">
+            <th></th>
+            <td></td>
+            <td></span></td>
+            <td></span></td>
+        </tr>
+        <tr style="height: 2vh"></tr>
+    </table>
+</div>
+
+<!-- Instructions pop-up & button -->
+<div class="button">
+    <button id="pop-up" style="float: left;" class="instr-btn">Instructions</button>
+</div>
+
+<!-- Player history table -->
+{{ if player.round_number != 1 }}
+<div class="tablescroll">
+    <div>
+        <table class="history_header">
+            <tr>
+                <th>Prior Round</th>
+                <th>Low Advice</th>
+                <th>Medium Advice</th>
+                <th>High Advice</th>
+                <th>Estimate Signal</th>
+                <th>Actual Signal</th>
+                <th>Total Investors</th>
+                <th>Your Payoff</th>
+                <th>Investors Payoff</th>
+            </tr>
+        </table>
+        <div class="scroll">
+            <table id="data_table">
+                {{ for p in history }}
+                <tr>
+                    <td>{{ p.round_number }}</td>
+                    <td {{ if p.group.estimated_signal == 'Low' }} bgcolor="yellow" {{ else }}{{ endif }}>{{ p.advisor_low_advice }}</td>
+                    <td {{ if p.group.estimated_signal == 'Medium' }} bgcolor="yellow" {{ else }}{{ endif }}>{{ p.advisor_med_advice }}</td>
+                    <td {{ if p.group.estimated_signal == 'High' }} bgcolor="yellow" {{ else }}{{ endif }}>{{ p.advisor_high_advice }}</td>
+                    <td>{{ p.group.estimated_signal }}</td>
+                    <td>{{ p.group.actual_signal }}</td>
+                    <td>{{ p.group.total_players_invest }}</td>
+                    <td>{{ p.payoff }}</td>
+                    <td>{{ p.group.investor_payoff }}</td>
+                </tr>
+                {{ endfor }}
+            </table>
+        </div>
+    </div>
+</div>
+{{ endif }}
+
+<!-- Investor page -->
+{{ else }}
+
+<!-- Payoff tables -->
+{{ include '_static/payoff_tables/investor_advisor.html' }}
+
+<!-- Decision table -->
+<h4 style="margin-top: 2vh" class="dfont">Waiting for other Investors</h4>
+<div class="decisiontable dfont">
+    <div class="guide">
+        <span>Advisor's Advice: <b style="color: red">{{ advice }}</b></span>
+    </div>
+    <table>
+        <tr>
+            <th colspan="4" class="qlty_header">Your Investment Decision</th>
+        </tr>
+        <tr>
+            <td class="playera"><label><input name="investor_decision" value="Invest" type="radio" disabled {{ if decision == "Invest" }} checked {{ endif }}> Invest</label></td>
+            <td class="playera"><label><input name="investor_decision" value="Keep" type="radio" disabled {{ if decision == "Keep" }} checked {{ endif }}> Keep</label></td>
+        </tr>
+        <tr class="error">
+            <td colspan="4"></td>
+        </tr>
+        <tr style="height: 2vh"></tr>
+    </table>
+</div>
+
+<!-- Instructions pop-up & button -->
+<div class="button">
+    <button id="pop-up" style="float: left;" class="instr-btn">Instructions</button>
+</div>
+
+<!--Player History Table-->
+{{ if player.round_number != 1 }}
+<div class="tablescroll">
+    <h4></h4>
+    <div>
+        <table class="history_header">
+            <tr>
+                <th>Prior Round</th>
+                <th>Advisor's Advice</th>
+                <th>Your Decision</th>
+                <th>Other Investors</th>
+                <th>Total Investors</th>
+                <th>True Quality</th>
+                <th>Your Payoff</th>
+                <th>Advisor's Payoff</th>
+            </tr>
+        </table>
+        <div class="scroll">
+            <table id="data_table">
+                {{ for p in history }}
+                <tr>
+                    <td>{{ p.round_number }}</td>
+                    <td>{{ p.group.advisor_advice }}</td>
+                    <td>{{ p.investor_decision }}</td>
+                    <td>{{ p.other_investors }}</td>
+                    <td>{{ p.group.total_players_invest }}</td>
+                    <td>{{ p.group.actual_signal }}</td>
+                    <td>{{ p.payoff }}</td>
+                    <td>{{ p.group.advisor_payoff }}</td>
+                </tr>
+                {{ endfor }}
+            </table>
+        </div>
+    </div>
+</div>
+{{ endif }}
+
+{{ endif }}
+
+{{ include '_static/instr_bttns/stage_1.html' }}
+
+{{ endblock }}

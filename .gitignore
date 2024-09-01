@@ -1,0 +1,11 @@
+# Ignoring oTree databases #
+*.sqlite3
+*.DS_Store
+
+# Ignoring Pychache
+*.pyc
+*.pyo
+__pycache__/
+
+# Other
+*.otreezip

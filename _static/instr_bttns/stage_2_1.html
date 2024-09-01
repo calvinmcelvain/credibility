@@ -1,0 +1,98 @@
+<!-- Bootstrap Modal -->
+<div class="modal" id="popup-window" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" style="max-width: 70vw;" role="document">
+    <div class="modal-content-instr">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h3 class="modal-title" style="font-weight: bold; color: red">Instructions</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">Close</span>
+        </button>
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
+        <h3>Stage 2</h3>
+        <p>We have now concluded Stage 1 of the experiment. In Stage 2, you will make decisions for three scenarios.</p>
+        <p>Your group in Stage 2 is the same five participants as in Stage 1 and your role (Advisor or Investor) is the same as well.</p>
+        <p>In many ways, Stage 2 is like Stage 1.</p>
+        <div class="List">
+            <ol>
+                <li>Investors will choose whether to invest their endowment in an investment opportunity.</li>
+                <li>The four Investors in each group will again receive no information about the quality of the investment opportunity. Instead, they will receive a message from the Advisor, either “Invest” or “Keep”. All Investors will see the same message from their group’s Advisor before making their investment decisions.</li>
+                <li>The conversion rate of ECU to dollars remains $1 per 25 ECU.</li>
+            </ol>
+        </div>
+        <hr>
+
+        <h3>Stage 2: Payoffs</h3>
+        <p>There are a number of differences between Stage 1 and Stage 2.</p>
+        <div class="List">
+            <ol>
+                <li>The payoff tables will change for each scenario in Stage 2. Be certain to look at the payoff tables and instructions before making choices in Stage 2, as these will <b><i>not</i></b> be the same as Stage 1 or the other scenarios in Stage 2.</li>
+                <li>In every round of Stage 1, the investors’ initial endowments were always 12 ECU. This is not true in Stage 2. Instead, for each scenario, an endowment will be randomly drawn for each Investor. The next few screens explain exactly how this works and how Investors will choose between “Invest” and “Keep”.</li>
+            </ol>
+        </div>
+        <hr>
+        
+        <h3>Prizes</h3>
+        <p>For all the scenarios in Stage 2, Investors have a chance of winning a prize worth 400 ECU (400 ECU = $16).</p>
+        <p>The average amount you will earn as an Investor if you choose Invest is the probability that you will win the prize multiplied by 400.</p>
+        <div class="List">
+            <ul>
+                <li>For example, suppose you think there is a 25% chance you will win the prize. The average amount you will earn as an Investor in you choose Invest is .25 x 400 = 100 ECU.</li>
+                <li>If you think there is a 75% chance you will win the prize, the average amount you will earn as an Investor if you choose Invest is .75 x 400 = 300 ECU. </li>
+                <li>The higher the chance you will win the prize, the more you will win on average.</li>
+            </ul>
+        </div>
+        <hr>
+        
+        <h3>Minimum Endowments</h3>
+        <p>Investors who choose “Keep” will be paid their endowment. In Stage 2, the endowment for each scenario will be randomly drawn between 0 ECU and 400 ECU. All numbers in this range, including 0 and 400, are equally likely. Endowments are drawn separately for each Investor; knowing your endowment does not tell you anything about the endowment for other Investors. Each Investor will choose the <b><i>minimum</i></b> endowment for which you will choose Keep.</p>
+        <div class="List">
+            <ul>
+                <li>Any endowment below your minimum will result in you choosing to Invest. You will give up your endowment and be paid based on the payoff table for that decision.</li>
+                <li>If an endowment is drawn at or above your minimum, you will choose Keep. You will be paid your endowment.</li>
+            </ul>
+        </div>
+        <hr>
+
+        <h3>Choosing a Minimum Endowment</h3>
+        <p>You will use an interface like the one shown on the screen to choose the minimum endowment for which you will select Keep. There is a slider, a text box labeled “minimum endowment” next to the slider, and a text box labeled “probability” below the slider. You can choose a minimum endowment three ways: moving the slider, entering a minimum endowment into the text box labeled “minimum endowment”, or entering a probability of winning the prize into the text box labeled “probability”.</p>
+        <hr>
+
+        <h3>What Minimum Endowment Should You Choose?</h3>
+        <p><b><i>Your best choice as an Investor is always to set your minimum endowment exactly equal to the average amount you believe you will earn by choosing Invest. The average value of investing is equal to the probability that you win the prize multiplied by 400.</i></b></p>
+        <p>You do <b><i>not</i></b> control the probability that you win the prize. When you change the number in the probability box, what you are entering is your <b><i>best guess</i></b> about how likely it is that you will win the prize.</p>
+        <hr>
+
+        <h3>Scenario 1</h3>
+        <p><span class="red-bold">Scenario 1 involves different payoff tables than Stage 1 for both the Advisors and Investors. </span></p>
+        <p>In Scenario 1, as in all scenarios, the Advisor will receive 100 ECU for each Investor who chooses to invest. This is shown in the payoff table below. The Advisor’s payoffs does <b><i>not</i></b> depend on the quality of the investment opportunity.</p>
+        {{ include '_static/payoff_tables/advisor.html' }}
+        <p>As an Advisor, you will receive a signal telling you the quality of the investment opportunity. That signal will <b><i>always</i></b> be correct. You will select what advice to send the Investors for each possible signal (Low or High).</p>
+        <p>Investors’ payoffs are determined by the table shown below. Investors who choose Invest will win the 400 ECU prize if  <i>Quality</i> is High, <b><i>regardless of the number of other Investors who choose Invest</i></b>.</p>
+        <p>As in Stage 1, you will receive advice from the Advisor but will <b><i>not</i></b> know the quality of the investment opportunity when you decide to invest.</p>
+        {{ include '_static/payoff_tables/investor.html' }}
+        <p>Each Investor’s endowment will be randomly drawn from the numbers between 1 and 400. There is a separate draw for each Investor, so knowing your endowment does not tell you anything about the endowments of other Investors. As an Investor, you will use a slider to select the minimum endowment for which you will choose Keep <b><i>if the Advisor’s advice is Invest</i></b>. Your best choice as an Investor is always to set the slider exactly <b><i>equal</i></b> to the average amount you believe you will earn by choosing Invest. The average amount you will earn as an Investor if you choose Invest is the probability that you will win the prize multiplied by 400. Specifically, the probability of winning the prize is your perceived probability that <i>Quality</i> is High <i>if the Advisor’s advice is Invest</i>.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Show the Bootstrap modal when the link is clicked
+document.getElementById("pop-up").addEventListener("click", function(event) {
+  event.preventDefault();
+  $('#popup-window').modal('show'); // Show Bootstrap modal using jQuery
+});
+
+// If you want to close the modal using JavaScript
+function closestage2d1instructions() {
+  $('#popup-window').modal('hide'); // Hide Bootstrap modal using jQuery
+}
+
+// Close the Bootstrap modal when the close button in modal header is clicked
+document.querySelector("#popup-window .modal-header .close").addEventListener("click", function() {
+  closestage2d1instructions();
+});
+</script>
