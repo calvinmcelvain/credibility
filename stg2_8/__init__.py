@@ -237,7 +237,7 @@ class FinalConfirmation(Page):
         '''
         Passing all investor payoff dictionaries to HTML
         '''
-        return {'advisor_table': C.stg2_s4_advisor_payoffs, 'investor_table': C.stg2_s4_investor_payoffs, 'investor_table_s1': C.stg2_s1_investor_payoffs}
+        return {'advisor_table': C.stg2_s4_advisor_payoffs, 's1_investor_table': C.stg2_s1_investor_payoffs, 's2_investor_table': C.stg2_s2_investor_payoffs, 's3_investor_table': C.stg2_s3_investor_payoffs, 's4_investor_table': C.stg2_s4_investor_payoffs}
 
 
 class FinalPayoffWaitPage(WaitPage):

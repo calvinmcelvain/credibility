@@ -1,0 +1,94 @@
+<!-- Bootstrap Modal -->
+<div class="modal" id="s4-popup-window" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" style="max-width: 70vw;" role="document">
+      <div class="modal-content-instr">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h3 class="modal-title" style="font-weight: bold; color: red">Scenario 4 Instructions</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">Close</span>
+          </button>
+        </div>
+        <!-- Modal Body -->
+        <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
+          <h3>Scenario 4</h3>
+          <p>This scenario has different rules from the other scenarios, so please listen carefully. An Investor’s payoffs will depend on what you choose in Scenario 4 and what the other members of your group chose <i><b>in Scenario 1</b></i>. In case you have forgotten, a recap of Investor’s instructions <i><b>for Scenario 1</b></i> follows.</p>
+          <p class="sc4-sc1sum">Summary of Scenario 1 Instructions for Investors:</p>
+          <p>As an Investor, your payoffs in Scenario 1 were determined by the table shown below. If you chose Invest, you won the 400 ECU prize if Quality was High, <i><b>regardless of the number of other Investors who chose Invest</b></i>. </p>
+          <table class="playerpayofftable dfont">
+            <tr>
+                <td></td>
+                <td class="header" colspan="4">Total Investors (including you)</td>
+            </tr>
+            <tr>
+                <td><i>Quality</i></td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
+            </tr>
+            {{ for quality, payoffs in s1_investor_table.items() }}
+            <tr>
+                <td class="column1">{{ quality }}</td>
+                {{ for total_investors, payoff in payoffs.items() }}
+                <td>{{ payoff }}</td>
+                {{ endfor }}
+            </tr>
+            {{ endfor }}
+          </table>
+          <p>Each Investor’s endowment was randomly drawn from the numbers between 1 and 400. There was a separate draw for each Investor, <i><b>so knowing your endowment did not tell you anything about the endowments of other Investors</b></i>. </p>
+          <p>An Investor’s best choice was to set the slider exactly <i><b>equal</b></i> to the average amount you believed you would earn by choosing Invest. The average amount you would earn as an Investor by choosing Invest is the probability of winning the prize multiplied by 400, where the probability of winning was the probability that Quality was High <i>if the Advisor’s advice was Invest</i>.</p>
+          <hr>
+
+          <h3>Scenario 4 (Continued)</h3>
+          <p>As in all scenarios, the Advisor will receive 100 for each Investor who chooses Invest. This is shown in the payoff table below. The Advisor’s payoff does not depend on the quality of the investment opportunity.</p>
+          {{ include '_static/payoff_tables/advisor.html' }}
+          <p>Unlike the other scenarios, the advisors will not make any choices in Scenario 4.</p>
+          <hr>
+
+          <h3>Scenario 4 (Continued)</h3>
+          <p>Investors who choose Invest will win the 400 ECU prize if the majority of other Investors in their group (two or more) chose Invest <i><b>in Scenario 1</b></i> if the Advisor’s advice was Invest. This is shown in the table below. You will not know the quality of the investment opportunity for Scenario 4 when you decide to invest but notice that Quality does <b>not</b> matter for your payoff as an Investor.</p>
+          <table class="playerpayofftable dfont">
+            <tr>
+                <td></td>
+                <td class="header" colspan="4">Total Investors (including you)</td>
+            </tr>
+            <tr>
+                <td><i>Quality</i></td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
+            </tr>
+            {{ for quality, payoffs in s4_investor_table.items() }}
+            <tr>
+                <td class="column1">{{ quality }}</td>
+                {{ for total_investors, payoff in payoffs.items() }}
+                <td>{{ payoff }}</td>
+                {{ endfor }}
+            </tr>
+            {{ endfor }}
+        </table>
+          <p>As an Investor, your endowment will be randomly drawn from the numbers between 1 and 400. There was a separate draw for each Investor in Scenario 1, <i><b>so knowing your endowment in either Scenario 1 or Scenario does not tell you anything about the endowments of other Investors</b></i>. As an Investor, you will use a slider to select the minimum endowment for which you will choose Keep if the Advisor’s advice <i><b>in Scenario 1</b></i> was Invest. Your best choice as an Investor is always to set the slider exactly <i><b>equal</b></i> to the average amount you believe you will earn by choosing Invest. The average amount you will earn as an Investor if you choose Invest is the probability that you will win the prize multiplied by 400. Here again, the probability of winning the prize is your perceived probability that the majority of other Investors in your group choose Invest <i><b>in Scenario 1</b></i>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+  // Show the Bootstrap modal when the link is clicked
+  document.getElementById("s4-pop-up").addEventListener("click", function(event) {
+    event.preventDefault();
+    $('#s4-popup-window').modal('show'); // Show Bootstrap modal using jQuery
+  });
+  
+  // If you want to close the modal using JavaScript
+  function closestage2s4instructions() {
+    $('#s4-popup-window').modal('hide'); // Hide Bootstrap modal using jQuery
+  }
+  
+  // Close the Bootstrap modal when the close button in modal header is clicked
+  document.querySelector("#s4-popup-window .modal-header .close").addEventListener("click", function() {
+    closestage2s4instructions();
+  });
+  </script>
