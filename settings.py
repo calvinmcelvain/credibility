@@ -6,6 +6,7 @@ STAGE_1_ROUNDS = 5
 DECISION_TIME = 20000   # In milliseconds (a javascript timeout)
 FEEDBACK_TIME = None  # In seconds
 INSTRUCTIONS_TIME = None
+SKIP = True
 
 # Demo participants
 participants = 2

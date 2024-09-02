@@ -1,5 +1,5 @@
 from otree.api import *
-from settings import INSTRUCTIONS_TIME
+from settings import INSTRUCTIONS_TIME, SKIP
 import random as r
 
 doc = """
@@ -86,7 +86,7 @@ class BaseReadyPage(Page):
         See javascript for participant side.
         '''
         player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
+        players_in_session = len(player.subsession.get_players()) if SKIP == False else 1
         if player.group.all_players_ready == players_in_session:
             player.group.all_players_ready = 0
             return {0: 'all_ready'}
