@@ -180,8 +180,8 @@ class P12(BaseReadyPage):
         # Getting sample payoffs for each of the 20 draws
         for i in draws:
             investors.append(investors_rand[len(investors)])
-            invest_payoff.append(C.investor_payoffs_sample[1][investors_rand[len(investors)-1] + 1])
-            advisor_payoff.append(C.investor_payoffs_sample[1][investors_rand[len(investors)-1] + 1])
+            invest_payoff.append(C.investor_payoffs_sample['Low'][investors_rand[len(investors)-1] + 1])
+            advisor_payoff.append(C.investor_payoffs_sample['Low'][investors_rand[len(investors)-1] + 1])
             keep_payoff.append(i)
 
         # Creating a dictionary where draw numbers are keys and a list of corresponding values
