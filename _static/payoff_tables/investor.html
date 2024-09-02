@@ -1,21 +1,3 @@
-<table class="playerpayofftable dfont">
-    <tr>
-        <td></td>
-        <td class="header" colspan="4">Total Investors (including you)</td>
-    </tr>
-    <tr>
-        <td><i>Quality</i></td>
-        <td class="row1">1</td>
-        <td class="row1">2</td>
-        <td class="row1">3</td>
-        <td class="row1">4</td>
-    </tr>
-    {{ for quality, payoffs in investor_table.items() }}
-    <tr>
-        <td class="column1">{{ quality }}</td>
-        {{ for total_investors, payoff in payoffs.items() }}
-        <td>{{ payoff }}</td>
-        {{ endfor }}
-    </tr>
-    {{ endfor }}
-</table>
+version https://git-lfs.github.com/spec/v1
+oid sha256:a43f39889d8a23924e242cac6ace404f7812212be14f659d7656e033f4f80d69
+size 592
