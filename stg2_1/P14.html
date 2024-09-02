@@ -1,31 +1,3 @@
-{{ load static }}
-{{ block content }}
-
-<!-- External CSS -->
-<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
-
-<!-- External JavaScript -->
-<script src="{{ static '_javascripts/general-onload.js' }}"></script>
-<script src="{{ static '_javascripts/general.js' }}"></script>
-
-<!-- Title -->
-{{ block title }}
-Stage 2: Scenario 1
-{{ endblock }}
-
-<!-- Instructions body -->
-<p><span class="red-bold">Scenario 1 involves different payoff tables than Stage 1 for both the Advisors and Investors. </span></p>
-<p>In Scenario 1, as in all scenarios, the Advisor will receive 100 ECU for each Investor who chooses to invest. This is shown in the payoff table below. The Advisor’s payoffs does <b><i>not</i></b> depend on the quality of the investment opportunity.</p>
-{{ include '_static/payoff_tables/advisor.html' }}
-<p>As an Advisor, you will receive a signal telling you the quality of the investment opportunity. That signal will <b><i>always</i></b> be correct. You will select what advice to send the Investors for each possible signal (Low or High).</p>
-
-<!-- Next Button: Only allows players to continue if all players in session are ready/clicked continue -->
-<div class="button">
-    <div>
-        <p>Please click "Continue"</p>
-        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
-    </div>
-    <button type="button" id="validation" onclick="validating()">Continue</button>
-</div>
-
-{{ endblock }}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b729de28459ccb9a38797ff8b00997cb4a2af663a173f266c529a6b6c9fd0b68
+size 1478

@@ -1,26 +1,3 @@
-{{ load static }}
-{{ block content }}
-<!--External CSS & js-->
-<link rel="stylesheet" href="{{ static 'style_sheets/general.css' }}" type="text/css">
-<script src="{{ static 'java_scripts/general.js' }}"></script>
-
-{{ block title }}
-<b><u>ID Screen</u></b>
-{{ endblock }}
-
-<!-- Instructions Body -->
-{{ include '_static/instructions/stage_1/1_id.html' }}
-
-<!-- Formfields-->
-<label class="id dfont">Please enter your unique ID number: <input class="id" maxlength="2" max="99" name="player_id" id="player_id" type="number"></label>
-<span id="errorMessage" class="errormessage"></span>
-
-<!-- Next Button with confirmation pop-up-->
-<div class="button">
-    <button onclick="validateForm(event)">Continue</button>
-</div>
-
-<!-- Pop-up -->
-{{ include '_static/popups/id.html' }}
-
-{{ endblock }}
+version https://git-lfs.github.com/spec/v1
+oid sha256:ac64114e1a77c80d746d31958f6b9442de303fb7ba0c326998295ad5843c9e29
+size 789
