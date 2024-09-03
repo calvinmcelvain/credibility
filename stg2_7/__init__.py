@@ -70,18 +70,10 @@ class BaseReadyPage(Page):
             return {0: 'all_ready'}
 
 
-class P1(Page):
+class P1(BaseReadyPage):
     @staticmethod
     def vars_for_template(player: Player):
         return {'investor_table': C.stg2_s1_investor_payoffs}
-
-    @staticmethod
-    def live_method(player: Player, data):
-        player.group.all_players_ready += 1
-        players_in_session = len(player.subsession.get_players())
-        if player.group.all_players_ready == players_in_session:
-            player.group.all_players_ready = 0
-            return {0: 'all_ready'}
 
 
 class P2(BaseReadyPage):
