@@ -117,6 +117,8 @@ ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
 ADMIN_PASSWORD = environ.get('ADMIN_PASSWORD')
 
-DEMO_PAGE_INTRO_HTML = """"""
+DEMO_PAGE_INTRO_HTML = """
+Git Branch: lab_testing
+"""
 
 SECRET_KEY = '6393989826314'
