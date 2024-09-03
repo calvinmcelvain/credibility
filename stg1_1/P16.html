@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:76c2c2e2b1d77e86d934124e8b980861b9c7831077c4a814601ced18034b8d11
-size 903
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/general-onload.js' }}"></script>
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+Stage 1 will start soon, Please click continue
+{{ endblock }}
+
+<!-- Body -->
+<h2 class="BeforeStart">You are assigned the <span class="highlight">{{ role }}</span> role</h2>
+
+<!--Next Button: Only allows players to continue if all players in session are ready/clicked continue-->
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
+</div>
+
+{{ endblock }}

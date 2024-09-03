@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:02b5bb5fa8325aa9a4714ac3304e961ba7cc50c55918be68802f45ce9f82f5a6
-size 1700
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/general-onload.js' }}"></script>
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+Minimum Endowments
+{{ endblock }}
+
+<!-- Instructions body -->
+<p>Investors who choose “Keep” will be paid their endowment. In Stage 2, the endowment for each scenario will be randomly drawn between 0 ECU and 400 ECU. All numbers in this range, including 0 and 400, are equally likely. Endowments are drawn separately for each Investor; knowing your endowment does not tell you anything about the endowment for other Investors. Each Investor will choose the <b><i>minimum</i></b> endowment for which you will choose Keep.</p>
+<div class="List">
+    <ul>
+        <li>Any endowment below your minimum will result in you choosing to Invest. You will give up your endowment and be paid based on the payoff table for that decision.</li>
+        <li>If an endowment is drawn at or above your minimum, you will choose Keep. You will be paid your endowment.</li>
+    </ul>
+</div>
+<p>Please look at the overhead for additional explanation on how minimum endowments work.</p>
+
+<!-- Next Button: Only allows players to continue if all players in session are ready/clicked continue -->
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
+</div>
+
+{{ endblock }}

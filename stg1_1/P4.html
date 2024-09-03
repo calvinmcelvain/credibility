@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2e4f52fecbded73b4383cd625c3ff911b79e64c4f2d7ba0489419dc2d9e16867
-size 2012
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/general-onload.js' }}"></script>
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+Description of the Decision Tasks in Stage 1
+{{ endblock }}
+
+<!-- Instructions body -->
+<p>The four Investors in each group will begin each round with an endowment of 12 ECU. If you are an Investor, you will decide individually whether to invest your 12 ECU endowment into an investment opportunity or to keep it. You cannot split your endowment – you must either invest all 12 ECU or keep all 12 ECU. Therefore, each Investor’s only decision in each round is whether to invest or keep their endowment.</p>
+<p>Before the Investors make their decisions, the Advisor in each group will receive an estimate of the quality of the investment opportunity. We will explain the details of this estimate later in the instructions. After seeing their estimate, the Advisor will then send a message to all Investors in the group. This message will include advice, either “Invest” or “Keep”.</p>
+<p>All Investors will receive the same advice from the Advisor. They can see the advice, but not the Advisor’s estimate. After receiving the Advisor’s advice, all Investors will make their investment decisions at the same time. This means that Investors will <b><i>not</i></b> know whether the other members of their group have invested or not when making their own decisions.</p>
+
+<!-- Next Button: Only allows players to continue if all players in session are ready/clicked continue -->
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
+</div>
+
+{{ endblock }}

@@ -1,3 +1,203 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6e1fcb85a45f2d3b9c245bda2bc0834ef858204d5443ac89fc5b088048e50e3d
-size 7474
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/general-onload.js' }}"></script>
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+End of Stage 2
+{{ endblock }}
+
+<!-- Information Body -->
+<p>The experiment has now ended. Below you will see a summary of the experiment. You will also see the ECU you earned from the experiment, and your total earnings in dollars, including your {{ fee }} show-up fee.</p>
+
+<!-- Stage 2 Feedback -->
+
+<!-- Advisor Page -->
+{{ if player.role == C.advisor_ROLE }}
+<div class="tablescroll" style="height: 100%;">
+    <h4>Stage 2 Scenario Results:</h4>
+    <h5>*** The Scenario randomly chosen towards payment is <span class="highlight">Scenario {{ decision_counts }}</span> ***</h5>
+    <div>
+        <table class="history_header">
+            <tr>
+                <th>Scenario</th>
+                <th>True Signal</th>
+                <th>Advice Given</th>
+                <th>Total Investors</th>
+                <th>Your Payoff</th>
+            </tr>
+        </table>
+        <div class="scroll" style="max-height: 65vh;">
+            <table id="data_table">
+                <tr {{ if decision_counts == 1 }} bgcolor="yellow"{{ endif }}>
+                    <td>1</td>
+                    <td>{{ history.1.signal }}</td>
+                    <td>{{ history.1.advice }}</td>
+                    <td>{{ history.1.investors }}</td>
+                    <td>{{ history.1.payoff }}</td>
+                </tr>
+                <tr {{ if decision_counts == 2 }} bgcolor="yellow"{{ endif }}>
+                    <td>2</td>
+                    <td>{{ history.2.signal }}</td>
+                    <td>{{ history.2.advice }}</td>
+                    <td>{{ history.2.investors }}</td>
+                    <td>{{ history.2.payoff }}</td>
+                </tr>
+                <tr {{ if decision_counts == 3 }} bgcolor="yellow"{{ endif }}>
+                    <td>3</td>
+                    <td>{{ history.3.signal }}</td>
+                    <td>{{ history.3.advice }}</td>
+                    <td>{{ history.3.investors }}</td>
+                    <td>{{ history.3.payoff }}</td>
+                </tr>
+                <tr {{ if decision_counts == 4 }} bgcolor="yellow"{{ endif }}>
+                    <td>4</td>
+                    <td>{{ history.4.signal }}</td>
+                    <td>-</td>
+                    <td>{{ history.4.investors }}</td>
+                    <td>{{ history.4.payoff }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Investor Page -->
+{{ else }}
+<div class="tablescroll" style="height: 100%">
+    <h4>Stage 2 Scenario Results:</h4>
+    <h5>*** The Scenario randomly chosen towards payment is <span class="highlight">Scenario {{ decision_counts }}</span> ***</h5>
+    <table class="history_header">
+        <tr>
+            <th>Scenario</th>
+            <th>Advice</th>
+            <th>Invest Draw</th>
+            <th>Decision</th>
+            <th>Other Investors</th>
+            <th>Total Investors</th>
+            <th>True Quality</th>
+            <th>Your Payoff</th>
+            <th>Advisor's Payoff</th>
+        </tr>
+    </table>
+    <div class="scroll" style="max-height: 65vh;">
+        <table id="data_table">
+            <tr {{ if decision_counts == 1 }} bgcolor="yellow"{{ endif }}>
+                <td>1</td>
+                <td>{{ history.1.advice }}</td>
+                <td>{{ history.1.draw }}</td>
+                <td>{{ history.1.decision }}</td>
+                <td>{{ history.1.other_investors }}</td>
+                <td>{{ history.1.investors }}</td>
+                <td>{{ history.1.signal }}</td>
+                <td>{{ history.1.payoff }}</td>
+                <td>{{ history.1.advisor_payoff }}</td>
+            </tr>
+            <tr {{ if decision_counts == 2 }} bgcolor="yellow"{{ endif }}>
+                <td>2</td>
+                <td>{{ history.2.advice }}</td>
+                <td>{{ history.2.draw }}</td>
+                <td>{{ history.2.decision }}</td>
+                <td>{{ history.2.other_investors }}</td>
+                <td>{{ history.2.investors }}</td>
+                <td>{{ history.2.signal }}</td>
+                <td>{{ history.2.payoff }}</td>
+                <td>{{ history.2.advisor_payoff }}</td>
+            </tr>
+            <tr {{ if decision_counts == 3 }} bgcolor="yellow"{{ endif }}>
+                <td>3</td>
+                <td>{{ history.3.advice }}</td>
+                <td>{{ history.3.draw }}</td>
+                <td>{{ history.3.decision }}</td>
+                <td>{{ history.3.other_investors }}</td>
+                <td>{{ history.3.investors }}</td>
+                <td>{{ history.3.signal }}</td>
+                <td>{{ history.3.payoff }}</td>
+                <td>{{ history.3.advisor_payoff }}</td>
+            </tr>
+            <tr {{ if decision_counts == 4 }} bgcolor="yellow"{{ endif }}>
+                <td>4</td>
+                <td>-</td>
+                <td>{{ history.4.draw }}</td>
+                <td>{{ history.4.decision }}</td>
+                <td>{{ history.4.other_investors }}</td>
+                <td>{{ history.4.investors }}</td>
+                <td>{{ history.4.signal }}</td>
+                <td>{{ history.4.payoff }}</td>
+                <td>{{ history.4.advisor_payoff }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+{{ endif }}
+
+<!-- Total Points & Money Tables -->
+<!--Player History Table (ECUs) -->
+<div style="margin-top: 5vh; contain: content">
+    <div class="final dfont" style="float: right">
+        <h4>ECU earned in Experiment:</h4>
+        <table>
+            <tr>
+                <th>Stage 1 Total ECU:</th>
+                <td>{{ Stage_1 }}</td>
+            </tr>
+            <tr>
+                <th>Stage 2 Total ECU:</th>
+                <td>{{ Stage_2 }}</td>
+            </tr>
+            <tr>
+                <tr class="last" style="height: 1px">
+                <th colspan="2" style="height: 1px"></th>
+            </tr>
+            <tr>
+                <th>Total ECU:</th>
+                <td>{{ final_payoff }}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="final dfont" style="float: left">
+        <h4>Dollars($) earned in Experiment:</h4>
+        <h5>*** $0.04 = 1 ECU ***</h5>
+        <table class="Final">
+            <tr>
+                <th>Stage 1 Total Dollars ($):</th>
+                <td>{{ real_Stage_1 }}</td>
+            </tr>
+            <tr>
+                <th>Stage 2 Total Dollars ($):</th>
+                <td>{{ real_Stage_2 }}</td>
+            </tr>
+            <tr>
+                <tr class="last" style="height: 1px">
+                <th colspan="2" style="height: 1px"></th>
+            </tr>
+            <tr>
+                <th>Total Stage 1 & 2 Dollars ($):</th>
+                <td>{{ real_final }}</td>
+            <tr>
+                <th>Participation Fee ($):</th>
+                <td>{{ fee }}</td>
+            </tr>
+            <tr class="last" style="height: 1px">
+                <th colspan="2" style="height: 1px"></th>
+            </tr>
+            <tr class="last">
+                <th>Ending Total Dollars ($)</th>
+                <td>{{ final }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="button">
+    <button>Continue</button>
+</div>
+
+{{ endblock }}

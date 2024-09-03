@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:da124d9bae19a0381ee6b16e77b627f9b217f338a7a51108ff6b53ce4caf6fde
-size 1400
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/general-onload.js' }}"></script>
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+Stage 2 (Continued)
+{{ endblock }}
+
+<!-- Instructions body -->
+<p>In many ways, Stage 2 is like Stage 1.</p>
+<div class="List">
+    <ol>
+        <li>Investors will choose whether to invest their endowment in an investment opportunity.</li>
+        <li>The four Investors in each group will again receive no information about the quality of the investment opportunity. Instead, they will receive a message from the Advisor, either “Invest” or “Keep”. All Investors will see the same message from their group’s Advisor before making their investment decisions.</li>
+        <li>The conversion rate of ECU to dollars remains $1 per 25 ECU.</li>
+    </ol>
+</div>
+
+<!-- Next Button: Only allows players to continue if all players in session are ready/clicked continue -->
+<div class="button">
+    <div>
+        <p>Please click "Continue"</p>
+        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
+    </div>
+    <button type="button" id="validation" onclick="validating()">Continue</button>
+</div>
+
+{{ endblock }}

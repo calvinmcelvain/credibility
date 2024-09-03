@@ -1,3 +1,134 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4e43f636e8457d7a6644733b6534375f6d9103f2471da42eb21ce544cf80f33f
-size 7418
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/finalsldr-onload.js' }}"></script>
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+Final Confirmation Screen
+{{ endblock }}
+
+<!-- Instructions -->
+<p>This screen gives you one last chance to change or reconfirm your choices for the four scenarios. The interface below allows you to set your minimum endowment (i.e. the minimum endowment for which you will choose Keep if your advisor’s advice is Invest) for each of the four scenarios. For each scenario, there is a button that allows you to see the instructions again. The interface is set to the choices you just made for each scenario. You can now look at the instructions again and change any of these decisions if you want (or you can leave them as is).</p>
+<p>When you are done with any changes you want to make, click the confirmation button at the bottom of the screen. Clicking this button means that your choices are final.</p>
+
+<!-- Slider -->
+<div class="decision-slider" style="margin-top: 6vh;">
+    <div style=" display: inline-block; margin-right: 1vw;">
+        <h4 class="dfont">Scenario 1</h4>
+        <table style="border: 1px solid black; border-collapse: collapse;">
+            <tr>
+                <td rowspan="2" style="padding-left: 10px; padding-top: 10px;">
+                    <label><input name="final_s1_minimum_endowment" type="range" id="s1slider" oninput="s1updateInputValues(this.value)" min="0" max="400"></label>
+                </td>
+                <td style="padding-top: 10px;">
+                    <label><input type="number" class="input_boxes" id="s1numberInput" oninput="s1updateSliderFromNumber(this.value)" size="5" min="0" max="400"></label>
+                </td>
+                <th style="padding-right: 10px; padding-top: 10px;"><i> Minimum Endowment</i></th>
+            </tr>
+            <tr>
+                <td style="padding-bottom: 10px;">
+                    <label><input type="text" class="input_boxes" id="s1probInput" oninput="s1updateSliderFromProbability(this.value)" size="5"></label>
+                </td>
+                <th style="padding-right: 10px; padding-bottom: 10px;"><i> Probability of Winning</i></th>
+            </tr>
+            <tr style="height: 2vh">
+                <td colspan="3"></td>
+            </tr>
+        </table>
+        <button id="s1-pop-up" class="instr-btn" style="margin-top: 1vh; float: initial;">Scenario 1 Instructions</button>
+    </div>
+    <div style=" display: inline-block; margin-right: 1vw;">
+        <h4 class="dfont">Scenario 2</h4>
+        <table style="border: 1px solid black; border-collapse: collapse;">
+            <tr>
+                <td rowspan="2" style="padding-left: 10px; padding-top: 10px;">
+                    <label><input name="final_s2_minimum_endowment" type="range" id="s2slider" oninput="s2updateInputValues(this.value)" min="0" max="400"></label>
+                </td>
+                <td style="padding-top: 10px;">
+                    <label><input type="number" class="input_boxes" id="s2numberInput" oninput="s2updateSliderFromNumber(this.value)" size="5" min="0" max="400"></label>
+                </td>
+                <th style="padding-right: 10px; padding-top: 10px;"><i> Minimum Endowment</i></th>
+            </tr>
+            <tr>
+                <td style="padding-bottom: 10px;">
+                    <label><input type="text" class="input_boxes" id="s2probInput" oninput="s2updateSliderFromProbability(this.value)" size="5"></label>
+                </td>
+                <th style="padding-right: 10px; padding-bottom: 10px;"><i> Probability of Winning</i></th>
+            </tr>
+            <tr style="height: 2vh">
+                <td colspan="3"></td>
+            </tr>
+        </table>
+        <button id="s2-pop-up" class="instr-btn" style="margin-top: 1vh; float: initial;">Scenario 2 Instructions</button>
+    </div>
+    <div style=" display: inline-block; margin-right: 1vw;">
+        <h4 class="dfont">Scenario 3</h4>
+        <table style="border: 1px solid black; border-collapse: collapse;">
+            <tr>
+                <td rowspan="2" style="padding-left: 10px; padding-top: 10px;">
+                    <label><input name="final_s3_minimum_endowment" type="range" id="s3slider" oninput="s3updateInputValues(this.value)" min="0" max="400"></label>
+                </td>
+                <td style="padding-top: 10px;">
+                    <label><input type="number" class="input_boxes" id="s3numberInput" oninput="s3updateSliderFromNumber(this.value)" size="5" min="0" max="400"></label>
+                </td>
+                <th style="padding-right: 10px; padding-top: 10px;"><i> Minimum Endowment</i></th>
+            </tr>
+            <tr>
+                <td style="padding-bottom: 10px;">
+                    <label><input type="text" class="input_boxes" id="s3probInput" oninput="s3updateSliderFromProbability(this.value)" size="5"></label>
+                </td>
+                <th style="padding-right: 10px; padding-bottom: 10px;"><i> Probability of Winning</i></th>
+            </tr>
+            <tr style="height: 2vh">
+                <td colspan="3"></td>
+            </tr>
+        </table>
+        <button id="s3-pop-up" class="instr-btn" style="margin-top: 1vh; float: initial;">Scenario 3 Instructions</button>
+    </div>
+    <div style=" display: inline-block;">
+        <h4 class="dfont">Scenario 4</h4>
+        <table style="border: 1px solid black; border-collapse: collapse; margin: unset;">
+            <tr>
+                <td rowspan="2" style="padding-left: 10px; padding-top: 10px;">
+                    <label><input name="final_s4_minimum_endowment" type="range" id="s4slider" oninput="s4updateInputValues(this.value)" min="0" max="400"></label>
+                </td>
+                <td style="padding-top: 10px;">
+                    <label><input type="number" class="input_boxes" id="s4numberInput" oninput="s4updateSliderFromNumber(this.value)" size="5" min="0" max="400"></label>
+                </td>
+                <th style="padding-right: 10px; padding-top: 10px;"><i> Minimum Endowment</i></th>
+            </tr>
+            <tr>
+                <td style="padding-bottom: 10px;">
+                    <label><input type="text" class="input_boxes" id="s4probInput" oninput="s4updateSliderFromProbability(this.value)" size="5"></label>
+                </td>
+                <th style="padding-right: 10px; padding-bottom: 10px;"><i> Probability of Winning</i></th>
+            </tr>
+            <tr style="height: 2vh">
+                <td colspan="3"></td>
+            </tr>
+        </table>
+        <button id="s4-pop-up" class="instr-btn" style="margin-top: 1vh; float: initial;">Scenario 4 Instructions</button>
+    </div>
+</div>
+
+<!-- Next Button with confirmation pop-up & Instructions Button-->
+<div class="button">
+    <button onclick="DecisionForminvestor(event)">Continue</button>
+</div>
+
+<!-- Instructions -->
+{{ include '_static/instr_bttns/stage_2_s1.html' }}
+{{ include '_static/instr_bttns/stage_2_s2.html' }}
+{{ include '_static/instr_bttns/stage_2_s3.html' }}
+{{ include '_static/instr_bttns/stage_2_s4.html' }}
+
+<!-- Pop-ups -->
+{{ include '_static/popups/decision.html' }}
+
+{{ endblock }}

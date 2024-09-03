@@ -1,3 +1,69 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b59259688a896002e1fd15e99040ed82b7fb09d2bec97c1a2c3013a886b6de8c
-size 2395
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/general-onload.js' }}"></script>
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+<h3 class="sample">**Sample**</h3>
+<div class="Title">
+    <h3 style="float: left"><u>Role:</u> Advisor</h3>
+    <h3 style="float: right">Stage 2</h3>
+</div>
+{{ endblock }}
+
+<!-- Payoff tables -->
+{{ include '_static/payoff_tables/advisor_investor.html' }}
+
+<!-- Formfields -->
+<div  class="decisiontable dfont">
+    <table>
+        <tr>
+            <th></th>
+            <th colspan="4" class="qlty_header">Investment Quality Estimate</th>
+            <th colspan="2"></th>
+        </tr>
+        <tr class="decision_header">
+            <th></th>
+            <th>Low</th>
+            <th style="width: 2vw" rowspan="4"></th>
+            <th>High</th>
+            <th style="width: 2vw" colspan="2" rowspan="4"></th>
+        </tr>
+        <tr class="advice">
+            <th style="transform: rotate(180deg); writing-mode: vertical-rl;" rowspan="2">Advice</th>
+            <td><label><input name="advisor_low_advice" value="Invest" type="radio"> Invest</label></td>
+            <td><label><input name="advisor_high_advice" value="Invest" type="radio"> Invest</label></td>
+        </tr>
+        <tr>
+            <td class="column1"><label><input name="advisor_low_advice" value="Keep" type="radio"> Keep</label></td>
+            <td><label><input name="advisor_high_advice" value="Keep" type="radio"> Keep</label></td>
+        </tr>
+        <tr class="error">
+            <th></th>
+            <td><span id="low_error" class="errormessage"></span></td>
+            <td><span id="high_error" class="errormessage"></span></td>
+        </tr>
+        <tr class="timeout">
+        </tr>
+    </table>
+</div>
+
+<!-- Next Button with confirmation pop-up & Instructions Button -->
+<div class="button">
+    <button onclick="ConfirmationAdvisorStg2(event)" id="validation" class="Instructions">Continue</button>
+    <button id="pop-up" class="instr-btn" style="float: left;">Instructions</button>
+</div>
+
+<!-- Instructions pop-up -->
+{{ include '_static/instr_bttns/stage_2_0.html' }}
+
+<!-- Decision pop-up -->
+{{ include '_static/popups/decision.html' }}
+
+{{ endblock }}

@@ -1,3 +1,79 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bbd4aeaa74d02d2852746ce008ef1ce8e152078f44cda96c3ebad1eaaf7d8113
-size 9338
+<!-- Bootstrap Modal -->
+<div class="modal" id="popup-window" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" style="max-width: 70vw;" role="document">
+    <div class="modal-content-instr">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h3 class="modal-title instructions">Instructions</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">Close</span>
+        </button>
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body instructions">
+        <h3>General Information</h3>
+        <p>This is an experiment in decision-making. In addition to a $5 participation fee, you will be paid any additional money you accumulate during the experiment at the conclusion of today's session.</p>
+        <p>All payoffs during the experiment are denominated in an artificial currency, experimental currency units (ECU). At the end of the experiment, ECU will be converted to cash at the rate of $1 per 25 ECU. Upon completion of the experiment, your earnings will be converted to dollars and you will be paid privately, in cash. The exact amount you receive will be determined during the experiment and will depend on your decisions and the decisions of others.</p>
+        <p>The identities of participants will remain confidential, meaning that at no point in time will we identify the role or actions of any individual to other participants. In other words, the actions that you take during this experiment will remain confidential.</p>
+        <p><b><i>If you have any questions during the experiment, please raise your hand and wait for an experimenter to come to you. Please do not talk, exclaim, or try to communicate with other participants during the experiment.</i></b> Participants intentionally violating these rules or otherwise behaving in a disruptive fashion may be asked to leave the experiment and may not be paid.</p>
+        <hr>
+
+        <h3>Description of Stages, Rounds, and Groups</h3>
+        <p>This experiment will consist of two stages. We will go through the instructions for Stage 1 now, and you will receive instructions for Stage 2 later.</p>
+        <p>Stage 1 will last for 30 rounds. In each round, you will be in a five-person group with four other participants. The participants you are grouped with will be the same for all rounds of Stage 1. Your group will consist of participants in two roles. Four of the participants will participate in the experiment in the role of <i>Investors</i>. The remaining participant in each group will be in the role of <i>Advisor</i>.</p>
+        <p>You will be informed of your role (<i>Advisor</i> or <i>Investor</i>) prior to the beginning of Stage 1.</p>
+        <hr>
+
+        <h3>Description of the Decision Tasks in Stage 1</h3>
+        <p>The four Investors in each group will begin each round with an endowment of 12 ECU. If you are an Investor, you will decide individually whether to invest your 12 ECU endowment into an investment opportunity or to keep it. You cannot split your endowment – you must either invest all 12 ECU or keep all 12 ECU. Therefore, each Investor’s only decision in each round is whether to invest or keep their endowment.</p>
+        <p>Before the Investors make their decisions, the Advisor in each group will receive an estimate of the quality of the investment opportunity. We will explain the details of this estimate later in the instructions. After seeing their estimate, the Advisor will then send a message to all Investors in the group. This message will include advice, either “Invest” or “Keep”.</p>
+        <p>All Investors will receive the same advice from the Advisor. They can see the advice, but not the Advisor’s estimate. After receiving the Advisor’s advice, all Investors will make their investment decisions at the same time. This means that Investors will <b><i>not</i></b> know whether the other members of their group have invested or not when making their own decisions.</p>
+        <hr>
+
+        <h3>Description of Investor Payoffs</h3>
+        <p>If you are an Investor and you choose to <i>Keep</i> your endowment, you will retain your initial 12 ECU. This will be your payoff for the round. </p>
+        <p>If you are a Investor and choose to invest your endowment, you will give up your 12 ECU endowment and your payoff will depend on the total number of Investors in your group, including you, that invest (<i>Total Investors</i>) and the quality of the investment opportunity (<i>Quality</i>). </p>
+        <p><i>Quality</i> will be drawn randomly in each round from three possible levels: Low, Medium, or High. Each quality level is equally likely to be drawn. In other words, the chance of each of level being drawn is 1/3. You can imagine that the computer rolls a single six-sided die at the beginning of each round. If the roll is a 1 or 2, the quality is low. If the roll is a 3 or 4, the quality is medium. And if the computer rolls a 5 or 6, the quality is high. A new quality level is drawn in each round (i.e. a new die roll), so knowing the quality drawn in the previous round tells you nothing about the quality drawn for the current round. <b>You will not know the quality level of the investment opportunity when you decide to invest.</b></p>
+        <p>When you make your decision in each round, you will see the payoff table below showing your payoffs if you invest, for each possible combination of <i>Quality</i> (given by the row) and <i>Total Investors</i> (given by the column), the total number of group members that invest <i>including you.</i></p>
+        {{ include '_static/payoff_tables/investor.html' }}
+        <p>Remember that if you keep your endowment, you will earn 12 ECU regardless of the quality of the investment opportunity. If you choose to invest your endowment, you will give up your 12 ECU initial endowment and will be paid based on the payoff table.</p>
+        <hr>
+
+        <h3>Description of Advisor Payoffs</h3>
+        <p>If you are a Advisor, your payoffs will depend on the total number of investors in your group that invest (<i>Total Investors</i>) and on the quality level of the investment opportunity (<i>Quality</i>). </p>
+        <p>The payoff table below shows a Advisor’s payoffs for each possible combination of how many Investors in the group invest (<i>Total Investors</i>) and the <i>Quality</i> of the investment opportunity. </p>
+        {{ include '_static/payoff_tables/advisor.html' }}
+        <hr>
+
+        <h3>Advisor's Information</h3>
+        <p>In each round, the Advisor will receive an estimate of the quality of the investment opportunity. This estimate is <i>private</i> information. In other words, the Advisor can see the estimate, but the Investors will never be told what estimate their group’s Advisor received.</p>
+        <p>There is an 5/6 chance that the estimate the Advisor receives is correct and a 1/6 chance that it is incorrect. You can think of this like rolling a single die. If the computer rolls a 1 through 5, the Advisor receives a correct estimate. If the computer rolls a 6, the Advisor receive an incorrect estimate.</p>
+        <p>If the Advisor receives an <i><b>incorrect</b></i> estimate, each of the two possible incorrect levels is equally likely. In other words, if the estimate is <b><i>not</i></b> equal to the true quality of the investment opportunity, there is a 1 in 2 chance (like flipping a coin) that it is equal to each of the other possible qualities.</p>
+        <p>As an example, if the Quality in a round is High, then there is a 5 in 6 chance that the Advisor will receive an estimate equal to “High”, and there is a 1 in 6 that the Advisor will receive an estimate equal to one of the other possible values of Quality (“Low” or “Medium”). Each of the other possible estimates is equally likely.</p>
+        <p>This estimate is <i>private</i> information. In other words, the Advisor can see the estimate, but the Investors will never be told what estimate their group’s Advisor received.</p>
+        <hr>
+
+        <h3>Making Decisions in Each Round</h3>
+        <p>Recall that each round starts with the Advisor receiving an estimate of the quality level. <b><i>Before receiving their estimate</i></b>, the Advisor will choose advice for each possible estimate, recommending either “Invest” or “Keep”. The computer will then show the Advisor their estimate and send whatever advice the Advisor chose for this estimate to all of the Investors in their group. The Investors choose whether to “Invest” or “Keep” after seeing this advice.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Show the Bootstrap modal when the link is clicked
+document.getElementById("pop-up").addEventListener("click", function(event) {
+  event.preventDefault();
+  $('#popup-window').modal('show'); // Show Bootstrap modal using jQuery
+});
+
+// If you want to close the modal using JavaScript
+function closestage1instructions() {
+  $('#popup-window').modal('hide'); // Hide Bootstrap modal using jQuery
+}
+
+// Close the Bootstrap modal when the close button in modal header is clicked
+document.querySelector("#popup-window .modal-header .close").addEventListener("click", function() {
+  closestage1instructions();
+});
+</script>

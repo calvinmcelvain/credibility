@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0be504a4759094ded8cd9ded4189a2b04ee2c16a5ed0bff157fed005c455fab0
-size 607
+<table class="playerpayofftable dfont">
+    <tr>
+        <td></td>
+        <td class="header" colspan="5">Total Investors</td>
+    </tr>
+    <tr>
+        <td><i>Quality</i></td>
+        <td class="row1">0</td>
+        <td class="row1">1</td>
+        <td class="row1">2</td>
+        <td class="row1">3</td>
+        <td class="row1">4</td>
+    </tr>
+    {{ for quality, payoffs in advisor_table.items() }}
+    <tr>
+        <td class="column1">{{ quality }}</td>
+        {{ for total_investors, payoff in payoffs.items() }}
+        <td>{{ payoff }}</td>
+        {{ endfor }}
+    </tr>
+    {{ endfor }}
+</table>

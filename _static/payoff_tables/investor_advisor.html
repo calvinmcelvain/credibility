@@ -1,3 +1,53 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:52374c5b5a652d432dc0f81c6ba08759cd32187e57da62feb573eca6a07c121d
-size 1899
+<div class="tables-container">
+    <div>
+        <p class="payofftableheader">Investors Payoff Table</p>
+        <table class="playerpayofftable dfont">
+            <tr>
+                <td></td>
+                <td class="header" colspan="4">Total Investors (including you)</td>
+            </tr>
+            <tr>
+                <td><i>Quality</i></td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
+            </tr>
+            {{ for quality, payoffs in investor_table.items() }}
+            <tr>
+                <td class="column1">{{ quality }}</td>
+                {{ for total_investors, payoff in payoffs.items() }}
+                <td>{{ payoff }}</td>
+                {{ endfor }}
+            </tr>
+            {{ endfor }}
+        </table>
+        <p class="reminder">Remember, If you choose to keep, you will receive a payoff of <u>12 ECU</u></p>
+    </div>
+    <div class="between-margin"></div>
+    <div>
+        <p class="payofftableheader">Advisor's Payoff Table</p>
+        <table class="playerpayofftable dfont">
+            <tr>
+                <td></td>
+                <td class="header" colspan="5">Total Investors</td>
+            </tr>
+            <tr>
+                <td><i>Quality</i></td>
+                <td class="row1">0</td>
+                <td class="row1">1</td>
+                <td class="row1">2</td>
+                <td class="row1">3</td>
+                <td class="row1">4</td>
+            </tr>
+            {{ for quality, payoffs in advisor_table.items() }}
+            <tr>
+                <td class="column1">{{ quality }}</td>
+                {{ for total_investors, payoff in payoffs.items() }}
+                <td>{{ payoff }}</td>
+                {{ endfor }}
+            </tr>
+            {{ endfor }}
+        </table>
+    </div>
+</div>
