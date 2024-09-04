@@ -102,7 +102,7 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 POINTS_CUSTOM_NAME = 'ECU'
 
-PARTICIPANT_FIELDS = ['role', 'stage_1_payoff', 'stage_1_history', 'scenario_1_history', 'scenario_2_history', 'scenario_3_history']
+PARTICIPANT_FIELDS = ['role', 'stage_1_payoff', 'stage_1_history', 'scenario_1_history', 'scenario_2_history', 'scenario_3_history', 'finished']
 SESSION_FIELDS = ['group_matrix']
 
 # ISO-639 code

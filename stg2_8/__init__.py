@@ -413,6 +413,10 @@ class FinalScreen(Page):
 class Demographics(Page):
     form_model = 'player'
     form_fields = ['gender', 'age', 'ethnicity', 'hol']
+    
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        player.participant.finished = True
 
 
 class End(Page):
