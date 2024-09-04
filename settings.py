@@ -118,7 +118,7 @@ ADMIN_USERNAME = 'admin'
 ADMIN_PASSWORD = environ.get('ADMIN_PASSWORD')
 
 DEMO_PAGE_INTRO_HTML = """
-Git Branch: lab_testing
+Git Branch: trunk
 """
 
 SECRET_KEY = '6393989826314'
