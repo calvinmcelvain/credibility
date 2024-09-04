@@ -10,10 +10,10 @@ try:
     SKIP = envi_vars.SKIP
 except ImportError:
     # Fall back to environment variables (for production on Heroku)
-    GROUPING = environ.get('GROUPING')
-    STAGE_1_ROUNDS = environ.get('STAGE_1_ROUNDS')
-    DEMO_PARTICIPANTS = environ.get('DEMO_PARTICIPANTS')
-    SKIP = environ.get('SKIP')
+    GROUPING = int(environ.get('GROUPING'))
+    STAGE_1_ROUNDS = int(environ.get('STAGE_1_ROUNDS'))
+    DEMO_PARTICIPANTS = int(environ.get('DEMO_PARTICIPANTS'))
+    SKIP = bool(environ.get('SKIP'))
 
 # Times
 DECISION_TIME = 20000   # In milliseconds (a javascript timeout)
