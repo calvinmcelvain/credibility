@@ -11,7 +11,7 @@ try:
 except ImportError:
     # Fall back to environment variables (for production on Heroku)
     GROUPING = int(environ.get('GROUPING'))
-    STAGE_1_ROUNDS = int(environ.get('STAGE_1_ROUNDS'))
+    STAGE_1_ROUNDS = int(environ.get('STG_1_ROUNDS'))
     DEMO_PARTICIPANTS = int(environ.get('DEMO_PARTICIPANTS'))
     SKIP = bool(environ.get('SKIP'))
 
