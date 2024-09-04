@@ -13,7 +13,7 @@ except ImportError:
     GROUPING = int(environ.get('GROUPING'))
     STAGE_1_ROUNDS = int(environ.get('STG_1_ROUNDS'))
     DEMO_PARTICIPANTS = int(environ.get('DEMO_PARTICIPANTS'))
-    SKIP = bool(environ.get('SKIP'))
+    SKIP = bool(environ.get('SKIP'))    # Important note, this will only be false if empty
 
 # Times
 DECISION_TIME = 20000   # In milliseconds (a javascript timeout)
