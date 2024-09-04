@@ -1,15 +1,16 @@
+import envi_vars 
 from os import environ
 
 # Session settings (time, groups, rounds)
-GROUPING = 2
-STAGE_1_ROUNDS = 5
+GROUPING = int(environ.get('GROUPING'))
+STAGE_1_ROUNDS = int(environ.get('STG_1_ROUNDS'))
 DECISION_TIME = 20000   # In milliseconds (a javascript timeout)
-FEEDBACK_TIME = None  # In seconds
+FEEDBACK_TIME = 20  # In seconds
 INSTRUCTIONS_TIME = None
-SKIP = True
+SKIP = bool(environ.get('SKIP'))
 
 # Demo participants
-participants = 2
+participants = int(environ.get('DEMO_PARTICIPANTS'))
 
 SESSION_CONFIGS = [
     dict(

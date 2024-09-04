@@ -9,3 +9,6 @@ __pycache__/
 
 # Other
 *.otreezip
+
+# Local environment vars
+envi_vars.py
