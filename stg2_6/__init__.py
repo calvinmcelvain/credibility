@@ -191,7 +191,7 @@ class PayoffWaitPage(WaitPage):
         # Randomly selecting a draw for each 
         for player in group.get_players():
             if player.role != C.advisor_ROLE:
-                player.random_draw = r.randint(1, 400)
+                player.random_draw = r.randint(1, 401)
 
         # Payoff dictionaries and signal
         investor_payoff = C.stg2_s3_investor_payoffs
