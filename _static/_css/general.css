@@ -67,6 +67,7 @@ ul li {
 /* Instructions Button */
 .instr-btn {
     float: left;
+    font-size: 0.9vmax;
     background-color: red;
 }
 
