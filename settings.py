@@ -5,7 +5,7 @@ try:
     # Try to import the env_vars file (works for local development)
     import envi_vars
     GROUPING = envi_vars.GROUPING
-    STAGE_1_ROUNDS = envi_vars.STAGE_1_ROUNDS
+    STAGE_1_ROUNDS = envi_vars.STG_1_ROUNDS
     DEMO_PARTICIPANTS = envi_vars.DEMO_PARTICIPANTS
     SKIP = envi_vars.SKIP
 except ImportError:
