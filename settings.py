@@ -22,6 +22,18 @@ INSTRUCTIONS_TIME = None
 
 SESSION_CONFIGS = [
     dict(
+        name='Stage_1_Stage_2',
+        display_name='Full Experiment',
+        app_sequence=['start', 'stg1_1', 'stg1_2', 'stg2_1', 'stg2_2', 'stg2_3', 'stg2_4', 'stg2_5', 'stg2_6', 'stg2_7', 'stg2_8'],
+        num_demo_participants=DEMO_PARTICIPANTS,
+    ),
+    dict(
+        name='experimenter_page',
+        display_name='Admin: Experiment Instructions',
+        app_sequence=['admin_start', 'stg1_1', 'stg2_1', 'stg2_3', 'stg2_5', 'stg2_7'],
+        num_demo_participants=1,
+    ),
+    dict(
         name='Stage_1_Instructions_Only',
         display_name="Stage 1: Instructions",
         app_sequence=['start', 'stg1_1'],
@@ -81,18 +93,6 @@ SESSION_CONFIGS = [
         display_name='Stage 2',
         app_sequence=['start', 'stg2_1', 'stg2_2', 'stg2_3', 'stg2_4', 'stg2_5', 'stg2_6', 'stg2_7', 'stg2_8'],
         num_demo_participants=DEMO_PARTICIPANTS,
-    ),
-    dict(
-        name='Stage_1_Stage_2',
-        display_name='Full Experiment',
-        app_sequence=['start', 'stg1_1', 'stg1_2', 'stg2_1', 'stg2_2', 'stg2_3', 'stg2_4', 'stg2_5', 'stg2_6', 'stg2_7', 'stg2_8'],
-        num_demo_participants=DEMO_PARTICIPANTS,
-    ),
-    dict(
-        name='experimenter_page',
-        display_name='Admin: Experiment Instructions',
-        app_sequence=['admin_start', 'stg1_1', 'stg2_1', 'stg2_3', 'stg2_5', 'stg2_7'],
-        num_demo_participants=1,
     ),
 ]
 
