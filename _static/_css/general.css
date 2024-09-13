@@ -300,7 +300,6 @@ tr.decision_header th {
 b.advisor_advice {
     color: red;
 }
-
 div.decision-div {
     margin: 100px initial 150px;
     align-items: center;
@@ -335,6 +334,17 @@ div.decision-slider {
     width: 4em;
     font-size: 1.1vmax;
     text-align: right;
+}
+h4.stg2-investor-reminder {
+    font-size: 1.1vmax;
+    margin-top: 3vh;
+    font-weight: 600;
+}
+h4.stg2-investor-reminder-under {
+    font-size: 0.9vmax;
+    margin-top: 1vh;
+    text-decoration: unset;
+    font-weight: 500;
 }
 
 
