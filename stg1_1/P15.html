@@ -17,15 +17,15 @@ Instructions Quiz
 <p class="quiz">To make sure that everyone understands the instructions for Stage I, please take a moment to answer the following questions. Once everyone has responded correctly, we will proceed to the first round of Stage 1.</p>
 
 <!-- Payoff tables -->
-<div class="tables-container" style="margin-top: 1vh">
+<div class="tables-container" style="margin: 3vh 0">
     <div>
-        <p class="payofftableheader" style="font-size: 1vmax; margin-bottom: unset">Investors Payoff Table</p>
+        <p class="payofftableheader">Investors Payoff Table</p>
         <table class="playerpayofftable">
             <tr>
                 <td></td>
-                <td class="header" style="font-size: 1vmax; height: 2vh" colspan="4">Total Investors (including you)</td>
+                <td class="header" colspan="4">Total Investors (including you)</td>
             </tr>
-            <tr style="height: 1.5vh">
+            <tr>
                 <td><i>Quality</i></td>
                 <td class="row1">1</td>
                 <td class="row1">2</td>
@@ -34,14 +34,14 @@ Instructions Quiz
             </tr>
             {{ for quality, payoffs in investor_table.items() }}
             <tr>
-                <td style="height: 1.5vh" class="column1">{{ quality }}</td>
+                <td class="column1">{{ quality }}</td>
                 {{ for total_investors, payoff in payoffs.items() }}
-                <td style="height: 1.5vh">{{ payoff }}</td>
+                <td>{{ payoff }}</td>
                 {{ endfor }}
             </tr>
             {{ endfor }}
         </table>
-        <p class="reminder" style="font-size: 1vmax">Remember, if an investor chooses to keep, they will receive a payoff of <span style="text-decoration: underline">12 ECU</span></p>
+        <p class="reminder">Remember, if an investor chooses to keep, they will receive a payoff of <span style="text-decoration: underline">12 ECU</span></p>
     </div>
     <div class="between-margin"></div>
     <div>
@@ -49,9 +49,9 @@ Instructions Quiz
         <table class="playerpayofftable">
             <tr>
                 <td></td>
-                <td class="header" colspan="4" style="font-size: 1vmax; height: 2vh">Total Investors</td>
+                <td class="header" colspan="4">Total Investors</td>
             </tr>
-            <tr style="height: 1.5vh">
+            <tr>
                 <td><i>Quality</i></td>
                 <td class="row1">0</td>
                 <td class="row1">1</td>
@@ -61,9 +61,9 @@ Instructions Quiz
             </tr>
             {{ for quality, payoffs in advisor_table.items() }}
             <tr>
-                <td style="height: 1.5vh" class="column1">{{ quality }}</td>
+                <td class="column1">{{ quality }}</td>
                 {{ for total_investors, payoff in payoffs.items() }}
-                <td style="height: 1.5vh">{{ payoff }}</td>
+                <td>{{ payoff }}</td>
                 {{ endfor }}
             </tr>
             {{ endfor }}
@@ -85,55 +85,12 @@ Instructions Quiz
             <li>If you are an Investor, what is your payoff if you choose Keep and <u>3 other Investors</u> chooses Invest?<label><input size="3" name="Q2b" type="number"></label><span id="errorQ2b"></span></li>
             <li>What is your payoff if you are an Advisor and <u>2 Investors</u> choose Invest?<label><input size="3" name="Q2c" type="number"></label><span id="errorQ2c"></span></li>
         </ol>
-        <li>Suppose that the <i>Quality</i> in a round is Medium.</li>
-        <ol type="a" class="quiz-input-bol">
-            <li>The estimate of investment quality that the Advisor receives Medium is 5/6 chance.
-                <label>
-                    <select name="Q3a">
-                        <option></option>
-                        <option value="True">True</option>
-                        <option value="False">False</option>
-                    </select>
-                </label>
-                <span id="errorQ3a"></span>
-            </li>
-            <li>The estimate of investment quality that the Advisor receives will never be High.
-                <label>
-                    <select name="Q3b">
-                        <option></option>
-                        <option value="True">True</option>
-                        <option value="False">False</option>
-                    </select>
-                </label>
-                <span id="errorQ3b"></span>
-            </li>
-            <li>The Investors can see what estimate the Advisor has received when they make their choices.
-                <label>
-                    <select name="Q3c">
-                        <option></option>
-                        <option value="True">True</option>
-                        <option value="False">False</option>
-                    </select>
-                </label>
-                <span id="errorQ3c"></span>
-            </li>
-        </ol>
-        <li class="quiz-input-bol">The Advisor will first make their choices for all possible values of <i>Quality</i>, and then the computer will play out the round for them based on their choices and the randomly drawn investment quality and quality estimate.
-            <label>
-                <select name="Q4">
-                    <option></option>
-                    <option value="True">True</option>
-                    <option value="False">False</option>
-                </select>
-            </label>
-            <span id="errorQ4"></span>
-        </li>
     </ol>
 </div>
 
 <!--Next Button-->
-<div class="button" style="margin-top: 0.1vh">
-    <button type="button" onclick="CheckQuizAnswers()">Continue</button>
+<div class="button">
+    <button type="button" onclick="CheckQuizAnswersP1()">Continue</button>
 </div>
 
 {{ endblock }}
