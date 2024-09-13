@@ -431,6 +431,10 @@ table.draws_table {
 .draws_table td {
     height: 2vh;
 }
+.draws_table td.avg-payoff {
+    font-weight: bold;
+    color: red;
+}
 div.draws_key {
     display: flex;
     align-items: center;
