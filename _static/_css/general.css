@@ -25,6 +25,9 @@
 .nomargin {
     margin: unset;
 }
+.extra-topmargin {
+    margin-top: 4vh;
+}
 p {
     font-size: 1.1vmax;
     margin-top: 2.3vh;
