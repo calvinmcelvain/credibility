@@ -195,6 +195,16 @@ class P12(BaseReadyPage):
     
 class P13(BaseReadyPage):
     @staticmethod
+    def js_vars(player):
+        '''
+        60 second timeout
+        '''
+        return dict(
+            timeout_instr=60000,
+        )
+        
+        
+    @staticmethod
     def vars_for_template(player: Player):
         '''
         Passing Stage 1 history to HTML

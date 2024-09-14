@@ -7,6 +7,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }, js_vars.timeout);
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const recap_table = document.getElementById("recap_table");
+    const cont_button = document.getElementById("validation");
+    setTimeout(function () {
+        recap_table.hidden = true;
+        cont_button.classList.add("flashing-red");
+    }, js_vars.timeout_instr);
+});
+
 
 /// Websocket to check if all players are ready
 function liveRecv(data) {

@@ -14,11 +14,11 @@ Stage 1 Recap
 {{ endblock }}
 
 <!-- Instructions body -->
-<p>Before beginning Stage 2, let's review Stage 1's results</p>
+<p>Before beginning Stage 2, let's review Stage 1's results. You will have <u>60 seconds</u> to review the previous stage.</p>
 
 <!-- Advisor Stage 1 history table -->
 {{ if player.role == C.advisor_ROLE }}
-<div class="tablescroll"">
+<div class="tablescroll">
     <div>
         <table class="history_header" >
             <tr>
@@ -33,7 +33,7 @@ Stage 1 Recap
                 <th>Investors Payoff</th>
             </tr>
         </table>
-        <div class="scroll" style="max-height: 60%;">
+        <div class="scroll" style="max-height: 60%;" id="recap_table">
             <table id="data_table">
                 {{ for p in history }}
                 <tr>
@@ -70,7 +70,7 @@ Stage 1 Recap
                 <th>Advisor's Payoff</th>
             </tr>
         </table>
-        <div class="scroll" style="max-height: 60%;">
+        <div class="scroll" style="max-height: 60%;" id="recap_table">
             <table id="data_table">
                 {{ for p in history }}
                 <tr>
