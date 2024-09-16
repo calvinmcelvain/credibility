@@ -60,10 +60,10 @@ class Group(BaseGroup):
     actual_signal = models.StringField()
     
     # Previous total investors
-    s1_total_investors = models.IntegerField()
-    s2_total_investors = models.IntegerField()
-    s3_total_investors = models.IntegerField()
-    s4_total_investors = models.IntegerField()
+    s1_total_investors = models.IntegerField(initial=0)
+    s2_total_investors = models.IntegerField(initial=0)
+    s3_total_investors = models.IntegerField(initial=0)
+    s4_total_investors = models.IntegerField(initial=0)
 
     # Player functions meant to be passed to history participant field
     def investor_payoff(self):
@@ -273,45 +273,42 @@ class FinalPayoffWaitPage(WaitPage):
             if player.role != C.advisor_ROLE:
                 # Scenario 1 payoffs
                 s1_random_draw = player.participant.vars['scenario_1_history']['draw']
+                player.group.s1_total_investors = s1_total_investors
                 if s1_advice == 'Invest':
-                    player.group.s1_total_investors = s1_total_investors
                     if player.final_s1_minimum_endowment > s1_random_draw:
                         player.final_s1_payoff = s1_investor_payoff[s1_signal][s1_total_investors]
                     else:
                         player.final_s1_payoff = s1_random_draw
                 else:
                     player.final_s1_payoff = s1_random_draw
-                    player.group.s1_total_investors = 0
                 
                 # Scenario 2 payoffs
                 s2_random_draw = player.participant.vars['scenario_2_history']['draw']
+                player.group.s2_total_investors = s2_total_investors
                 if s2_advice == 'Invest':
-                    player.group.s2_total_investors = s2_total_investors
                     if player.final_s2_minimum_endowment > s2_random_draw:
                         player.final_s2_payoff = s2_investor_payoff[s2_signal][s2_total_investors]
                     else:
                         player.final_s2_payoff = s2_random_draw
                 else:
                     player.final_s2_payoff = s2_random_draw
-                    player.group.s2_total_investors = 0
                 
                 # Scenario 3 payoffs
                 s3_random_draw = player.participant.vars['scenario_3_history']['draw']
+                player.group.s3_total_investors = s3_total_investors
                 if s3_advice == 'Invest':
-                    player.group.s3_total_investors = s3_total_investors
                     if player.final_s3_minimum_endowment > s3_random_draw:
                         player.final_s3_payoff = s3_investor_payoff[s3_signal][s3_total_investors]
                     else:
                         player.final_s3_payoff = s3_random_draw
                 else:
                     player.final_s3_payoff = s3_random_draw
-                    player.group.s3_total_investors = 0
                 
                 # Scenario 4 payoffs
                 s4_random_draw = player.random_draw
                 player.group.s4_total_investors = s4_total_investors
                 if player.final_s4_minimum_endowment > s4_random_draw:
-                    player.final_s4_payoff = s4_investor_payoff[s4_signal][s4_total_investors]
+                    player.final_s4_payoff = s4_investor_payoff[s4_signal][s1_total_investors]
                 else:
                     player.final_s4_payoff = player.random_draw
             else:
@@ -334,6 +331,7 @@ class FinalPayoffWaitPage(WaitPage):
                     player.final_s3_payoff = advisor_payoff[s2_signal][0]
                 
                 # Scenario 4 payoffs
+                player.group.s4_total_investors = s4_total_investors
                 player.final_s4_payoff = advisor_payoff[s4_signal][s4_total_investors]
         
 
@@ -382,8 +380,8 @@ class FinalScreen(Page):
                     'advice': s3_advice,
                     'investors': player.group.s3_total_investors,
                     'payoff': player.final_s3_payoff},
-                4: {'signal': player.group.actual_signal, 
-                    'investors': player.group.s4_total_investors,
+                4: {'signal': player.group.actual_signal,
+                    'investors': player.group.s4_total_investors, 
                     'payoff': player.final_s4_payoff},
             }
         if player.role != C.advisor_ROLE:
@@ -401,8 +399,9 @@ class FinalScreen(Page):
             history[3]['advisor_payoff'] = player.group.get_player_by_role(C.advisor_ROLE).final_s3_payoff
             history[4]['draw'] = player.random_draw
             history[4]['decision'] = 'Invest' if player.final_s4_minimum_endowment > player.random_draw else 'Keep'
-            history[4]['other_investors'] = player.group.s4_total_investors - 1 if history[4]['decision'] == 'Invest' else player.group.s4_total_investors
+            history[4]['other_investors'] = player.group.s1_total_investors - 1 if history[4]['decision'] == 'Invest' else player.group.s1_total_investors
             history[4]['advisor_payoff'] = player.group.get_player_by_role(C.advisor_ROLE).final_s4_payoff
+            history[4]['investors'] = player.group.s1_total_investors # Needs to be scenario 1 total investors for Investor
             
 
         return {'final_payoff': final_payoff, 'Stage_1': stage_1_payoff, 'Stage_2': stage_2_payoff,
