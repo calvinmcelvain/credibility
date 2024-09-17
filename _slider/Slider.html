@@ -1,0 +1,35 @@
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/general-onload.js' }}"></script>
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+<!-- Slider example -->
+<div class="decision-slider" style="margin-top: 25vh;">
+    <table>
+        <tr>
+            <td rowspan="2" style="padding-left: 10px; padding-top: 10px;">
+                <label><input name="investor_minimum_endowment" type="range" id="slider" style="width: 8vw;" oninput="updateInputValues(this.value)" min="0" max="400"></label>
+            </td>
+            <td style="padding-top: 10px;">
+                <label><input type="number" class="input_boxes" id="numberInput" oninput="updateSliderFromNumber(this.value)" size="5" min="0" max="400"></label>
+            </td>
+            <th style="padding-right: 10px; padding-top: 10px;"><i> Minimum Endowment</i></th>
+        </tr>
+        <tr>
+            <td style="padding-bottom: 10px;">
+                <label><input type="text" class="input_boxes" id="probInput" oninput="updateSliderFromProbability(this.value)" size="5"></label>
+            </td>
+            <th style="padding-right: 10px; padding-bottom: 10px;"><i> Probability of Winning</i></th>
+        </tr>
+        <tr class="timeout">
+            <td></td>
+        </tr>
+    </table>
+</div>
+
+{{ endblock }}
