@@ -349,7 +349,9 @@ h4.stg2-investor-reminder-under {
     text-decoration: unset;
     font-weight: 500;
 }
-
+input.extra-sld-length {
+    width: 8vw;
+}
 
 /* Feedback table */
 div.feed-div {
