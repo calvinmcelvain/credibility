@@ -129,6 +129,10 @@ class P9(BaseReadyPage):
 
 
 class P10(BaseReadyPage):
+    pass
+
+
+class P11(BaseReadyPage):
     form_model = 'player'
     form_fields = ['advisor_low_advice', 'advisor_high_advice']
     
@@ -140,11 +144,11 @@ class P10(BaseReadyPage):
         return {'advisor_table': C.advisor_payoffs_sample, 'investor_table': C.investor_payoffs_sample}
 
 
-class P10WaitPage(WaitPage):
+class P11WaitPage(WaitPage):
     body_text = 'Waiting until everyone has clicked continue'
     
 
-class P11(BaseReadyPage):
+class P12(BaseReadyPage):
     form_model = 'player'
     form_fields = ['investor_minimum_endowment']
     
@@ -156,11 +160,11 @@ class P11(BaseReadyPage):
         return {'advisor_table': C.advisor_payoffs_sample, 'investor_table': C.investor_payoffs_sample}
 
 
-class P11WaitPage(WaitPage):
+class P12WaitPage(WaitPage):
     body_text = 'Waiting until everyone has clicked continue'
     
 
-class P12(BaseReadyPage):
+class P13(BaseReadyPage):
     @staticmethod
     def vars_for_template(player):
         '''
@@ -193,7 +197,7 @@ class P12(BaseReadyPage):
         return {'draw_dict': draw_dict, 'invest_value': 250, 'quality': 'Low', 'advice': 'Invest', 'endowment': 300}
     
     
-class P13(BaseReadyPage):
+class P14(BaseReadyPage):
     @staticmethod
     def js_vars(player):
         '''
@@ -212,15 +216,6 @@ class P13(BaseReadyPage):
         return {'history': player.participant.vars['stage_1_history']}
 
 
-class P14(BaseReadyPage):
-    @staticmethod
-    def vars_for_template(player):
-        '''
-        Passing the player payoff dictionaries to HTML
-        '''
-        return {'advisor_table': C.stg2_s1_advisor_payoffs, 'investor_table': C.stg2_s1_investor_payoffs}
-
-
 class P15(BaseReadyPage):
     @staticmethod
     def vars_for_template(player):
@@ -231,7 +226,16 @@ class P15(BaseReadyPage):
 
 
 class P16(BaseReadyPage):
+    @staticmethod
+    def vars_for_template(player):
+        '''
+        Passing the player payoff dictionaries to HTML
+        '''
+        return {'advisor_table': C.stg2_s1_advisor_payoffs, 'investor_table': C.stg2_s1_investor_payoffs}
+
+
+class P17(BaseReadyPage):
     pass
 
 
-page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P10WaitPage, P11, P11WaitPage, P12, P13, P14, P15, P16]
+page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P11WaitPage, P12, P12WaitPage, P13, P14, P15, P16, P17]

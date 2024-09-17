@@ -10,15 +10,14 @@
 
 <!-- Title -->
 {{ block title }}
-Stage 2: Scenario 1 (Continued)
+Stage 2: Scenario 1
 {{ endblock }}
 
 <!-- Instructions body -->
-<p>Investors’ payoffs are determined by the table shown below. Investors who choose Invest will win the 400 ECU prize if  <i>Quality</i> is High, <b><i>regardless of the number of other Investors who choose Invest</i></b>.</p>
-<p>As in Stage 1, you will receive advice from the Advisor but will <b><i>not</i></b> know the quality of the investment opportunity when you decide to invest.</p>
-{{ include '_static/payoff_tables/investor.html' }}
-<p class="extra-topmargin">Each Investor’s endowment will be randomly drawn from the numbers between 1 and 400. There is a separate draw for each Investor, so knowing your endowment does not tell you anything about the endowments of other Investors. As an Investor, you will use a slider to select the minimum endowment for which you will choose Keep <b><i>if the Advisor’s advice is Invest</i></b>. Your best choice as an Investor is always to set the slider exactly <b><i>equal</i></b> to the average amount you believe you will earn by choosing Invest. The average amount you will earn as an Investor if you choose Invest is the probability that you will win the prize multiplied by 400. Specifically, the probability of winning the prize is your perceived probability that <i>Quality</i> is High <i>if the Advisor’s advice is Invest</i>.
-
+<p><span class="red-bold">Scenario 1 involves different payoff tables than Stage 1 for both the Advisors and Investors. </span></p>
+<p>In Scenario 1, as in all scenarios, the Advisor will receive 100 ECU for each Investor who chooses to invest. This is shown in the payoff table below. The Advisor’s payoffs does <b><i>not</i></b> depend on the quality of the investment opportunity.</p>
+{{ include '_static/payoff_tables/advisor.html' }}
+<p class="extra-topmargin">As an Advisor, you will receive a signal telling you the quality of the investment opportunity. That signal will <b><i>always</i></b> be correct. You will select what advice to send the Investors for each possible signal (Low or High).</p>
 
 <!-- Next Button: Only allows players to continue if all players in session are ready/clicked continue -->
 <div class="button">
