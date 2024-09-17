@@ -12,7 +12,6 @@
       <!-- Modal Body -->
       <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
         <h3>Stage 2</h3>
-        <p>We have now concluded Stage 1 of the experiment. In Stage 2, you will make decisions for three scenarios.</p>
         <p>Your group in Stage 2 is the same five participants as in Stage 1 and your role (Advisor or Investor) is the same as well.</p>
         <p>In many ways, Stage 2 is like Stage 1.</p>
         <div class="List">
@@ -65,16 +64,32 @@
         <p>You do <b><i>not</i></b> control the probability that you win the prize. When you change the number in the probability box, what you are entering is your <b><i>best guess</i></b> about how likely it is that you will win the prize.</p>
         <hr>
 
+        <h3>Stage 2 Gameplay</h3>
+        <div class="List">
+          <ol>
+              <li>In Stage 2, there will only be two possible quality levels, “Low” and “High”. Each possible quality level is equally likely, like the flip of a coin.</li>
+              <li>In Stage 2, rather than receiving an estimate, the Advisor will directly observe the true quality level. In other words, the Advisor will be able to send advice based on the actual quality of the investment opportunity rather than a noisy estimate of the quality. As in Stage 1, the Advisor will choose advice for each possible quality level (Low or High).</li>
+              <li>Unlike Stage 1, Investors will only choose “Invest” or “Keep” <b><i>if the Advisor advises Invest</i></b>.</li>
+              <ol type="a">
+                  <li>You will keep your endowment for certain <b><i>if your Advisor advises Keep</i></b>.</li>
+                  <li>If the Advisor advises Invest, Investors will choose “Invest” or “Keep” based on their choice of a minimum endowment. If the randomly drawn endowment is below their minimum endowment, the Investor chooses Invest. If the randomly drawn endowment is at or above their minimum endowment, the Investor chooses Keep.</li>
+              </ol>
+              <li>Unlike Stage 1, you will not see feedback after choosing in each scenario. You will see your feedback only after completing your decisions in all scenarios.</li>
+              <li>You will make choices for four scenarios in Stage 2. One of the four scenarios will be randomly chosen to count towards your earnings in today’s experiment.</li>
+          </ol>
+        </div>
+        <hr>
+
         <h3>Scenario 2</h3>
         <p>As in all scenarios, the Advisor will receive 100 for each Investor who chooses Invest. This is shown in the payoff table below. The Advisor’s payoff does not depend on the quality of the investment opportunity.</p>
         {{ include '_static/payoff_tables/advisor.html' }}
-        <p>As an Advisor, you will receive a signal telling you the quality of the investment opportunity. That signal will <b><i>always</i></b> be correct. You will select what advice to send the Investors for each possible signal (Low or High).</p>
+        <p class="extra-topmargin">As an Advisor, you will receive a signal telling you the quality of the investment opportunity. That signal will <b><i>always</i></b> be correct. You will select what advice to send the Investors for each possible signal (Low or High).</p>
         <hr>
 
         <h3>Scenario 2 (Continued)</h3>
-        <p>Investors who choose Invest will win the 400 ECU prize if the majority of Investors in their group (two or more) choose Invest, regardless of <i>Quality</i>. This is shown in the table below. As before, you will not know the quality of the investment opportunity when you decide to invest. Notice that <i>Quality</i> does <b>not</b> matter for the payoff of either the Advisor or Investors.</p>
+        <p>Investors who choose Invest will win the 400 ECU prize if the majority of Investors in their group (three or more) choose Invest, regardless of <i>Quality</i>. This is shown in the table below. As before, you will not know the quality of the investment opportunity when you decide to invest. Notice that <i>Quality</i> does <b><i>not</i></b> matter for the payoff of either the Advisor or Investors.</p>
         {{ include '_static/payoff_tables/investor.html' }}
-        <p>As in Scenario 1, each Investor’s endowment will be randomly drawn from the numbers between 1 and 400. There is a separate draw for each Investor, so knowing your endowment does not tell you anything about the endowments of other Investors. As an Investor, you will use a slider to select the minimum endowment for which you will choose Keep <i>if the Advisor’s advice is Invest</i>. Your best choice as an Investor is always to set the slider exactly <i><b>equal</b></i> to the average amount you believe you will earn by choosing Invest. The average amount you will earn as an Investor if you choose Invest is the probability that you will win the prize multiplied by 400. As before, the probability of winning the prize is your perceived probability that the majority of other Investors in your group choose Invest, regardless of <i>Quality</i>.
+        <p class="extra-topmargin">As in Scenario 1, each Investor’s endowment will be randomly drawn from the numbers between 1 and 400. There is a separate draw for each Investor, so knowing your endowment does not tell you anything about the endowments of other Investors. As an Investor, you will select the minimum endowment for which you will choose Keep <i></i>. Your best choice as an Investor is always to set the minimum endowment exactly <b><i>equal</i></b> to the average amount you believe you will earn by choosing Invest. The average amount you will earn as an Investor if you choose Invest is the probability that you will win the prize multiplied by 400, where the probability of winning the prize is how likely you believe that the majority of other Investors in your group choose Invest <i>if the Advisor’s advice is Invest</i>, regardless of <i>Quality</i>.</p>
       </div>
     </div>
   </div>
