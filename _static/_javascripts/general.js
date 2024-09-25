@@ -365,45 +365,23 @@ function ConfirmationInvestorStg2(event) {
 /// Final Investor confirmation slider functions
 function s1updateInputValues(value) {
     document.getElementById("s1numberInput").value = value;
-    document.getElementById("s1probInput").value = (value / 4).toFixed(1) + " %";
 }
 function s2updateInputValues(value) {
     document.getElementById("s2numberInput").value = value;
-    document.getElementById("s2probInput").value = (value / 4).toFixed(1) + " %";
 }
 function s3updateInputValues(value) {
     document.getElementById("s3numberInput").value = value;
-    document.getElementById("s3probInput").value = (value / 4).toFixed(1) + " %";
 }
 
 function s1updateSliderFromNumber() {
     var value = parseInt(document.getElementById('s1numberInput').value);
     document.getElementById('s1slider').value = value;
-    document.getElementById('s1probInput').value = (value / 4).toFixed(1) + " %";
 }
 function s2updateSliderFromNumber() {
     var value = parseInt(document.getElementById('s2numberInput').value);
     document.getElementById('s2slider').value = value;
-    document.getElementById('s2probInput').value = (value / 4).toFixed(1) + " %";
 }
 function s3updateSliderFromNumber() {
     var value = parseInt(document.getElementById('s3numberInput').value);
     document.getElementById('s3slider').value = value;
-    document.getElementById('s3probInput').value = (value / 4).toFixed(1) + " %";
-}
-
-function s1updateSliderFromProbability() {
-    var value = parseFloat(document.getElementById('s1probInput').value);
-    document.getElementById('s1slider').value = value * 4;
-    document.getElementById('s1numberInput').value = value * 4;
-}
-function s2updateSliderFromProbability() {
-    var value = parseFloat(document.getElementById('s2probInput').value);
-    document.getElementById('s2slider').value = value * 4;
-    document.getElementById('s2numberInput').value = value * 4;
-}
-function s3updateSliderFromProbability() {
-    var value = parseFloat(document.getElementById('s3probInput').value);
-    document.getElementById('s3slider').value = value * 4;
-    document.getElementById('s3numberInput').value = value * 4;
 }
