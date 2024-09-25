@@ -11,35 +11,12 @@
         </div>
         <!-- Modal Body -->
         <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
-            <h3>Scenario 3</h3>
-            <p>Like Scenarios 1 and 2, the Advisor will receive 100 for each Investor who chooses to invest. This is shown in the payoff table below. The Advisor’s payoff does not depend on the quality of the investment opportunity.</p>
-            {{ include '_static/payoff_tables/advisor.html' }}
-            <hr>
-
-            <h3>Scenario 3 (Continued)</h3>
-            <p>Investors who choose Invest will win the 400 ECU prize if the majority of Investors in their group (two or more) choose Invest <b><i>and</i></b> <i>Quality</i> is High. Unlike Scenario 2, the payoff of an Investor depends on the quality of the investment opportunity.</p>
-            <table class="playerpayofftable dfont">
-                <tr>
-                    <td></td>
-                    <td class="header" colspan="4">Total Investors (including you)</td>
-                </tr>
-                <tr>
-                    <td><i>Quality</i></td>
-                    <td class="row1">1</td>
-                    <td class="row1">2</td>
-                    <td class="row1">3</td>
-                    <td class="row1">4</td>
-                </tr>
-                {{ for quality, payoffs in s3_investor_table.items() }}
-                <tr>
-                    <td class="column1">{{ quality }}</td>
-                    {{ for total_investors, payoff in payoffs.items() }}
-                    <td>{{ payoff }}</td>
-                    {{ endfor }}
-                </tr>
-                {{ endfor }}
-            </table>
-            <p class="extra-topmargin">As in Scenarios 1 and 2, each Investor’s endowment will be randomly drawn from the numbers between 1 and 400. There is a separate draw for each Investor, so knowing your endowment does not tell you anything about the endowments of other Investors. As an Investor, you will select the minimum endowment for which you will choose Keep <i>if the Advisor’s advice is Invest</i>. Your best choice as an Investor is always to set the minimum endowment exactly <b><i>equal</i></b> to the average amount you believe you will earn by choosing Invest. The average amount you will earn as an Investor if you choose Invest is the probability that you will win the prize multiplied by 400, where the probability of winning the prize is how likely you believe that <i>Quality</i> is High <b><i>and</i></b> the majority of other Investors in your group choose Invest <i>if the Advisor’s advice is Invest</i>.</p>
+          <h3>Scenario 3</h3>
+          {{ include 'stg2_5/instructions/P1_stage_2_scenario_3.html' }}
+          <hr>
+  
+          <h3>Scenario 3 (Continued)</h3>
+          {{ include 'stg2_5/instructions/P2_stage_2_scenario_3_cont.html' }}
         </div>
       </div>
     </div>

@@ -192,7 +192,7 @@ class AdvisorDecision(Page):
         '''
         Passing the player payoff dictionaries to HTML
         '''
-        return {'advisor_table': C.stg2_s3_advisor_payoffs, 'investor_table': C.stg2_s3_investor_payoffs}
+        return {'advisor_table': C.stg2_s3_advisor_payoffs, 'investor_table': C.stg2_s3_investor_payoffs, 's3_investor_table': C.stg2_s3_investor_payoffs}
 
 
 class InvestorDecision(Page):
@@ -215,7 +215,7 @@ class InvestorDecision(Page):
         '''
         Passing the player payoff dictionaries to HTML
         '''
-        return {'advisor_table': C.stg2_s3_advisor_payoffs, 'investor_table': C.stg2_s3_investor_payoffs}
+        return {'advisor_table': C.stg2_s3_advisor_payoffs, 'investor_table': C.stg2_s3_investor_payoffs, 's3_investor_table': C.stg2_s3_investor_payoffs}
 
 
 class PayoffWaitPage(WaitPage):

@@ -74,7 +74,7 @@ class P1(BaseReadyPage):
         '''
         Passing the player payoff dictionaries to HTML
         '''
-        return {'advisor_table': C.stg2_s2_advisor_payoffs, 'investor_table': C.stg2_s2_investor_payoffs}
+        return {'advisor_table': C.stg2_s2_advisor_payoffs, 's2_investor_table': C.stg2_s2_investor_payoffs}
 
 
 class P2(BaseReadyPage):
@@ -83,7 +83,7 @@ class P2(BaseReadyPage):
         '''
         Passing the player payoff dictionaries to HTML
         '''
-        return {'advisor_table': C.stg2_s2_advisor_payoffs, 'investor_table': C.stg2_s2_investor_payoffs}
+        return {'advisor_table': C.stg2_s2_advisor_payoffs, 's2_investor_table': C.stg2_s2_investor_payoffs}
 
 
 class P3(BaseReadyPage):
