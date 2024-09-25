@@ -10,12 +10,28 @@
 
 <!-- Title -->
 {{ block title }}
-What Minimum Endowment Should You Choose?
+Choosing a Minimum Endowment
 {{ endblock }}
 
 <!-- Instructions body -->
-<p><b><i>Your best choice as an Investor is always to set your minimum endowment exactly equal to the average amount you believe you will earn by choosing Invest. The average value of investing is equal to the probability that you win the prize multiplied by 400.</i></b></p>
-<p>You do <b><i>not</i></b> control the probability that you win the prize. When you change the number in the probability box, what you are entering is your <b><i>best guess</i></b> about how likely it is that you will win the prize.</p>
+<p>You will use an interface like the one shown on the screen to choose the minimum endowment for which you will select Keep. There is a slider and a text box labeled “minimum endowment” next to the slider. You can choose a minimum endowment two ways: moving the slider or entering a minimum endowment into the text box labeled “minimum endowment.”</p>
+
+<div class="decision-slider">
+    <table>
+        <tr>
+            <td style="padding-left: 10px; padding-top: 10px;">
+                <label><input class="extra-sld-length" type="range" id="slider" oninput="updateInputValues(this.value)" min="0" max="400"></label>
+                <label><input type="number" class="input_boxes" id="numberInput" oninput="updateSliderFromNumber(this.value)" size="5" min="0" max="400"></label>
+            </td>
+            <th style="padding-right: 10px; padding-top: 10px;"><i> Minimum Endowment</i></th>
+        </tr>
+        <tr class="timeout">
+            <td colspan="2"></td>
+        </tr>
+    </table>
+</div>
+
+<p class="extra-topmargin">Please look at the overhead as I go through some examples of how to use the slider, the minimum endowment text box, and the probability text box.</p>
 
 <!-- Next Button: Only allows players to continue if all players in session are ready/clicked continue -->
 <div class="button">
