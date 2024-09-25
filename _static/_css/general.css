@@ -572,3 +572,12 @@ p.reminder {
     font-size: 1vw;
     margin-bottom: unset;
 }
+
+/* Final sliders */
+div.final-sldrs {
+    display: inline-block;
+}
+div.margins {
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
