@@ -211,9 +211,10 @@ class P14(BaseReadyPage):
     @staticmethod
     def vars_for_template(player: Player):
         '''
-        Passing Stage 1 history to HTML
+        Passing Stage 1 history to HTML and participant role
         '''
-        return {'history': player.participant.vars['stage_1_history']}
+        role = 'Advisor' if player.participant.vars['role'] == 'Advisor' else 'Investor'
+        return {'history': player.participant.vars['stage_1_history'], 'role': role}
 
 
 class P15(BaseReadyPage):
