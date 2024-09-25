@@ -284,6 +284,8 @@ class FinalConfirmation(Page):
 
 
 class FinalPayoffWaitPage(WaitPage):
+    wait_for_all_groups = True
+    
     @staticmethod
     def after_all_players_arrive(group: Group):
         for i in group.get_players():
