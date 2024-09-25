@@ -433,10 +433,6 @@ function s3updateInputValues(value) {
     document.getElementById("s3numberInput").value = value;
     document.getElementById("s3probInput").value = (value / 4).toFixed(1) + " %";
 }
-function s4updateInputValues(value) {
-    document.getElementById("s4numberInput").value = value;
-    document.getElementById("s4probInput").value = (value / 4).toFixed(1) + " %";
-}
 
 function s1updateSliderFromNumber() {
     var value = parseInt(document.getElementById('s1numberInput').value);
@@ -453,11 +449,6 @@ function s3updateSliderFromNumber() {
     document.getElementById('s3slider').value = value;
     document.getElementById('s3probInput').value = (value / 4).toFixed(1) + " %";
 }
-function s4updateSliderFromNumber() {
-    var value = parseInt(document.getElementById('s4numberInput').value);
-    document.getElementById('s4slider').value = value;
-    document.getElementById('s4probInput').value = (value / 4).toFixed(1) + " %";
-}
 
 function s1updateSliderFromProbability() {
     var value = parseFloat(document.getElementById('s1probInput').value);
@@ -473,9 +464,4 @@ function s3updateSliderFromProbability() {
     var value = parseFloat(document.getElementById('s3probInput').value);
     document.getElementById('s3slider').value = value * 4;
     document.getElementById('s3numberInput').value = value * 4;
-}
-function s4updateSliderFromProbability() {
-    var value = parseFloat(document.getElementById('s4probInput').value);
-    document.getElementById('s4slider').value = value * 4;
-    document.getElementById('s4numberInput').value = value * 4;
 }

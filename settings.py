@@ -24,13 +24,13 @@ SESSION_CONFIGS = [
     dict(
         name='Stage_1_Stage_2',
         display_name='Full Experiment',
-        app_sequence=['start', 'stg1_1', 'stg1_2', 'stg2_1', 'stg2_2', 'stg2_3', 'stg2_4', 'stg2_5', 'stg2_6', 'stg2_7', 'stg2_8'],
+        app_sequence=['start', 'stg1_1', 'stg1_2', 'stg2_1', 'stg2_2', 'stg2_3', 'stg2_4', 'stg2_5', 'stg2_6'],
         num_demo_participants=DEMO_PARTICIPANTS,
     ),
     dict(
         name='experimenter_page',
         display_name='Admin: Experiment Instructions',
-        app_sequence=['admin_start', 'stg1_1', 'stg2_1', 'stg2_3', 'stg2_5', 'stg2_7'],
+        app_sequence=['admin_start', 'stg1_1', 'stg2_1', 'stg2_3', 'stg2_5'],
         num_demo_participants=1,
     ),
     dict(
@@ -76,28 +76,21 @@ SESSION_CONFIGS = [
         num_demo_participants=DEMO_PARTICIPANTS,
     ),
     dict(
-        name='Stage_2_Scenario_4',
-        display_name='Stage 2: Scenario 4',
-        app_sequence=['start', 'stg2_7', 'stg2_8'],
-        num_demo_participants=DEMO_PARTICIPANTS,
-    ),
-    dict(
         name='Stage_2_Instructions_Only',
         display_name='Stage 2: Instructions',
-        app_sequence=['start', 'stg2_1', 'stg2_3', 'stg2_5', 'stg2_7'],
+        app_sequence=['start', 'stg2_1', 'stg2_3', 'stg2_5'],
         num_demo_participants=DEMO_PARTICIPANTS,
     ),
     dict(
         name='Stage_2_Games',
         display_name='Stage 2: All Scenarios',
-        app_sequence=['start', 'stg2_2', 'stg2_4',
-                      'stg2_6', 'stg2_8'],
+        app_sequence=['start', 'stg2_2', 'stg2_4', 'stg2_6',],
         num_demo_participants=DEMO_PARTICIPANTS,
     ),
     dict(
         name='Stage_2',
         display_name='Stage 2',
-        app_sequence=['start', 'stg2_1', 'stg2_2', 'stg2_3', 'stg2_4', 'stg2_5', 'stg2_6', 'stg2_7', 'stg2_8'],
+        app_sequence=['start', 'stg2_1', 'stg2_2', 'stg2_3', 'stg2_4', 'stg2_5', 'stg2_6'],
         num_demo_participants=DEMO_PARTICIPANTS,
     ),
 ]
@@ -117,7 +110,7 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 POINTS_CUSTOM_NAME = 'ECU'
 
-PARTICIPANT_FIELDS = ['role', 'stage_1_payoff', 'stage_1_history', 'scenario_1_history', 'scenario_2_history', 'scenario_3_history', 'finished']
+PARTICIPANT_FIELDS = ['role', 'stage_1_payoff', 'stage_1_history', 'scenario_1_history', 'scenario_2_history', 'finished']
 SESSION_FIELDS = ['group_matrix']
 
 # ISO-639 code

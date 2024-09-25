@@ -56,13 +56,6 @@ End of Stage 2
                     <td>{{ history.3.investors }}</td>
                     <td>{{ history.3.payoff }}</td>
                 </tr>
-                <tr {{ if decision_counts == 4 }} bgcolor="yellow"{{ endif }}>
-                    <td>4</td>
-                    <td>{{ history.4.signal }}</td>
-                    <td>-</td>
-                    <td>{{ history.4.investors }}</td>
-                    <td>{{ history.4.payoff }}</td>
-                </tr>
             </table>
         </div>
     </div>
@@ -120,17 +113,6 @@ End of Stage 2
                 <td>{{ history.3.signal }}</td>
                 <td>{{ history.3.payoff }}</td>
                 <td>{{ history.3.advisor_payoff }}</td>
-            </tr>
-            <tr {{ if decision_counts == 4 }} bgcolor="yellow"{{ endif }}>
-                <td>4</td>
-                <td>-</td>
-                <td>{{ history.4.draw }}</td>
-                <td>{{ history.4.decision }}</td>
-                <td>{{ history.4.other_investors }}</td>
-                <td>{{ history.4.investors }}</td>
-                <td>{{ history.4.signal }}</td>
-                <td>{{ history.4.payoff }}</td>
-                <td>{{ history.4.advisor_payoff }}</td>
             </tr>
         </table>
     </div>

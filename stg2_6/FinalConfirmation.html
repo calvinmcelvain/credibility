@@ -91,30 +91,6 @@ Final Confirmation Screen
         </table>
         <button id="s3-pop-up" class="instr-btn" style="margin-top: 1vh; float: initial;">Scenario 3 Instructions</button>
     </div>
-    <div style="display: inline-block;">
-        <h4 class="dfont">Scenario 4</h4>
-        <table style="border: 1px solid black; border-collapse: collapse; margin: unset;">
-            <tr>
-                <td rowspan="2" style="padding-left: 10px; padding-top: 10px;">
-                    <label><input name="final_s4_minimum_endowment" type="range" id="s4slider" oninput="s4updateInputValues(this.value)" min="0" max="400"></label>
-                </td>
-                <td style="padding-top: 10px;">
-                    <label><input type="number" class="input_boxes" id="s4numberInput" oninput="s4updateSliderFromNumber(this.value)" size="5" min="0" max="400"></label>
-                </td>
-                <th style="padding-right: 10px; padding-top: 10px;"><i> Minimum Endowment</i></th>
-            </tr>
-            <tr>
-                <td style="padding-bottom: 10px;">
-                    <label><input type="text" class="input_boxes" id="s4probInput" oninput="s4updateSliderFromProbability(this.value)" size="5"></label>
-                </td>
-                <th style="padding-right: 10px; padding-bottom: 10px;"><i> Probability of Winning</i></th>
-            </tr>
-            <tr style="height: 2vh">
-                <td colspan="3"></td>
-            </tr>
-        </table>
-        <button id="s4-pop-up" class="instr-btn" style="margin-top: 1vh; float: initial;">Scenario 4 Instructions</button>
-    </div>
 </div>
 
 <!-- Next Button with confirmation pop-up & Instructions Button-->
@@ -126,7 +102,6 @@ Final Confirmation Screen
 {{ include '_static/instr_bttns/stage_2_s1.html' }}
 {{ include '_static/instr_bttns/stage_2_s2.html' }}
 {{ include '_static/instr_bttns/stage_2_s3.html' }}
-{{ include '_static/instr_bttns/stage_2_s4.html' }}
 
 <!-- Pop-ups -->
 {{ include '_static/popups/decision.html' }}
