@@ -233,20 +233,44 @@ function updateInputValues(value) {
     document.getElementById("probInput").value = (value / 4).toFixed(1) + " %";
 }
 
+
+// Slider functions for slider practice
+function updateSliderFromNumber1() {
+    var value = parseInt(document.getElementById('numberInput1').value);
+    document.getElementById('slider1').value = value;
+}
+function updateInputValues1(value) {
+    document.getElementById("numberInput1").value = value;
+}
+
+function updateSliderFromNumber2() {
+    var value = parseInt(document.getElementById('numberInput2').value);
+    document.getElementById('slider2').value = value;
+}
+function updateInputValues2(value) {
+    document.getElementById("numberInput2").value = value;
+}
+
+function updateSliderFromNumber3() {
+    var value = parseInt(document.getElementById('numberInput3').value);
+    document.getElementById('slider3').value = value;
+}
+function updateInputValues3(value) {
+    document.getElementById("numberInput3").value = value;
+}
+
 function SliderCheckAndSubmit(event) {
     event.preventDefault(); // Prevent the default form submission
 
     var Value1 = parseInt(document.getElementById('numberInput1').value);
     var Value2 = parseInt(document.getElementById('numberInput2').value);
     var Value3 = parseInt(document.getElementById('numberInput3').value);
-    var Value4 = parseInt(document.getElementById('numberInput4').value);
 
     // Define target values
     var targetValues = {
         slider1: 30,
         slider2: 270,
-        slider3: 300,
-        slider4: 240,
+        slider3: 240,
     };
 
     var isValid = true;
@@ -267,17 +291,10 @@ function SliderCheckAndSubmit(event) {
     }
 
     if (Value3 !== targetValues.slider3) {
-        displayError('error3', 'Please put Probability of Winning to 75%');
+        displayError('error3', 'Please put  Minimum Endowment to 240');
         isValid = false;
     } else {
         hideError('error3');
-    }
-
-    if (Value4 !== targetValues.slider4) {
-        displayError('error4', 'Please put  Minimum Endowment to 240');
-        isValid = false;
-    } else {
-        hideError('error4');
     }
 
     // If all sliders are set correctly, submit the form
@@ -287,10 +304,8 @@ function SliderCheckAndSubmit(event) {
         document.getElementById('validation').disabled = true;
         document.getElementById('slider1').disabled = true;
         document.getElementById('numberInput2').disabled = true;
-        document.getElementById('probInput3').disabled = true;
-        document.getElementById('slider4').disabled = true;
-        document.getElementById('numberInput4').disabled = true;
-        document.getElementById('probInput4').disabled = true;
+        document.getElementById('slider3').disabled = true;
+        document.getElementById('numberInput3').disabled = true;
     }
 }
 
@@ -303,72 +318,6 @@ function displayError(errorId, message) {
 function hideError(errorId) {
     var errorElement = document.getElementById(errorId);
     errorElement.style.display = 'none';
-}
-
-
-// Function to update slider from input
-function updateSliderFromNumber1() {
-    var value = parseInt(document.getElementById('numberInput1').value);
-    document.getElementById('slider1').value = value;
-    document.getElementById('probInput1').value = (value / 4).toFixed(1) + " %";
-}
-function updateSliderFromProbability1() {
-    var value = parseFloat(document.getElementById('probInput1').value);
-    document.getElementById('slider1').value = value * 4;
-    document.getElementById('numberInput1').value = value * 4;
-}
-function updateInputValues1(value) {
-    document.getElementById("numberInput1").value = value;
-    document.getElementById("probInput1").value = (value / 4).toFixed(1) + " %";
-}
-
-function updateSliderFromNumber2() {
-    var value = parseInt(document.getElementById('numberInput2').value);
-    document.getElementById('slider2').value = value;
-    document.getElementById('probInput2').value = (value / 4).toFixed(1) + " %";
-}
-function updateSliderFromProbability2() {
-    var value = parseFloat(document.getElementById('probInput2').value);
-    document.getElementById('slider2').value = value * 4;
-    document.getElementById('numberInput2').value = value * 4;
-}
-function updateInputValues2(value) {
-    document.getElementById("numberInput2").value = value;
-    document.getElementById("probInput2").value = (value / 4).toFixed(1) + " %";
-}
-
-function updateSliderFromNumber3() {
-    var value = parseInt(document.getElementById('numberInput3').value);
-    document.getElementById('slider3').value = value;
-    document.getElementById('probInput3').value = (value / 4).toFixed(1) + " %";
-}
-function updateSliderFromProbability3() {
-    var value = parseFloat(document.getElementById('probInput3').value);
-    document.getElementById('slider3').value = value * 4;
-    document.getElementById('numberInput3').value = value * 4;
-}
-function updateInputValues3(value) {
-    document.getElementById("numberInput3").value = value;
-    document.getElementById("probInput3").value = (value / 4).toFixed(1) + " %";
-}
-
-function updateSliderFromNumber4() {
-    var value = parseInt(document.getElementById('numberInput4').value);
-    document.getElementById('slider4').value = value;
-    document.getElementById('probInput4').value = (value / 4).toFixed(1) + " %";
-}
-function updateSliderFromProbability4() {
-    var value = parseFloat(document.getElementById('probInput4').value);
-    document.getElementById('slider4').value = value * 4;
-    document.getElementById('numberInput4').value = value * 4;
-}
-function updateInputValues4(value) {
-    document.getElementById("numberInput4").value = value;
-    document.getElementById("probInput4").value = (value / 4).toFixed(1) + " %";
-}
-
-function toProb(value) {
-    return (value / 4).toFixed(1) + " %"
 }
 
 /// Stage 2 Advisor decision confirmation button

@@ -5,9 +5,7 @@ window.onload = function () {
           document.getElementById('validation').disabled = true;
           document.getElementById('slider1').disabled = true;
           document.getElementById('numberInput2').disabled = true;
-          document.getElementById('probInput3').disabled = true;
-          document.getElementById('slider4').disabled = true;
-          document.getElementById('numberInput4').disabled = true;
-          document.getElementById('probInput4').disabled = true;
+          document.getElementById('slider3').disabled = true;
+          document.getElementById('numberInput3').disabled = true;
       }
 }
