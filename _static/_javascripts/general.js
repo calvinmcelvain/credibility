@@ -221,16 +221,9 @@ function ConfirmationInvestorStg1(event) {
 function updateSliderFromNumber() {
     var value = parseInt(document.getElementById('numberInput').value);
     document.getElementById('slider').value = value;
-    document.getElementById('probInput').value = (value / 4).toFixed(1) + " %";
-}
-function updateSliderFromProbability() {
-    var value = parseFloat(document.getElementById('probInput').value);
-    document.getElementById('slider').value = value * 4;
-    document.getElementById('numberInput').value = value * 4;
 }
 function updateInputValues(value) {
     document.getElementById("numberInput").value = value;
-    document.getElementById("probInput").value = (value / 4).toFixed(1) + " %";
 }
 
 
