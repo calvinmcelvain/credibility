@@ -337,8 +337,9 @@ div.decision-slider {
     padding: 1vmax;
 }
 .decision-slider input.input_boxes {
-    width: 4em;
-    font-size: 1.1vmax;
+    width: 3vmax;
+    height: 2vmax;
+    font-size: 1.3vmax;
     text-align: right;
 }
 h4.stg2-investor-reminder {
@@ -354,6 +355,7 @@ h4.stg2-investor-reminder-under {
 }
 input[type="range"].slider {
     width: 8vw;
+    height: 12px;
 }
 
 /* Feedback table */
