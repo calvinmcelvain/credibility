@@ -352,7 +352,7 @@ h4.stg2-investor-reminder-under {
     text-decoration: unset;
     font-weight: 500;
 }
-input.extra-sld-length {
+input[type="range"].slider {
     width: 8vw;
 }
 
