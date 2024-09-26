@@ -12,19 +12,11 @@
 <div class="decision-slider" style="margin-top: 25vh;">
     <table>
         <tr>
-            <td rowspan="2" style="padding-left: 10px; padding-top: 10px;">
-                <label><input class="extra-sld-length" name="investor_minimum_endowment" type="range" id="slider" oninput="updateInputValues(this.value)" min="0" max="400"></label>
-            </td>
-            <td style="padding-top: 10px;">
+            <td style="padding-left: 10px; padding-top: 10px;">
+                <label><input class="slider" name="investor_minimum_endowment" type="range" id="slider" oninput="updateInputValues(this.value)" min="0" max="400"></label>
                 <label><input type="number" class="input_boxes" id="numberInput" oninput="updateSliderFromNumber(this.value)" size="5" min="0" max="400"></label>
             </td>
             <th style="padding-right: 10px; padding-top: 10px;"><i> Minimum Endowment</i></th>
-        </tr>
-        <tr>
-            <td style="padding-bottom: 10px;">
-                <label><input type="text" class="input_boxes" id="probInput" oninput="updateSliderFromProbability(this.value)" size="5"></label>
-            </td>
-            <th style="padding-right: 10px; padding-bottom: 10px;"><i> Probability of Winning</i></th>
         </tr>
         <tr class="timeout">
             <td></td>
