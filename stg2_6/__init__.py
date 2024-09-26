@@ -284,8 +284,6 @@ class FinalConfirmation(Page):
 
 
 class FinalPayoffWaitPage(WaitPage):
-    wait_for_all_groups = True
-    
     @staticmethod
     def after_all_players_arrive(group: Group):
         for i in group.get_players():
@@ -345,7 +343,14 @@ class FinalPayoffWaitPage(WaitPage):
                 
                 # Scenario 3 payoffs
                 player.final_s3_payoff = advisor_payoff[s3_signal][s3_total_investors]
-        
+
+
+class GatherGroupsWaitPage(WaitPage):
+    wait_for_all_groups = True
+    doc = '''
+    The reason for back-to-back waitpages is due to calling the method 'after_all_players_arrive' after setting 'wait_for_all_groups' to True. Then the method must be a Subsession function. Easier to define this waitpage then re-code previous waitpage.
+    '''        
+
 
 class FinalScreen(Page):
     @staticmethod
@@ -432,4 +437,4 @@ class End(Page):
     pass
 
 
-page_sequence = [AdvisorDecision, InvestorDecision, PayoffWaitPage, FinalConfirmation, FinalPayoffWaitPage, FinalScreen, Demographics, End]
+page_sequence = [AdvisorDecision, InvestorDecision, PayoffWaitPage, FinalConfirmation, FinalPayoffWaitPage, GatherGroupsWaitPage, FinalScreen, Demographics, End]
