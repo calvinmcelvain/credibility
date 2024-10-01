@@ -10,94 +10,57 @@
 
 <!-- Title -->
 {{ block title }}
-Stage 1 Recap
+Instructions Quiz
 {{ endblock }}
 
 <!-- Instructions body -->
-<p>Before beginning Stage 2, let's review Stage 1's results. You will have <u>60 seconds</u> to review the previous stage.</p>
+<p class="quiz">To make sure that everyone understands the instructions for Stage 2, please take a moment to answer the following questions. Once everyone has responded correctly, we will proceed to the instructions of Scenario 1.</p>
 
-<!-- Advisor Stage 1 history table -->
-{{ if role == C.advisor_ROLE }}
-<div class="tablescroll">
-    <div>
-        <table class="history_header" >
-            <tr>
-                <th>Prior Round</th>
-                <th>Low Advice</th>
-                <th>Medium Advice</th>
-                <th>High Advice</th>
-                <th>Estimate Signal</th>
-                <th>Actual Signal</th>
-                <th>Total Investors</th>
-                <th>Your Payoff</th>
-                <th>Investors Payoff</th>
-            </tr>
-        </table>
-        <div class="scroll" style="max-height: 60%;" id="recap_table">
-            <table id="data_table">
-                {{ for p in history }}
-                <tr>
-                    <td>{{ p.round_number }}</td>
-                    <td {{ if p.estimated_signal == 'Low' }} bgcolor="yellow" {{ else }}{{ endif }}>{{ p.advisor_low_advice }}</td>
-                    <td {{ if p.estimated_signal == 'Medium' }} bgcolor="yellow" {{ else }}{{ endif }}>{{ p.advisor_med_advice }}</td>
-                    <td {{ if p.estimated_signal == 'High' }} bgcolor="yellow" {{ else }}{{ endif }}>{{ p.advisor_high_advice }}</td>
-                    <td>{{ p.estimated_signal }}</td>
-                    <td>{{ p.actual_signal }}</td>
-                    <td>{{ p.total_players_invest }}</td>
-                    <td>{{ p.payoff }}</td>
-                    <td>{{ p.investor_payoff }}</td>
-                </tr>
-                {{ endfor }}
-            </table>
-        </div>
-    </div>
+<p>Suppose you set a minimum endowment of 150 ECU.</p>
+<div class="quiz" style="margin-left: 1vw;">
+    <ol class="quiz-input-bol">
+        <li>If the random endowment drawn by the computer is 100 ECU, you will choose Invest.
+            <label>
+                <select name="Q1">
+                    <option></option>
+                    <option value="True">True</option>
+                    <option value="False">False</option>
+                </select>
+            </label>
+            <span id="errorQ1"></span>
+        </li>
+        <li>If the random endowment drawn by the computer is 300 ECU, you will choose Invest.
+            <label>
+                <select name="Q2">
+                    <option></option>
+                    <option value="True">True</option>
+                    <option value="False">False</option>
+                </select>
+            </label>
+            <span id="errorQ2"></span>
+        </li>
+    </ol>
+    <ol class="quiz-input-num" start="3">
+        <li>If you believe that you have a 20% chance of winning the 400 ECU prize if you choose Invest and the Advisor advises Invest, what minimum endowment will give you the highest average earnings? <label><input size="3" name="Q3" type="number"></label> ECU<span id="errorQ3"></span></li>
+        <li>If you believe that you have a 80% chance of winning the 400 ECU prize if you choose Invest and the Advisor advises Invest, what minimum endowment will give you the highest average earnings? <label><input size="3" name="Q4" type="number"> ECU</label><span id="errorQ4"></span></li>
+    </ol>
+    <ol class="quiz-input-bol" start="5">
+        <li>The higher I believe the probability of winning the 400 ECU prize is if I choose Invest, the higher I should set my minimum endowment.
+            <label>
+                <select name="Q5">
+                    <option></option>
+                    <option value="True">True</option>
+                    <option value="False">False</option>
+                </select>
+            </label>
+            <span id="errorQ5"></span>
+        </li>
+    </ol>
 </div>
 
-<!-- Investor Stage 1 history table -->
-{{ else }}
-<div class="tablescroll">
-    <h4></h4>
-    <div>
-        <table class="history_header">
-            <tr>
-                <th>Prior Round</th>
-                <th>Advisor's Advice</th>
-                <th>Your Decision</th>
-                <th>Other Investors</th>
-                <th>Total Investors</th>
-                <th>True Quality</th>
-                <th>Your Payoff</th>
-                <th>Advisor's Payoff</th>
-            </tr>
-        </table>
-        <div class="scroll" style="max-height: 60%;" id="recap_table">
-            <table id="data_table">
-                {{ for p in history }}
-                <tr>
-                    <td>{{ p.round_number }}</td>
-                    <td>{{ p.advisor_advice }}</td>
-                    <td>{{ p.investor_decision }}</td>
-                    <td>{{ p.other_investors }}</td>
-                    <td>{{ p.total_players_invest }}</td>
-                    <td>{{ p.actual_signal }}</td>
-                    <td>{{ p.payoff }}</td>
-                    <td>{{ p.advisor_payoff }}</td>
-                </tr>
-                {{ endfor }}
-            </table>
-        </div>
-    </div>
-</div>
-
-{{ endif }}
-
-<!-- Next Button: Only allows players to continue if all players in session are ready/clicked continue -->
+<!--Next Button-->
 <div class="button">
-    <div>
-        <p>Please click "Continue"</p>
-        <p class="bttm-sent">*** Page will not continue until everyone has clicked continue ***</p>
-    </div>
-    <button type="button" id="validation" onclick="validating()">Continue</button>
+    <button type="button" onclick="CheckQuizAnswersStg2()">Continue</button>
 </div>
 
 {{ endblock }}

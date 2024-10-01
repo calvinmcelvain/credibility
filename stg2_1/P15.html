@@ -10,11 +10,86 @@
 
 <!-- Title -->
 {{ block title }}
-Stage 2: Scenario 1
+Stage 1 Recap
 {{ endblock }}
 
 <!-- Instructions body -->
-{{ include 'stg2_1/instructions/P15_stage_2_scenario_1.html' }}
+<p>Before beginning Stage 2, let's review Stage 1's results. You will have <u>60 seconds</u> to review the previous stage.</p>
+
+<!-- Advisor Stage 1 history table -->
+{{ if role == C.advisor_ROLE }}
+<div class="tablescroll">
+    <div>
+        <table class="history_header" >
+            <tr>
+                <th>Prior Round</th>
+                <th>Low Advice</th>
+                <th>Medium Advice</th>
+                <th>High Advice</th>
+                <th>Estimate Signal</th>
+                <th>Actual Signal</th>
+                <th>Total Investors</th>
+                <th>Your Payoff</th>
+                <th>Investors Payoff</th>
+            </tr>
+        </table>
+        <div class="scroll" style="max-height: 60%;" id="recap_table">
+            <table id="data_table">
+                {{ for p in history }}
+                <tr>
+                    <td>{{ p.round_number }}</td>
+                    <td {{ if p.estimated_signal == 'Low' }} bgcolor="yellow" {{ else }}{{ endif }}>{{ p.advisor_low_advice }}</td>
+                    <td {{ if p.estimated_signal == 'Medium' }} bgcolor="yellow" {{ else }}{{ endif }}>{{ p.advisor_med_advice }}</td>
+                    <td {{ if p.estimated_signal == 'High' }} bgcolor="yellow" {{ else }}{{ endif }}>{{ p.advisor_high_advice }}</td>
+                    <td>{{ p.estimated_signal }}</td>
+                    <td>{{ p.actual_signal }}</td>
+                    <td>{{ p.total_players_invest }}</td>
+                    <td>{{ p.payoff }}</td>
+                    <td>{{ p.investor_payoff }}</td>
+                </tr>
+                {{ endfor }}
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Investor Stage 1 history table -->
+{{ else }}
+<div class="tablescroll">
+    <h4></h4>
+    <div>
+        <table class="history_header">
+            <tr>
+                <th>Prior Round</th>
+                <th>Advisor's Advice</th>
+                <th>Your Decision</th>
+                <th>Other Investors</th>
+                <th>Total Investors</th>
+                <th>True Quality</th>
+                <th>Your Payoff</th>
+                <th>Advisor's Payoff</th>
+            </tr>
+        </table>
+        <div class="scroll" style="max-height: 60%;" id="recap_table">
+            <table id="data_table">
+                {{ for p in history }}
+                <tr>
+                    <td>{{ p.round_number }}</td>
+                    <td>{{ p.advisor_advice }}</td>
+                    <td>{{ p.investor_decision }}</td>
+                    <td>{{ p.other_investors }}</td>
+                    <td>{{ p.total_players_invest }}</td>
+                    <td>{{ p.actual_signal }}</td>
+                    <td>{{ p.payoff }}</td>
+                    <td>{{ p.advisor_payoff }}</td>
+                </tr>
+                {{ endfor }}
+            </table>
+        </div>
+    </div>
+</div>
+
+{{ endif }}
 
 <!-- Next Button: Only allows players to continue if all players in session are ready/clicked continue -->
 <div class="button">

@@ -144,9 +144,9 @@ function CheckQuizAnswersP2() {
 
 // Showing error message
 function showErrorMessage(question) {
-var errorSpan = document.getElementById('error' + question);
-errorSpan.textContent = 'Incorrect';
-errorSpan.style.display = 'inline';
+    var errorSpan = document.getElementById('error' + question);
+    errorSpan.textContent = 'Incorrect';
+    errorSpan.style.display = 'inline';
 }
 
 /// Stage 1 Advisor decision confirmation button
@@ -425,4 +425,44 @@ function CheckDemoFields() {
     if (isValid) {
         document.forms[0].submit();
     }
+}
+
+/// Stage 2 instructions quiz validation
+function CheckQuizAnswersStg2() {
+    var answers = {
+        Q1: document.querySelector('select[name="Q1"]').value.trim(),
+        Q2: document.querySelector('select[name="Q2"]').value.trim(),
+        Q3: document.querySelector('input[name="Q3"]').value.trim(),
+        Q4: document.querySelector('input[name="Q4"]').value.trim(),
+        Q5: document.querySelector('select[name="Q5"]').value.trim(),
+      };
+  
+      var correctAnswers = {
+        Q1: 'True',
+        Q2: 'False',
+        Q3: '80',
+        Q4: '320',
+        Q5: 'True',
+      };
+  
+      var correct = true;
+  
+      // Clear previous error messages
+      var errorSpans = document.querySelectorAll('[id^="errorQ"]');
+      errorSpans.forEach(function (errorSpan) {
+        errorSpan.textContent = '';
+        errorSpan.style.display = 'none';
+      });
+  
+      // Check if all answers are correct
+      for (var key in answers) {
+        if (answers[key] !== correctAnswers[key]) {
+          showErrorMessage(key);
+          correct = false;
+        }
+      }
+  
+      if (correct) {
+        document.forms[0].submit();
+      }
 }

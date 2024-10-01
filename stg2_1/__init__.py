@@ -194,8 +194,16 @@ class P13(BaseReadyPage):
 
         return {'draw_dict': draw_dict, 'invest_value': 250, 'quality': 'Low', 'advice': 'Invest', 'endowment': 300}
     
-    
+
 class P14(BaseReadyPage):
+    pass
+
+
+class QuizWaitPage(WaitPage):
+    body_text = 'Waiting for all participants to complete the quiz'
+
+    
+class P15(BaseReadyPage):
     @staticmethod
     def js_vars(player):
         '''
@@ -215,15 +223,6 @@ class P14(BaseReadyPage):
         return {'history': player.participant.vars['stage_1_history'], 'role': role}
 
 
-class P15(BaseReadyPage):
-    @staticmethod
-    def vars_for_template(player):
-        '''
-        Passing the player payoff dictionaries to HTML
-        '''
-        return {'advisor_table': C.stg2_s1_advisor_payoffs, 's1_investor_table': C.stg2_s1_investor_payoffs}
-
-
 class P16(BaseReadyPage):
     @staticmethod
     def vars_for_template(player):
@@ -234,7 +233,16 @@ class P16(BaseReadyPage):
 
 
 class P17(BaseReadyPage):
+    @staticmethod
+    def vars_for_template(player):
+        '''
+        Passing the player payoff dictionaries to HTML
+        '''
+        return {'advisor_table': C.stg2_s1_advisor_payoffs, 's1_investor_table': C.stg2_s1_investor_payoffs}
+
+
+class P18(BaseReadyPage):
     pass
 
 
-page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P11WaitPage, P12, P12WaitPage, P13, P14, P15, P16, P17]
+page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P11WaitPage, P12, P12WaitPage, P13, P14, QuizWaitPage, P15, P16, P17, P18]

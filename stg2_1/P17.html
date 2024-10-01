@@ -10,11 +10,12 @@
 
 <!-- Title -->
 {{ block title }}
-Scenario 1 will start soon, Please click continue
+Stage 2: Scenario 1 (Continued)
 {{ endblock }}
 
-<!-- Body -->
-<h2 class="BeforeStart">Scenario 1 is a paid round. <br>Notice that the payoffs are much higher than in Stage 1.</h2>
+<!-- Instructions body -->
+{{ include 'stg2_1/instructions/P16_stage_2_scenario_1_cont.html' }}
+
 
 <!-- Next Button: Only allows players to continue if all players in session are ready/clicked continue -->
 <div class="button">
