@@ -350,16 +350,24 @@ function ConfirmationAdvisorStg2(event) {
 }
 
 /// Stage 2 Investor decision confirmation button
-function ConfirmationInvestorStg2(event) {
-    event.preventDefault(); // Prevents the form from submitting by default
-    const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
-    confirmationModal.show();
+function ConfirmationInvestorStg2() {
+    const Error = document.getElementById("error");
+    const numbox = document.getElementById("numberInput").value;
 
-    // Handle confirm button click inside the modal
-    document.getElementById("confirmButton").onclick = function () {
-        confirmationModal.hide();
-        document.forms[0].submit();
-    };
+    if (!numbox) {
+        Error.textContent = "Slider must be set";
+        Error.style.display = "block";
+    } else {
+        Error.style.display = "none";
+        const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+        confirmationModal.show();
+
+        // Handle confirm button click inside the modal
+        document.getElementById("confirmButton").onclick = function () {
+            confirmationModal.hide();
+            document.forms[0].submit();
+        };
+    }
 }
 
 /// Final Investor confirmation slider functions
@@ -384,6 +392,16 @@ function s2updateSliderFromNumber() {
 function s3updateSliderFromNumber() {
     var value = parseInt(document.getElementById('s3numberInput').value);
     document.getElementById('s3slider').value = value;
+}
+function ShowConfirmation() {
+    const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+    confirmationModal.show();
+
+    // Handle confirm button click inside the modal
+    document.getElementById("confirmButton").onclick = function () {
+        confirmationModal.hide();
+        document.forms[0].submit();
+    };
 }
 
 /// Demographics page errors

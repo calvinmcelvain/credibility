@@ -32,15 +32,18 @@
             </td>
             <th style="padding-right: 10px; padding-top: 10px;"><i> Minimum Endowment</i></th>
         </tr>
+        <tr>
+            <td colspan="2"><span id="error" class="errormessage"></span></td>
+        </tr>
         <tr class="timeout">
-            <td colspan="2"></td>
+            <td id="timeout_id" colspan="2"></td>
         </tr>
     </table>
 </div>
 
 <!-- Next Button with confirmation pop-up & Instructions Button -->
 <div class="button">
-    <button onclick="ConfirmationInvestorStg2(event)" id="validation" class="Instructions">Continue</button>
+    <button type="button" onclick="ConfirmationInvestorStg2(event)" id="validation" class="Instructions">Continue</button>
     <button id="pop-up" class="instr-btn" style="float: left;">Instructions</button>
 </div>
 
