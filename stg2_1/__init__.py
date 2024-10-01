@@ -179,18 +179,16 @@ class P13(BaseReadyPage):
         invest_payoff = []
         keep_payoff = []
         investors = []
-        advisor_payoff = []
         
         # Getting sample payoffs for each of the 20 draws
         for i in draws:
             investors.append(investors_rand[len(investors)])
             invest_payoff.append(C.investor_payoffs_sample['Low'][investors_rand[len(investors)-1] + 1])
-            advisor_payoff.append(C.investor_payoffs_sample['Low'][investors_rand[len(investors)-1] + 1])
             keep_payoff.append(i)
 
         # Creating a dictionary where draw numbers are keys and a list of corresponding values
         draw_dict = {
-            i: {1: draws[i], 2: invest_payoff[i], 3: keep_payoff[i], 4: investors[i], 5: advisor_payoff[i]}
+            i: {1: draws[i], 2: invest_payoff[i], 3: keep_payoff[i], 4: investors[i]}
             for i in range(20)
         }
 
