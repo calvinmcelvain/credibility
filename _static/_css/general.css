@@ -28,6 +28,9 @@
 .extra-topmargin {
     margin-top: 4vh;
 }
+.extra-bottommargin {
+    margin-bottom: 4vh;
+}
 .center {
     text-align: center;
 }
