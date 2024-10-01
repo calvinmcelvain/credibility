@@ -385,3 +385,26 @@ function s3updateSliderFromNumber() {
     var value = parseInt(document.getElementById('s3numberInput').value);
     document.getElementById('s3slider').value = value;
 }
+
+/// Demographics page errors
+function CheckDemoFields() {
+    var Q1 = document.querySelector('input[name="age"]').value;
+    var Q2 = document.querySelector('select[name="gender"]').value;
+    var Q3 = document.querySelector('select[name="ethnicity"]').value;
+    var Q4 = document.querySelector('select[name="hol"]').value;
+    
+    var isValid = true;
+
+    // Check if questions have been filled
+    if (!Q1 || !Q2 || !Q3 || !Q4) {
+        displayError('demographics_error', 'Please fill out all fields');
+        isValid = false;
+    } else {
+        hideError('demographics_error');
+    }
+
+    // If all sliders are set correctly, submit the form
+    if (isValid) {
+        document.forms[0].submit();
+    }
+}

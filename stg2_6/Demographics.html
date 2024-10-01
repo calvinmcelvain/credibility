@@ -16,49 +16,50 @@ Survey
 <!-- Demographics form fields -->
 <p>This is a simple Demographic survey. All personally identifiable information contained in this survey is considered privileged and confidential information.</p>
 <ol>
-    <li>Please enter your age: <label class="quiz-input-num"><input size="2" max="99" min="1" name="age" type="number"></label>{{ formfield_errors 'age' }}</li>
+    <li>Please enter your age: <label class="quiz-input-num"><input size="2" max="99" min="1" name="age" type="number"></label></li>
     <li>With which gender do you most closely identify?
         <label class="quiz-input-bol">
-                <select name="gender" style="width: 12em">
-                    <option></option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Transgender">Transgender</option>
-                    <option value="Nonbinary">Nonbinary</option>
-                    <option value="Other">Other</option>
-                    <option value="PNA">Prefer not to answer</option>
-                </select>
-            </label>
-    {{ formfield_errors 'gender' }}</li>
+            <select name="gender" style="width: 12em">
+                <option></option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Transgender">Transgender</option>
+                <option value="Nonbinary">Nonbinary</option>
+                <option value="Other">Other</option>
+                <option value="PNA">Prefer not to answer</option>
+            </select>
+        </label>
+    </li>
     <li>What ethnicity best describes you?
         <label class="quiz-input-bol">
-                <select name="ethnicity" style="width: 12em">
-                    <option></option>
-                    <option value="White">White/Caucasian</option>
-                    <option value="Asian">Asian</option>
-                    <option value="Native Hawaiian or Pacific Islander">Native Hawaiian or Pacific Islander</option>
-                    <option value="Hispanic or Latino">Hispanic or Latino</option>
-                    <option value="African-American">African-American</option>
-                    <option value="Native American">Native American</option>
-                    <option value="Other">Other</option>
-                    <option value="PNA">Prefer not to answer</option>
-                </select>
-            </label>
-    {{ formfield_errors 'ethnicity' }}</li>
+            <select name="ethnicity" style="width: 12em">
+                <option></option>
+                <option value="White">White/Caucasian</option>
+                <option value="Asian">Asian</option>
+                <option value="Native Hawaiian or Pacific Islander">Native Hawaiian or Pacific Islander</option>
+                <option value="Hispanic or Latino">Hispanic or Latino</option>
+                <option value="African-American">African-American</option>
+                <option value="Native American">Native American</option>
+                <option value="Other">Other</option>
+                <option value="PNA">Prefer not to answer</option>
+            </select>
+        </label>
+    </li>
     <li>Are you Hispanic or Latino?
         <label class="quiz-input-bol">
-                <select name="hol" style="width: 4em">
-                    <option></option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-            </label>
-    {{ formfield_errors 'hol' }}</li>
+            <select name="hol" style="width: 4em">
+                <option></option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </label>
+    </li>
 </ol>
 
 <!-- Next Button -->
 <div class="button" style="margin-top: 0.1vh">
-    <button>Continue</button>
+    <span class="errormessage dfont" id="demographics_error"></span>
+    <button type="button" onclick="CheckDemoFields()">Continue</button>
 </div>
 
 {{ endblock }}
