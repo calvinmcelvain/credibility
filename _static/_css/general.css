@@ -366,6 +366,7 @@ h4.stg2-investor-reminder-under {
 input[type="range"].slider {
     width: 8vw;
     height: 12px;
+    accent-color: blue;
 }
 
 /* Feedback table */
