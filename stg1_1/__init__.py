@@ -217,8 +217,12 @@ class P16(BaseReadyPage):
     pass
 
 
+class QuizWaitPage(WaitPage):
+    body_text = 'Waiting for all participants to complete the quiz'
+
+
 class P17(BaseReadyPage):
     pass
 
 
-page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P10WaitPage, P11, P12, P12WaitPage, P13, P14, P15, P16, P17]
+page_sequence = [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P10WaitPage, P11, P12, P12WaitPage, P13, P14, P15, P16, QuizWaitPage, P17]
