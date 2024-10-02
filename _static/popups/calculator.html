@@ -1,0 +1,64 @@
+<div id="calculator" class="calc-popup">
+    <button type="button" style="float: right; width: 2.5vw;" onclick="closeCalculator()">Close</button>
+    <br>
+    <input type="text" id="display" disabled>
+    <br>
+    <button type="button" onclick="clearDisplay()" style="float: right;">C</button>
+    <br>
+    <br>
+    <button type="button" onclick="appendToDisplay('1')">1</button>
+    <button type="button" onclick="appendToDisplay('2')">2</button>
+    <button type="button" onclick="appendToDisplay('3')">3</button>
+    <button type="button" onclick="appendToDisplay('+')">+</button>
+    <br>
+    <button type="button" onclick="appendToDisplay('4')">4</button>
+    <button type="button" onclick="appendToDisplay('5')">5</button>
+    <button type="button" onclick="appendToDisplay('6')">6</button>
+    <button type="button" onclick="appendToDisplay('-')">-</button>
+    <br>
+    <button type="button" onclick="appendToDisplay('7')">7</button>
+    <button type="button" onclick="appendToDisplay('8')">8</button>
+    <button type="button" onclick="appendToDisplay('9')">9</button>
+    <button type="button" onclick="appendToDisplay('/')">/</button>
+    <br>
+    <button type="button" onclick="appendToDisplay('0')">0</button>
+    <button type="button" onclick="appendToDisplay('.')">.</button>
+    <button type="button" onclick="calculate()">=</button>
+    <button type="button" onclick="appendToDisplay('*')">*</button>
+</div>
+
+<div id="overlay"></div>
+
+<script>
+    // Show the calculator popup
+    function showCalculator() {
+        document.getElementById('calculator').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    // Close the calculator popup
+    function closeCalculator() {
+        document.getElementById('calculator').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+    }
+
+    // Append numbers/operators to the display
+    function appendToDisplay(value) {
+        document.getElementById('display').value += value;
+    }
+
+    // Clear the display
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+
+    // Calculate the result
+    function calculate() {
+        try {
+            var result = eval(document.getElementById('display').value);
+            document.getElementById('display').value = result;
+        } catch (e) {
+            document.getElementById('display').value = 'Error';
+        }
+    }
+</script>

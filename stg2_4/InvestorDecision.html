@@ -42,13 +42,20 @@
 
 <!-- Next Button with confirmation pop-up & Instructions Button -->
 <div class="button">
-    <button type="button" onclick="ConfirmationInvestorStg2(event)" id="validation" class="Instructions">Continue</button>
-    <button id="pop-up" class="instr-btn" style="float: left;">Instructions</button>
+    <div class="left-buttons">
+        <button type="button" class="calc-btn" onclick="showCalculator()">Calculator</button>
+        <button type="button" id="pop-up" class="instr-btn">Instructions</button>
+    </div>
+    <button type="button" onclick="ConfirmationInvestorStg2(event)" id="validation">Continue</button>
 </div>
+
 <!-- Instructions pop-up -->
 {{ include '_static/instr_bttns/stage_2_2.html' }}
 
 <!-- Decision pop-up -->
 {{ include '_static/popups/decision.html' }}
+
+<!-- Calculator pop-up -->
+{{ include '_static/popups/calculator.html' }}
 
 {{ endblock }}

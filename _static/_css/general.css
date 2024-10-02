@@ -80,6 +80,13 @@ ul li {
     background-color: red;
 }
 
+/* Calculator button adjustment */
+.left-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 /* Centering for Scenario 1 Instructions Recaps */
 p.sc4-sc1sum {
     font-size: 1.2vmax;
@@ -585,4 +592,40 @@ div.final-sldrs {
 div.margins {
     margin-left: 1vw;
     margin-right: 1vw;
+}
+
+/* Styling for the popup calculator */
+button.calc-btn {
+    background-color: #f5f5dc;
+}
+.calc-popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border: 2px solid black;
+    background-color: white;
+    z-index: 1000;
+}
+.calc-popup input {
+    width: 100%;
+    margin-top: 2vh;
+    font-size: 1vmax;
+    text-align: right;
+}
+.calc-popup button {
+    width: 2vw;
+    margin: 0.3vmax;
+}
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
 }
