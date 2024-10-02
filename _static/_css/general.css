@@ -364,8 +364,21 @@ h4.stg2-investor-reminder-under {
     font-weight: 500;
 }
 input[type="range"].slider {
-    width: 8vw;
+    width: 12vw;
     height: 12px;
+}
+.rotated-text {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-weight: bold;
+    padding-right: 3vmax;
+    padding-top: 15px;
+}
+.rotated-text span {
+    padding: 0 10px;
+    transform: rotate(90deg);
+    font-size: 0.7vmax;
 }
 
 /* Feedback table */
