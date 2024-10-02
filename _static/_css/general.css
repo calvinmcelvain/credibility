@@ -364,7 +364,7 @@ h4.stg2-investor-reminder-under {
     font-weight: 500;
 }
 input[type="range"].slider {
-    width: 8vw;
+    width: 12vw;
     height: 12px;
     accent-color: blue;
 }
