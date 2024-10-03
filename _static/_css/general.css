@@ -288,6 +288,9 @@ div.decisiontable {
 .decisiontable tr.advice td {
     border-top: 2px solid black;
 }
+input.advisor-inputs {
+    accent-color: blue;
+}
 tr.decision_header th {
     text-align: center;
     height: 2vh;
