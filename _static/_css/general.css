@@ -140,7 +140,7 @@ div.button {
 span.errormessage {
     color: red;
     display: none;
-    font-size: 1vmax;
+    font-size: 0.9vmax;
 }
 
 /* Sample page header */
@@ -288,6 +288,9 @@ div.decisiontable {
 .decisiontable tr.advice td {
     border-top: 2px solid black;
 }
+input.advisor-inputs {
+    accent-color: blue;
+}
 tr.decision_header th {
     text-align: center;
     height: 2vh;
@@ -327,6 +330,11 @@ div.decision-slider {
     font-family: "Times New Roman", serif;
     text-align: center;
 }
+.decision-slider th.title {
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 5px;
+}
 .decision-slider table {
     margin: auto;
     text-align: center;
@@ -343,14 +351,32 @@ div.decision-slider {
     border: unset;
     border-collapse: unset;
 }
-.decision-slider .padding {
-    padding: 1vmax;
+.decision-slider td.numbox {
+    padding-right: 10px;
+    vertical-align: top;
+}
+.decision-slider div.scale {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.scale span {
+    font-size: 0.7vmax;
 }
 .decision-slider input.input_boxes {
     width: 3vmax;
     height: 2vmax;
     font-size: 1.3vmax;
     text-align: right;
+}
+.slider {
+    padding-right: 20px;
+    top: 1;
+}
+.slider input[type="range"] {
+    width: 14vw;
+    height: 12px;
+    accent-color: blue;
 }
 h4.stg2-investor-reminder {
     font-size: 1.1vmax;
@@ -362,11 +388,6 @@ h4.stg2-investor-reminder-under {
     margin-top: 1vh;
     text-decoration: unset;
     font-weight: 500;
-}
-input[type="range"].slider {
-    width: 12vw;
-    height: 12px;
-    accent-color: blue;
 }
 
 /* Feedback table */
