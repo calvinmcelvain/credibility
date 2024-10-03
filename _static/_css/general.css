@@ -288,7 +288,7 @@ div.decisiontable {
 .decisiontable tr.advice td {
     border-top: 2px solid black;
 }
-input.advisor-inputs {
+input.blue-inputs {
     accent-color: blue;
 }
 tr.decision_header th {
