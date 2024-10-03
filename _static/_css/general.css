@@ -358,6 +358,8 @@ div.decision-slider {
 .decision-slider div.scale {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+    margin-top: -5px;
     width: 100%;
 }
 .scale span {
