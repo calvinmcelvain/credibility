@@ -29,15 +29,23 @@ Final Confirmation Screen
 <div class="decision-slider" style="margin-top: 6vh;">
     <div class="final-sldrs">
         <h4 class="dfont">Scenario 1</h4>
-        <table style="border: 1px solid black; border-collapse: collapse;">
+        <table>
             <tr>
-                <td style="padding-left: 10px; padding-top: 10px;">
-                    <label><input name="final_s1_minimum_endowment" type="range" id="s1slider" oninput="s1updateInputValues(this.value)" min="0" max="400"></label>
+                <th colspan="2" class="title"><i>Minimum Endowment</i></th>
+            </tr>
+            <tr>
+                <td style="padding-left: 10px;">
+                    <label class="slider"><input type="range" name="final_s1_minimum_endowment" id="s1slider" oninput="s1updateInputValues(this.value)" min="0" max="400"><div class="scale">
+                        <span>No chance <br>to win</span>
+                        <span>Coin flip</span>
+                        <span>Certain to <br>win</span>
+                    </div></label>
+                </td>
+                <td class="numbox">
                     <label><input type="number" class="input_boxes" id="s1numberInput" oninput="s1updateSliderFromNumber(this.value)" size="5" min="0" max="400"></label>
                 </td>
-                <th style="padding-right: 10px; padding-top: 10px;"><i> Minimum Endowment</i></th>
             </tr>
-            <tr style="height: 2vh">
+            <tr class="timeout">
                 <td colspan="2"></td>
             </tr>
         </table>
@@ -45,15 +53,23 @@ Final Confirmation Screen
     </div>
     <div class="final-sldrs margins">
         <h4 class="dfont">Scenario 2</h4>
-        <table style="border: 1px solid black; border-collapse: collapse;">
+        <table>
             <tr>
-                <td style="padding-left: 10px; padding-top: 10px;">
-                    <label><input name="final_s2_minimum_endowment" type="range" id="s2slider" oninput="s2updateInputValues(this.value)" min="0" max="400"></label>
+                <th colspan="2" class="title"><i>Minimum Endowment</i></th>
+            </tr>
+            <tr>
+                <td style="padding-left: 10px;">
+                    <label class="slider"><input type="range" name="final_s2_minimum_endowment" id="s2slider" oninput="s2updateInputValues(this.value)" min="0" max="400"><div class="scale">
+                        <span>No chance <br>to win</span>
+                        <span>Coin flip</span>
+                        <span>Certain to <br>win</span>
+                    </div></label>
+                </td>
+                <td class="numbox">
                     <label><input type="number" class="input_boxes" id="s2numberInput" oninput="s2updateSliderFromNumber(this.value)" size="5" min="0" max="400"></label>
                 </td>
-                <th style="padding-right: 10px; padding-top: 10px;"><i> Minimum Endowment</i></th>
             </tr>
-            <tr style="height: 2vh">
+            <tr class="timeout">
                 <td colspan="2"></td>
             </tr>
         </table>
@@ -61,15 +77,23 @@ Final Confirmation Screen
     </div>
     <div class="final-sldrs">
         <h4 class="dfont">Scenario 3</h4>
-        <table style="border: 1px solid black; border-collapse: collapse;">
+        <table>
             <tr>
-                <td style="padding-left: 10px; padding-top: 10px;">
-                    <label><input name="final_s3_minimum_endowment" type="range" id="s3slider" oninput="s3updateInputValues(this.value)" min="0" max="400"></label>
+                <th colspan="2" class="title"><i>Minimum Endowment</i></th>
+            </tr>
+            <tr>
+                <td style="padding-left: 10px;">
+                    <label class="slider"><input type="range" name="final_s3_minimum_endowment" id="s3slider" oninput="s3updateInputValues(this.value)" min="0" max="400"><div class="scale">
+                        <span>No chance <br>to win</span>
+                        <span>Coin flip</span>
+                        <span>Certain to <br>win</span>
+                    </div></label>
+                </td>
+                <td class="numbox">
                     <label><input type="number" class="input_boxes" id="s3numberInput" oninput="s3updateSliderFromNumber(this.value)" size="5" min="0" max="400"></label>
                 </td>
-                <th style="padding-right: 10px; padding-top: 10px;"><i> Minimum Endowment</i></th>
             </tr>
-            <tr style="height: 2vh">
+            <tr class="timeout">
                 <td colspan="2"></td>
             </tr>
         </table>
@@ -90,5 +114,8 @@ Final Confirmation Screen
 
 <!-- Pop-ups -->
 {{ include '_static/popups/decision.html' }}
+
+<!-- Calculator pop-up -->
+{{ include '_static/popups/calculator.html' }}
 
 {{ endblock }}

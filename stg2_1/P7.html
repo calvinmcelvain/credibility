@@ -19,18 +19,19 @@ Choosing a Minimum Endowment
 <div class="decision-slider">
     <table>
         <tr>
-            <th><div class="rotated-text">
-                <span>Unlikely</span>
-                <span>Equal</span>
-                <span>Likely</span>
-            </div></th>
+            <th colspan="2" class="title"><i>Minimum Endowment</i></th>
         </tr>
         <tr>
             <td style="padding-left: 10px;">
-                <label><input class="slider" type="range" id="slider" oninput="updateInputValues(this.value)" min="0" max="400"></label>
+                <label class="slider"><input type="range" id="slider" oninput="updateInputValues(this.value)" min="0" max="400"><div class="scale">
+                    <span>No chance <br>to win</span>
+                    <span>Coin flip</span>
+                    <span>Certain to <br>win</span>
+                </div></label>
+            </td>
+            <td class="numbox">
                 <label><input type="number" class="input_boxes" id="numberInput" oninput="updateSliderFromNumber(this.value)" size="5" min="0" max="400"></label>
             </td>
-            <th style="padding-right: 10px;"><i> Minimum Endowment</i></th>
         </tr>
         <tr class="timeout">
             <td colspan="2"></td>
