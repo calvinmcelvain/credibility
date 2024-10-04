@@ -437,4 +437,4 @@ class End(Page):
     pass
 
 
-page_sequence = [AdvisorDecision, InvestorDecision, PayoffWaitPage, FinalConfirmation, FinalPayoffWaitPage, GatherGroupsWaitPage, FinalScreen, Demographics, End]
+page_sequence = [AdvisorDecision, InvestorDecision, PayoffWaitPage, GatherGroupsWaitPage, FinalConfirmation, FinalPayoffWaitPage, GatherGroupsWaitPage, FinalScreen, Demographics, End]
