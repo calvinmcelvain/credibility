@@ -259,6 +259,13 @@ class PayoffWaitPage(WaitPage):
                 player.payoff = advisor_payoff[signal][total_investors]
 
 
+class GatherGroupsWaitPage1(WaitPage):
+    wait_for_all_groups = True
+    doc = '''
+    The reason for back-to-back waitpages is due to calling the method 'after_all_players_arrive' after setting 'wait_for_all_groups' to True. Then the method must be a Subsession function. Easier to define this waitpage then re-code previous waitpage.
+    '''        
+
+
 class FinalConfirmation(Page):
     form_model = 'player'
     form_fields = ['final_s1_minimum_endowment', 'final_s2_minimum_endowment', 'final_s3_minimum_endowment']
@@ -345,7 +352,7 @@ class FinalPayoffWaitPage(WaitPage):
                 player.final_s3_payoff = advisor_payoff[s3_signal][s3_total_investors]
 
 
-class GatherGroupsWaitPage(WaitPage):
+class GatherGroupsWaitPage2(WaitPage):
     wait_for_all_groups = True
     doc = '''
     The reason for back-to-back waitpages is due to calling the method 'after_all_players_arrive' after setting 'wait_for_all_groups' to True. Then the method must be a Subsession function. Easier to define this waitpage then re-code previous waitpage.
@@ -437,4 +444,4 @@ class End(Page):
     pass
 
 
-page_sequence = [AdvisorDecision, InvestorDecision, PayoffWaitPage, GatherGroupsWaitPage, FinalConfirmation, FinalPayoffWaitPage, GatherGroupsWaitPage, FinalScreen, Demographics, End]
+page_sequence = [AdvisorDecision, InvestorDecision, PayoffWaitPage, GatherGroupsWaitPage1, FinalConfirmation, FinalPayoffWaitPage, GatherGroupsWaitPage2, FinalScreen, Demographics, End]
