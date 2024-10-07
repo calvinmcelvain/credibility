@@ -30,7 +30,11 @@
         </tr>
         <tr>
             <td style="padding-left: 10px;">
-                <label class="slider"><input type="range" name="investor_minimum_endowment" id="slider" oninput="updateInputValues(this.value)" min="0" max="400"></label>
+                <label class="slider"><input type="range" name="investor_minimum_endowment" id="slider" oninput="updateInputValues(this.value)" min="0" max="400"><div class="scale">
+                    <span>No chance <br>to win</span>
+                    <span>Coin flip</span>
+                    <span>Certain to <br>win</span>
+                </div></label>
             </td>
             <td class="numbox">
                 <label><input type="number" class="input_boxes" id="numberInput" oninput="updateSliderFromNumber(this.value)" size="5" min="0" max="400"></label>
