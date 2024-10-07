@@ -69,8 +69,10 @@ class Player(BasePlayer):
         '''
         Function to generate 20 sample total other investors between 1 and 3
         '''
-        investors = [r.randint(1,3) for x in range(20)]
-        r.shuffle(investors) 
+        odd_investors = r.choices([1, 3], k=10)
+        even_investors = r.choices([0, 2], k=10)
+        investors = odd_investors + even_investors
+        r.shuffle(investors)
         return investors
 
 
