@@ -369,7 +369,7 @@ div.decision-slider {
     margin-top: 3px;
     display: inline-block;
     border-top: 2px solid black;
-    width: 5vw;
+    width: 5.5vw;
     position: relative;
 }
 .arrow-right::after {
@@ -403,7 +403,7 @@ div.decision-slider {
     top: 1;
 }
 .slider input[type="range"] {
-    width: 16vw;
+    width: 18vw;
     height: 12px;
     accent-color: blue;
 }
