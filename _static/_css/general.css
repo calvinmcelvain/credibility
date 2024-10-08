@@ -365,6 +365,33 @@ div.decision-slider {
 .scale span {
     font-size: 0.7vmax;
 }
+.arrow-right, .arrow-left {
+    margin-top: 3px;
+    display: inline-block;
+    border-top: 2px solid black;
+    width: 5vw;
+    position: relative;
+}
+.arrow-right::after {
+    margin-right: -2px;
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -5.85px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 6px solid black; /* Adjust size */
+}
+.arrow-left::after {
+    margin-left: -2px;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -5.8px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 6px solid black; /* Adjust size */
+}
 .decision-slider input.input_boxes {
     width: 3vmax;
     height: 2vmax;
@@ -376,7 +403,7 @@ div.decision-slider {
     top: 1;
 }
 .slider input[type="range"] {
-    width: 14vw;
+    width: 16vw;
     height: 12px;
     accent-color: blue;
 }
