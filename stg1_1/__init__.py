@@ -20,7 +20,7 @@ class C(BaseConstants):
     stg1_investor_payoffs = {
         'Low': {1: 0, 2: 0, 3: 1, 4: 1},
         'Medium': {1: 0, 2: 0, 3: 6, 4: 6},
-        'High': {1: 0, 2: 0, 3: 28, 4: 28}
+        'High': {1: 0, 2: 0, 3: 24, 4: 24}
     }
     stg1_advisor_payoffs = {
         'Low': {0: 18, 1: 3, 2: 3, 3: 0, 4: 0},
