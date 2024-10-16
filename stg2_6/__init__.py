@@ -15,6 +15,7 @@ class C(BaseConstants):
     # Timeout seconds for decision page
     decision_time = DECISION_TIME
     feedback_time = FEEDBACK_TIME
+    finalconfirmation_disabled = 30000  # Final Confirmation button disabled time (Javascript timeout)
 
     # Defining "Advisor" role
     advisor_ROLE = 'Advisor'
@@ -272,7 +273,8 @@ class FinalConfirmation(Page):
         s1_decision = player.participant.vars['scenario_1_history']['minimum_endowment']
         s2_decision = player.participant.vars['scenario_2_history']['minimum_endowment']
         s3_decision = player.investor_minimum_endowment
-        return {'s1': s1_decision, 's2': s2_decision, 's3': s3_decision}
+        button_disabled = C.finalconfirmation_disabled
+        return {'s1': s1_decision, 's2': s2_decision, 's3': s3_decision, 'disable': button_disabled}
     
     
     @staticmethod

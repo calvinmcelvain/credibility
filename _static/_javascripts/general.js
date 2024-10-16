@@ -17,6 +17,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }, js_vars.timeout_instr);
 });
 
+/// Final Confirmation page button disabling function
+function disableButtonForTime() {
+    const button = document.getElementById('validation');
+    button.disabled = true;
+
+    setTimeout(function () {
+        button.disabled = false;
+    }, js_vars.disable);
+}
 
 /// Websocket to check if all players are ready
 function liveRecv(data) {

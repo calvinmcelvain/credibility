@@ -6,4 +6,5 @@ window.onload = function() {
     s1updateSliderFromNumber(js_vars.s1)
     s2updateSliderFromNumber(js_vars.s2)
     s3updateSliderFromNumber(js_vars.s3)
+    disableButtonForTime()
 };
