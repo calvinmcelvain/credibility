@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, js_vars.timeout);
 });
 
+/// Stage 1 recap timeout
 document.addEventListener("DOMContentLoaded", function () {
     const recap_table = document.getElementById("recap_table");
     const cont_button = document.getElementById("validation");
