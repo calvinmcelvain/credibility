@@ -1,19 +1,23 @@
 from os import environ
+from dotenv import load_dotenv
+load_dotenv('production_vars.env')
 
 # Setting session configs
 try:
     # Try to import the env_vars file (works for local development)
     import envi_vars
     GROUPING = envi_vars.GROUPING
-    STAGE_1_ROUNDS = envi_vars.STG_1_ROUNDS
+    STAGE_1_ROUNDS = envi_vars.STAGE_1_ROUNDS
     DEMO_PARTICIPANTS = envi_vars.DEMO_PARTICIPANTS
     SKIP = envi_vars.SKIP
 except ImportError:
     # Fall back to environment variables (for production on Heroku)
     GROUPING = int(environ.get('GROUPING'))
-    STAGE_1_ROUNDS = int(environ.get('STG_1_ROUNDS'))
+    STAGE_1_ROUNDS = int(environ.get('STAGE_1_ROUNDS'))
     DEMO_PARTICIPANTS = int(environ.get('DEMO_PARTICIPANTS'))
-    SKIP = bool(environ.get('SKIP'))    # Important note, this will only be false if empty
+    ADMIN_USERNAME = environ.get('ADMIN_USERNAME')
+    ADMIN_PASSWORD = environ.get('ADMIN_PASSWORD')
+    SKIP = False
 
 # Times
 DECISION_TIME = 20000   # In milliseconds (a javascript timeout)
@@ -120,10 +124,6 @@ LANGUAGE_CODE = 'en'
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
-
-ADMIN_USERNAME = 'admin'
-# for security, best to set admin password in an environment variable
-ADMIN_PASSWORD = environ.get('ADMIN_PASSWORD')
 
 DEMO_PAGE_INTRO_HTML = """
 Git Branch: main
