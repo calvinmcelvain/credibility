@@ -27,6 +27,9 @@ class Player(BasePlayer):
 
 # Functions
 def creating_session(subsession):
+    # Grouping randomly
+    subsession.group_randomly()
+    
     # Storing group matrix
     subsession.session.vars['group_matrix'] = subsession.get_group_matrix()
 
