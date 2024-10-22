@@ -34,7 +34,7 @@ SESSION_CONFIGS = [
     dict(
         name='experimenter_page',
         display_name='Admin: Experiment Instructions',
-        app_sequence=['admin_start', 'stg1_1', 'stg2_1', 'stg2_3', 'stg2_5'],
+        app_sequence=['admin_start', 'stg1_1', 'stg2_1', 'stg2_3', 'stg2_5', 'admin_final'],
         num_demo_participants=1,
     ),
     dict(

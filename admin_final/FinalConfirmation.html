@@ -1,0 +1,120 @@
+{{ load static }}
+{{ block content }}
+
+<!-- External CSS -->
+<link rel="stylesheet" href="{{ static '_css/general.css' }}" type="text/css">
+
+<!-- External JavaScript -->
+<script src="{{ static '_javascripts/general.js' }}"></script>
+
+<!-- Title -->
+{{ block title }}
+Final Confirmation Screen
+{{ endblock }}
+
+<!-- Instructions -->
+<p>This screen gives Investors one last chance to change your choices for the three scenarios. The interface below allows you to set your minimum endowment for each of the three scenarios. For each scenario, there is a button that allows you to see the instructions again. The interface is set to the choices you just made for each scenario. You can change any of these decisions or you can leave them as is.</p>
+<p>In thinking about what minimum endowment to choose, think about how likely you are to win the prize if you choose Invest. The more likely you are to win, the higher you should set your minimum endowment.</p>
+<div class="List">
+    <ul>
+        <li><b><i>In Scenario 1, the probability of winning the prize is how likely you believe that Quality is High when the Advisor tells you to pick Invest.</i></b></li>
+        <li><b><i>In Scenario 2, the probability of winning the prize is how likely you believe that the majority of Investors in your group will choose Invest when the Advisor tells you to pick Invest.</i></b></li>
+        <li><b><i>In Scenario 3, the probability of winning the prize is how likely you believe that the majority of Investors in your group will choose Invest and the Quality is High when the Advisor tells you to pick Invest.</i></b></li>
+    </ul>
+</div>
+<p>When you are done with any changes you want to make, click the confirmation button at the bottom of the screen. Clicking this button means that your choices are final.</p>
+
+<!-- Slider -->
+<div class="decision-slider" style="margin-top: 6vh;">
+    <div class="final-sldrs">
+        <h4 class="dfont">Scenario 1</h4>
+        <table>
+            <tr>
+                <th colspan="2" class="title"><i>Minimum Endowment</i></th>
+            </tr>
+            <tr>
+                <td style="padding-left: 10px;">
+                    <label class="slider"><input type="range" name="final_s1_minimum_endowment" id="s1slider" oninput="s1updateInputValues(this.value)" min="0" max="400"><div class="scale">
+                        <span class="arrow-left">Less likely to win</span>
+                        <span><span></span>Equally likely</span>
+                        <span class="arrow-right">More likely to win</span>
+                    </div></label>
+                </td>
+                <td class="numbox">
+                    <label><input type="number" class="input_boxes" id="s1numberInput" oninput="s1updateSliderFromNumber(this.value)" size="5" min="0" max="400"></label>
+                </td>
+            </tr>
+            <tr class="timeout">
+                <td colspan="2"></td>
+            </tr>
+        </table>
+        <button id="s1-pop-up" class="instr-btn" style="margin-top: 1vh; float: initial;">Scenario 1 Instructions</button>
+    </div>
+    <div class="final-sldrs margins">
+        <h4 class="dfont">Scenario 2</h4>
+        <table>
+            <tr>
+                <th colspan="2" class="title"><i>Minimum Endowment</i></th>
+            </tr>
+            <tr>
+                <td style="padding-left: 10px;">
+                    <label class="slider"><input type="range" name="final_s2_minimum_endowment" id="s2slider" oninput="s2updateInputValues(this.value)" min="0" max="400"><div class="scale">
+                        <span class="arrow-left">Less likely to win</span>
+                        <span><span></span>Equally likely</span>
+                        <span class="arrow-right">More likely to win</span>
+                    </div></label>
+                </td>
+                <td class="numbox">
+                    <label><input type="number" class="input_boxes" id="s2numberInput" oninput="s2updateSliderFromNumber(this.value)" size="5" min="0" max="400"></label>
+                </td>
+            </tr>
+            <tr class="timeout">
+                <td colspan="2"></td>
+            </tr>
+        </table>
+        <button id="s2-pop-up" class="instr-btn" style="margin-top: 1vh; float: initial;">Scenario 2 Instructions</button>
+    </div>
+    <div class="final-sldrs">
+        <h4 class="dfont">Scenario 3</h4>
+        <table>
+            <tr>
+                <th colspan="2" class="title"><i>Minimum Endowment</i></th>
+            </tr>
+            <tr>
+                <td style="padding-left: 10px;">
+                    <label class="slider"><input type="range" name="final_s3_minimum_endowment" id="s3slider" oninput="s3updateInputValues(this.value)" min="0" max="400"><div class="scale">
+                        <span class="arrow-left">Less likely to win</span>
+                        <span><span></span>Equally likely</span>
+                        <span class="arrow-right">More likely to win</span>
+                    </div></label>
+                </td>
+                <td class="numbox">
+                    <label><input type="number" class="input_boxes" id="s3numberInput" oninput="s3updateSliderFromNumber(this.value)" size="5" min="0" max="400"></label>
+                </td>
+            </tr>
+            <tr class="timeout">
+                <td colspan="2"></td>
+            </tr>
+        </table>
+        <button id="s3-pop-up" class="instr-btn" style="margin-top: 1vh; float: initial;">Scenario 3 Instructions</button>
+    </div>
+</div>
+
+<!-- Next Button with confirmation pop-up & Instructions Button-->
+<div class="button">
+    <button type="button" onclick="ShowConfirmation()" id="validation">Continue</button>
+    <button type="button" style="float: left;" class="calc-btn" onclick="showCalculator()">Calculator</button>
+</div>
+
+<!-- Instructions -->
+{{ include '_static/instr_bttns/stage_2_s1.html' }}
+{{ include '_static/instr_bttns/stage_2_s2.html' }}
+{{ include '_static/instr_bttns/stage_2_s3.html' }}
+
+<!-- Pop-ups -->
+{{ include '_static/popups/decision.html' }}
+
+<!-- Calculator pop-up -->
+{{ include '_static/popups/calculator.html' }}
+
+{{ endblock }}
