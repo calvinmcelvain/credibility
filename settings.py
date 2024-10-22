@@ -38,12 +38,6 @@ SESSION_CONFIGS = [
         num_demo_participants=1,
     ),
     dict(
-        name='Slider',
-        display_name='Admin: Slider example',
-        app_sequence=['_slider'],
-        num_demo_participants=1,
-    ),
-    dict(
         name='Stage_1_Instructions_Only',
         display_name="Stage 1: Instructions",
         app_sequence=['start', 'stg1_1'],
