@@ -145,7 +145,7 @@ def creating_session(subsession):
     
     # Assigning treatments & randomly selecting signal
     groups = subsession.get_groups()
-    treatments = ['LCLE', 'LCHE', 'HCLE', 'HCHE']
+    treatments = ['HCHE', 'HCLE', 'LCLE', 'LCHE']
     for i, group in enumerate(groups):
         group.treatment = treatments[i % len(treatments)]
         
