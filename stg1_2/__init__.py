@@ -1,5 +1,5 @@
 from otree.api import *
-from settings import GROUPING, DECISION_TIME, FEEDBACK_TIME, STAGE_1_ROUNDS
+from settings import GROUPING, DECISION_TIME, FEEDBACK_TIME, STAGE_1_ROUNDS, TREATMENT_ORDER
 
 doc = """
 Stage 1 app
@@ -133,7 +133,7 @@ def creating_session(subsession):
 
     # Assigning Treatments
     groups = subsession.get_groups()
-    treatments = ['HCHE', 'HCLE', 'LCLE', 'LCHE']
+    treatments = TREATMENT_ORDER
     for i, group in enumerate(groups):
         group.treatment = treatments[i % len(treatments)]
 

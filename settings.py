@@ -10,6 +10,7 @@ try:
     STAGE_1_ROUNDS = envi_vars.STAGE_1_ROUNDS
     DEMO_PARTICIPANTS = envi_vars.DEMO_PARTICIPANTS
     SKIP = envi_vars.SKIP
+    TREATMENT_ORDER = envi_vars.TREATMENT_ORDER
 except ImportError:
     # Fall back to environment variables (for production on Heroku)
     GROUPING = int(environ.get('GROUPING'))
@@ -17,6 +18,7 @@ except ImportError:
     DEMO_PARTICIPANTS = int(environ.get('DEMO_PARTICIPANTS'))
     ADMIN_USERNAME = environ.get('ADMIN_USERNAME')
     ADMIN_PASSWORD = environ.get('ADMIN_PASSWORD')
+    TREATMENT_ORDER = environ.get('TREATMENT_ORDER')
     SKIP = False
 
 # Times
