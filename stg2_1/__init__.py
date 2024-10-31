@@ -70,7 +70,7 @@ class Player(BasePlayer):
         Function to generate 20 sample total other investors between 1 and 3
         '''
         odd_investors = r.choices([1, 3], k=10)
-        even_investors = r.choices([2, 4], k=10)
+        even_investors = r.choices([0, 2], k=10)
         investors = odd_investors + even_investors
         r.shuffle(investors)
         return investors
@@ -185,7 +185,7 @@ class P13(BaseReadyPage):
         # Getting sample payoffs for each of the 20 draws
         for i in draws:
             investors.append(investors_rand[len(investors)])
-            invest_payoff.append(C.investor_payoffs_sample['Low'][investors_rand[len(investors)-1]])
+            invest_payoff.append(C.investor_payoffs_sample['Low'][investors_rand[len(investors)-1] + 1])
             keep_payoff.append(i)
 
         # Creating a dictionary where draw numbers are keys and a list of corresponding values
