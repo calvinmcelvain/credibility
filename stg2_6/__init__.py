@@ -1,6 +1,6 @@
 from otree.api import *
 import random as r
-from settings import GROUPING, DECISION_TIME, FEEDBACK_TIME
+from settings import GROUPING, DECISION_TIME, FEEDBACK_TIME, TREATMENT_ORDER
 
 doc = """
 Stage 2 scenario 3 app
@@ -145,7 +145,7 @@ def creating_session(subsession):
     
     # Assigning treatments & randomly selecting signal
     groups = subsession.get_groups()
-    treatments = ['HCHE', 'HCLE', 'LCLE', 'LCHE']
+    treatments = TREATMENT_ORDER
     for i, group in enumerate(groups):
         group.treatment = treatments[i % len(treatments)]
         
